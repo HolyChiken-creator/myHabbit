@@ -1,4 +1,4 @@
-const APP_VERSION = '2.6.0-content-library';
+const APP_VERSION = '2.9.0-multi-account';
 const JSON_HEADERS = {
   'content-type': 'application/json; charset=utf-8',
   'cache-control': 'no-store'
@@ -352,9 +352,14 @@ export class TelegramState {
       if (url.pathname === '/family-create' && request.method === 'POST') return this.familyCreate(await request.json());
       if (url.pathname === '/family-join' && request.method === 'POST') return this.familyJoin(await request.json());
       if (url.pathname === '/family-telegram-join' && request.method === 'POST') return this.familyTelegramJoin(await request.json());
+      if (url.pathname === '/family-invite' && request.method === 'POST') return this.familyCreateInvite(request, await request.json().catch(() => ({})));
+      if (url.pathname === '/family-invite-info' && request.method === 'POST') return this.familyInviteInfo(await request.json().catch(() => ({})));
+      if (url.pathname === '/family-invite-join' && request.method === 'POST') return this.familyInviteJoin(await request.json());
       if (url.pathname === '/family-state' && request.method === 'GET') return this.familyGetState(request);
       if (url.pathname === '/family-state' && request.method === 'PUT') return this.familyPutState(request, await request.json());
       if (url.pathname === '/daily-submit' && request.method === 'POST') return this.dailySubmit(request, await request.json());
+      if (url.pathname === '/daily-gift-status' && request.method === 'GET') return this.dailyGiftStatus(request);
+      if (url.pathname === '/daily-gift-claim' && request.method === 'POST') return this.dailyGiftClaim(request);
       if (url.pathname === '/admin-sync-status' && request.method === 'GET') return this.adminSyncStatus(request);
       if (url.pathname === '/admin-process-now' && request.method === 'POST') return this.adminProcessNow(request);
       if (url.pathname === '/admin-reset-user' && request.method === 'POST') return this.adminResetUser(request, await request.json());
@@ -490,6 +495,71 @@ export class TelegramState {
     return json({ token:`fq.${user.id}.${secret}`, userId:user.id, familyCode:code, state:{...family.state,currentUserId:user.id}, telegramLinked:true });
   }
 
+
+  async familyCreateInvite(request, payload) {
+    const auth = await this.familyAuthorize(request);
+    if (!auth) return json({ error: 'Недійсна сімейна сесія' }, 401);
+    if (!['owner', 'admin'].includes(auth.user.role)) return json({ error: 'Лише адміністратор може створювати запрошення' }, 403);
+    if ((auth.family.memberIds || []).length >= 5) return json({ error: 'У сімʼї вже максимальні 5 учасників' }, 409);
+    const ttlHours = Math.min(168, Math.max(1, Math.floor(number(payload?.ttlHours) || 24)));
+    const maxUses = Math.min(4, Math.max(1, Math.floor(number(payload?.maxUses) || 1)));
+    const token = randomText(24);
+    const now = Date.now();
+    await this.state.storage.put(`fq-invite:${token}`, {
+      token, familyId: auth.family.id, createdBy: auth.user.id, createdAt: now,
+      expiresAt: now + ttlHours * 60 * 60 * 1000, maxUses, uses: 0, revoked: false
+    });
+    return json({ token, familyName: auth.family.name, expiresAt: now + ttlHours * 60 * 60 * 1000, maxUses });
+  }
+
+  async familyInviteInfo(payload) {
+    const token = text(payload?.token, 80);
+    const invite = token ? await this.state.storage.get(`fq-invite:${token}`) : null;
+    if (!invite || invite.revoked || Number(invite.expiresAt) <= Date.now() || Number(invite.uses || 0) >= Number(invite.maxUses || 1)) {
+      return json({ error: 'Запрошення недійсне або вже використане' }, 410);
+    }
+    const family = await this.state.storage.get(`fq-family:${invite.familyId}`);
+    if (!family) return json({ error: 'Сімʼю не знайдено' }, 404);
+    return json({ valid: true, familyName: family.name, expiresAt: invite.expiresAt, spotsLeft: Math.max(0, 5 - (family.memberIds || []).length) });
+  }
+
+  async familyInviteJoin(payload) {
+    const token = text(payload?.token, 80);
+    const invite = token ? await this.state.storage.get(`fq-invite:${token}`) : null;
+    if (!invite || invite.revoked || Number(invite.expiresAt) <= Date.now() || Number(invite.uses || 0) >= Number(invite.maxUses || 1)) {
+      return json({ error: 'Запрошення недійсне або вже використане' }, 410);
+    }
+    const family = await this.state.storage.get(`fq-family:${invite.familyId}`);
+    if (!family) return json({ error: 'Сімʼю не знайдено' }, 404);
+    if ((family.memberIds || []).length >= 5) return json({ error: 'У сімʼї вже максимальні 5 учасників' }, 409);
+    let verified = null;
+    if (payload?.initData) verified = await verifyTelegramInitData(payload.initData, this.env.TELEGRAM_BOT_TOKEN);
+    const memberName = text(payload?.name || [verified?.user?.first_name, verified?.user?.last_name].filter(Boolean).join(' '), 50);
+    if (!memberName) return json({ error: 'Вкажіть імʼя' }, 400);
+    const gender = ['male', 'female', 'neutral'].includes(payload?.gender) ? payload.gender : 'neutral';
+    const userId = crypto.randomUUID();
+    const secret = randomText(24);
+    const avatar = '✦';
+    const telegramUserId = verified?.user?.id ? String(verified.user.id) : '';
+    if (telegramUserId) {
+      const existing = await this.state.storage.get(`fq-telegram:${telegramUserId}`);
+      if (existing) return json({ error: 'Цей Telegram уже підключений до профілю' }, 409);
+    }
+    const now = new Date().toISOString();
+    const user = { id:userId, familyId:family.id, name:memberName, gender, avatar, role:'member', tokenHash:await sha256(secret), createdAt:now, telegramUserId, telegramUsername:text(verified?.user?.username,64), telegramLinked:Boolean(telegramUserId) };
+    family.memberIds = [...(family.memberIds || []), userId];
+    family.state.users.push({id:userId,name:memberName,gender,avatar,role:'member',telegramLinked:Boolean(telegramUserId),telegramUsername:text(verified?.user?.username,64),level:1,xp:0,coins:0,streak:0,skills:{home:1,care:1,health:1,growth:1,finance:1},achievements:[],activity:['Приєднався за теплим запрошенням']});
+    family.revision = Number(family.revision || 0) + 1;
+    family.updatedAt = now;
+    invite.uses = Number(invite.uses || 0) + 1;
+    if (invite.uses >= Number(invite.maxUses || 1)) invite.revoked = true;
+    await this.state.storage.put(`fq-user:${userId}`, user);
+    if (telegramUserId) await this.state.storage.put(`fq-telegram:${telegramUserId}`, userId);
+    await this.state.storage.put(`fq-family:${family.id}`, family);
+    await this.state.storage.put(`fq-invite:${token}`, invite);
+    return json({ token:`fq.${userId}.${secret}`, userId, familyCode:family.code, state:{...family.state,currentUserId:userId}, telegramLinked:Boolean(telegramUserId) });
+  }
+
   async familyGetState(request) {
     const auth = await this.familyAuthorize(request);
     if (!auth) return json({ error: 'Недійсна сімейна сесія' }, 401);
@@ -510,6 +580,48 @@ export class TelegramState {
     auth.family.updatedAt = new Date().toISOString();
     await this.state.storage.put(`fq-family:${auth.family.id}`, auth.family);
     return json({ revision:auth.family.revision, updatedAt:auth.family.updatedAt });
+  }
+
+
+  kyivDay() {
+    return new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Kyiv', year:'numeric', month:'2-digit', day:'2-digit' }).format(new Date());
+  }
+
+  async dailyGiftStatus(request) {
+    const auth = await this.familyAuthorize(request);
+    if (!auth) return json({ error: 'Недійсна сімейна сесія' }, 401);
+    const day = this.kyivDay();
+    const claimed = await this.state.storage.get(`fq-daily-gift:${auth.user.id}:${day}`);
+    return json({ available: !claimed, day, reward: claimed?.reward || null, claimedAt: claimed?.claimedAt || null });
+  }
+
+  async dailyGiftClaim(request) {
+    const auth = await this.familyAuthorize(request);
+    if (!auth) return json({ error: 'Недійсна сімейна сесія' }, 401);
+    const day = this.kyivDay();
+    const key = `fq-daily-gift:${auth.user.id}:${day}`;
+    const existing = await this.state.storage.get(key);
+    if (existing) return json({ claimed: false, duplicate: true, day, reward: existing.reward, state:{...auth.family.state,currentUserId:auth.user.id} });
+    const roll = crypto.getRandomValues(new Uint32Array(1))[0] / 4294967296;
+    let reward = 5;
+    let tier = 'warm';
+    if (roll >= 0.995) { reward = 500; tier = 'grand-jackpot'; }
+    else if (roll >= 0.97) { reward = 100; tier = 'jackpot'; }
+    else if (roll >= 0.87) { reward = 50; tier = 'lucky'; }
+    else if (roll >= 0.62) { reward = 10; tier = 'bright'; }
+    const member = (auth.family.state.users || []).find((item) => item.id === auth.user.id);
+    if (!member) return json({ error: 'Профіль не знайдено' }, 404);
+    member.coins = Number(member.coins || 0) + reward;
+    member.activity = Array.isArray(member.activity) ? member.activity : [];
+    member.activity.unshift(`Ранкова рулетка подарувала ${reward} монет`);
+    auth.family.state.history = Array.isArray(auth.family.state.history) ? auth.family.state.history : [];
+    auth.family.state.history.unshift({ icon:'🎡', text:`${member.name} отримав(ла) ${reward} монет у ранковій рулетці`, time:'Щойно' });
+    auth.family.revision = Number(auth.family.revision || 0) + 1;
+    auth.family.updatedAt = new Date().toISOString();
+    const result = { reward, tier, day, claimedAt: auth.family.updatedAt };
+    await this.state.storage.put(key, result);
+    await this.state.storage.put(`fq-family:${auth.family.id}`, auth.family);
+    return json({ claimed: true, duplicate: false, ...result, state:{...auth.family.state,currentUserId:auth.user.id} });
   }
 
   async dailySubmit(request, payload) {
@@ -1461,8 +1573,13 @@ export default {
       '/api/family/create': ['/family-create', 'POST'],
       '/api/family/join': ['/family-join', 'POST'],
       '/api/family/telegram-join': ['/family-telegram-join', 'POST'],
+      '/api/family/invite': ['/family-invite', 'POST'],
+      '/api/family/invite-info': ['/family-invite-info', 'POST'],
+      '/api/family/invite-join': ['/family-invite-join', 'POST'],
       '/api/family/state': ['/family-state', request.method],
       '/api/family/daily-submit': ['/daily-submit', 'POST'],
+      '/api/family/daily-gift-status': ['/daily-gift-status', 'GET'],
+      '/api/family/daily-gift-claim': ['/daily-gift-claim', 'POST'],
       '/api/admin/sync-status': ['/admin-sync-status', 'GET'],
       '/api/admin/process-now': ['/admin-process-now', 'POST'],
       '/api/admin/reset-user': ['/admin-reset-user', 'POST'],
