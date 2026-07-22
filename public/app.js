@@ -5,6 +5,8 @@
   const toast = document.getElementById('toast');
   const STORAGE = 'familyQuestStateV1';
   const AUTH = 'familyQuestAuthV1';
+  const DAILY_QUEUE = 'myHabbitDailyQueueV1';
+  const LAST_SERVER_PULL = 'myHabbitLastServerPullV1';
   const baseNavItems = [
     ['dashboard','⌂','Головна'],['quests','✓','Квести'],['shop','◈','Магазин'],
     ['achievements','🏆','Ачивки'],['family','👥','Сімʼя'],['profile','●','Профіль']
@@ -65,7 +67,7 @@
   function clone(v){return JSON.parse(JSON.stringify(v));}
   function loadState(){try{return JSON.parse(localStorage.getItem(STORAGE))||clone(seed);}catch{return clone(seed);}}
   function loadAuth(){try{return JSON.parse(localStorage.getItem(AUTH))||null;}catch{return null;}}
-  function save(){localStorage.setItem(STORAGE,JSON.stringify(state)); if(auth?.token) syncRemote();}
+  function save(){localStorage.setItem(STORAGE,JSON.stringify(state)); queueDailySnapshot();}
   function currentUser(){return state.users.find(u=>u.id===state.currentUserId)||state.users[0];}
   function showToast(text){toast.textContent=text;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2200);}
   function format(n){return new Intl.NumberFormat('uk-UA').format(n||0);}
@@ -81,15 +83,64 @@
     if(!res.ok) throw new Error(data.error||'Помилка сервера');
     return data;
   }
-  let syncTimer;
-  function syncRemote(){
-    if(!auth?.token)return;
-    clearTimeout(syncTimer);
-    syncTimer=setTimeout(async()=>{try{await api('/api/family/state',{method:'PUT',body:JSON.stringify({state})});}catch{}},500);
+  function localDay(){
+    const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Kyiv',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date()).reduce((a,p)=>(p.type!=='literal'&&(a[p.type]=p.value),a),{});
+    return `${parts.year}-${parts.month}-${parts.day}`;
+  }
+  function compactDailyData(){
+    const u=currentUser();
+    return {
+      user:{id:u.id,name:u.name,avatar:u.avatar,role:u.role,telegramLinked:u.telegramLinked,telegramUsername:u.telegramUsername,level:u.level,xp:u.xp,coins:u.coins,streak:u.streak,skills:u.skills,achievements:u.achievements,activity:(u.activity||[]).slice(0,20)},
+      family:{name:state.family.name,code:state.family.code,level:state.family.level,xp:state.family.xp,coins:state.family.coins},
+      quests:(state.quests||[]).map(q=>({id:q.id,title:q.title,icon:q.icon,description:q.description,type:q.type,participants:q.participants,claimedBy:q.claimedBy,rewardCoins:q.rewardCoins,rewardXp:q.rewardXp,skill:q.skill,skillXp:q.skillXp,status:q.status,limited:q.limited,stock:q.stock})),
+      shop:(state.shop||[]).map(i=>({id:i.id,title:i.title,icon:i.icon,description:i.description,price:i.price,stock:i.stock,type:i.type,fund:i.fund||0})),
+      history:(state.history||[]).slice(0,20)
+    };
+  }
+  function queueDailySnapshot(){
+    if(!auth?.token||auth?.demo)return;
+    const previous=JSON.parse(localStorage.getItem(DAILY_QUEUE)||'null');
+    const day=localDay();
+    const seq=previous?.day===day?Number(previous.seq||0)+1:1;
+    localStorage.setItem(DAILY_QUEUE,JSON.stringify({day,seq,data:compactDailyData(),queuedAt:Date.now()}));
+  }
+  async function submitDailySnapshot({keepalive=false}={}){
+    if(!auth?.token||auth?.demo)return false;
+    const packet=JSON.parse(localStorage.getItem(DAILY_QUEUE)||'null');
+    if(!packet)return true;
+    try{
+      await api('/api/family/daily-submit',{method:'POST',body:JSON.stringify(packet),keepalive});
+      localStorage.removeItem(DAILY_QUEUE);
+      return true;
+    }catch{return false;}
   }
   async function pullRemote(){
     if(!auth?.token)return;
-    try{const data=await api('/api/family/state');if(data.state){state=data.state;localStorage.setItem(STORAGE,JSON.stringify(state));}}catch{}
+    try{const data=await api('/api/family/state');if(data.state){state=data.state;localStorage.setItem(STORAGE,JSON.stringify(state));localStorage.setItem(LAST_SERVER_PULL,new Date().toISOString());}}catch{}
+  }
+  async function refreshAdminSyncStatus(){
+    if(!auth?.token||!isAdmin())return;
+    try{
+      const data=await api('/api/admin/sync-status');
+      const count=document.getElementById('pendingSyncCount');
+      const users=document.getElementById('pendingSyncUsers');
+      const last=document.getElementById('lastSyncAt');
+      const button=document.querySelector('[data-action="admin-process-now"]');
+      if(count)count.textContent=String(data.pendingPackets||0);
+      if(users)users.textContent=String(data.affectedUsers||0);
+      if(last)last.textContent=data.lastProcessedAt?new Date(data.lastProcessedAt).toLocaleString('uk-UA'):'Ще не виконувалось';
+      if(button)button.disabled=!(data.pendingPackets>0||localStorage.getItem(DAILY_QUEUE));
+    }catch{}
+  }
+  async function adminProcessNow(){
+    try{
+      showToast('Надсилаємо локальні зміни…');
+      await submitDailySnapshot();
+      const result=await api('/api/admin/process-now',{method:'POST',body:'{}'});
+      await pullRemote();
+      render();
+      showToast(result.processed?`Оновлено ${result.packets} пакетів від ${result.users} учасників`:'Нових даних немає');
+    }catch(e){showToast(e.message);}
   }
 
   function go(next){route=next;history.replaceState({},'',next==='landing'?'/' : `/?screen=${next}`);render();scrollTo(0,0);}
@@ -158,7 +209,7 @@
     if(!isAdmin()) return shell('<div class="card empty">Цей розділ доступний лише адміністратору сімʼї.</div>','Адмін-панель','Керування сімейним простором.');
     const active=state.quests.filter(q=>q.status==='active').length;
     const lowStock=state.shop.filter(x=>x.stock<=1).length;
-    return shell(`<section class="admin-hero"><div><span class="eyebrow">Центр керування</span><h2>Сімейна адмін-панель</h2><p>Завдання, магазин, учасники й Telegram — в одному спокійному інтерфейсі.</p></div><button class="btn primary" data-action="telegram-refresh">Перевірити Telegram</button></section><section class="grid metrics"><div class="card"><div class="metric-label">Активні квести</div><div class="metric-value">${active}</div><div class="metric-foot">${state.quests.length-active} завершено</div></div><div class="card"><div class="metric-label">Асортимент</div><div class="metric-value">${state.shop.length}</div><div class="metric-foot">${lowStock} позиції закінчуються</div></div><div class="card"><div class="metric-label">Учасники</div><div class="metric-value">${state.users.length}/5</div><div class="metric-foot">${state.users.filter(u=>u.telegramLinked).length} з Telegram</div></div><div class="card"><div class="metric-label">Сімейний фонд</div><div class="metric-value">${format(state.family.coins)} 🪙</div><div class="metric-foot">Спільний баланс</div></div></section><div class="admin-grid"><section><div class="section-head"><h2>Керування завданнями</h2><button class="btn primary small" data-action="new-quest">+ Додати</button></div><div class="admin-list">${state.quests.map(q=>`<article class="admin-row"><span class="quest-icon">${q.icon}</span><div><strong>${q.title}</strong><small>${q.status==='active'?'Активне':'Завершене'} · ${q.rewardCoins} 🪙 · ${q.rewardXp} XP</small></div><div class="admin-actions"><button class="btn small soft" data-admin-toggle-quest="${q.id}">${q.status==='active'?'Пауза':'Активувати'}</button><button class="icon-btn danger-text" data-admin-delete-quest="${q.id}" aria-label="Видалити">×</button></div></article>`).join('')}</div></section><section><div class="section-head"><h2>Асортимент магазину</h2><button class="btn primary small" data-action="new-shop">+ Додати</button></div><div class="admin-list">${state.shop.map(i=>`<article class="admin-row"><span class="shop-icon">${i.icon}</span><div><strong>${i.title}</strong><small>${format(i.price)} 🪙 · залишок ${i.stock}</small></div><div class="stock-stepper"><button data-stock="${i.id}" data-delta="-1">−</button><strong>${i.stock}</strong><button data-stock="${i.id}" data-delta="1">+</button></div><button class="icon-btn danger-text" data-admin-delete-shop="${i.id}" aria-label="Видалити">×</button></article>`).join('')}</div></section></div>`,`Адмін-панель`,`Контролюйте контент, асортимент і стан сімейного простору.`);
+    return shell(`<section class="admin-hero"><div><span class="eyebrow">Центр керування</span><h2>Сімейна адмін-панель</h2><p>Завдання, магазин, учасники й Telegram — в одному спокійному інтерфейсі.</p></div><button class="btn primary" data-action="telegram-refresh">Перевірити Telegram</button></section><section class="card sync-panel"><div><span class="eyebrow">Local-first синхронізація</span><h2>Оновлення сімейної статистики</h2><p>Дані зберігаються на пристроях. Автоматичне серверне оновлення виконується після 09:00, а адміністратор може запустити його вручну.</p><div class="sync-meta"><span>Очікують: <strong id="pendingSyncCount">…</strong> пакетів</span><span>Учасників: <strong id="pendingSyncUsers">…</strong></span><span>Останнє: <strong id="lastSyncAt">…</strong></span></div></div><button class="btn primary" data-action="admin-process-now">Оновити дані зараз</button></section><section class="grid metrics"><div class="card"><div class="metric-label">Активні квести</div><div class="metric-value">${active}</div><div class="metric-foot">${state.quests.length-active} завершено</div></div><div class="card"><div class="metric-label">Асортимент</div><div class="metric-value">${state.shop.length}</div><div class="metric-foot">${lowStock} позиції закінчуються</div></div><div class="card"><div class="metric-label">Учасники</div><div class="metric-value">${state.users.length}/5</div><div class="metric-foot">${state.users.filter(u=>u.telegramLinked).length} з Telegram</div></div><div class="card"><div class="metric-label">Сімейний фонд</div><div class="metric-value">${format(state.family.coins)} 🪙</div><div class="metric-foot">Спільний баланс</div></div></section><div class="admin-grid"><section><div class="section-head"><h2>Керування завданнями</h2><button class="btn primary small" data-action="new-quest">+ Додати</button></div><div class="admin-list">${state.quests.map(q=>`<article class="admin-row"><span class="quest-icon">${q.icon}</span><div><strong>${q.title}</strong><small>${q.status==='active'?'Активне':'Завершене'} · ${q.rewardCoins} 🪙 · ${q.rewardXp} XP</small></div><div class="admin-actions"><button class="btn small soft" data-admin-toggle-quest="${q.id}">${q.status==='active'?'Пауза':'Активувати'}</button><button class="icon-btn danger-text" data-admin-delete-quest="${q.id}" aria-label="Видалити">×</button></div></article>`).join('')}</div></section><section><div class="section-head"><h2>Асортимент магазину</h2><button class="btn primary small" data-action="new-shop">+ Додати</button></div><div class="admin-list">${state.shop.map(i=>`<article class="admin-row"><span class="shop-icon">${i.icon}</span><div><strong>${i.title}</strong><small>${format(i.price)} 🪙 · залишок ${i.stock}</small></div><div class="stock-stepper"><button data-stock="${i.id}" data-delta="-1">−</button><strong>${i.stock}</strong><button data-stock="${i.id}" data-delta="1">+</button></div><button class="icon-btn danger-text" data-admin-delete-shop="${i.id}" aria-label="Видалити">×</button></article>`).join('')}</div></section></div>`,`Адмін-панель`,`Контролюйте контент, асортимент і стан сімейного простору.`);
   }
 
   function modal(type){
@@ -170,7 +221,7 @@
 
   function render(){
     const screens={landing,auth:authScreen,dashboard,quests:questsScreen,shop:shopScreen,achievements:achievementsScreen,family:familyScreen,profile:()=>profileScreen(),admin:adminScreen};
-    app.innerHTML=(screens[route]||landing)(); bind();
+    app.innerHTML=(screens[route]||landing)(); bind(); if(route==='admin')setTimeout(refreshAdminSyncStatus,0);
   }
 
   function bind(){
@@ -194,6 +245,7 @@
     if(['switch-user','new-quest','new-shop'].includes(name)){document.body.insertAdjacentHTML('beforeend',modal(name));bindModal();}
     if(name==='telegram-connect') connectTelegram();
     if(name==='telegram-refresh') checkTelegram();
+    if(name==='admin-process-now') adminProcessNow();
     if(name==='invite') showToast(`Код запрошення: ${state.family.code}`);
     if(name==='submit-auth') submitAuth(el?.dataset.mode || 'create');
     if(name==='save-quest') saveQuest();
@@ -255,7 +307,9 @@
 
   window.addEventListener('popstate',()=>{route=new URLSearchParams(location.search).get('screen')||(auth?'dashboard':'landing');render();});
   if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(()=>{});
-  (async()=>{if(auth?.token)await pullRemote();render();})();
+  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')submitDailySnapshot({keepalive:true});});
+  window.addEventListener('pagehide',()=>submitDailySnapshot({keepalive:true}));
+  (async()=>{if(auth?.token){await submitDailySnapshot();await pullRemote();}render();})();
 })();
 
 requestAnimationFrame(()=>document.getElementById('appSplash')?.classList.add('hidden'));

@@ -1,5 +1,5 @@
-const CACHE = 'myhabbit-branding-v4';
-const CORE = ['/', '/index.html', '/styles.css?v=14', '/app.js?v=14', '/manifest.webmanifest', '/icons/icon-32.png', '/icons/icon-180.png', '/icons/icon-192.png', '/icons/icon-512.png', '/icons/maskable-512.png', '/assets/myhabbit-brand.webp'];
+const CACHE = 'myhabbit-local-first-v5';
+const CORE = ['/', '/index.html', '/styles.css?v=15', '/app.js?v=15', '/manifest.webmanifest', '/icons/icon-32.png', '/icons/icon-180.png', '/icons/icon-192.png', '/icons/icon-512.png', '/icons/maskable-512.png', '/assets/myhabbit-brand.webp'];
 const OPTIONAL = [];
 
 self.addEventListener('install', (event) => {

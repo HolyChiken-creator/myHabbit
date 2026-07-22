@@ -1,4 +1,4 @@
-const APP_VERSION = '2.0.0-myhabbit';
+const APP_VERSION = '2.4.0-local-first';
 const JSON_HEADERS = {
   'content-type': 'application/json; charset=utf-8',
   'cache-control': 'no-store'
@@ -354,6 +354,9 @@ export class TelegramState {
       if (url.pathname === '/family-telegram-join' && request.method === 'POST') return this.familyTelegramJoin(await request.json());
       if (url.pathname === '/family-state' && request.method === 'GET') return this.familyGetState(request);
       if (url.pathname === '/family-state' && request.method === 'PUT') return this.familyPutState(request, await request.json());
+      if (url.pathname === '/daily-submit' && request.method === 'POST') return this.dailySubmit(request, await request.json());
+      if (url.pathname === '/admin-sync-status' && request.method === 'GET') return this.adminSyncStatus(request);
+      if (url.pathname === '/admin-process-now' && request.method === 'POST') return this.adminProcessNow(request);
       if (url.pathname === '/register' && request.method === 'POST') return this.register(await request.json());
       if (url.pathname === '/settings' && request.method === 'PUT') return this.updateSettings(request, await request.json());
       if (url.pathname === '/status' && request.method === 'GET') return this.status(request);
@@ -366,6 +369,7 @@ export class TelegramState {
       if (url.pathname === '/sync-state' && request.method === 'PUT') return this.putSyncState(request, await request.json());
       if (url.pathname === '/webhook' && request.method === 'POST') return this.webhook(await request.json());
       if (url.pathname === '/dispatch' && request.method === 'POST') return this.dispatch();
+      if (url.pathname === '/process-due-families' && request.method === 'POST') return json(await this.processDueFamilies());
       return json({ error: 'Not found' }, 404);
     } catch (error) {
       console.error(error);
@@ -504,6 +508,120 @@ export class TelegramState {
     auth.family.updatedAt = new Date().toISOString();
     await this.state.storage.put(`fq-family:${auth.family.id}`, auth.family);
     return json({ revision:auth.family.revision, updatedAt:auth.family.updatedAt });
+  }
+
+  async dailySubmit(request, payload) {
+    const auth = await this.familyAuthorize(request);
+    if (!auth) return json({ error: 'Недійсна сімейна сесія' }, 401);
+    const day = text(payload?.day, 10);
+    const seq = Math.max(1, Math.floor(number(payload?.seq)));
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(day)) return json({ error: 'Некоректна дата пакета' }, 400);
+    const compact = payload?.data && typeof payload.data === 'object' ? payload.data : null;
+    if (!compact) return json({ error: 'Порожній пакет синхронізації' }, 400);
+    const serialized = JSON.stringify(compact);
+    if (serialized.length > 80000) return json({ error: 'Денний пакет завеликий' }, 413);
+    const key = `fq-pending:${auth.family.id}:${auth.user.id}:${day}:${seq}`;
+    if (await this.state.storage.get(key)) return json({ accepted: true, duplicate: true });
+    await this.state.storage.put(key, {
+      familyId: auth.family.id,
+      userId: auth.user.id,
+      day,
+      seq,
+      receivedAt: new Date().toISOString(),
+      data: compact
+    });
+    return json({ accepted: true, duplicate: false });
+  }
+
+  async adminSyncStatus(request) {
+    const auth = await this.familyAuthorize(request);
+    if (!auth) return json({ error: 'Недійсна сімейна сесія' }, 401);
+    if (!['owner', 'admin'].includes(auth.user.role)) return json({ error: 'Лише адміністратор може оновлювати сімейні дані' }, 403);
+    const records = await this.state.storage.list({ prefix: `fq-pending:${auth.family.id}:` });
+    const users = new Set();
+    for (const value of records.values()) users.add(value.userId);
+    return json({
+      pendingPackets: records.size,
+      affectedUsers: users.size,
+      latestSnapshotVersion: Number(auth.family.revision || 0),
+      lastProcessedAt: auth.family.lastProcessedAt || auth.family.updatedAt || '',
+      nextAutomaticAt: '09:00',
+      timezone: auth.family.timezone || 'Europe/Kyiv'
+    });
+  }
+
+  async processFamilyPending(family) {
+    const records = await this.state.storage.list({ prefix: `fq-pending:${family.id}:` });
+    if (!records.size) return { processed: false, packets: 0, users: 0, revision: Number(family.revision || 0) };
+    const ordered = [...records.entries()].sort((a, b) => String(a[1].receivedAt).localeCompare(String(b[1].receivedAt)));
+    const affected = new Set();
+    for (const [, packet] of ordered) {
+      affected.add(packet.userId);
+      const data = packet.data || {};
+      if (data.user && typeof data.user === 'object') {
+        const index = (family.state.users || []).findIndex((item) => item.id === packet.userId);
+        if (index >= 0) family.state.users[index] = { ...family.state.users[index], ...data.user, id: packet.userId };
+      }
+      if (data.family && typeof data.family === 'object') family.state.family = { ...family.state.family, ...data.family, id: family.id };
+      if (Array.isArray(data.quests)) {
+        const map = new Map((family.state.quests || []).map((item) => [item.id, item]));
+        for (const item of data.quests) if (item?.id) map.set(item.id, { ...(map.get(item.id) || {}), ...item });
+        family.state.quests = [...map.values()];
+      }
+      if (Array.isArray(data.shop)) {
+        const map = new Map((family.state.shop || []).map((item) => [item.id, item]));
+        for (const item of data.shop) if (item?.id) map.set(item.id, { ...(map.get(item.id) || {}), ...item });
+        family.state.shop = [...map.values()];
+      }
+      if (Array.isArray(data.history) && data.history.length) {
+        const merged = [...data.history, ...(family.state.history || [])];
+        const seen = new Set();
+        family.state.history = merged.filter((item) => {
+          const key = `${item.text || ''}|${item.time || ''}`;
+          if (seen.has(key)) return false;
+          seen.add(key);
+          return true;
+        }).slice(0, 120);
+      }
+    }
+    family.revision = Number(family.revision || 0) + 1;
+    family.updatedAt = new Date().toISOString();
+    family.lastProcessedAt = family.updatedAt;
+    await this.state.storage.put(`fq-family:${family.id}`, family);
+    await this.state.storage.delete([...records.keys()]);
+    return { processed: true, packets: records.size, users: affected.size, revision: family.revision, updatedAt: family.updatedAt };
+  }
+
+  async adminProcessNow(request) {
+    const auth = await this.familyAuthorize(request);
+    if (!auth) return json({ error: 'Недійсна сімейна сесія' }, 401);
+    if (!['owner', 'admin'].includes(auth.user.role)) return json({ error: 'Лише адміністратор може запускати оновлення' }, 403);
+    const lockKey = `fq-process-lock:${auth.family.id}`;
+    const lock = await this.state.storage.get(lockKey);
+    if (lock && Date.now() - Number(lock) < 30000) return json({ error: 'Оновлення вже виконується' }, 409);
+    await this.state.storage.put(lockKey, Date.now());
+    try {
+      return json(await this.processFamilyPending(auth.family));
+    } finally {
+      await this.state.storage.delete(lockKey);
+    }
+  }
+
+  async processDueFamilies() {
+    const records = await this.state.storage.list({ prefix: 'fq-family:' });
+    const now = new Date();
+    let processedFamilies = 0;
+    for (const family of records.values()) {
+      const timezone = validTimezone(family.timezone || 'Europe/Kyiv');
+      const clock = localClock(now, timezone);
+      if (clock.time < '09:00' || family.lastAutomaticProcessDate === clock.date) continue;
+      await this.processFamilyPending(family);
+      family.lastAutomaticProcessDate = clock.date;
+      family.updatedAt = new Date().toISOString();
+      await this.state.storage.put(`fq-family:${family.id}`, family);
+      processedFamilies += 1;
+    }
+    return { ok: true, processedFamilies };
   }
 
   async register(payload) {
@@ -1277,7 +1395,10 @@ export default {
       '/api/family/create': ['/family-create', 'POST'],
       '/api/family/join': ['/family-join', 'POST'],
       '/api/family/telegram-join': ['/family-telegram-join', 'POST'],
-      '/api/family/state': ['/family-state', request.method]
+      '/api/family/state': ['/family-state', request.method],
+      '/api/family/daily-submit': ['/daily-submit', 'POST'],
+      '/api/admin/sync-status': ['/admin-sync-status', 'GET'],
+      '/api/admin/process-now': ['/admin-process-now', 'POST']
     };
     const familyRoute = familyRoutes[url.pathname];
     if (familyRoute) {
@@ -1331,6 +1452,7 @@ export default {
 
   async scheduled(_controller, env, ctx) {
     ctx.waitUntil(stateStub(env).fetch('https://telegram-state/dispatch', { method: 'POST' }));
+    ctx.waitUntil(stateStub(env).fetch('https://telegram-state/process-due-families', { method: 'POST' }));
     const appUrl = validAppUrl(env.APP_URL);
     if (appUrl) ctx.waitUntil(bootstrapTelegramBot(env, appUrl));
   }
