@@ -1,1 +1,1 @@
-myHabbit 2.7.0
+myHabbit 3.0.0
