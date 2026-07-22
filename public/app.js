@@ -9,7 +9,7 @@
   const LAST_SERVER_PULL = 'myHabbitLastServerPullV1';
   const CONTENT_CACHE = 'myHabbitContentLibraryV1';
   const CONTENT_VERSION = '1.0.0';
-  const APP_VERSION = '4.0.0-cozy-update';
+  const APP_VERSION = '4.1.0-stable';
   const ACCOUNTS = 'myHabbitAccountsV1';
   const ACTIVE_ACCOUNT = 'myHabbitActiveAccountV1';
   const QUEST_CATEGORIES = ['family','relationship','home','sport','health','mind','reading','cinema','creativity','finance','discipline'];
@@ -72,14 +72,22 @@
   if (tg) { try { tg.ready(); tg.expand(); } catch {} }
   let state = loadState();
   let auth = loadAuth();
-  migrateCozyV4();
   restoreActiveAccount();
+  normalizeState();
   let route = new URLSearchParams(location.search).get('screen') || (auth ? 'dashboard' : ((telegramInitData || inviteToken) ? 'auth' : 'landing'));
   let authMode = (telegramInitData || inviteToken) ? 'join' : 'create';
   let inviteInfo = null;
 
-  function migrateCozyV4(){
+  function normalizeState(){
+    state = (state && typeof state === 'object') ? state : clone(seed);
     state.meta=state.meta||{};
+    state.family=state.family||clone(seed.family);
+    state.users=Array.isArray(state.users)&&state.users.length?state.users:clone(seed.users);
+    state.currentUserId=state.users.some(u=>u.id===state.currentUserId)?state.currentUserId:state.users[0].id;
+    state.quests=Array.isArray(state.quests)?state.quests:clone(seed.quests);
+    state.shop=Array.isArray(state.shop)?state.shop:clone(seed.shop);
+    state.achievements=Array.isArray(state.achievements)?state.achievements:clone(seed.achievements);
+    state.history=Array.isArray(state.history)?state.history:clone(seed.history);
     state.meta.version=APP_VERSION;
     state.cosmeticsCatalog=state.cosmeticsCatalog||[
       {id:'cos_badge_cat',title:'Котик біля імені',kind:'badge',asset:'cat',price:180,rarity:'Звичайна'},
@@ -103,9 +111,10 @@
     ];
     state.profileStickers=state.profileStickers||[];
     for(const u of state.users||[]){
-      u.inventory=u.inventory||[];u.equipped=u.equipped||{badge:null,frame:null,theme:'light'};
+      u.inventory=Array.isArray(u.inventory)?u.inventory:[];u.equipped={badge:null,frame:null,theme:'light',...(u.equipped||{})};
       u.claimedLevelRewards=u.claimedLevelRewards||[];u.featuredAchievements=u.featuredAchievements||u.achievements?.slice(0,3)||[];
-      u.stats=u.stats||{questsCompleted:u.activity?.filter(x=>x.startsWith('Виконано:')).length||0,giftsOpened:0,jackpots:0,stickersGiven:0};
+      u.achievements=Array.isArray(u.achievements)?u.achievements:[];u.activity=Array.isArray(u.activity)?u.activity:[];u.skills=u.skills||{};
+      u.stats={questsCompleted:u.activity.filter(x=>x.startsWith('Виконано:')).length||0,giftsOpened:0,jackpots:0,stickersGiven:0,...(u.stats||{})};
     }
     const extra=[
       {id:'a_roulette_7',icon:'✦',title:'Сім ранкових сюрпризів',description:'Відкрити рулетку 7 разів',rarity:'Рідкісна',target:7,progress:0},
@@ -124,7 +133,7 @@
   function accountId(a=auth,s=state){return a?.userId&&s?.family?.id?`${s.family.id}:${a.userId}`:'';}
   function restoreActiveAccount(){
     const id=localStorage.getItem(ACTIVE_ACCOUNT); const item=loadAccounts().find(x=>x.id===id);
-    if(item?.auth&&item?.state){auth=clone(item.auth);state=clone(item.state);localStorage.setItem(AUTH,JSON.stringify(auth));localStorage.setItem(STORAGE,JSON.stringify(state));}
+    if(item?.auth&&item?.state){auth=clone(item.auth);state=clone(item.state);normalizeState();localStorage.setItem(AUTH,JSON.stringify(auth));localStorage.setItem(STORAGE,JSON.stringify(state));}
   }
   function persistAccount(){
     if(!auth)return; const id=accountId(); if(!id)return; const list=loadAccounts(); const u=currentUser();
@@ -132,7 +141,7 @@
     const i=list.findIndex(x=>x.id===id); if(i>=0)list[i]=item;else list.unshift(item);
     localStorage.setItem(ACCOUNTS,JSON.stringify(list.slice(0,10)));localStorage.setItem(ACTIVE_ACCOUNT,id);
   }
-  function save(){localStorage.setItem(STORAGE,JSON.stringify(state));persistAccount();queueDailySnapshot();applyTheme();}
+  function save(){normalizeState();localStorage.setItem(STORAGE,JSON.stringify(state));persistAccount();queueDailySnapshot();applyTheme();}
   function applyTheme(){document.documentElement.dataset.theme=currentUser()?.equipped?.theme||'light';}
   function currentUser(){return state.users.find(u=>u.id===state.currentUserId)||state.users[0];}
   function showToast(text){toast.textContent=text;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2200);}
@@ -208,7 +217,7 @@
   }
   async function pullRemote(){
     if(!auth?.token)return;
-    try{const data=await api('/api/family/state');if(data.state){state=data.state;localStorage.setItem(STORAGE,JSON.stringify(state));localStorage.setItem(LAST_SERVER_PULL,new Date().toISOString());}}catch{}
+    try{const data=await api('/api/family/state');if(data.state){state=data.state;normalizeState();localStorage.setItem(STORAGE,JSON.stringify(state));localStorage.setItem(LAST_SERVER_PULL,new Date().toISOString());}}catch{}
   }
   async function refreshAdminSyncStatus(){
     if(!auth?.token||!isAdmin())return;
@@ -279,6 +288,8 @@
     return shell(`<div class="section-head"><div><h2>Доступні завдання</h2><small class="meta">Бібліотека: ${format(state.contentLibrary?.counts?.uniqueQuests||state.quests.length)} унікальних · ${format(state.contentLibrary?.counts?.dailyTasks||0)} щоденних</small></div>${isAdmin()?'<button class=\"btn primary\" data-action=\"new-quest\">+ Новий квест</button>':''}</div><div class="tabs">${['all:Усі','personal:Особисті','coop:Спільні','pair:Для двох','limited:Лімітовані'].map((x,i)=>{const [k,l]=x.split(':');return `<button class="${i===0?'active':''}" data-filter="${k}">${l}</button>`}).join('')}</div><div class="quest-list" id="questList">${state.quests.filter(q=>q.status==='active').map(questCard).join('')}</div>`,`Квести`,`Беріть справи самостійно або проходьте їх разом.`);
   }
 
+  function achievementCard(a,u=currentUser()){const unlocked=Boolean(u?.achievements?.includes(a.id))||Number(a.progress||0)>=Number(a.target||1);const progress=Math.min(100,Math.round((Number(a.progress||0)/Math.max(1,Number(a.target||1)))*100));return `<article class="achievement-card ${unlocked?'unlocked':'locked'}"><div class="achievement-icon">${a.icon||cuteIcon('trophy')}</div><div><span class="rarity">${a.rarity||'Звичайна'}</span><h3>${a.title||'Досягнення'}</h3><p>${a.description||''}</p><div class="progress"><i style="width:${unlocked?100:progress}%"></i></div><small>${unlocked?'Відкрито':`${Number(a.progress||0)} / ${Number(a.target||1)}`}</small></div></article>`;}
+
   function shopCard(item){
     const u=currentUser();const out=item.stock<=0;const fund=item.fund||0;const can=u.coins>=item.price;
     return `<article class="shop-card"><div class="shop-top"><span class="shop-icon">${item.icon}</span><span class="stock ${out?'out':''}">${out?'Закінчилось':`Залишилось: ${item.stock}`}</span></div><h3>${item.title}</h3><p>${item.description}</p>${item.type==='collective'?`<div class="progress"><i style="width:${Math.min(100,fund/item.price*100)}%"></i></div><small>${format(fund)} / ${format(item.price)} 🪙</small>`:`<div class="price">${format(item.price)} 🪙</div>`}<button class="btn ${item.type==='collective'?'soft':'primary'}" data-shop="${item.id}" ${out||(!can&&item.type!=='collective')?'disabled':''}>${item.type==='collective'?'Зробити внесок':'Придбати'}</button></article>`;
@@ -327,6 +338,8 @@
 
     if(type?.startsWith('sticker:')){const to=type.split(':')[1];return `<div class="modal-backdrop"><div class="modal"><div class="modal-head"><h2>Залишити теплий слід</h2><button class="close" data-close>×</button></div><p>Оберіть один зі стікерів. На профілі одночасно може бути до 10 слідів.</p><div class="sticker-picker">${['cat_heart','bunny_hi','cat_coffee','paw','flower','star'].map(x=>`<button data-send-sticker="${x}" data-to="${to}">${cuteIcon(x.includes('bunny')?'bunny':x==='flower'?'flower':x==='star'?'sparkle':'cat')}<span>${stickerName(x)}</span></button>`).join('')}</div></div></div>`;}
 
+    if(type==='edit-profile') { const u=currentUser(); const owned=(state.cosmeticsCatalog||[]).filter(i=>u.inventory.includes(i.id)); const opts=(kind,current)=>`<option value="">Без прикраси</option>${owned.filter(i=>i.kind===kind).map(i=>`<option value="${i.id}" ${current===i.id?'selected':''}>${i.title}</option>`).join('')}`; return `<div class="modal-backdrop"><div class="modal"><div class="modal-head"><h2>Оформлення профілю</h2><button class="close" data-close>×</button></div><div class="form-grid"><div class="field"><label>Значок біля імені</label><select id="profileBadge">${opts('badge',u.equipped.badge)}</select></div><div class="field"><label>Рамка</label><select id="profileFrame">${opts('frame',u.equipped.frame)}</select></div><div class="field full"><label>Тема застосунку</label><select id="profileTheme"><option value="light" ${u.equipped.theme==='light'?'selected':''}>Світла</option>${owned.filter(i=>i.kind==='theme').map(i=>`<option value="${i.asset}" ${u.equipped.theme===i.asset?'selected':''}>${i.title}</option>`).join('')}</select></div></div><p class="auth-help">Нові рамки, значки й теми відкриваються в магазині або за загальний рівень.</p><div class="modal-actions"><button class="btn" data-close>Скасувати</button><button class="btn primary" data-action="save-profile-settings">Зберегти</button></div></div></div>`; }
+
     if(type==='daily-roulette') return `<div class="modal-backdrop daily-gift-backdrop"><div class="modal daily-gift-modal"><div class="daily-gift-head"><span>Щоденний сюрприз</span><small>Один оберт на день</small></div><div class="roulette-wrap"><div class="roulette-pointer">▼</div><div id="dailyRouletteWheel" class="roulette-wheel"><div class="roulette-label r1">+5</div><div class="roulette-label r2">+10</div><div class="roulette-label r3">+50</div><div class="roulette-label r4">+100</div><div class="roulette-label r5">+500</div></div><div class="roulette-hub">✦</div></div><h2 id="rouletteTitle">Крути колесо удачі</h2><p id="rouletteText">На тебе вже чекає маленький подарунок 🌿</p><div class="modal-actions"><button id="rouletteSpinButton" class="btn primary roulette-spin" data-action="spin-daily-roulette">Крутити рулетку</button></div><div class="roulette-odds"><span>+5 · 62%</span><span>+10 · 25%</span><span>+50 · 10%</span><span>+100 · 2,5%</span><span>+500 · 0,5%</span></div></div></div>`;
 
     if(type==='reset-session') return `<div class="modal-backdrop"><div class="modal"><div class="modal-head"><h2>Скинути поточну сесію</h2><button class="close" data-close>×</button></div><p>Це від’єднає Telegram, анулює стару сесію та очистить локальні дані цього пристрою. Після цього потрібно буде підключитися заново.</p><div class="field"><label>Сімейний PIN</label><input id="resetSessionPin" type="password" inputmode="numeric" maxlength="8" placeholder="Введіть PIN"></div><div class="modal-actions"><button class="btn" data-close>Скасувати</button><button class="btn danger" data-action="confirm-reset-session">Почати вхід заново</button></div></div></div>`;
@@ -335,8 +348,15 @@
   }
 
   function render(){
+    normalizeState();
     const screens={landing,auth:authScreen,dashboard,quests:questsScreen,shop:shopScreen,achievements:achievementsScreen,family:familyScreen,profile:()=>profileScreen(),admin:adminScreen};
-    app.innerHTML=(screens[route]||landing)(); applyTheme(); bind(); if(route==='admin')setTimeout(refreshAdminSyncStatus,0);
+    try{
+      app.innerHTML=(screens[route]||landing)(); applyTheme(); bind(); if(route==='admin')setTimeout(refreshAdminSyncStatus,0);
+    }catch(error){
+      console.error('Render error:',error);
+      app.innerHTML=`<main class="fatal-card"><h1>Не вдалося відкрити розділ</h1><p>${String(error?.message||error)}</p><button class="btn primary" data-route="dashboard">На головну</button></main>`;
+      bind();
+    }
   }
 
   function bind(){
@@ -366,6 +386,7 @@
     if(name==='admin-process-now') adminProcessNow();
     if(name==='spin-daily-roulette') spinDailyRoulette();
     if(name==='claim-level-rewards') claimLevelRewards();
+    if(name==='edit-profile'){document.body.insertAdjacentHTML('beforeend',modal('edit-profile'));bindModal();}
     if(name==='leave-sticker') openStickerModal(el?.dataset.userId);
     if(name==='reset-current-session') openResetSessionDialog();
     if(name==='confirm-reset-session') confirmResetSession();
@@ -377,6 +398,7 @@
     if(name==='submit-auth') submitAuth(el?.dataset.mode || 'create');
     if(name==='save-quest') saveQuest();
     if(name==='save-shop') saveShop();
+    if(name==='save-profile-settings') saveProfileSettings();
     if(name==='add-account'){document.querySelector('.modal-backdrop')?.remove();localStorage.removeItem(AUTH);localStorage.removeItem(STORAGE);localStorage.removeItem(ACTIVE_ACCOUNT);auth=null;state=clone(seed);go('auth');}
     if(name==='export-account') exportAccount();
     if(name==='import-account') document.getElementById('accountImportFile')?.click();
@@ -395,7 +417,7 @@
   const b64=b=>btoa(String.fromCharCode(...new Uint8Array(b))); const unb64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
   async function exportAccount(){const password=document.getElementById('transferPassword')?.value||'';if(password.length<6)return showToast('Створіть пароль від 6 символів');persistAccount();const payload={format:'myHabbit-profile',version:1,exportedAt:new Date().toISOString(),account:loadAccounts().find(x=>x.id===accountId())};const salt=crypto.getRandomValues(new Uint8Array(16)),iv=crypto.getRandomValues(new Uint8Array(12));const key=await deriveTransferKey(password,salt);const encrypted=await crypto.subtle.encrypt({name:'AES-GCM',iv},key,new TextEncoder().encode(JSON.stringify(payload)));const file={format:'myHabbit-encrypted-profile',version:1,kdf:'PBKDF2-SHA256',iterations:180000,salt:b64(salt),iv:b64(iv),data:b64(encrypted)};const blob=new Blob([JSON.stringify(file,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`myHabbit-${currentUser()?.name||'profile'}-${new Date().toISOString().slice(0,10)}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);showToast('Захищену копію створено');}
   async function importAccountFile(file){if(!file)return;const password=document.getElementById('transferPassword')?.value||'';if(password.length<6)return showToast('Спочатку введіть пароль файлу');try{const box=JSON.parse(await file.text());if(box.format!=='myHabbit-encrypted-profile')throw new Error('Це не файл профілю myHabbit');const key=await deriveTransferKey(password,unb64(box.salt));const clear=await crypto.subtle.decrypt({name:'AES-GCM',iv:unb64(box.iv)},key,unb64(box.data));const payload=JSON.parse(new TextDecoder().decode(clear));const item=payload.account;if(!item?.auth||!item?.state)throw new Error('Профіль пошкоджено');const list=loadAccounts();const i=list.findIndex(x=>x.id===item.id);if(i>=0)list[i]=item;else list.unshift(item);localStorage.setItem(ACCOUNTS,JSON.stringify(list.slice(0,10)));switchAccount(item.id);showToast('Профіль перенесено');}catch(e){showToast(e.name==='OperationError'?'Невірний пароль або пошкоджений файл':e.message);}}
-  function switchAccount(id){persistAccount();const item=loadAccounts().find(x=>x.id===id);if(!item)return;auth=clone(item.auth);state=clone(item.state);localStorage.setItem(AUTH,JSON.stringify(auth));localStorage.setItem(STORAGE,JSON.stringify(state));localStorage.setItem(ACTIVE_ACCOUNT,id);document.querySelector('.modal-backdrop')?.remove();route='dashboard';history.replaceState({},'', '/?screen=dashboard');render();pullRemote().then(()=>render()).catch(()=>{});}
+  function switchAccount(id){persistAccount();const item=loadAccounts().find(x=>x.id===id);if(!item)return;auth=clone(item.auth);state=clone(item.state);normalizeState();localStorage.setItem(AUTH,JSON.stringify(auth));localStorage.setItem(STORAGE,JSON.stringify(state));localStorage.setItem(ACTIVE_ACCOUNT,id);document.querySelector('.modal-backdrop')?.remove();route='dashboard';history.replaceState({},'', '/?screen=dashboard');render();pullRemote().then(()=>render()).catch(()=>{});}
 
   function openResetSessionDialog(){ document.body.insertAdjacentHTML('beforeend',modal('reset-session')); bindModal(); }
   function openResetUserDialog(userId){ document.body.insertAdjacentHTML('beforeend',modal(`reset-user:${userId}`)); bindModal(); }
@@ -412,7 +434,7 @@
   async function confirmResetUser(userId){
     const pin=document.getElementById('resetUserPin')?.value.trim(); const confirmText=document.getElementById('resetConfirmText')?.value.trim().toUpperCase();
     if(!pin||pin.length<4)return showToast('Введіть сімейний PIN'); if(confirmText!=='СКИНУТИ')return showToast('Напишіть СКИНУТИ для підтвердження');
-    try{ const data=await api('/api/admin/reset-user',{method:'POST',body:JSON.stringify({userId,pin})}); if(data.resetSelf){await clearLocalAppData();location.replace(`/?reset=${Date.now()}`);return;} if(data.state){state=data.state;localStorage.setItem(STORAGE,JSON.stringify(state));} document.querySelector('.modal-backdrop')?.remove();render();showToast('Користувача скинуто. Старі сесії вимкнено.'); }catch(e){showToast(e.message);}
+    try{ const data=await api('/api/admin/reset-user',{method:'POST',body:JSON.stringify({userId,pin})}); if(data.resetSelf){await clearLocalAppData();location.replace(`/?reset=${Date.now()}`);return;} if(data.state){state=data.state;normalizeState();localStorage.setItem(STORAGE,JSON.stringify(state));} document.querySelector('.modal-backdrop')?.remove();render();showToast('Користувача скинуто. Старі сесії вимкнено.'); }catch(e){showToast(e.message);}
   }
 
   async function loadInviteInfo(){
@@ -437,7 +459,7 @@
   async function submitInvite(){
     const name=document.getElementById('memberName')?.value.trim();const gender=document.getElementById('memberGender')?.value||'neutral';
     if(!name)return showToast('Вкажіть імʼя');
-    try{const data=await api('/api/family/invite-join',{method:'POST',body:JSON.stringify({token:inviteToken,name,gender,initData:telegramInitData})});auth={token:data.token,userId:data.userId};localStorage.setItem(AUTH,JSON.stringify(auth));state=data.state;localStorage.setItem(STORAGE,JSON.stringify(state));persistAccount();history.replaceState({},'', '/?screen=dashboard');route='dashboard';render();showToast('Ви вже разом ✨');}catch(e){showToast(e.message);}
+    try{const data=await api('/api/family/invite-join',{method:'POST',body:JSON.stringify({token:inviteToken,name,gender,initData:telegramInitData})});auth={token:data.token,userId:data.userId};localStorage.setItem(AUTH,JSON.stringify(auth));state=data.state;normalizeState();localStorage.setItem(STORAGE,JSON.stringify(state));persistAccount();history.replaceState({},'', '/?screen=dashboard');route='dashboard';render();showToast('Ви вже разом ✨');}catch(e){showToast(e.message);}
   }
 
   async function connectTelegram(){
@@ -460,7 +482,7 @@
     try{
       const endpoint = mode==='create' ? '/api/family/create' : (telegramInitData ? '/api/family/telegram-join' : '/api/family/join');
       const data=await api(endpoint,{method:'POST',body:JSON.stringify({familyName:mode==='create'?familyValue:undefined,code:mode==='join'?familyValue:undefined,pin,name,gender,initData:telegramInitData})});
-      auth={token:data.token,userId:data.userId};localStorage.setItem(AUTH,JSON.stringify(auth));if(data.state)state=data.state;localStorage.setItem(STORAGE,JSON.stringify(state));persistAccount();go('dashboard');
+      auth={token:data.token,userId:data.userId};localStorage.setItem(AUTH,JSON.stringify(auth));if(data.state)state=data.state;normalizeState();localStorage.setItem(STORAGE,JSON.stringify(state));persistAccount();go('dashboard');
     }catch(e){showToast(e.message+' — відкрито локальне демо');auth={demo:true};localStorage.setItem(AUTH,JSON.stringify(auth));go('dashboard');}
   }
 
@@ -487,6 +509,8 @@
     const title=document.getElementById('sTitle').value.trim();if(!title)return showToast('Вкажіть назву');state.shop.unshift({id:crypto.randomUUID(),title,icon:'✨',description:document.getElementById('sDesc').value.trim()||'Нова реальна можливість',price:Number(document.getElementById('sPrice').value)||1000,stock:Number(document.getElementById('sStock').value)||1,type:document.getElementById('sType').value,fund:0});save();document.querySelector('.modal-backdrop').remove();render();showToast('Можливість додано');
   }
 
+
+  function saveProfileSettings(){const u=currentUser();if(!u)return;u.equipped.badge=document.getElementById('profileBadge')?.value||null;u.equipped.frame=document.getElementById('profileFrame')?.value||null;u.equipped.theme=document.getElementById('profileTheme')?.value||'light';save();document.querySelector('.modal-backdrop')?.remove();render();showToast('Оформлення збережено');}
 
   function handleCosmetic(id){const u=currentUser(),i=cosmetic(id);if(!i)return;if(!u.inventory.includes(id)){if(u.coins<i.price)return showToast('Потрібно ще монеток');u.coins-=i.price;u.inventory.push(id);showToast('Додано до колекції');}if(i.kind==='badge')u.equipped.badge=id;if(i.kind==='frame')u.equipped.frame=id;if(i.kind==='theme')u.equipped.theme=i.asset;if(i.kind==='stickerPack')showToast('Стікерпак відкрито');save();render();}
   function claimLevelRewards(){const u=currentUser();const ready=state.levelRewards.filter(r=>u.level>=r.level&&!u.claimedLevelRewards.includes(r.level));if(!ready.length)return showToast('Нових подарунків поки немає');let coins=0;for(const r of ready){coins+=r.coins;u.claimedLevelRewards.push(r.level);if(r.item&&!u.inventory.includes(r.item))u.inventory.push(r.item);}u.coins+=coins;save();render();showToast(`Подарунки відкрито · +${coins} монеток`);}
@@ -519,7 +543,7 @@
       const target=360*6+(360-rewardAngle(reward));
       wheel.style.transform=`rotate(${target}deg)`;
       await new Promise(resolve=>setTimeout(resolve,4300));
-      if(result.state){state=result.state;localStorage.setItem(STORAGE,JSON.stringify(state));persistAccount();}
+      if(result.state){state=result.state;normalizeState();localStorage.setItem(STORAGE,JSON.stringify(state));persistAccount();}
       const title=document.getElementById('rouletteTitle');
       const text=document.getElementById('rouletteText');
       if(title)title.textContent=reward>=100?'Джекпот! ✨':reward===50?'Сьогодні особливо щастить!':'Твій ранковий подарунок';
