@@ -53,9 +53,14 @@
     ]
   };
 
+  const tg = window.Telegram?.WebApp || null;
+  const telegramInitData = tg?.initData || '';
+  const telegramUser = tg?.initDataUnsafe?.user || null;
+  if (tg) { try { tg.ready(); tg.expand(); } catch {} }
   let state = loadState();
   let auth = loadAuth();
-  let route = new URLSearchParams(location.search).get('screen') || (auth ? 'dashboard' : 'landing');
+  let route = new URLSearchParams(location.search).get('screen') || (auth ? 'dashboard' : (telegramInitData ? 'auth' : 'landing'));
+  let authMode = telegramInitData ? 'join' : 'create';
 
   function clone(v){return JSON.parse(JSON.stringify(v));}
   function loadState(){try{return JSON.parse(localStorage.getItem(STORAGE))||clone(seed);}catch{return clone(seed);}}
@@ -103,10 +108,12 @@
   }
 
   function authScreen(){
-    return `<div class="auth-card"><div class="brand"><span class="brand-mark">✦</span>myHabbit</div><h1>Початок сімейної гри</h1><p>Створіть приватну сімʼю або приєднайтесь за кодом. У демо дані зберігаються на пристрої; після розгортання Cloudflare синхронізує їх між учасниками.</p><div class="auth-switch"><button class="active" data-auth-tab="create">Створити</button><button data-auth-tab="join">Приєднатися</button></div><div id="authForm">${authForm('create')}</div><button class="btn" style="width:100%;margin-top:10px" data-route="landing">Назад</button></div>`;
+    const telegramBox = telegramInitData ? `<div class="telegram-login-note"><span>✈</span><div><strong>Вхід через Telegram</strong><p>${telegramUser?.first_name || 'Ваш профіль'} буде привʼязаний до сімейної сесії. Введіть код сімʼї та PIN нижче.</p></div></div>` : '';
+    return `<div class="auth-card"><div class="brand"><span class="brand-mark">✦</span>myHabbit</div><h1>${telegramInitData?'Підключення до сімʼї':'Початок сімейної гри'}</h1><p>${telegramInitData?'Код сімʼї показаний адміністратору в розділі «Сімʼя». PIN встановлюється при створенні сімʼї.':'Створіть приватну сімʼю або приєднайтесь за кодом.'}</p>${telegramBox}<div class="auth-switch"><button class="${authMode==='create'?'active':''}" data-auth-tab="create">Створити</button><button class="${authMode==='join'?'active':''}" data-auth-tab="join">Приєднатися</button></div><div id="authForm">${authForm(authMode)}</div>${telegramInitData?'':'<button class="btn" style="width:100%;margin-top:10px" data-route="landing">Назад</button>'}</div>`;
   }
   function authForm(mode){
-    return `<div class="form-grid"><div class="field full"><label>${mode==='create'?'Назва сімʼї':'Код сімʼї'}</label><input id="familyValue" value="${mode==='create'?'Наша команда':''}" placeholder="${mode==='create'?'Наприклад, Команда вдома':'FAMILY25'}"></div><div class="field"><label>Ваше імʼя</label><input id="memberName" value=""></div><div class="field"><label>Профіль</label><select id="memberGender"><option value="male">Хлопець</option><option value="female">Дівчина</option><option value="neutral">Інший</option></select></div><div class="field full"><label>Сімейний PIN</label><input id="familyPin" type="password" inputmode="numeric" maxlength="8" placeholder="4–8 цифр"></div></div><button class="btn primary" style="width:100%;margin-top:16px" data-action="submit-auth" data-mode="${mode}">${mode==='create'?'Створити сімʼю':'Приєднатися'}</button>`;
+    const tgName = telegramUser ? [telegramUser.first_name, telegramUser.last_name].filter(Boolean).join(' ') : '';
+    return `<div class="form-grid"><div class="field full"><label>${mode==='create'?'Назва сімʼї':'Код сімʼї'}</label><input id="familyValue" autocomplete="off" value="${mode==='create'?'Наша команда':''}" placeholder="${mode==='create'?'Наприклад, Команда вдома':'Наприклад, FAMILY25'}"></div><div class="field"><label>Ваше імʼя</label><input id="memberName" value="${tgName}" ${telegramInitData?'readonly':''}></div><div class="field"><label>Профіль</label><select id="memberGender"><option value="male">Хлопець</option><option value="female">Дівчина</option><option value="neutral">Інший</option></select></div><div class="field full"><label>Сімейний PIN</label><input id="familyPin" type="password" inputmode="numeric" maxlength="8" placeholder="4–8 цифр"></div></div><button class="btn primary" style="width:100%;margin-top:16px" data-action="submit-auth" data-mode="${mode}">${mode==='create'?'Створити сімʼю':'Підключити Telegram і увійти'}</button><p class="auth-help">Код сімʼї та PIN можна отримати в адміністратора сімʼї.</p>`;
   }
 
   function dashboard(){
@@ -177,7 +184,7 @@
     document.querySelectorAll('[data-admin-delete-shop]').forEach(el=>el.addEventListener('click',()=>{state.shop=state.shop.filter(x=>x.id!==el.dataset.adminDeleteShop);save();render();showToast('Позицію видалено');}));
     document.querySelectorAll('[data-stock]').forEach(el=>el.addEventListener('click',()=>{const i=state.shop.find(x=>x.id===el.dataset.stock);if(i){i.stock=Math.max(0,i.stock+Number(el.dataset.delta));save();render();}}));
     document.querySelectorAll('[data-filter]').forEach(el=>el.addEventListener('click',()=>{document.querySelectorAll('[data-filter]').forEach(x=>x.classList.remove('active'));el.classList.add('active');const f=el.dataset.filter;document.getElementById('questList').innerHTML=state.quests.filter(q=>q.status==='active'&&(f==='all'||q.type===f)).map(questCard).join('');bind();}));
-    document.querySelectorAll('[data-auth-tab]').forEach(el=>el.addEventListener('click',()=>{document.querySelectorAll('[data-auth-tab]').forEach(x=>x.classList.remove('active'));el.classList.add('active');document.getElementById('authForm').innerHTML=authForm(el.dataset.authTab);bind();}));
+    document.querySelectorAll('[data-auth-tab]').forEach(el=>el.addEventListener('click',()=>{authMode=el.dataset.authTab;document.querySelectorAll('[data-auth-tab]').forEach(x=>x.classList.remove('active'));el.classList.add('active');document.getElementById('authForm').innerHTML=authForm(authMode);bind();}));
   }
 
   function action(name, el){
@@ -217,7 +224,8 @@
     const familyValue=document.getElementById('familyValue').value.trim();const name=document.getElementById('memberName').value.trim();const pin=document.getElementById('familyPin').value.trim();const gender=document.getElementById('memberGender').value;
     if(!familyValue||!name||pin.length<4)return showToast('Заповніть поля та PIN');
     try{
-      const data=await api(mode==='create'?'/api/family/create':'/api/family/join',{method:'POST',body:JSON.stringify({familyName:mode==='create'?familyValue:undefined,code:mode==='join'?familyValue:undefined,pin,name,gender})});
+      const endpoint = mode==='create' ? '/api/family/create' : (telegramInitData ? '/api/family/telegram-join' : '/api/family/join');
+      const data=await api(endpoint,{method:'POST',body:JSON.stringify({familyName:mode==='create'?familyValue:undefined,code:mode==='join'?familyValue:undefined,pin,name,gender,initData:telegramInitData})});
       auth={token:data.token,userId:data.userId};localStorage.setItem(AUTH,JSON.stringify(auth));if(data.state)state=data.state;localStorage.setItem(STORAGE,JSON.stringify(state));go('dashboard');
     }catch(e){showToast(e.message+' — відкрито локальне демо');auth={demo:true};localStorage.setItem(AUTH,JSON.stringify(auth));go('dashboard');}
   }

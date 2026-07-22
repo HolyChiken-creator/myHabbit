@@ -351,6 +351,7 @@ export class TelegramState {
     try {
       if (url.pathname === '/family-create' && request.method === 'POST') return this.familyCreate(await request.json());
       if (url.pathname === '/family-join' && request.method === 'POST') return this.familyJoin(await request.json());
+      if (url.pathname === '/family-telegram-join' && request.method === 'POST') return this.familyTelegramJoin(await request.json());
       if (url.pathname === '/family-state' && request.method === 'GET') return this.familyGetState(request);
       if (url.pathname === '/family-state' && request.method === 'PUT') return this.familyPutState(request, await request.json());
       if (url.pathname === '/register' && request.method === 'POST') return this.register(await request.json());
@@ -431,6 +432,56 @@ export class TelegramState {
     await this.state.storage.put(`fq-user:${userId}`, user);
     await this.state.storage.put(`fq-family:${familyId}`, family);
     return json({ token:`fq.${userId}.${secret}`, userId, familyCode:code, state:{...family.state,currentUserId:userId} });
+  }
+
+  async familyTelegramJoin(payload) {
+    const verified = await verifyTelegramInitData(payload?.initData, this.env.TELEGRAM_BOT_TOKEN);
+    const telegramUserId = String(verified.user.id);
+    const code = text(payload?.code, 12).toUpperCase().replace(/[^A-Z0-9]/g, '');
+    const pin = text(payload?.pin, 8).replace(/\D/g, '');
+    const familyId = await this.state.storage.get(`fq-code:${code}`);
+    const family = familyId ? await this.state.storage.get(`fq-family:${familyId}`) : null;
+    if (!family || family.pinHash !== await sha256(pin)) return json({ error: 'Невірний код сімʼї або PIN' }, 401);
+
+    const existingUserId = await this.state.storage.get(`fq-telegram:${telegramUserId}`);
+    let user = existingUserId ? await this.state.storage.get(`fq-user:${existingUserId}`) : null;
+    const memberName = text(payload?.name || [verified.user.first_name, verified.user.last_name].filter(Boolean).join(' '), 50) || 'Telegram user';
+    const gender = ['male', 'female', 'neutral'].includes(payload?.gender) ? payload.gender : 'neutral';
+    const avatar = gender === 'female' ? '👩🏻' : gender === 'male' ? '🧑🏻' : '🙂';
+    const secret = randomText(24);
+
+    if (user && user.familyId !== familyId) {
+      return json({ error: 'Цей Telegram уже підключений до іншої сімʼї. Спочатку відʼєднайте його в профілі.' }, 409);
+    }
+
+    if (!user) {
+      if ((family.memberIds || []).length >= 5) return json({ error: 'У сімʼї вже максимальні 5 учасників' }, 409);
+      const userId = crypto.randomUUID();
+      user = {
+        id: userId, familyId, name: memberName, gender, avatar, role: 'member',
+        tokenHash: await sha256(secret), telegramUserId,
+        telegramUsername: text(verified.user.username, 64), telegramLinked: true,
+        createdAt: new Date().toISOString()
+      };
+      family.memberIds = [...(family.memberIds || []), userId];
+      family.state.users.push({
+        id:userId,name:memberName,gender,avatar,role:'member',telegramLinked:true,
+        telegramUsername:text(verified.user.username,64),level:1,xp:0,coins:0,streak:0,
+        skills:{home:1,care:1,health:1,growth:1,finance:1},achievements:[],activity:[]
+      });
+    } else {
+      user = {...user, name:memberName, tokenHash:await sha256(secret), telegramLinked:true,
+        telegramUsername:text(verified.user.username,64), telegramUserId};
+      const member = (family.state.users || []).find(item => item.id === user.id);
+      if (member) Object.assign(member, {name:memberName, telegramLinked:true, telegramUsername:text(verified.user.username,64)});
+    }
+
+    family.revision = Number(family.revision || 0) + 1;
+    family.updatedAt = new Date().toISOString();
+    await this.state.storage.put(`fq-user:${user.id}`, user);
+    await this.state.storage.put(`fq-telegram:${telegramUserId}`, user.id);
+    await this.state.storage.put(`fq-family:${familyId}`, family);
+    return json({ token:`fq.${user.id}.${secret}`, userId:user.id, familyCode:code, state:{...family.state,currentUserId:user.id}, telegramLinked:true });
   }
 
   async familyGetState(request) {
@@ -1225,6 +1276,7 @@ export default {
     const familyRoutes = {
       '/api/family/create': ['/family-create', 'POST'],
       '/api/family/join': ['/family-join', 'POST'],
+      '/api/family/telegram-join': ['/family-telegram-join', 'POST'],
       '/api/family/state': ['/family-state', request.method]
     };
     const familyRoute = familyRoutes[url.pathname];
