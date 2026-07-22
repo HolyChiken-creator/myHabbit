@@ -1,0 +1,23 @@
+{
+  "name": "myHabbit",
+  "short_name": "myHabbit",
+  "description": "Сімейна RPG-система для спільних справ, навичок, досягнень і реальних нагород.",
+  "lang": "uk",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f7f6fb",
+  "theme_color": "#7456f1",
+  "categories": ["lifestyle", "productivity", "family"],
+  "icons": [
+    {"src":"/icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},
+    {"src":"/icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"},
+    {"src":"/icons/maskable-512.png","sizes":"512x512","type":"image/png","purpose":"maskable"}
+  ],
+  "shortcuts": [
+    {"name":"Квести","short_name":"Квести","url":"/?screen=quests"},
+    {"name":"Магазин","short_name":"Магазин","url":"/?screen=shop"},
+    {"name":"Досягнення","short_name":"Ачивки","url":"/?screen=achievements"}
+  ]
+}
