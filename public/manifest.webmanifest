@@ -1,4 +1,5 @@
 {
+  "id": "/",
   "name": "myHabbit",
   "short_name": "myHabbit",
   "description": "Сімейна RPG-система для спільних справ, навичок, досягнень і реальних нагород.",
@@ -6,18 +7,25 @@
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
   "orientation": "any",
-  "background_color": "#f7f6fb",
-  "theme_color": "#7456f1",
+  "background_color": "#fff6ee",
+  "theme_color": "#fff3e9",
   "categories": ["lifestyle", "productivity", "family"],
   "icons": [
+    {"src":"/icons/icon-72.png","sizes":"72x72","type":"image/png","purpose":"any"},
+    {"src":"/icons/icon-96.png","sizes":"96x96","type":"image/png","purpose":"any"},
+    {"src":"/icons/icon-128.png","sizes":"128x128","type":"image/png","purpose":"any"},
+    {"src":"/icons/icon-144.png","sizes":"144x144","type":"image/png","purpose":"any"},
     {"src":"/icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},
+    {"src":"/icons/icon-256.png","sizes":"256x256","type":"image/png","purpose":"any"},
+    {"src":"/icons/icon-384.png","sizes":"384x384","type":"image/png","purpose":"any"},
     {"src":"/icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"},
     {"src":"/icons/maskable-512.png","sizes":"512x512","type":"image/png","purpose":"maskable"}
   ],
   "shortcuts": [
-    {"name":"Квести","short_name":"Квести","url":"/?screen=quests"},
-    {"name":"Магазин","short_name":"Магазин","url":"/?screen=shop"},
-    {"name":"Досягнення","short_name":"Ачивки","url":"/?screen=achievements"}
+    {"name":"Квести","short_name":"Квести","url":"/?screen=quests","icons":[{"src":"/icons/icon-192.png","sizes":"192x192"}]},
+    {"name":"Магазин","short_name":"Магазин","url":"/?screen=shop","icons":[{"src":"/icons/icon-192.png","sizes":"192x192"}]},
+    {"name":"Досягнення","short_name":"Ачивки","url":"/?screen=achievements","icons":[{"src":"/icons/icon-192.png","sizes":"192x192"}]}
   ]
 }

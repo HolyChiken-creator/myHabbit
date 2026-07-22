@@ -257,3 +257,5 @@
   if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(()=>{});
   (async()=>{if(auth?.token)await pullRemote();render();})();
 })();
+
+requestAnimationFrame(()=>document.getElementById('appSplash')?.classList.add('hidden'));

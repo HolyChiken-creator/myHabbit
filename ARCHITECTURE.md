@@ -212,3 +212,12 @@ npx wrangler deploy
 - `/api/telegram/config` використовується для перевірки бота та отримання username.
 - Кнопка підключення відкриває бота з параметром `startapp=family_<family-code>`.
 - Токен не зберігається у frontend, ZIP або Git.
+
+
+## 14. Фірмові PWA-ресурси
+
+- `public/icons/` — favicon, Apple Touch Icon, звичайні PWA-іконки та maskable-іконка.
+- `public/assets/myhabbit-brand.webp` — оптимізована фірмова ілюстрація для внутрішнього splash-екрана.
+- `public/assets/splash-*.png` — iOS startup images.
+- `public/index.html` — метатеги, Apple startup links і доступний launch overlay.
+- `public/manifest.webmanifest` — повний набір іконок, теплі кольори теми та shortcut icons.
