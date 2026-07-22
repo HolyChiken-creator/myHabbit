@@ -1,4 +1,4 @@
-const APP_VERSION = '2.4.0-local-first';
+const APP_VERSION = '2.6.0-content-library';
 const JSON_HEADERS = {
   'content-type': 'application/json; charset=utf-8',
   'cache-control': 'no-store'
@@ -357,6 +357,8 @@ export class TelegramState {
       if (url.pathname === '/daily-submit' && request.method === 'POST') return this.dailySubmit(request, await request.json());
       if (url.pathname === '/admin-sync-status' && request.method === 'GET') return this.adminSyncStatus(request);
       if (url.pathname === '/admin-process-now' && request.method === 'POST') return this.adminProcessNow(request);
+      if (url.pathname === '/admin-reset-user' && request.method === 'POST') return this.adminResetUser(request, await request.json());
+      if (url.pathname === '/family-reset-session' && request.method === 'POST') return this.familyResetSession(request, await request.json());
       if (url.pathname === '/register' && request.method === 'POST') return this.register(await request.json());
       if (url.pathname === '/settings' && request.method === 'PUT') return this.updateSettings(request, await request.json());
       if (url.pathname === '/status' && request.method === 'GET') return this.status(request);
@@ -590,6 +592,70 @@ export class TelegramState {
     await this.state.storage.put(`fq-family:${family.id}`, family);
     await this.state.storage.delete([...records.keys()]);
     return { processed: true, packets: records.size, users: affected.size, revision: family.revision, updatedAt: family.updatedAt };
+  }
+
+
+  async verifyFamilyPin(family, pinValue) {
+    const pin = text(pinValue, 8).replace(/\D/g, '');
+    if (pin.length < 4 || family.pinHash !== await sha256(pin)) {
+      const error = new Error('Невірний сімейний PIN');
+      error.status = 401;
+      throw error;
+    }
+  }
+
+  async unlinkTelegramUser(user) {
+    if (!user) return;
+    if (user.telegramUserId) await this.state.storage.delete(`fq-telegram:${user.telegramUserId}`);
+    user.telegramUserId = '';
+    user.telegramUsername = '';
+    user.telegramLinked = false;
+  }
+
+  async familyResetSession(request, payload) {
+    const auth = await this.familyAuthorize(request);
+    if (!auth) return json({ error: 'Недійсна сімейна сесія' }, 401);
+    await this.verifyFamilyPin(auth.family, payload?.pin);
+    await this.unlinkTelegramUser(auth.user);
+    auth.user.tokenHash = await sha256(randomText(32));
+    auth.user.updatedAt = new Date().toISOString();
+    const member = (auth.family.state.users || []).find((item) => item.id === auth.user.id);
+    if (member) Object.assign(member, { telegramLinked:false, telegramUsername:'' });
+    auth.family.revision = Number(auth.family.revision || 0) + 1;
+    auth.family.updatedAt = new Date().toISOString();
+    await this.state.storage.put(`fq-user:${auth.user.id}`, auth.user);
+    await this.state.storage.put(`fq-family:${auth.family.id}`, auth.family);
+    return json({ reset:true });
+  }
+
+  async adminResetUser(request, payload) {
+    const auth = await this.familyAuthorize(request);
+    if (!auth) return json({ error: 'Недійсна сімейна сесія' }, 401);
+    if (!['owner', 'admin'].includes(auth.user.role)) return json({ error: 'Лише адміністратор може скидати користувачів' }, 403);
+    await this.verifyFamilyPin(auth.family, payload?.pin);
+    const targetId = text(payload?.userId, 80);
+    const target = await this.state.storage.get(`fq-user:${targetId}`);
+    if (!target || target.familyId !== auth.family.id) return json({ error: 'Користувача не знайдено' }, 404);
+    await this.unlinkTelegramUser(target);
+    target.tokenHash = await sha256(randomText(32));
+    target.updatedAt = new Date().toISOString();
+    await this.state.storage.put(`fq-user:${target.id}`, target);
+    const index = (auth.family.state.users || []).findIndex((item) => item.id === target.id);
+    if (index >= 0) {
+      const old = auth.family.state.users[index];
+      auth.family.state.users[index] = {
+        id: old.id, name: old.name, gender: old.gender || 'neutral', avatar: old.avatar || '🙂',
+        role: old.role, telegramLinked:false, telegramUsername:'', level:1, xp:0, coins:0, streak:0,
+        skills:{home:1,care:1,health:1,growth:1,finance:1}, achievements:[], featuredAchievementIds:[],
+        stats:{}, activity:['Профіль скинуто адміністратором']
+      };
+    }
+    const pending = await this.state.storage.list({ prefix: `fq-pending:${auth.family.id}:${target.id}:` });
+    if (pending.size) await this.state.storage.delete([...pending.keys()]);
+    auth.family.revision = Number(auth.family.revision || 0) + 1;
+    auth.family.updatedAt = new Date().toISOString();
+    await this.state.storage.put(`fq-family:${auth.family.id}`, auth.family);
+    return json({ reset:true, userId:target.id, resetSelf:target.id === auth.user.id, state:{...auth.family.state,currentUserId:auth.user.id} });
   }
 
   async adminProcessNow(request) {
@@ -1398,7 +1464,9 @@ export default {
       '/api/family/state': ['/family-state', request.method],
       '/api/family/daily-submit': ['/daily-submit', 'POST'],
       '/api/admin/sync-status': ['/admin-sync-status', 'GET'],
-      '/api/admin/process-now': ['/admin-process-now', 'POST']
+      '/api/admin/process-now': ['/admin-process-now', 'POST'],
+      '/api/admin/reset-user': ['/admin-reset-user', 'POST'],
+      '/api/family/reset-session': ['/family-reset-session', 'POST']
     };
     const familyRoute = familyRoutes[url.pathname];
     if (familyRoute) {

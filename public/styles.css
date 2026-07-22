@@ -30,3 +30,12 @@
 .sync-meta{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:16px;font-size:.9rem;color:var(--muted)}
 .sync-meta strong{color:var(--text)}
 @media(max-width:720px){.sync-panel{align-items:stretch;flex-direction:column;padding:18px}.sync-panel .btn{width:100%}}
+
+/* Cozy minimal profiles — v2.7 */
+.account-dot{width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,#d8c9ff,#ffd8c7);box-shadow:0 0 0 5px rgba(216,201,255,.18);flex:0 0 auto}
+.member-initial{width:42px;height:42px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(145deg,#f2ecff,#fff0e8);font-weight:850;color:#6c5b89;border:1px solid rgba(108,91,137,.10)}
+.member-initial.large{width:62px;height:62px;border-radius:20px;font-size:24px}
+.cozy-member{min-height:112px;display:flex;flex-direction:column;justify-content:space-between}.cozy-member .member-head{width:100%}.cozy-member .view-profile{color:#7a668f}.cozy-member:hover{transform:translateY(-1px);box-shadow:0 10px 30px rgba(75,62,95,.07)}
+.profile-minimal{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px;align-items:center}.soft-progress{margin-top:11px;max-width:460px}.cozy-profile-head{background:linear-gradient(135deg,#fff,#fffaf7)}
+.cozy-folds{display:grid;gap:11px;margin-top:14px}.cozy-fold{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}.cozy-fold summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:11px;padding:16px 18px}.cozy-fold summary::-webkit-details-marker{display:none}.cozy-fold summary>span{width:37px;height:37px;border-radius:12px;display:grid;place-items:center;background:#f7f1fb}.cozy-fold summary small{color:var(--muted)}.cozy-fold[open] summary{border-bottom:1px solid var(--line)}.fold-body{padding:14px 18px 18px}.cozy-skill{grid-template-columns:40px minmax(0,1fr)}.compact-achievements{grid-template-columns:repeat(3,minmax(0,1fr))}.empty-soft{padding:22px;text-align:center;color:var(--muted);background:#faf8fb;border-radius:14px}
+@media(max-width:700px){.profile-minimal{grid-template-columns:auto minmax(0,1fr)}.profile-minimal .profile-actions,.profile-minimal>.btn{grid-column:1/-1;display:grid;grid-template-columns:1fr;gap:8px}.compact-achievements{grid-template-columns:1fr}.cozy-fold summary{padding:14px}.fold-body{padding:12px 14px 16px}}
