@@ -1,2 +1,2 @@
-myHabbit Stage 9.6 diagnostic clean boot
+myHabbit 6.0 Stage 9.7 UI Isolation
 Build: 2026-07-23
