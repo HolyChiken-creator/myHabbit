@@ -12,7 +12,7 @@
   const OFFLINE_STORE = 'library';
   const CONTENT_CACHE = 'myHabbitContentLibraryV1';
   const CONTENT_VERSION = '1.0.0';
-  const APP_VERSION = '6.0.0-stage10.4-cosmetics-complete';
+  const APP_VERSION = '6.0.0-stage10.6-reward-feedback';
   const ACCOUNTS = 'myHabbitAccountsV1';
   const ACTIVE_ACCOUNT = 'myHabbitActiveAccountV1';
   const QUEST_CATEGORIES = ['family','relationship','home','sport','health','mind','reading','cinema','creativity','finance','discipline'];
@@ -227,7 +227,7 @@
   function easterDate(year){const a=year%19,b=Math.floor(year/100),c=year%100,d=Math.floor(b/4),e=b%4,f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3),h=(19*a+b-d-g+15)%30,i=Math.floor(c/4),k=c%4,l=(32+2*e+2*i-h-k)%7,m=Math.floor((a+11*h+22*l)/451),month=Math.floor((h+l-7*m+114)/31),day=((h+l-7*m+114)%31)+1;return new Date(year,month-1,day);}
   function seasonInfo(season,date=new Date()){const y=date.getFullYear(),md=(date.getMonth()+1)*100+date.getDate();if(season==='always')return {active:true,label:'Доступна завжди'};if(season==='christmas')return {active:md>=1201||md<=107,label:'1 грудня — 7 січня'};if(season==='halloween')return {active:md>=1015&&md<=1102,label:'15 жовтня — 2 листопада'};if(season==='easter'){const e=easterDate(y),from=new Date(e),to=new Date(e);from.setDate(e.getDate()-14);to.setDate(e.getDate()+7);return {active:date>=from&&date<=to,label:`${from.toLocaleDateString('uk-UA')} — ${to.toLocaleDateString('uk-UA')}`};}return {active:false,label:'Сезон закритий'};}
   function roman(n){const map=[[1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],[50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']];let out='';for(const [v,s] of map)while(n>=v){out+=s;n-=v;}return out||'—';}
-  function romanDate(value){const d=new Date(value);if(Number.isNaN(d.getTime()))return '—';return `${roman(d.getDate())}.${roman(d.getMonth()+1)}.${roman(d.getFullYear())}`;}
+  function numericJoinDate(value){const d=new Date(value);if(Number.isNaN(d.getTime()))return '—';return new Intl.DateTimeFormat('uk-UA',{day:'2-digit',month:'2-digit',year:'numeric'}).format(d);}
   function escapeHtml(value){return String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));}
   function normalDate(day,month){return `${String(Number(day)||1).padStart(2,'0')}.${String(Number(month)||1).padStart(2,'0')}`;}
   function importantDateOrder(item){const now=new Date(),y=now.getFullYear();let d=new Date(y,Number(item.month)-1,Number(item.day));d.setHours(23,59,59,999);if(d<now)d=new Date(y+1,Number(item.month)-1,Number(item.day));return d.getTime();}
@@ -249,7 +249,7 @@
     const i=list.findIndex(x=>x.id===id); if(i>=0)list[i]=item;else list.unshift(item);
     localStorage.setItem(ACCOUNTS,JSON.stringify(list.slice(0,10)));localStorage.setItem(ACTIVE_ACCOUNT,id);
   }
-  function save(){normalizeState();localStorage.setItem(STORAGE,JSON.stringify(state));persistAccount();queueDailySnapshot();applyTheme();}
+  function save(){normalizeState();observeRewardChanges();localStorage.setItem(STORAGE,JSON.stringify(state));persistAccount();queueDailySnapshot();applyTheme();scheduleImmediateFamilySync();broadcastLocalState();}
   function applyTheme(){document.documentElement.dataset.theme=currentUser()?.equipped?.theme||'light';}
   function currentUser(){return state.users.find(u=>u.id===state.currentUserId)||state.users[0];}
   function cleanResourceUrl(value){
@@ -258,6 +258,87 @@
   }
   function visibleFamilyUsers(){return (state.users||[]).filter(u=>!u.hiddenFromFamily);}
   function showToast(text){toast.textContent=text;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2200);}
+
+  // Stage 10.6 — unified reward feedback engine.
+  let rewardSnapshot=null;
+  const announcedAchievements=new Set();
+  const rewardFxQueue=[];
+  let rewardFxBusy=false;
+  function currentRewardSnapshot(){
+    const u=currentUser();
+    return u?{userId:u.id,coins:Number(u.coins||0),xp:Number(u.xp||0),level:Number(u.level||1),achievements:new Set(u.achievements||[])}:null;
+  }
+  function initializeRewardFeedback(){
+    rewardSnapshot=currentRewardSnapshot();
+    for(const id of rewardSnapshot?.achievements||[])announcedAchievements.add(id);
+  }
+  function haptic(kind='light'){
+    try{window.Telegram?.WebApp?.HapticFeedback?.impactOccurred(kind);}catch{}
+  }
+  function ensureRewardLayer(){
+    let layer=document.getElementById('rewardFeedbackLayer');
+    if(!layer){layer=document.createElement('div');layer.id='rewardFeedbackLayer';layer.className='reward-feedback-layer';layer.setAttribute('aria-live','polite');document.body.appendChild(layer);}
+    return layer;
+  }
+  function enqueueRewardFx(item){rewardFxQueue.push(item);processRewardFxQueue();}
+  function processRewardFxQueue(){
+    if(rewardFxBusy||!rewardFxQueue.length)return;
+    rewardFxBusy=true;
+    const item=rewardFxQueue.shift();
+    if(item.type==='xp')showXpReward(item,finish);
+    else if(item.type==='coins')showCoinReward(item,finish);
+    else finish();
+    function finish(){rewardFxBusy=false;setTimeout(processRewardFxQueue,100);}
+  }
+  function makeSparks(host,count=16){
+    for(let i=0;i<count;i++){
+      const spark=document.createElement('i');spark.className='reward-spark';
+      spark.style.setProperty('--angle',`${Math.round(Math.random()*360)}deg`);
+      spark.style.setProperty('--distance',`${32+Math.round(Math.random()*48)}px`);
+      spark.style.setProperty('--delay',`${Math.round(Math.random()*180)}ms`);
+      host.appendChild(spark);
+    }
+  }
+  function animateNumber(node,from,to,duration=900,suffix=''){
+    const start=performance.now(),delta=to-from;
+    function tick(now){const t=Math.min(1,(now-start)/duration),e=1-Math.pow(1-t,3);node.textContent=`${format(Math.round(from+delta*e))}${suffix}`;if(t<1)requestAnimationFrame(tick);}
+    requestAnimationFrame(tick);
+  }
+  function showXpReward(item,done){
+    const layer=ensureRewardLayer(),card=document.createElement('div');card.className='xp-reward-pop';
+    card.innerHTML=`<small>⭐ ДОСВІД</small><strong class="xp-reward-value">${format(item.from)} XP</strong><span>+${format(item.amount)} XP</span><div class="xp-mini-track"><i></i></div>`;
+    layer.appendChild(card);makeSparks(card,20);haptic('medium');
+    requestAnimationFrame(()=>card.classList.add('show'));
+    const value=card.querySelector('.xp-reward-value');animateNumber(value,item.from,item.to,1150,' XP');
+    const bar=card.querySelector('.xp-mini-track i');requestAnimationFrame(()=>bar.style.width=`${Math.max(4,item.percent||0)}%`);
+    document.querySelector('.metrics .progress')?.classList.add('reward-progress-flash');
+    setTimeout(()=>{card.classList.add('hide');document.querySelector('.metrics .progress')?.classList.remove('reward-progress-flash');setTimeout(()=>{card.remove();done();},420);},1850);
+  }
+  function showCoinReward(item,done){
+    const layer=ensureRewardLayer(),card=document.createElement('div');card.className='coin-reward-pop';
+    card.innerHTML=`<span class="coin-reward-icon">🪙</span><strong>+${format(item.amount)}</strong>`;
+    layer.appendChild(card);for(let i=0;i<7;i++){const coin=document.createElement('i');coin.className='flying-coin';coin.textContent='🪙';coin.style.setProperty('--i',i);card.appendChild(coin);}haptic('light');
+    requestAnimationFrame(()=>card.classList.add('show'));
+    document.querySelector('.coin-pill')?.classList.add('coin-pill-bump');
+    setTimeout(()=>{card.classList.add('hide');document.querySelector('.coin-pill')?.classList.remove('coin-pill-bump');setTimeout(()=>{card.remove();done();},360);},1450);
+  }
+  function queueXpReward(u,amount,fromXp){
+    if(!u||u.id!==state.currentUserId||amount<=0)return;
+    enqueueRewardFx({type:'xp',amount,from:fromXp,to:Number(u.xp||0),percent:xpPct(u)});
+  }
+  function observeRewardChanges(){
+    const next=currentRewardSnapshot();if(!next){rewardSnapshot=null;return;}
+    const prev=rewardSnapshot;
+    if(prev&&prev.userId===next.userId){
+      const coinDelta=next.coins-prev.coins;if(coinDelta>0)enqueueRewardFx({type:'coins',amount:coinDelta});
+      for(const id of next.achievements){
+        if(!prev.achievements.has(id)&&!announcedAchievements.has(id)){
+          announcedAchievements.add(id);const a=state.achievements.find(x=>x.id===id);queueAchievementToast(a||{id,icon:'🏆',title:'Нове досягнення',rarity:'Звичайна'});
+        }
+      }
+    }
+    rewardSnapshot=next;
+  }
 
 
   // Stage 8: illustrated achievement icon library extracted from the supplied artwork.
@@ -366,6 +447,7 @@
     let gained=Math.max(0,Math.trunc(Number(amount)||0));
     if(!u||!gained)return {gained:0,levels:0};
     u.level=Math.max(1,Math.trunc(Number(u.level)||1));u.xp=Math.max(0,Number(u.xp)||0);
+    const xpBefore=u.xp;
     u.xp+=gained;let levels=0;
     while(u.xp>=xpRequiredForLevel(u.level)){
       u.xp-=xpRequiredForLevel(u.level);u.level+=1;levels+=1;
@@ -374,6 +456,7 @@
       u.activity.unshift(`Новий рівень ${u.level} · ${source}`);
       state.history.unshift({icon:'⭐',text:`${u.name} досяг(ла) ${u.level} рівня`,time:'Щойно'});
     }
+    queueXpReward(u,gained,xpBefore);
     return {gained,levels};
   }
   function ensureCollectionAchievements(){
@@ -452,7 +535,7 @@
   async function api(path, options={}){
     const headers={'content-type':'application/json',...(options.headers||{})};
     if(auth?.token) headers.authorization=`Bearer ${auth.token}`;
-    const res=await fetch(path,{...options,headers});
+    const res=await fetch(path,{cache:'no-store',...options,headers});
     const data=await res.json().catch(()=>({}));
     if(!res.ok) throw new Error(data.error||'Помилка сервера');
     return data;
@@ -501,24 +584,70 @@
       return true;
     }catch{return false;}
   }
-  async function pullRemote(){
-    if(!auth?.token)return;
-    try{const data=await api('/api/family/state');if(data.state){state=data.state;normalizeState();localStorage.setItem(STORAGE,JSON.stringify(state));localStorage.setItem(LAST_SERVER_PULL,new Date().toISOString());}}catch{}
-  }
+  let serverRevision=0;
   let livePullTimer=0;
+  let immediateSyncTimer=0;
+  let familySyncBusy=false;
+  let familySyncAgain=false;
+  const familyChannel='BroadcastChannel' in window?new BroadcastChannel('myhabbit-family-live'):null;
+  function stateSignature(value=state){
+    try{return JSON.stringify({family:value.family,users:value.users,quests:value.quests,shop:value.shop,history:value.history,profileStickers:value.profileStickers});}catch{return String(Date.now());}
+  }
+  function broadcastLocalState(){
+    try{familyChannel?.postMessage({type:'state',accountId:accountId(),state,at:Date.now()});}catch{}
+  }
+  async function pullRemote(){
+    if(!auth?.token)return false;
+    try{
+      const data=await api('/api/family/state');
+      if(!data.state)return false;
+      const changed=stateSignature(data.state)!==stateSignature(state);
+      state=data.state;serverRevision=Number(data.revision||serverRevision||0);normalizeState();observeRewardChanges();
+      localStorage.setItem(STORAGE,JSON.stringify(state));persistAccount();localStorage.setItem(LAST_SERVER_PULL,new Date().toISOString());
+      if(changed)broadcastLocalState();
+      return changed;
+    }catch{return false;}
+  }
+  async function pushLocalStateNow(){
+    if(!auth?.token||auth?.demo)return false;
+    if(familySyncBusy){familySyncAgain=true;return false;}
+    familySyncBusy=true;
+    try{
+      const data=await api('/api/family/state',{method:'PUT',body:JSON.stringify({state,baseRevision:serverRevision})});
+      serverRevision=Number(data.revision||serverRevision||0);
+      localStorage.removeItem(DAILY_QUEUE);
+      localStorage.setItem(LAST_SERVER_PULL,new Date().toISOString());
+      return true;
+    }catch{return false;}
+    finally{
+      familySyncBusy=false;
+      if(familySyncAgain){familySyncAgain=false;scheduleImmediateFamilySync(250);}
+    }
+  }
+  function scheduleImmediateFamilySync(delay=650){
+    clearTimeout(immediateSyncTimer);
+    if(!auth?.token||auth?.demo)return;
+    immediateSyncTimer=setTimeout(()=>pushLocalStateNow().catch(()=>{}),delay);
+  }
   async function pullRemoteAndRender(){
     if(!auth?.token||auth?.demo||document.visibilityState==='hidden')return;
-    const before=JSON.stringify((state.users||[]).map(u=>[u.id,u.coins]));
-    await pullRemote();
-    const after=JSON.stringify((state.users||[]).map(u=>[u.id,u.coins]));
-    if(before!==after)render();
+    if(await pullRemote())render();
   }
   function startLiveFamilyRefresh(){
     clearInterval(livePullTimer);
     if(!auth?.token||auth?.demo)return;
     pullRemoteAndRender().catch(()=>{});
-    livePullTimer=setInterval(()=>pullRemoteAndRender().catch(()=>{}),15000);
+    livePullTimer=setInterval(()=>pullRemoteAndRender().catch(()=>{}),3000);
   }
+  familyChannel?.addEventListener('message',event=>{
+    const msg=event.data||{};
+    if(msg.type!=='state'||msg.accountId!==accountId()||!msg.state)return;
+    if(stateSignature(msg.state)===stateSignature(state))return;
+    state=msg.state;normalizeState();observeRewardChanges();localStorage.setItem(STORAGE,JSON.stringify(state));persistAccount();render();
+  });
+  window.addEventListener('focus',()=>pullRemoteAndRender().catch(()=>{}));
+  window.addEventListener('online',()=>{pushLocalStateNow().then(()=>pullRemoteAndRender()).catch(()=>{});});
+  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')pullRemoteAndRender().catch(()=>{});});
   async function refreshAdminSyncStatus(){
     if(!auth?.token||!isAdmin())return;
     try{
@@ -588,7 +717,7 @@
 
   function achievementCard(a,u=currentUser()){const unlocked=Boolean(u?.achievements?.includes(a.id))||Number(a.progress||0)>=Number(a.target||1);const progress=Math.min(100,Math.round((Number(a.progress||0)/Math.max(1,Number(a.target||1)))*100));return `<article class="achievement-card ${unlocked?'unlocked':'locked'}"><div class="achievement-icon">${achievementIconHtml(a)}</div><div><span class="rarity">${a.rarity||'Звичайна'}</span><h3>${a.title||'Досягнення'}</h3><p>${a.description||''}</p><div class="progress"><i style="width:${unlocked?100:progress}%"></i></div><small>${unlocked?'Відкрито':`${Number(a.progress||0)} / ${Number(a.target||1)}`}</small></div></article>`;}
 
-  function unlockAchievement(u,id){if(!u||u.achievements.includes(id))return false;u.achievements.push(id);const a=state.achievements.find(x=>x.id===id);u.activity.unshift(`Отримано ачивку «${a?.title||id}»`);state.history.unshift({icon:a?.icon||'🏆',text:`${u.name} отримав(ла) «${a?.title||'нову ачивку'}»`,time:'Щойно'});if(u.id===state.currentUserId)queueAchievementToast(a||{id,icon:'🏆',title:id,rarity:'Звичайна'});return true;}
+  function unlockAchievement(u,id){if(!u||u.achievements.includes(id))return false;u.achievements.push(id);const a=state.achievements.find(x=>x.id===id);u.activity.unshift(`Отримано ачивку «${a?.title||id}»`);state.history.unshift({icon:a?.icon||'🏆',text:`${u.name} отримав(ла) «${a?.title||'нову ачивку'}»`,time:'Щойно'});if(u.id===state.currentUserId){announcedAchievements.add(id);queueAchievementToast(a||{id,icon:'🏆',title:id,rarity:'Звичайна'});}return true;}
   function evaluateReferralAchievements(u){
     if(!u)return;const count=Number(u.stats?.invitedUsers||u.referrals?.length||0);const levels=[[1,'ref_first_friend'],[3,'ref_better_together'],[5,'ref_family_grows'],[10,'ref_big_family'],[20,'ref_home_for_all'],[50,'ref_people_connector'],[100,'ref_community_leader'],[250,'ref_community_legend']];
     for(const [need,id] of levels){const a=state.achievements.find(x=>x.id===id);if(a)a.progress=Math.max(Number(a.progress||0),count);if(count>=need)unlockAchievement(u,id);}
@@ -674,7 +803,7 @@
 
   function profileScreen(userId=state.currentUserId){
     const u=state.users.find(x=>x.id===userId)||currentUser(),own=u.id===state.currentUserId;evaluateReferralAchievements(u);const skills=Object.entries(u.skills||{}),achievements=state.achievements.filter(a=>u.achievements.includes(a.id)),badge=cosmetic(u.equipped?.badge),frame=u.equipped?.frame||'',animatedFrame=cosmetic(u.equipped?.animatedFrame),nickEffect=cosmetic(u.equipped?.nicknameEffect),profileEffect=cosmetic(u.equipped?.profileEffect),stickers=state.profileStickers.filter(x=>x.to===u.id).slice(-10).reverse(),nextRewards=state.levelRewards.filter(r=>!u.claimedLevelRewards.includes(r.level)).slice(0,4);
-    return shell(`<section class="card cozy-profile-head profile-frame-${frame} animated-frame-${animatedFrame?.asset||'none'} profile-effect-${profileEffect?.asset||'none'}"><div class="profile-minimal"><div class="member-initial large">${cuteIcon('cat')}</div><div><div class="profile-level"><span class="animated-name nick-${nickEffect?.asset||'none'}">${escapeHtml(u.name)}</span> ${badge?cuteIcon(badge.asset.includes('bunny')?'bunny':'cat'):''}</div><div class="meta">${u.level} загальний рівень · ${format(u.xp)} / ${format(xpRequiredForLevel(u.level))} XP · ${format(u.coins)} 🪙</div><div class="profile-joined">${u.telegramUsername?'@'+escapeHtml(u.telegramUsername)+' · ':''}у myHabbit з ${romanDate(u.createdAt)}</div><div class="progress soft-progress"><i style="width:${xpPct(u)}%"></i></div></div>${own?'<div class="profile-actions"><button class="btn primary" data-action="invite">Запросити в сімʼю</button><button class="btn" data-action="edit-profile">Налаштувати</button><button class="btn soft" data-action="claim-level-rewards">Подарунки рівня</button></div>':'<button class="btn soft" data-action="leave-sticker" data-user-id="'+u.id+'">Залишити слід</button>'}</div></section>
+    return shell(`<section class="card cozy-profile-head profile-frame-${frame} animated-frame-${animatedFrame?.asset||'none'} profile-effect-${profileEffect?.asset||'none'}"><div class="profile-minimal"><div class="member-initial large">${cuteIcon('cat')}</div><div><div class="profile-level"><span class="animated-name nick-${nickEffect?.asset||'none'}">${escapeHtml(u.name)}</span> ${badge?cuteIcon(badge.asset.includes('bunny')?'bunny':'cat'):''}</div><div class="meta">${u.level} загальний рівень · ${format(u.xp)} / ${format(xpRequiredForLevel(u.level))} XP · ${format(u.coins)} 🪙</div><div class="profile-joined">${u.telegramUsername?'@'+escapeHtml(u.telegramUsername)+' · ':''}у myHabbit з <span class="profile-join-date">${numericJoinDate(u.createdAt)}</span></div><div class="progress soft-progress"><i style="width:${xpPct(u)}%"></i></div></div>${own?'<div class="profile-actions"><button class="btn primary" data-action="invite">Запросити в сімʼю</button><button class="btn" data-action="edit-profile">Налаштувати</button><button class="btn soft" data-action="claim-level-rewards">Подарунки рівня</button></div>':'<button class="btn soft" data-action="leave-sticker" data-user-id="'+u.id+'">Залишити слід</button>'}</div></section>
     <section class="grid metrics minimal-stats"><div class="card"><div class="metric-label">Квести</div><div class="metric-value">${u.stats.questsCompleted||0}</div></div><div class="card"><div class="metric-label">Ранкові подарунки</div><div class="metric-value">${u.stats.giftsOpened||0}</div></div><div class="card"><div class="metric-label">Джекпоти</div><div class="metric-value">${u.stats.jackpots||0}</div></div><div class="card"><div class="metric-label">Стікери друзям</div><div class="metric-value">${u.stats.stickersGiven||0}</div></div></section>
     <div class="cozy-folds">${own?referralStatsBlock(u):''}${importantDatesBlock(u,own)}<details class="cozy-fold"><summary>${cuteIcon('leaf')}<strong>Мої барви</strong><small>${skills.length}</small></summary><div class="fold-body skill-list">${skills.map(([k,v])=>`<div class="skill-row cozy-skill"><span class="skill-icon">${cuteIcon('sparkle')}</span><div><div class="skill-name"><strong>${skillLabel(k)}</strong><span>${v}</span></div><div class="progress"><i style="width:${Math.min(100,(v%10)*10)}%"></i></div></div></div>`).join('')}</div></details><details class="cozy-fold"><summary>${cuteIcon('trophy')}<strong>Мої знахідки</strong><small>${achievements.length}</small></summary><div class="fold-body achievement-grid compact-achievements">${achievements.map(a=>achievementCard(a,u)).join('')}</div></details></div>`,own?'Мій затишний куточок':`${escapeHtml(u.name)} · профіль`,own?'Загальний рівень, запрошення та маленькі перемоги.':'Профіль близької людини.');
   }
@@ -993,7 +1122,7 @@
       const target=360*6+(360-rewardAngle(reward));
       wheel.style.transform=`rotate(${target}deg)`;
       await new Promise(resolve=>setTimeout(resolve,4300));
-      if(result.state){state=result.state;normalizeState();localStorage.setItem(STORAGE,JSON.stringify(state));persistAccount();}
+      if(result.state){state=result.state;normalizeState();observeRewardChanges();localStorage.setItem(STORAGE,JSON.stringify(state));persistAccount();}
       const title=document.getElementById('rouletteTitle');
       const text=document.getElementById('rouletteText');
       if(title)title.textContent=reward>=100?'Джекпот! ✨':reward===50?'Сьогодні особливо щастить!':'Твій ранковий подарунок';
@@ -1074,6 +1203,7 @@
       // First paint uses local state only and happens before network, Telegram,
       // IndexedDB, content downloads, or Service Worker preparation.
       render();
+      initializeRewardFeedback();
       updateSplash(42,'Готуємо ваш простір…');
 
       // Decorative loading sequence: it keeps the pleasant splash visible,
