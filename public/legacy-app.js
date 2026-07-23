@@ -9,7 +9,7 @@
   const LAST_SERVER_PULL = 'myHabbitLastServerPullV1';
   const CONTENT_CACHE = 'myHabbitContentLibraryV1';
   const CONTENT_VERSION = '1.0.0';
-  const APP_VERSION = '6.0.0-stage9.5-safe-boot';
+  const APP_VERSION = '6.0.0-stage9.9-achievement-init-fix';
   const ACCOUNTS = 'myHabbitAccountsV1';
   const ACTIVE_ACCOUNT = 'myHabbitActiveAccountV1';
   const QUEST_CATEGORIES = ['family','relationship','home','sport','health','mind','reading','cinema','creativity','finance','discipline'];
@@ -61,22 +61,6 @@
       {icon:'🎬',text:'Сімʼя придбала «Вечір у кіно»',time:'Учора, 20:30'}
     ]
   };
-
-  const tg = window.Telegram?.WebApp || null;
-  const telegramInitData = tg?.initData || '';
-  const telegramUser = tg?.initDataUnsafe?.user || null;
-  const startParam = tg?.initDataUnsafe?.start_param || '';
-  const urlInviteToken = new URLSearchParams(location.search).get('invite') || '';
-  const telegramInviteToken = startParam.startsWith('invite_') ? startParam.slice(7) : '';
-  const inviteToken = urlInviteToken || telegramInviteToken;
-  if (tg) { try { tg.ready(); tg.expand(); } catch {} }
-  let state = loadState();
-  let auth = loadAuth();
-  restoreActiveAccount();
-  normalizeState();
-  let route = new URLSearchParams(location.search).get('screen') || (auth ? 'dashboard' : ((telegramInitData || inviteToken) ? 'auth' : 'landing'));
-  let authMode = (telegramInitData || inviteToken) ? 'join' : 'create';
-  let inviteInfo = null;
 
   function normalizeState(){
     state = (state && typeof state === 'object') ? state : clone(seed);
@@ -243,6 +227,25 @@
     if(src)return `<img class="${className}" src="${src}" alt="" loading="lazy">`;
     return `<span class="${className} achievement-emoji">${escapeHtml(achievement?.icon||'🏆')}</span>`;
   }
+
+  // Stage 9.9 fix: initialize application state only after achievement icon
+  // libraries are initialized. normalizeState() calls achievementIconAsset(), so
+  // running it earlier caused a temporal-dead-zone ReferenceError.
+  const tg = window.Telegram?.WebApp || null;
+  const telegramInitData = tg?.initData || '';
+  const telegramUser = tg?.initDataUnsafe?.user || null;
+  const startParam = tg?.initDataUnsafe?.start_param || '';
+  const urlInviteToken = new URLSearchParams(location.search).get('invite') || '';
+  const telegramInviteToken = startParam.startsWith('invite_') ? startParam.slice(7) : '';
+  const inviteToken = urlInviteToken || telegramInviteToken;
+  if (tg) { try { tg.ready(); tg.expand(); } catch {} }
+  let state = loadState();
+  let auth = loadAuth();
+  restoreActiveAccount();
+  normalizeState();
+  let route = new URLSearchParams(location.search).get('screen') || (auth ? 'dashboard' : ((telegramInitData || inviteToken) ? 'auth' : 'landing'));
+  let authMode = (telegramInitData || inviteToken) ? 'join' : 'create';
+  let inviteInfo = null;
 
   // Stage 7: game-style achievement notifications. Items are shown one at a time,
   // remain visible for five seconds, then leave to the right.
