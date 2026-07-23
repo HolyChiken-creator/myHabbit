@@ -1,0 +1,2562 @@
+[
+  {
+    "id": "weekly_home_00001",
+    "title": "Організуй інструменти",
+    "description": "Виконай завдання «Організуй інструменти» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 8,
+    "estimatedMinutes": 20,
+    "verification": "number",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "home": 18
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00002",
+    "title": "Підготуй робочій зоні до нового тижня",
+    "description": "Виконай завдання «Підготуй робочій зоні до нового тижня» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "expert",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 10,
+    "estimatedMinutes": 20,
+    "verification": "photo",
+    "rewards": {
+      "coins": 90,
+      "xp": 140,
+      "skills": {
+        "home": 91
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "expert",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00003",
+    "title": "Організуй документи",
+    "description": "Виконай завдання «Організуй документи» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 21,
+    "estimatedMinutes": 30,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "home": 18
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00004",
+    "title": "Підготуй шафі до нового тижня",
+    "description": "Виконай завдання «Підготуй шафі до нового тижня» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "expert",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 26,
+    "estimatedMinutes": 45,
+    "verification": "photo",
+    "rewards": {
+      "coins": 90,
+      "xp": 140,
+      "skills": {
+        "home": 91
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "expert",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00005",
+    "title": "Організуй полицю",
+    "description": "Виконай завдання «Організуй полицю» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "legendary",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 17,
+    "estimatedMinutes": 90,
+    "verification": "number",
+    "rewards": {
+      "coins": 66,
+      "xp": 110,
+      "skills": {
+        "home": 71
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "medium",
+      "legendary"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00006",
+    "title": "Наведи лад у коморі",
+    "description": "Виконай завдання «Наведи лад у коморі» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 36,
+    "estimatedMinutes": 20,
+    "verification": "none",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "home": 32
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00007",
+    "title": "Наведи лад у робочій зоні",
+    "description": "Виконай завдання «Наведи лад у робочій зоні» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "hard",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 39,
+    "estimatedMinutes": 5,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 55,
+      "xp": 90,
+      "skills": {
+        "home": 58
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "hard",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00008",
+    "title": "Очисти робочій зоні",
+    "description": "Виконай завдання «Очисти робочій зоні» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "epic",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 13,
+    "estimatedMinutes": 45,
+    "verification": "text",
+    "rewards": {
+      "coins": 51,
+      "xp": 85,
+      "skills": {
+        "home": 55
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "medium",
+      "epic"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00009",
+    "title": "Підготуй коморі до нового тижня",
+    "description": "Виконай завдання «Підготуй коморі до нового тижня» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 35,
+    "estimatedMinutes": 45,
+    "verification": "number",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "home": 32
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00010",
+    "title": "Полагодь дрібницю в коридорі",
+    "description": "Виконай завдання «Полагодь дрібницю в коридорі» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 12,
+    "estimatedMinutes": 10,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "home": 16
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00011",
+    "title": "Наведи лад у спальні",
+    "description": "Виконай завдання «Наведи лад у спальні» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 10,
+    "estimatedMinutes": 90,
+    "verification": "number",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "home": 18
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00012",
+    "title": "Очисти спальні",
+    "description": "Виконай завдання «Очисти спальні» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 23,
+    "estimatedMinutes": 45,
+    "verification": "photo",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "home": 18
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00013",
+    "title": "Наведи лад у шафі",
+    "description": "Виконай завдання «Наведи лад у шафі» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 25,
+    "estimatedMinutes": 30,
+    "verification": "text",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "home": 18
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00014",
+    "title": "Підготуй коридорі до нового тижня",
+    "description": "Виконай завдання «Підготуй коридорі до нового тижня» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 3,
+    "estimatedMinutes": 5,
+    "verification": "none",
+    "rewards": {
+      "coins": 20,
+      "xp": 34,
+      "skills": {
+        "home": 22
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00015",
+    "title": "Наведи лад у робочій зоні",
+    "description": "Виконай завдання «Наведи лад у робочій зоні» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 4,
+    "estimatedMinutes": 90,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "home": 18
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00016",
+    "title": "Очисти балконі",
+    "description": "Виконай завдання «Очисти балконі» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "hard",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 35,
+    "estimatedMinutes": 5,
+    "verification": "none",
+    "rewards": {
+      "coins": 55,
+      "xp": 90,
+      "skills": {
+        "home": 58
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "hard",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00017",
+    "title": "Організуй одяг",
+    "description": "Виконай завдання «Організуй одяг» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 35,
+    "estimatedMinutes": 60,
+    "verification": "photo",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "home": 16
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00018",
+    "title": "Очисти шафі",
+    "description": "Виконай завдання «Очисти шафі» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "expert",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 30,
+    "estimatedMinutes": 20,
+    "verification": "text",
+    "rewards": {
+      "coins": 122,
+      "xp": 189,
+      "skills": {
+        "home": 122
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "expert",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00019",
+    "title": "Очисти робочій зоні",
+    "description": "Виконай завдання «Очисти робочій зоні» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 5,
+    "estimatedMinutes": 30,
+    "verification": "text",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "home": 18
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00020",
+    "title": "Підготуй спальні до нового тижня",
+    "description": "Виконай завдання «Підготуй спальні до нового тижня» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 24,
+    "estimatedMinutes": 10,
+    "verification": "number",
+    "rewards": {
+      "coins": 40,
+      "xp": 68,
+      "skills": {
+        "home": 44
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "medium",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00021",
+    "title": "Очисти коридорі",
+    "description": "Виконай завдання «Очисти коридорі» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 32,
+    "estimatedMinutes": 60,
+    "verification": "number",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "home": 18
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00022",
+    "title": "Організуй ящик",
+    "description": "Виконай завдання «Організуй ящик» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 40,
+    "estimatedMinutes": 20,
+    "verification": "text",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "home": 32
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00023",
+    "title": "Полагодь дрібницю в кухні",
+    "description": "Виконай завдання «Полагодь дрібницю в кухні» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "epic",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 1,
+    "estimatedMinutes": 15,
+    "verification": "photo",
+    "rewards": {
+      "coins": 26,
+      "xp": 42,
+      "skills": {
+        "home": 27
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "epic"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00024",
+    "title": "Полагодь дрібницю в ванній",
+    "description": "Виконай завдання «Полагодь дрібницю в ванній» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 5,
+    "estimatedMinutes": 15,
+    "verification": "none",
+    "rewards": {
+      "coins": 34,
+      "xp": 57,
+      "skills": {
+        "home": 37
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "medium",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00025",
+    "title": "Наведи лад у шафі",
+    "description": "Виконай завдання «Наведи лад у шафі» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 35,
+    "estimatedMinutes": 20,
+    "verification": "none",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "home": 18
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00026",
+    "title": "Очисти кухні",
+    "description": "Виконай завдання «Очисти кухні» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "hard",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 36,
+    "estimatedMinutes": 5,
+    "verification": "photo",
+    "rewards": {
+      "coins": 55,
+      "xp": 90,
+      "skills": {
+        "home": 58
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "hard",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00027",
+    "title": "Полагодь дрібницю в шафі",
+    "description": "Виконай завдання «Полагодь дрібницю в шафі» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 14,
+    "estimatedMinutes": 15,
+    "verification": "none",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "home": 16
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00028",
+    "title": "Полагодь дрібницю в кухні",
+    "description": "Виконай завдання «Полагодь дрібницю в кухні» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 30,
+    "estimatedMinutes": 45,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "home": 32
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00029",
+    "title": "Організуй ящик",
+    "description": "Виконай завдання «Організуй ящик» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "hard",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 18,
+    "estimatedMinutes": 10,
+    "verification": "text",
+    "rewards": {
+      "coins": 55,
+      "xp": 90,
+      "skills": {
+        "home": 58
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "hard",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00030",
+    "title": "Наведи лад у коридорі",
+    "description": "Виконай завдання «Наведи лад у коридорі» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 34,
+    "estimatedMinutes": 10,
+    "verification": "photo",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "home": 16
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00031",
+    "title": "Організуй кухонне приладдя",
+    "description": "Виконай завдання «Організуй кухонне приладдя» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 20,
+    "estimatedMinutes": 5,
+    "verification": "none",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "home": 16
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00032",
+    "title": "Наведи лад у спальні",
+    "description": "Виконай завдання «Наведи лад у спальні» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 7,
+    "estimatedMinutes": 60,
+    "verification": "number",
+    "rewards": {
+      "coins": 34,
+      "xp": 57,
+      "skills": {
+        "home": 37
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "medium",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00033",
+    "title": "Полагодь дрібницю в спальні",
+    "description": "Виконай завдання «Полагодь дрібницю в спальні» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "epic",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 35,
+    "estimatedMinutes": 20,
+    "verification": "number",
+    "rewards": {
+      "coins": 26,
+      "xp": 42,
+      "skills": {
+        "home": 27
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "epic"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00034",
+    "title": "Організуй одяг",
+    "description": "Виконай завдання «Організуй одяг» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 38,
+    "estimatedMinutes": 90,
+    "verification": "none",
+    "rewards": {
+      "coins": 20,
+      "xp": 34,
+      "skills": {
+        "home": 22
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00035",
+    "title": "Наведи лад у коморі",
+    "description": "Виконай завдання «Наведи лад у коморі» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 26,
+    "estimatedMinutes": 20,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "home": 18
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00036",
+    "title": "Підготуй шафі до нового тижня",
+    "description": "Виконай завдання «Підготуй шафі до нового тижня» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 16,
+    "estimatedMinutes": 30,
+    "verification": "none",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "home": 16
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00037",
+    "title": "Підготуй шафі до нового тижня",
+    "description": "Виконай завдання «Підготуй шафі до нового тижня» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "expert",
+    "rarity": "legendary",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 20,
+    "estimatedMinutes": 20,
+    "verification": "none",
+    "rewards": {
+      "coins": 198,
+      "xp": 308,
+      "skills": {
+        "home": 200
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "expert",
+      "legendary"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00038",
+    "title": "Наведи лад у коморі",
+    "description": "Виконай завдання «Наведи лад у коморі» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 26,
+    "estimatedMinutes": 15,
+    "verification": "photo",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "home": 16
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00039",
+    "title": "Організуй одяг",
+    "description": "Виконай завдання «Організуй одяг» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 6,
+    "estimatedMinutes": 45,
+    "verification": "none",
+    "rewards": {
+      "coins": 34,
+      "xp": 57,
+      "skills": {
+        "home": 37
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "medium",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00040",
+    "title": "Полагодь дрібницю в ванній",
+    "description": "Виконай завдання «Полагодь дрібницю в ванній» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 23,
+    "estimatedMinutes": 5,
+    "verification": "none",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "home": 18
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00041",
+    "title": "Наведи лад у ванній",
+    "description": "Виконай завдання «Наведи лад у ванній» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 5,
+    "estimatedMinutes": 20,
+    "verification": "number",
+    "rewards": {
+      "coins": 34,
+      "xp": 57,
+      "skills": {
+        "home": 37
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "medium",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00042",
+    "title": "Наведи лад у коморі",
+    "description": "Виконай завдання «Наведи лад у коморі» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 3,
+    "estimatedMinutes": 15,
+    "verification": "none",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "home": 18
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00043",
+    "title": "Підготуй шафі до нового тижня",
+    "description": "Виконай завдання «Підготуй шафі до нового тижня» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 12,
+    "estimatedMinutes": 15,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 20,
+      "xp": 34,
+      "skills": {
+        "home": 22
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00044",
+    "title": "Підготуй балконі до нового тижня",
+    "description": "Виконай завдання «Підготуй балконі до нового тижня» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 14,
+    "estimatedMinutes": 60,
+    "verification": "none",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "home": 32
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00045",
+    "title": "Очисти кухні",
+    "description": "Виконай завдання «Очисти кухні» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 35,
+    "estimatedMinutes": 20,
+    "verification": "text",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "home": 16
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00046",
+    "title": "Підготуй балконі до нового тижня",
+    "description": "Виконай завдання «Підготуй балконі до нового тижня» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 33,
+    "estimatedMinutes": 30,
+    "verification": "text",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "home": 32
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00047",
+    "title": "Очисти робочій зоні",
+    "description": "Виконай завдання «Очисти робочій зоні» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "hard",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 16,
+    "estimatedMinutes": 45,
+    "verification": "photo",
+    "rewards": {
+      "coins": 63,
+      "xp": 103,
+      "skills": {
+        "home": 66
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "hard",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00048",
+    "title": "Організуй одяг",
+    "description": "Виконай завдання «Організуй одяг» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "hard",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 3,
+    "estimatedMinutes": 45,
+    "verification": "text",
+    "rewards": {
+      "coins": 55,
+      "xp": 90,
+      "skills": {
+        "home": 58
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "hard",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00049",
+    "title": "Наведи лад у кухні",
+    "description": "Виконай завдання «Наведи лад у кухні» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 35,
+    "estimatedMinutes": 45,
+    "verification": "none",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "home": 18
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00050",
+    "title": "Наведи лад у коморі",
+    "description": "Виконай завдання «Наведи лад у коморі» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 9,
+    "estimatedMinutes": 30,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "home": 16
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00051",
+    "title": "Організуй інструменти",
+    "description": "Виконай завдання «Організуй інструменти» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 29,
+    "estimatedMinutes": 60,
+    "verification": "text",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "home": 18
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00052",
+    "title": "Наведи лад у кухні",
+    "description": "Виконай завдання «Наведи лад у кухні» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 19,
+    "estimatedMinutes": 10,
+    "verification": "text",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "home": 16
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00053",
+    "title": "Полагодь дрібницю в ванній",
+    "description": "Виконай завдання «Полагодь дрібницю в ванній» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 30,
+    "estimatedMinutes": 90,
+    "verification": "text",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "home": 32
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00054",
+    "title": "Наведи лад у спальні",
+    "description": "Виконай завдання «Наведи лад у спальні» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 24,
+    "estimatedMinutes": 15,
+    "verification": "text",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "home": 32
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00055",
+    "title": "Організуй інструменти",
+    "description": "Виконай завдання «Організуй інструменти» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "legendary",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 10,
+    "estimatedMinutes": 60,
+    "verification": "number",
+    "rewards": {
+      "coins": 33,
+      "xp": 55,
+      "skills": {
+        "home": 35
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "legendary"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00056",
+    "title": "Підготуй спальні до нового тижня",
+    "description": "Виконай завдання «Підготуй спальні до нового тижня» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "hard",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 8,
+    "estimatedMinutes": 45,
+    "verification": "text",
+    "rewards": {
+      "coins": 63,
+      "xp": 103,
+      "skills": {
+        "home": 66
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "hard",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00057",
+    "title": "Очисти ванній",
+    "description": "Виконай завдання «Очисти ванній» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 21,
+    "estimatedMinutes": 15,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "home": 16
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00058",
+    "title": "Підготуй ванній до нового тижня",
+    "description": "Виконай завдання «Підготуй ванній до нового тижня» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 23,
+    "estimatedMinutes": 45,
+    "verification": "none",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "home": 16
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00059",
+    "title": "Наведи лад у шафі",
+    "description": "Виконай завдання «Наведи лад у шафі» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "hard",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 6,
+    "estimatedMinutes": 60,
+    "verification": "photo",
+    "rewards": {
+      "coins": 55,
+      "xp": 90,
+      "skills": {
+        "home": 58
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "hard",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00060",
+    "title": "Підготуй коморі до нового тижня",
+    "description": "Виконай завдання «Підготуй коморі до нового тижня» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 1,
+    "estimatedMinutes": 10,
+    "verification": "number",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "home": 16
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00061",
+    "title": "Наведи лад у коморі",
+    "description": "Виконай завдання «Наведи лад у коморі» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 34,
+    "estimatedMinutes": 45,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "home": 32
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00062",
+    "title": "Полагодь дрібницю в спальні",
+    "description": "Виконай завдання «Полагодь дрібницю в спальні» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 8,
+    "estimatedMinutes": 15,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 34,
+      "xp": 57,
+      "skills": {
+        "home": 37
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "medium",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00063",
+    "title": "Наведи лад у спальні",
+    "description": "Виконай завдання «Наведи лад у спальні» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 11,
+    "estimatedMinutes": 90,
+    "verification": "none",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "home": 32
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00064",
+    "title": "Полагодь дрібницю в ванній",
+    "description": "Виконай завдання «Полагодь дрібницю в ванній» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "hard",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 26,
+    "estimatedMinutes": 20,
+    "verification": "none",
+    "rewards": {
+      "coins": 63,
+      "xp": 103,
+      "skills": {
+        "home": 66
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "hard",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00065",
+    "title": "Організуй одяг",
+    "description": "Виконай завдання «Організуй одяг» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 18,
+    "estimatedMinutes": 60,
+    "verification": "photo",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "home": 18
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00066",
+    "title": "Підготуй ванній до нового тижня",
+    "description": "Виконай завдання «Підготуй ванній до нового тижня» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 12,
+    "estimatedMinutes": 30,
+    "verification": "none",
+    "rewards": {
+      "coins": 20,
+      "xp": 34,
+      "skills": {
+        "home": 22
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00067",
+    "title": "Полагодь дрібницю в балконі",
+    "description": "Виконай завдання «Полагодь дрібницю в балконі» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "epic",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 17,
+    "estimatedMinutes": 45,
+    "verification": "text",
+    "rewards": {
+      "coins": 26,
+      "xp": 42,
+      "skills": {
+        "home": 27
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "epic"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00068",
+    "title": "Організуй документи",
+    "description": "Виконай завдання «Організуй документи» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 9,
+    "estimatedMinutes": 30,
+    "verification": "text",
+    "rewards": {
+      "coins": 34,
+      "xp": 57,
+      "skills": {
+        "home": 37
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "medium",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00069",
+    "title": "Наведи лад у робочій зоні",
+    "description": "Виконай завдання «Наведи лад у робочій зоні» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 18,
+    "estimatedMinutes": 20,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "home": 32
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00070",
+    "title": "Наведи лад у коридорі",
+    "description": "Виконай завдання «Наведи лад у коридорі» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "legendary",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 35,
+    "estimatedMinutes": 90,
+    "verification": "text",
+    "rewards": {
+      "coins": 33,
+      "xp": 55,
+      "skills": {
+        "home": 35
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "legendary"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00071",
+    "title": "Наведи лад у коморі",
+    "description": "Виконай завдання «Наведи лад у коморі» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "hard",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 1,
+    "estimatedMinutes": 60,
+    "verification": "text",
+    "rewards": {
+      "coins": 63,
+      "xp": 103,
+      "skills": {
+        "home": 66
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "hard",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00072",
+    "title": "Організуй ящик",
+    "description": "Виконай завдання «Організуй ящик» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 23,
+    "estimatedMinutes": 15,
+    "verification": "text",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "home": 18
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00073",
+    "title": "Підготуй кухні до нового тижня",
+    "description": "Виконай завдання «Підготуй кухні до нового тижня» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "expert",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 33,
+    "estimatedMinutes": 90,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 90,
+      "xp": 140,
+      "skills": {
+        "home": 91
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "expert",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00074",
+    "title": "Очисти балконі",
+    "description": "Виконай завдання «Очисти балконі» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 19,
+    "estimatedMinutes": 45,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "home": 18
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00075",
+    "title": "Організуй кухонне приладдя",
+    "description": "Виконай завдання «Організуй кухонне приладдя» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 3,
+    "estimatedMinutes": 45,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "home": 16
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00076",
+    "title": "Очисти коридорі",
+    "description": "Виконай завдання «Очисти коридорі» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 1,
+    "estimatedMinutes": 15,
+    "verification": "text",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "home": 18
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00077",
+    "title": "Наведи лад у коридорі",
+    "description": "Виконай завдання «Наведи лад у коридорі» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 12,
+    "estimatedMinutes": 90,
+    "verification": "none",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "home": 18
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00078",
+    "title": "Полагодь дрібницю в ванній",
+    "description": "Виконай завдання «Полагодь дрібницю в ванній» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 11,
+    "estimatedMinutes": 10,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "home": 32
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00079",
+    "title": "Полагодь дрібницю в робочій зоні",
+    "description": "Виконай завдання «Полагодь дрібницю в робочій зоні» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 32,
+    "estimatedMinutes": 15,
+    "verification": "none",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "home": 32
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_home_00080",
+    "title": "Підготуй ванній до нового тижня",
+    "description": "Виконай завдання «Підготуй ванній до нового тижня» та додай короткий звіт про результат.",
+    "category": "home",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "epic",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 22,
+    "estimatedMinutes": 45,
+    "verification": "text",
+    "rewards": {
+      "coins": 26,
+      "xp": 42,
+      "skills": {
+        "home": 27
+      }
+    },
+    "tags": [
+      "home",
+      "order",
+      "routine",
+      "easy",
+      "epic"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  }
+]

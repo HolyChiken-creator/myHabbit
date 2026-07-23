@@ -1,0 +1,1282 @@
+[
+  {
+    "id": "weekly_creativity_00001",
+    "title": "Створи плейлист на тему «подорожі»",
+    "description": "Виконай завдання «Створи плейлист на тему «подорожі»» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 27,
+    "estimatedMinutes": 20,
+    "verification": "photo",
+    "rewards": {
+      "coins": 40,
+      "xp": 68,
+      "skills": {
+        "creativity": 44
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "medium",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00002",
+    "title": "Присвяти 25 хвилин створенню плейлист",
+    "description": "Виконай завдання «Присвяти 25 хвилин створенню плейлист» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 17,
+    "estimatedMinutes": 5,
+    "verification": "none",
+    "rewards": {
+      "coins": 40,
+      "xp": 68,
+      "skills": {
+        "creativity": 44
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "medium",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00003",
+    "title": "Створи виріб руками на тему «природа»",
+    "description": "Виконай завдання «Створи виріб руками на тему «природа»» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 35,
+    "estimatedMinutes": 20,
+    "verification": "photo",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "creativity": 32
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00004",
+    "title": "Спробуй нову техніку: листівку",
+    "description": "Виконай завдання «Спробуй нову техніку: листівку» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "hard",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 38,
+    "estimatedMinutes": 30,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 74,
+      "xp": 122,
+      "skills": {
+        "creativity": 79
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "hard",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00005",
+    "title": "Зроби творчий подарунок у форматі малюнок",
+    "description": "Виконай завдання «Зроби творчий подарунок у форматі малюнок» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 29,
+    "estimatedMinutes": 60,
+    "verification": "none",
+    "rewards": {
+      "coins": 20,
+      "xp": 34,
+      "skills": {
+        "creativity": 22
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "easy",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00006",
+    "title": "Створи листівку на тему «вдячність»",
+    "description": "Виконай завдання «Створи листівку на тему «вдячність»» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 1,
+    "estimatedMinutes": 60,
+    "verification": "number",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "creativity": 16
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00007",
+    "title": "Створи фото на тему «майбутнє»",
+    "description": "Виконай завдання «Створи фото на тему «майбутнє»» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 18,
+    "estimatedMinutes": 5,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 20,
+      "xp": 34,
+      "skills": {
+        "creativity": 22
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "easy",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00008",
+    "title": "Присвяти 25 хвилин створенню малюнок",
+    "description": "Виконай завдання «Присвяти 25 хвилин створенню малюнок» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 18,
+    "estimatedMinutes": 10,
+    "verification": "text",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "creativity": 18
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00009",
+    "title": "Спробуй нову техніку: фото",
+    "description": "Виконай завдання «Спробуй нову техніку: фото» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 35,
+    "estimatedMinutes": 30,
+    "verification": "none",
+    "rewards": {
+      "coins": 40,
+      "xp": 68,
+      "skills": {
+        "creativity": 44
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "medium",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00010",
+    "title": "Покажи близьким результат: короткий текст",
+    "description": "Виконай завдання «Покажи близьким результат: короткий текст» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "hard",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 11,
+    "estimatedMinutes": 15,
+    "verification": "none",
+    "rewards": {
+      "coins": 55,
+      "xp": 90,
+      "skills": {
+        "creativity": 58
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "hard",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00011",
+    "title": "Присвяти 60 хвилин створенню короткий текст",
+    "description": "Виконай завдання «Присвяти 60 хвилин створенню короткий текст» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "epic",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 30,
+    "estimatedMinutes": 20,
+    "verification": "none",
+    "rewards": {
+      "coins": 51,
+      "xp": 85,
+      "skills": {
+        "creativity": 55
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "medium",
+      "epic"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00012",
+    "title": "Зроби творчий подарунок у форматі короткий текст",
+    "description": "Виконай завдання «Зроби творчий подарунок у форматі короткий текст» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 17,
+    "estimatedMinutes": 20,
+    "verification": "photo",
+    "rewards": {
+      "coins": 40,
+      "xp": 68,
+      "skills": {
+        "creativity": 44
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "medium",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00013",
+    "title": "Створи малюнок на тему «природа»",
+    "description": "Виконай завдання «Створи малюнок на тему «природа»» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 13,
+    "estimatedMinutes": 15,
+    "verification": "none",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "creativity": 32
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00014",
+    "title": "Покажи близьким результат: листівку",
+    "description": "Виконай завдання «Покажи близьким результат: листівку» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 8,
+    "estimatedMinutes": 20,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "creativity": 16
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00015",
+    "title": "Покажи близьким результат: декор",
+    "description": "Виконай завдання «Покажи близьким результат: декор» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "epic",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 35,
+    "estimatedMinutes": 30,
+    "verification": "text",
+    "rewards": {
+      "coins": 26,
+      "xp": 42,
+      "skills": {
+        "creativity": 27
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "easy",
+      "epic"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00016",
+    "title": "Покажи близьким результат: короткий текст",
+    "description": "Виконай завдання «Покажи близьким результат: короткий текст» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "epic",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 12,
+    "estimatedMinutes": 20,
+    "verification": "none",
+    "rewards": {
+      "coins": 26,
+      "xp": 42,
+      "skills": {
+        "creativity": 27
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "easy",
+      "epic"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00017",
+    "title": "Присвяти 40 хвилин створенню фото",
+    "description": "Виконай завдання «Присвяти 40 хвилин створенню фото» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 4,
+    "estimatedMinutes": 30,
+    "verification": "text",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "creativity": 32
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00018",
+    "title": "Покажи близьким результат: короткий текст",
+    "description": "Виконай завдання «Покажи близьким результат: короткий текст» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 28,
+    "estimatedMinutes": 30,
+    "verification": "none",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "creativity": 32
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00019",
+    "title": "Присвяти 10 хвилин створенню плейлист",
+    "description": "Виконай завдання «Присвяти 10 хвилин створенню плейлист» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 39,
+    "estimatedMinutes": 90,
+    "verification": "none",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "creativity": 32
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00020",
+    "title": "Зроби творчий подарунок у форматі короткий текст",
+    "description": "Виконай завдання «Зроби творчий подарунок у форматі короткий текст» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "epic",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 32,
+    "estimatedMinutes": 5,
+    "verification": "none",
+    "rewards": {
+      "coins": 51,
+      "xp": 85,
+      "skills": {
+        "creativity": 55
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "medium",
+      "epic"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00021",
+    "title": "Створи декор на тему «вдячність»",
+    "description": "Виконай завдання «Створи декор на тему «вдячність»» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 14,
+    "estimatedMinutes": 60,
+    "verification": "number",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "creativity": 32
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00022",
+    "title": "Покажи близьким результат: фото",
+    "description": "Виконай завдання «Покажи близьким результат: фото» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 25,
+    "estimatedMinutes": 15,
+    "verification": "photo",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "creativity": 16
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00023",
+    "title": "Зроби творчий подарунок у форматі листівку",
+    "description": "Виконай завдання «Зроби творчий подарунок у форматі листівку» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "epic",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 26,
+    "estimatedMinutes": 60,
+    "verification": "photo",
+    "rewards": {
+      "coins": 26,
+      "xp": 42,
+      "skills": {
+        "creativity": 27
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "easy",
+      "epic"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00024",
+    "title": "Покажи близьким результат: короткий текст",
+    "description": "Виконай завдання «Покажи близьким результат: короткий текст» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 13,
+    "estimatedMinutes": 5,
+    "verification": "text",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "creativity": 18
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00025",
+    "title": "Зроби творчий подарунок у форматі малюнок",
+    "description": "Виконай завдання «Зроби творчий подарунок у форматі малюнок» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 27,
+    "estimatedMinutes": 15,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 20,
+      "xp": 34,
+      "skills": {
+        "creativity": 22
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "easy",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00026",
+    "title": "Присвяти 20 хвилин створенню виріб руками",
+    "description": "Виконай завдання «Присвяти 20 хвилин створенню виріб руками» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "hard",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 22,
+    "estimatedMinutes": 60,
+    "verification": "number",
+    "rewards": {
+      "coins": 63,
+      "xp": 103,
+      "skills": {
+        "creativity": 66
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "hard",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00027",
+    "title": "Присвяти 30 хвилин створенню листівку",
+    "description": "Виконай завдання «Присвяти 30 хвилин створенню листівку» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 38,
+    "estimatedMinutes": 30,
+    "verification": "number",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "creativity": 16
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00028",
+    "title": "Присвяти 40 хвилин створенню листівку",
+    "description": "Виконай завдання «Присвяти 40 хвилин створенню листівку» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 32,
+    "estimatedMinutes": 30,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "creativity": 32
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00029",
+    "title": "Зроби творчий подарунок у форматі фото",
+    "description": "Виконай завдання «Зроби творчий подарунок у форматі фото» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 37,
+    "estimatedMinutes": 20,
+    "verification": "none",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "creativity": 32
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00030",
+    "title": "Присвяти 25 хвилин створенню виріб руками",
+    "description": "Виконай завдання «Присвяти 25 хвилин створенню виріб руками» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "hard",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 40,
+    "estimatedMinutes": 10,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 55,
+      "xp": 90,
+      "skills": {
+        "creativity": 58
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "hard",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00031",
+    "title": "Створи короткий текст на тему «вдячність»",
+    "description": "Виконай завдання «Створи короткий текст на тему «вдячність»» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 27,
+    "estimatedMinutes": 90,
+    "verification": "adminApproval",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "creativity": 32
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00032",
+    "title": "Присвяти 60 хвилин створенню малюнок",
+    "description": "Виконай завдання «Присвяти 60 хвилин створенню малюнок» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 30,
+    "estimatedMinutes": 10,
+    "verification": "none",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "creativity": 16
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00033",
+    "title": "Зроби творчий подарунок у форматі виріб руками",
+    "description": "Виконай завдання «Зроби творчий подарунок у форматі виріб руками» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "hard",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 2,
+    "estimatedMinutes": 60,
+    "verification": "text",
+    "rewards": {
+      "coins": 63,
+      "xp": 103,
+      "skills": {
+        "creativity": 66
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "hard",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00034",
+    "title": "Створи листівку на тему «майбутнє»",
+    "description": "Виконай завдання «Створи листівку на тему «майбутнє»» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 8,
+    "estimatedMinutes": 60,
+    "verification": "none",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "creativity": 32
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00035",
+    "title": "Створи плейлист на тему «майбутнє»",
+    "description": "Виконай завдання «Створи плейлист на тему «майбутнє»» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "hard",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 11,
+    "estimatedMinutes": 5,
+    "verification": "number",
+    "rewards": {
+      "coins": 55,
+      "xp": 90,
+      "skills": {
+        "creativity": 58
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "hard",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00036",
+    "title": "Спробуй нову техніку: декор",
+    "description": "Виконай завдання «Спробуй нову техніку: декор» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 2,
+    "estimatedMinutes": 45,
+    "verification": "none",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "creativity": 16
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00037",
+    "title": "Спробуй нову техніку: малюнок",
+    "description": "Виконай завдання «Спробуй нову техніку: малюнок» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 15,
+    "estimatedMinutes": 90,
+    "verification": "text",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "creativity": 32
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00038",
+    "title": "Присвяти 45 хвилин створенню листівку",
+    "description": "Виконай завдання «Присвяти 45 хвилин створенню листівку» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "hard",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 36,
+    "estimatedMinutes": 20,
+    "verification": "photo",
+    "rewards": {
+      "coins": 55,
+      "xp": 90,
+      "skills": {
+        "creativity": 58
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "hard",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00039",
+    "title": "Зроби творчий подарунок у форматі малюнок",
+    "description": "Виконай завдання «Зроби творчий подарунок у форматі малюнок» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "medium",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 30,
+    "estimatedMinutes": 60,
+    "verification": "number",
+    "rewards": {
+      "coins": 34,
+      "xp": 57,
+      "skills": {
+        "creativity": 37
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "medium",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_creativity_00040",
+    "title": "Зроби творчий подарунок у форматі декор",
+    "description": "Виконай завдання «Зроби творчий подарунок у форматі декор» та додай короткий звіт про результат.",
+    "category": "creativity",
+    "type": "personal",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 25,
+    "estimatedMinutes": 5,
+    "verification": "text",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "creativity": 18
+      }
+    },
+    "tags": [
+      "creativity",
+      "growth",
+      "joy",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  }
+]
