@@ -173,3 +173,27 @@
 
 /* Stage 10.7 — daily quests, difficulty filters and separated admin market */
 .quest-filter-block{display:grid;gap:10px;margin-bottom:12px}.difficulty-tabs{flex-wrap:wrap}.daily-quest-summary{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 14px}.daily-quest-summary span{padding:8px 11px;border:1px solid var(--line,#e7e2dc);border-radius:999px;background:var(--surface,#fff);font-size:.88rem}.tag.difficulty-easy{background:#e8f8ee;color:#287548}.tag.difficulty-normal{background:#fff4d8;color:#8a6400}.tag.difficulty-hard{background:#ffe8e5;color:#a33a32}.custom-shop-entry{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:26px;padding:22px;border:1px solid var(--line,#e7e2dc);border-radius:24px;background:var(--surface,#fff)}.custom-shop-entry h2{margin:4px 0 6px}.custom-shop-entry p{margin:0;color:var(--muted,#746f69)}.admin-product-card{border-style:dashed}.admin-product-card .price{margin-top:10px}@media(max-width:680px){.custom-shop-entry{align-items:flex-start;flex-direction:column}.custom-shop-entry .btn{width:100%}.tabs.difficulty-tabs{display:grid;grid-template-columns:1fr 1fr}.tabs.difficulty-tabs button:first-child{grid-column:1/-1}}
+
+/* Stage 10.12 — reliable achievement PNG rendering */
+.achievement-icon{
+  width:52px;
+  height:52px;
+  min-width:52px;
+  min-height:52px;
+  border-radius:15px;
+  background:transparent;
+  overflow:hidden;
+}
+.achievement-icon > .achievement-art,
+.achievement-toast-icon > .achievement-toast-art{
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  max-width:100% !important;
+  max-height:100% !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  background:transparent !important;
+}
