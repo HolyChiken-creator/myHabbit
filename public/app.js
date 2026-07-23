@@ -12,7 +12,7 @@
   const OFFLINE_STORE = 'library';
   const CONTENT_CACHE = 'myHabbitContentLibraryV1';
   const CONTENT_VERSION = '1.0.0';
-  const APP_VERSION = '6.0.2-stage9-splash-recovery';
+  const APP_VERSION = '6.0.3-stage9-immediate-render';
   const ACCOUNTS = 'myHabbitAccountsV1';
   const ACTIVE_ACCOUNT = 'myHabbitActiveAccountV1';
   const QUEST_CATEGORIES = ['family','relationship','home','sport','health','mind','reading','cinema','creativity','finance','discipline'];
@@ -928,7 +928,7 @@
     if(navigator.storage?.persist)navigator.storage.persist().catch(()=>{});
     if(!('serviceWorker' in navigator)){updateSplash(100,'Готово до роботи');return;}
     try{
-      const registration=await navigator.serviceWorker.register('/sw92.js');
+      const registration=await navigator.serviceWorker.register('/sw.js?v=60s93');
       await navigator.serviceWorker.ready;
       const worker=registration.active||registration.waiting||registration.installing;
       if(!worker){updateSplash(100,'Готово до роботи');return;}
@@ -956,26 +956,37 @@
   document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')queueDailySnapshot();});
   window.addEventListener('pagehide',()=>queueDailySnapshot());
   (async()=>{
-    updateSplash(4,'Запускаємо myHabbit…');
-    const splashFailsafe=setTimeout(()=>{updateSplash(100,'Готово');hideSplash();},5000);
-    try{
-      if(telegramInitData&&!auth&&!inviteToken)await resumeTelegramSession();
-      if(auth?.token)await runDailyServerSync();
-      if(inviteToken&&!auth)await loadInviteInfo();
-      await Promise.race([loadContentLibrary(),new Promise(resolve=>setTimeout(resolve,2500))]);
+    updateSplash(8,'Запускаємо myHabbit…');
+    const splashFailsafe=setTimeout(()=>{updateSplash(100,'Готово');hideSplash();},3500);
+
+    // Stage 9.3: first paint must never wait for Telegram, API, IndexedDB or Service Worker.
+    try {
       render();
       updateSplash(100,'Готово');
       clearTimeout(splashFailsafe);
       setTimeout(hideSplash,180);
-      prepareOfflineApp().catch(()=>{});
-      if(auth?.token)setTimeout(checkDailyRoulette,350);
-    }catch(error){
-      console.error('Startup error:',error);
-      try{render();}catch{}
-      updateSplash(100,'Готово');
+    } catch (error) {
+      console.error('Immediate render error:', error);
       clearTimeout(splashFailsafe);
       hideSplash();
+      app.innerHTML=`<main class="fatal-card"><h1>Не вдалося запустити myHabbit</h1><p>${String(error?.message||error)}</p><button class="btn primary" onclick="location.reload()">Спробувати ще раз</button></main>`;
+      return;
+    }
+
+    // Everything network-related runs after the interface is already visible.
+    try {
+      if(telegramInitData&&!auth&&!inviteToken) {
+        await Promise.race([resumeTelegramSession(), new Promise(resolve=>setTimeout(resolve,4000))]);
+      }
+      if(inviteToken&&!auth) {
+        await Promise.race([loadInviteInfo(), new Promise(resolve=>setTimeout(resolve,4000))]);
+      }
+      if(auth?.token) runDailyServerSync().catch(()=>{});
+      loadContentLibrary().then(()=>render()).catch(()=>{});
       prepareOfflineApp().catch(()=>{});
+      if(auth?.token)setTimeout(checkDailyRoulette,350);
+    } catch (error) {
+      console.info('Background startup task skipped:', error?.message||error);
     }
   })();
 })();
