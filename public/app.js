@@ -7,9 +7,12 @@
   const AUTH = 'familyQuestAuthV1';
   const DAILY_QUEUE = 'myHabbitDailyQueueV1';
   const LAST_SERVER_PULL = 'myHabbitLastServerPullV1';
+  const LAST_DAILY_SYNC = 'myHabbitLastDailySyncV1';
+  const OFFLINE_DB = 'myHabbitOfflineV1';
+  const OFFLINE_STORE = 'library';
   const CONTENT_CACHE = 'myHabbitContentLibraryV1';
   const CONTENT_VERSION = '1.0.0';
-  const APP_VERSION = '6.0.0-stage10.0-direct-boot';
+  const APP_VERSION = '6.0.0-stage10.1-offline-safe';
   const ACCOUNTS = 'myHabbitAccountsV1';
   const ACTIVE_ACCOUNT = 'myHabbitActiveAccountV1';
   const QUEST_CATEGORIES = ['family','relationship','home','sport','health','mind','reading','cinema','creativity','finance','discipline'];
@@ -228,9 +231,9 @@
     return `<span class="${className} achievement-emoji">${escapeHtml(achievement?.icon||'🏆')}</span>`;
   }
 
-  // Stage 9.9 fix: initialize application state only after achievement icon
-  // libraries are initialized. normalizeState() calls achievementIconAsset(), so
-  // running it earlier caused a temporal-dead-zone ReferenceError.
+  // Runtime state must be initialized only after achievement icon maps exist.
+  // normalizeState() assigns icon assets, so calling it earlier triggers the
+  // temporal-dead-zone error for ACHIEVEMENT_ICON_BY_ID.
   const tg = window.Telegram?.WebApp || null;
   const telegramInitData = tg?.initData || '';
   const telegramUser = tg?.initDataUnsafe?.user || null;
@@ -349,11 +352,28 @@
     return achievement;
   }
   function shopFromCatalog(i){return {id:i.id,title:i.title,icon:{family:'👨‍👩‍👧‍👦',collective:'🤝',theme:'🎨',avatar:'🙂',frame:'🖼️',personal:'🎁'}[i.type]||'🎁',description:i.description||'Нагорода з каталогу myHabbit.',price:Number(i.price||0),stock:i.stock==null?999:Number(i.stock),type:i.type||'personal',catalog:true,resourceUrl:cleanResourceUrl(i.resourceUrl||i.referenceUrl||'')};}
+  function openOfflineDb(){
+    return new Promise((resolve,reject)=>{
+      if(!('indexedDB' in window))return resolve(null);
+      const request=indexedDB.open(OFFLINE_DB,1);
+      request.onupgradeneeded=()=>{const db=request.result;if(!db.objectStoreNames.contains(OFFLINE_STORE))db.createObjectStore(OFFLINE_STORE);};
+      request.onsuccess=()=>resolve(request.result);
+      request.onerror=()=>reject(request.error);
+    });
+  }
+  async function idbGet(key){
+    try{const db=await openOfflineDb();if(!db)return null;return await new Promise((resolve,reject)=>{const tx=db.transaction(OFFLINE_STORE,'readonly');const req=tx.objectStore(OFFLINE_STORE).get(key);req.onsuccess=()=>resolve(req.result||null);req.onerror=()=>reject(req.error);});}catch{return null;}
+  }
+  async function idbSet(key,value){
+    try{const db=await openOfflineDb();if(!db)return false;await new Promise((resolve,reject)=>{const tx=db.transaction(OFFLINE_STORE,'readwrite');tx.objectStore(OFFLINE_STORE).put(value,key);tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error);});return true;}catch{return false;}
+  }
   async function fetchJson(path){const r=await fetch(path,{cache:'force-cache'});if(!r.ok)throw new Error(`Не вдалося завантажити ${path}`);return r.json();}
   async function loadContentLibrary(){
     try{
+      const idbCached=await idbGet(CONTENT_CACHE);
+      if(idbCached?.version===CONTENT_VERSION&&idbCached.quests?.length){mergeContent(idbCached);return;}
       const cached=JSON.parse(localStorage.getItem(CONTENT_CACHE)||'null');
-      if(cached?.version===CONTENT_VERSION&&cached.quests?.length){mergeContent(cached);return;}
+      if(cached?.version===CONTENT_VERSION&&cached.quests?.length){await idbSet(CONTENT_CACHE,cached);mergeContent(cached);return;}
       const index=await fetchJson('/content/index.json');
       const questSets=await Promise.all(QUEST_CATEGORIES.map(c=>fetchJson(`/content/quests/${c}.json`)));
       const dailySets=await Promise.all(['relationship','health','sport','home','discipline','reading'].map(c=>fetchJson(`/content/daily/${c}.json`)));
@@ -363,7 +383,9 @@
       const level=currentUser()?.level||1;
       const pick=(arr,n)=>arr.filter(x=>x.active!==false&&Number(x.unlockLevel||1)<=level).slice(0,n);
       const content={version:index.libraryVersion||CONTENT_VERSION,index,quests:[...questSets.flatMap(x=>pick(x,18)),...dailySets.flatMap(x=>pick(x,8)),...weeklySets.flatMap(x=>pick(x,6))].map(questFromCatalog),achievements:achievementSets.flatMap(x=>x.filter(a=>a.active!==false).slice(0,30)).map(achievementFromCatalog),shop:shop.filter(i=>i.active!==false).slice(0,120).map(shopFromCatalog)};
-      localStorage.setItem(CONTENT_CACHE,JSON.stringify(content));mergeContent(content);
+      await idbSet(CONTENT_CACHE,content);
+      try{localStorage.setItem(CONTENT_CACHE,JSON.stringify(content));}catch{}
+      mergeContent(content);
     }catch(e){console.warn('Content library:',e);}
   }
   function mergeContent(content){
@@ -383,6 +405,19 @@
   function localDay(){
     const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Kyiv',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date()).reduce((a,p)=>(p.type!=='literal'&&(a[p.type]=p.value),a),{});
     return `${parts.year}-${parts.month}-${parts.day}`;
+  }
+  function kyivHour(){return Number(new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Kyiv',hour:'2-digit',hour12:false}).format(new Date()));}
+  function dailySyncIsDue(){
+    const last=localStorage.getItem(LAST_DAILY_SYNC)||'';
+    return kyivHour()>=9&&last!==localDay();
+  }
+  async function runDailyServerSync(){
+    if(!auth?.token||auth?.demo||!dailySyncIsDue())return false;
+    const pushed=await submitDailySnapshot();
+    if(!pushed)return false;
+    await pullRemote();
+    localStorage.setItem(LAST_DAILY_SYNC,localDay());
+    return true;
   }
   function compactDailyData(){
     const u=currentUser();
@@ -882,35 +917,96 @@
     }catch(e){button.disabled=false;button.textContent='Спробувати ще раз';showToast(e.message);}
   }
 
-  window.addEventListener('popstate',()=>{route=new URLSearchParams(location.search).get('screen')||(auth?'dashboard':'landing');render();});
-  // Stage 9.5 safe boot: first paint must never wait for Telegram, network, IndexedDB or Service Worker.
-  const bootError=(error)=>{
-    console.error('[myHabbit boot]',error);
-    const box=document.getElementById('appBootError')||document.createElement('pre');
-    box.id='appBootError';
-    box.style.cssText='position:fixed;inset:12px;z-index:999999;overflow:auto;padding:16px;border-radius:18px;background:#fff1f1;color:#7c2020;font:13px/1.45 monospace;white-space:pre-wrap;box-shadow:0 10px 40px #0002';
-    box.textContent='Помилка запуску myHabbit\n\n'+String(error?.stack||error?.message||error);
-    if(!box.isConnected)document.body.appendChild(box);
-  };
-  window.addEventListener('error',e=>bootError(e.error||e.message));
-  window.addEventListener('unhandledrejection',e=>bootError(e.reason));
-  try{render();applyTheme();}catch(error){bootError(error);}
-  requestAnimationFrame(()=>document.getElementById('appSplash')?.classList.add('hidden'));
+  function updateSplash(percent,text){
+    const value=Math.max(0,Math.min(100,Number(percent)||0));
+    const bar=document.getElementById('splashProgressBar');
+    const label=document.getElementById('splashProgressText');
+    const status=document.getElementById('splashStatus');
+    if(bar)bar.style.width=`${value}%`;
+    if(label)label.textContent=`${value}%`;
+    if(status&&text)status.textContent=text;
+  }
+  function hideSplash(){document.getElementById('appSplash')?.classList.add('hidden');}
 
-  // Remove all older workers/caches once. They are not allowed to control this recovery build.
-  if('serviceWorker' in navigator){navigator.serviceWorker.getRegistrations().then(items=>Promise.all(items.map(x=>x.unregister()))).catch(()=>{});}
-  if('caches' in window){caches.keys().then(keys=>Promise.all(keys.map(k=>caches.delete(k)))).catch(()=>{});}
-
-  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')submitDailySnapshot({keepalive:true}).catch?.(()=>{});});
-  window.addEventListener('pagehide',()=>{try{submitDailySnapshot({keepalive:true});}catch{}});
-  const withTimeout=(promise,ms=6000)=>Promise.race([promise,new Promise((_,reject)=>setTimeout(()=>reject(new Error('Перевищено час очікування сервера')),ms))]);
-  setTimeout(async()=>{
+  // Offline preparation is intentionally background-only. It may update the
+  // splash progress while the splash is visible, but it can never block UI.
+  async function prepareOfflineApp(){
+    if(navigator.storage?.persist)navigator.storage.persist().catch(()=>{});
+    if(!('serviceWorker' in navigator))return false;
     try{
-      if(telegramInitData&&!auth&&!inviteToken)await withTimeout(resumeTelegramSession());
-      if(auth?.token){await withTimeout(submitDailySnapshot()).catch(()=>{});await withTimeout(pullRemote()).catch(()=>{});}
-      if(inviteToken&&!auth)await withTimeout(loadInviteInfo()).catch(()=>{});
+      const registration=await navigator.serviceWorker.register('/sw.js?v=101',{updateViaCache:'none'});
+      registration.update().catch(()=>{});
+      await Promise.race([
+        navigator.serviceWorker.ready,
+        new Promise(resolve=>setTimeout(resolve,3500))
+      ]);
+      const worker=registration.active||registration.waiting||registration.installing;
+      if(!worker)return false;
+      let settled=false;
+      const onMessage=event=>{
+        const data=event.data||{};
+        if(data.type==='OFFLINE_STATUS'){
+          if(!data.ready)worker.postMessage({type:'PRELOAD_ALL'});
+        }
+        if(data.type==='OFFLINE_PRELOAD_PROGRESS'){
+          updateSplash(Math.max(45,data.percent),`Зберігаємо для офлайн · ${data.completed}/${data.total}`);
+        }
+        if(data.type==='OFFLINE_PRELOAD_COMPLETE'){
+          settled=true;
+          navigator.serviceWorker.removeEventListener('message',onMessage);
+        }
+      };
+      navigator.serviceWorker.addEventListener('message',onMessage);
+      worker.postMessage({type:'GET_OFFLINE_STATUS'});
+      setTimeout(()=>{if(!settled)navigator.serviceWorker.removeEventListener('message',onMessage);},120000);
+      return true;
+    }catch(e){
+      console.warn('Offline preparation:',e);
+      return false;
+    }
+  }
+
+  function showBootError(error){
+    console.error(error);
+    const target=document.getElementById('app');
+    if(target&&!target.innerHTML.trim()){
+      target.innerHTML=`<main style="padding:24px;font-family:system-ui"><h2>Не вдалося запустити myHabbit</h2><pre style="white-space:pre-wrap">${escapeHtml(error?.stack||error?.message||String(error))}</pre></main>`;
+    }
+    hideSplash();
+  }
+
+  window.addEventListener('error',event=>showBootError(event.error||event.message));
+  window.addEventListener('unhandledrejection',event=>showBootError(event.reason));
+  window.addEventListener('popstate',()=>{route=new URLSearchParams(location.search).get('screen')||(auth?'dashboard':'landing');render();});
+  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')queueDailySnapshot();});
+  window.addEventListener('pagehide',()=>queueDailySnapshot());
+
+  (async()=>{
+    try{
+      updateSplash(10,'Запускаємо myHabbit…');
+
+      // First paint uses local state only and happens before network, Telegram,
+      // IndexedDB, content downloads, or Service Worker preparation.
       render();
-      if(auth?.token)setTimeout(checkDailyRoulette,350);
-    }catch(error){console.warn('[myHabbit background boot]',error);}
-  },50);
+      updateSplash(35,'Інтерфейс готовий');
+      setTimeout(hideSplash,450);
+
+      // Everything else is progressive enhancement in the background.
+      prepareOfflineApp().catch(()=>{});
+
+      if(telegramInitData&&!auth&&!inviteToken){
+        try{await resumeTelegramSession();render();}catch(e){console.warn('Telegram session:',e);}
+      }
+      if(inviteToken&&!auth){
+        try{await loadInviteInfo();render();}catch(e){console.warn('Invite:',e);}
+      }
+      try{await loadContentLibrary();render();}catch(e){console.warn('Content library:',e);}
+      if(auth?.token){
+        try{await runDailyServerSync();render();}catch(e){console.warn('Daily sync:',e);}
+        setTimeout(checkDailyRoulette,350);
+      }
+    }catch(error){
+      showBootError(error);
+    }
+  })();
 })();

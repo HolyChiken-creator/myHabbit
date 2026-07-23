@@ -1,3 +1,2 @@
-myHabbit 6.0 Stage 10.0 Direct Boot
-2026-07-23
-Fixed achievement icon initialization order; removed debug loader overlay; direct application boot restored.
+myHabbit v6.0 Stage 10.1 — Offline Safe Fix
+Build: 2026-07-23
