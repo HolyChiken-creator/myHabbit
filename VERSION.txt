@@ -1,1 +1,1 @@
-6.0.0-stage10.8-smart-sync-menu
+6.0.0-stage10.10-bot-health-planner

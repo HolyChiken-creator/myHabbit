@@ -1,4 +1,4 @@
-const APP_VERSION = '6.0.0-stage10.7-live-daily-market';
+const APP_VERSION = '6.0.0-stage10.10-bot-health-planner';
 const JSON_HEADERS = {
   'content-type': 'application/json; charset=utf-8',
   'cache-control': 'no-store'
@@ -259,15 +259,14 @@ const bootstrapTelegramBot = async (env, origin, { force = false } = {}) => {
     try {
       await telegramCall(env, 'setMyCommands', {
         commands: [
-          { command: 'start', description: 'Відкрити меню myHabbit' },
-          { command: 'code', description: 'Код для підключення нової PWA' },
-          { command: 'devices', description: 'Показати підключені PWA' },
-          { command: 'status', description: 'Статус нагадувань' },
-          { command: 'water', description: 'Статус води' },
-          { command: 'pause', description: 'Призупинити нагадування' },
-          { command: 'resume', description: 'Увімкнути нагадування' },
-          { command: 'version', description: 'Перевірити версію бота' },
-          { command: 'help', description: 'Допомога' }
+          { command: 'start', description: 'Відкрити головне меню' },
+          { command: 'recipes', description: 'Мої збережені рецепти' },
+          { command: 'calories', description: 'Калькулятор калорій KusWise' },
+          { command: 'routine', description: 'Особистий розпорядок дня' },
+          { command: 'note', description: 'Створити разове нагадування' },
+          { command: 'health', description: 'Налаштувати рутини здоров’я' },
+          { command: 'reminders', description: 'Переглянути всі нагадування' },
+          { command: 'version', description: 'Перевірити версію бота' }
         ]
       });
     } catch (error) {
@@ -276,11 +275,7 @@ const bootstrapTelegramBot = async (env, origin, { force = false } = {}) => {
 
     try {
       await telegramCall(env, 'setChatMenuButton', {
-        menu_button: {
-          type: 'web_app',
-          text: 'myHabbit',
-          web_app: { url: origin }
-        }
+        menu_button: { type: 'default' }
       });
     } catch (error) {
       warnings.push(`menu: ${error.message}`);
@@ -1396,18 +1391,122 @@ export class TelegramState {
     return ticket;
   }
 
-  mainKeyboard(user) {
-    const enabledLabel = user.enabled === false ? '▶️ Увімкнути нагадування' : '⏸ Призупинити нагадування';
+  async recipeRecords(user) {
+    const records = await this.state.storage.get(`bot:recipes:${user.id}`);
+    return Array.isArray(records) ? records : [];
+  }
+
+  async saveRecipeRecords(user, records) {
+    await this.state.storage.put(`bot:recipes:${user.id}`, records.slice(-100));
+  }
+
+  async routineRecords(user) {
+    const records = await this.state.storage.get(`bot:routine:${user.id}`);
+    return Array.isArray(records) ? records : [];
+  }
+
+  async saveRoutineRecords(user, records) {
+    await this.state.storage.put(`bot:routine:${user.id}`, records.slice(0, 50));
+  }
+
+  recipesKeyboard() {
     return {
       keyboard: [
-        [{ text: '🔗 Підключити PWA' }, { text: '📱 Мої PWA' }],
-        [{ text: '💧 Вода' }, { text: '🔔 Нагадування' }],
-        [{ text: '🌿 Відкрити застосунок' }],
-        [{ text: enabledLabel }, { text: '❓ Допомога' }]
+        [{ text: '➕ Записати рецепт' }, { text: '📚 Мої рецепти' }],
+        [{ text: '🗑 Видалити рецепт' }, { text: '🍎 Калькулятор калорій' }],
+        [{ text: '⬅️ Головне меню' }]
       ],
       resize_keyboard: true,
       is_persistent: true,
-      input_field_placeholder: 'Оберіть дію або напишіть повідомлення'
+      input_field_placeholder: 'Збережіть рецепт, посилання або нотатку'
+    };
+  }
+
+  routineKeyboard() {
+    return {
+      keyboard: [
+        [{ text: '➕ Щоденна рутина' }, { text: '📅 Розклад за днями' }],
+        [{ text: '📝 Разове нагадування' }, { text: '📋 Мій план' }],
+        [{ text: '🗑 Видалити нагадування' }, { text: '⚙️ Рутини здоров’я' }],
+        [{ text: '⬅️ Головне меню' }]
+      ],
+      resize_keyboard: true,
+      is_persistent: true,
+      input_field_placeholder: 'Оберіть тип події або нагадування'
+    };
+  }
+
+  healthKeyboard() {
+    return {
+      keyboard: [
+        [{ text: '💧 Налаштувати воду' }, { text: '🧘 Налаштувати відпочинок' }],
+        [{ text: '🏋️ Налаштувати тренування' }, { text: '❤️ Мої рутини здоров’я' }],
+        [{ text: '🗑 Очистити рутини здоров’я' }],
+        [{ text: '⬅️ До розпорядку' }]
+      ],
+      resize_keyboard: true,
+      is_persistent: true,
+      input_field_placeholder: 'Налаштуйте воду, паузи та тренування'
+    };
+  }
+
+  async setBotMode(user, mode = '') {
+    const updated = { ...user, botMode: mode, updatedAt: new Date().toISOString() };
+    await this.state.storage.put(`user:${user.id}`, updated);
+    return updated;
+  }
+
+  formatRecipes(records) {
+    if (!records.length) return '📚 <b>Збережених рецептів поки немає.</b>\n\nНатисніть «➕ Записати рецепт» і надішліть назву, текст або посилання.';
+    const visible = records.slice(-15).reverse();
+    const lines = visible.map((item, index) => {
+      const number = records.length - index;
+      return `<b>${number}.</b> ${escapeHtml(text(item.text, 700))}`;
+    });
+    return `📚 <b>Ваші рецепти: ${records.length}</b>\n\n${lines.join('\n\n')}${records.length > 15 ? '\n\n<i>Показано останні 15.</i>' : ''}`;
+  }
+
+  weekdayLabel(days = []) {
+    const labels = { 1: 'Пн', 2: 'Вт', 3: 'Ср', 4: 'Чт', 5: 'Пт', 6: 'Сб', 0: 'Нд' };
+    return days.map((day) => labels[day]).filter(Boolean).join(', ');
+  }
+
+  reminderRecordsText(records, filterKind = '') {
+    const filtered = filterKind ? records.filter((item) => item.kind === filterKind) : records;
+    if (!filtered.length) return filterKind === 'health'
+      ? '❤️ <b>Рутин здоров’я ще немає.</b>\n\nНалаштуйте воду, відпочинок або тренування.'
+      : '📋 <b>Ваш план поки порожній.</b>\n\nДодайте щоденну рутину, розклад за днями або разове нагадування.';
+    const sorted = [...filtered].sort((a, b) => `${a.date || '9999'} ${a.time || ''}`.localeCompare(`${b.date || '9999'} ${b.time || ''}`));
+    const lines = sorted.map((item) => {
+      let schedule = item.time || '';
+      if (item.recurrence === 'once') schedule = `${item.date} ${item.time}`;
+      if (item.recurrence === 'daily') schedule = `щодня ${item.time}`;
+      if (item.recurrence === 'weekly') schedule = `${this.weekdayLabel(item.days)} ${item.time}`;
+      const icon = item.kind === 'health' ? (item.healthType === 'water' ? '💧' : item.healthType === 'rest' ? '🧘' : '🏋️') : item.kind === 'note' ? '📝' : '🗓';
+      return `<b>${item.id}.</b> ${icon} ${escapeHtml(schedule)} — ${escapeHtml(item.title)}`;
+    });
+    return `${filterKind === 'health' ? '❤️ <b>Рутини здоров’я</b>' : '📋 <b>Ваші нагадування</b>'}\n\n${lines.join('\n')}`;
+  }
+
+  calorieLinksKeyboard() {
+    return {
+      inline_keyboard: [
+        [{ text: '🍎 Відкрити @Kuswise_bot', url: 'https://t.me/Kuswise_bot?start=myhabbit' }],
+        [{ text: '🧮 Калькулятор макросів', url: 'https://kuswise.com/uk/calculator' }]
+      ]
+    };
+  }
+
+  mainKeyboard() {
+    return {
+      keyboard: [
+        [{ text: '📖 Рецепти' }, { text: '🍎 Калькулятор калорій' }],
+        [{ text: '🗓 Мій розпорядок' }, { text: '📝 Нагадати мені' }],
+        [{ text: '⚙️ Рутини здоров’я' }, { text: '📋 Усі нагадування' }]
+      ],
+      resize_keyboard: true,
+      is_persistent: true,
+      input_field_placeholder: 'Рецепти, розпорядок і нагадування'
     };
   }
 
@@ -1430,47 +1529,35 @@ export class TelegramState {
     });
   }
 
-  async deviceListText(user) {
-    const devices = publicDevices(user);
-    const address = greeting(user);
-    if (!devices.length) {
-      return `📱 <b>${address[0].toUpperCase()}${address.slice(1)}, PWA ще не підключено.</b>\n\nНатисніть «🔗 Підключити PWA», а потім введіть отриманий код у встановленому застосунку.`;
-    }
-    const lines = devices.map((device, index) => {
-      let seen = 'нещодавно';
-      try {
-        seen = new Intl.DateTimeFormat('uk-UA', { timeZone: user.timezone || 'Europe/Kyiv', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }).format(new Date(device.lastSeenAt));
-      } catch {}
-      return `${index + 1}. <b>${escapeHtml(device.name)}</b> · активність ${escapeHtml(seen)}`;
-    });
-    return `📱 <b>Ваші підключені PWA: ${devices.length}</b>\n\n${lines.join('\n')}\n\nУсі вони працюють з однією сесією <code>${String(user.id).slice(0, 8).toUpperCase()}</code>. Для другого телефона отримайте окремий новий код.`;
+  parseTimes(value) {
+    return [...new Set(String(value).match(/(?:[01]\d|2[0-3]):[0-5]\d/g) || [])].sort();
   }
 
-  async waterStatusText(user) {
-    const record = await this.state.storage.get(`app:${user.id}`);
-    let local;
-    try { local = localClock(new Date(), user.timezone || 'Europe/Kyiv'); } catch { local = localClock(new Date(), 'Europe/Kyiv'); }
-    const current = Math.round(number(record?.state?.days?.[local.date]?.waterMl));
-    const goal = Math.round(user.waterGoalMl || record?.state?.goals?.water || 2000);
-    const remaining = Math.max(0, goal - current);
-    const address = greeting(user);
-    return `💧 <b>${address[0].toUpperCase()}${address.slice(1)}, сьогодні записано ${current} мл із ${goal} мл.</b>\n\n${remaining ? `До орієнтовної цілі залишилося <b>${remaining} мл</b>. Пийте комфортними порціями протягом дня.` : 'Денну орієнтовну ціль уже досягнуто. Не потрібно пити через силу.'}`;
+  parseWeekdays(value) {
+    const map = { 'пн': 1, 'понеділок': 1, 'вт': 2, 'вівторок': 2, 'ср': 3, 'середа': 3, 'чт': 4, 'четвер': 4, 'пт': 5, 'п’ятниця': 5, "п'ятниця": 5, 'сб': 6, 'субота': 6, 'нд': 0, 'неділя': 0 };
+    const lower = String(value).toLocaleLowerCase('uk-UA');
+    const result = [];
+    for (const [label, day] of Object.entries(map)) if (new RegExp(`(^|[^а-яіїєґ])${label.replace("'", "['’]")}([^а-яіїєґ]|$)`, 'iu').test(lower)) result.push(day);
+    return [...new Set(result)];
   }
 
-  miniAppButton(user, ticket) {
-    // Inline Web App buttons work without a separately configured Main Mini App.
-    // The opaque ticket points to one exact PWA session and is also checked against
-    // the verified Telegram user id on the server.
-    return {
-      text: '🌿 Открыть myHabbit',
-      web_app: { url: `${user.appUrl}/?telegram=1${ticket ? `&sw_session=${encodeURIComponent(ticket)}` : ''}` }
-    };
+  parseOneTime(value, timezone = 'Europe/Kyiv') {
+    const input = String(value).trim();
+    const match = input.match(/^(?:(\d{4})-(\d{2})-(\d{2})|(\d{1,2})[.\/-](\d{1,2})(?:[.\/-](\d{4}))?)\s+((?:[01]\d|2[0-3]):[0-5]\d)\s+(.+)$/u);
+    if (!match) return null;
+    const now = new Date();
+    let year = Number(match[1] || match[6] || now.getUTCFullYear());
+    const month = Number(match[2] || match[5]);
+    const day = Number(match[3] || match[4]);
+    const date = `${String(year).padStart(4, '0')}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || month < 1 || month > 12 || day < 1 || day > 31) return null;
+    return { date, time: match[7], title: text(match[8], 220) };
   }
 
   async webhook(update) {
     const message = update?.message;
     const chatId = message?.chat?.id;
-    const command = text(message?.text, 300);
+    const command = text(message?.text, 1200);
     if (!chatId || !command) return json({ ok: true });
 
     const appUrl = validAppUrl(update?._appUrl) || validAppUrl(this.env.APP_URL);
@@ -1479,25 +1566,15 @@ export class TelegramState {
     const isMaleChoice = /^(👨\s*)?(я\s*)?(чоловік|мужчина|пане|пан)$/iu.test(normalized);
     const isFemaleChoice = /^(👩\s*)?(я\s*)?(жінка|женщина|пані)$/iu.test(normalized);
 
-    if (/^\/version\b/i.test(command) || normalized === 'версія' || normalized === 'версия') {
-      await telegramCall(this.env, 'sendMessage', {
-        chat_id: chatId,
-        parse_mode: 'HTML',
-        text: `✅ <b>myHabbit Bot ${APP_VERSION}</b>\n\nЯкщо ви бачите це повідомлення, новий Worker і webhook уже активні.`
-      });
+    if (/^\/version\b/i.test(command)) {
+      await this.sendBotMessage(chatId, user, `✅ <b>myHabbit Bot ${APP_VERSION}</b>\n\nНовий Worker і webhook активні.`);
       return json({ ok: true, version: APP_VERSION });
     }
 
     if (isMaleChoice || isFemaleChoice) {
-      user = {
-        ...user,
-        gender: isFemaleChoice ? 'female' : 'male',
-        salutation: isFemaleChoice ? 'pani' : 'pan',
-        updatedAt: new Date().toISOString()
-      };
+      user = { ...user, gender: isFemaleChoice ? 'female' : 'male', salutation: isFemaleChoice ? 'pani' : 'pan', enabled: true, updatedAt: new Date().toISOString() };
       await this.state.storage.put(`user:${user.id}`, user);
-      const code = await this.createPwaClaim(user);
-      await this.sendBotMessage(chatId, user, `✅ <b>Дякую, ${greeting(user)}.</b>\n\nТепер я звертатимусь до вас правильно. Я працюю без AI: пояснюю дії, надсилаю ваш раціон, нагадую про воду та ментальну паузу.\n\nКод для підключення першої PWA: <code>${code}</code>\nВін діє 10 хвилин і використовується один раз.`);
+      await this.sendBotMessage(chatId, user, `✅ <b>Готово, ${greeting(user)}.</b>\n\nТут можна зберігати рецепти, вести особистий розпорядок і створювати нагадування.`);
       return json({ ok: true });
     }
 
@@ -1505,88 +1582,219 @@ export class TelegramState {
       await telegramCall(this.env, 'sendMessage', {
         chat_id: chatId,
         parse_mode: 'HTML',
-        text: '🌿 <b>Вітаю у myHabbit.</b>\n\nЯ допоможу підключити PWA, поясню статус синхронізації та надсилатиму зрозумілі нагадування.\n\nСпочатку оберіть, як до вас звертатися:',
+        text: '🌿 <b>Вітаю у myHabbit.</b>\n\nОберіть, як до вас звертатися:',
         reply_markup: this.genderKeyboard()
       });
       return json({ ok: true });
     }
 
-    const wantsCode = /^\/(code|connect|login)\b/i.test(command)
-      || normalized.includes('підключити pwa')
-      || normalized.includes('подключить pwa')
-      || normalized === 'код'
-      || normalized.includes('новий код')
-      || normalized.includes('новый код');
-
-    if (/^\/start\b/i.test(command) || wantsCode) {
-      const code = await this.createPwaClaim(user);
-      const count = pwaDeviceCount(user);
-      const next = count + 1;
-      const ticket = await this.createLaunchTicket(user);
-      await this.sendBotMessage(chatId, user, `🟢 <b>myHabbit Bot ${APP_VERSION}</b>\n\n🔗 <b>${greeting(user)[0].toUpperCase()}${greeting(user).slice(1)}, код для PWA №${next} готовий.</b>\n\n<code>${code}</code>\n\n1. Відкрийте myHabbit на потрібному телефоні.\n2. Перейдіть «Профіль → Telegram».\n3. Введіть цей код.\n\nКод діє <b>10 хвилин</b> і використовується один раз. Уже підключені PWA не відключаться.`, user.appUrl ? {
-        reply_markup: {
-          inline_keyboard: [[this.miniAppButton(user, ticket)]]
-        }
-      } : {});
-      // Restore the persistent menu after the inline message.
-      await this.sendBotMessage(chatId, user, `Зараз підключено PWA: <b>${count}</b>. Після успішного входу я одразу підтверджу новий пристрій повідомленням.`);
+    if (normalized === '⬅️ головне меню' || normalized === '⬅️ до розпорядку' || /^\/(start|menu)\b/i.test(command)) {
+      user = await this.setBotMode(user, '');
+      await this.sendBotMessage(chatId, user, '🌿 <b>Головне меню myHabbit</b>\n\nОберіть потрібний розділ.');
       return json({ ok: true });
     }
 
-    if (/^\/(devices|pwa)\b/i.test(command) || normalized.includes('мої pwa') || normalized.includes('мои pwa') || normalized.includes('пристрої') || normalized.includes('устройства')) {
-      await this.sendBotMessage(chatId, user, await this.deviceListText(user));
+    // Conversational input modes.
+    if (user.botMode === 'recipe_add') {
+      const records = await this.recipeRecords(user);
+      records.push({ id: randomText(5), text: text(command, 1200), createdAt: new Date().toISOString() });
+      await this.saveRecipeRecords(user, records);
+      user = await this.setBotMode(user, '');
+      await this.sendBotMessage(chatId, user, '✅ <b>Рецепт збережено.</b>', { reply_markup: this.recipesKeyboard() });
       return json({ ok: true });
     }
-
-    if (/^\/pause\b/i.test(command) || normalized.includes('призупинити нагадування') || normalized.includes('приостановить напоминания')) {
-      user.enabled = false;
-      user.updatedAt = new Date().toISOString();
-      await this.state.storage.put(`user:${user.id}`, user);
-      await this.sendBotMessage(chatId, user, `⏸ <b>Готово, ${greeting(user)}.</b>\n\nАвтоматичні нагадування призупинено. Сесія, щоденник і синхронізація між PWA продовжують працювати.`);
-      return json({ ok: true });
-    }
-
-    if (/^\/resume\b/i.test(command) || normalized.includes('увімкнути нагадування') || normalized.includes('включить напоминания') || normalized.includes('відновити нагадування')) {
-      user.enabled = true;
-      user.updatedAt = new Date().toISOString();
-      await this.state.storage.put(`user:${user.id}`, user);
-      await this.sendBotMessage(chatId, user, `▶️ <b>Нагадування знову активні, ${greeting(user)}.</b>\n\nЯ напишу у встановлений час про раціон, воду та ментальну паузу.`);
-      return json({ ok: true });
-    }
-
-    if (/^\/status\b/i.test(command) || normalized.includes('нагадування') || normalized.includes('напоминания')) {
-      const status = user.enabled === false ? 'призупинені' : 'активні';
-      await this.sendBotMessage(chatId, user, `🔔 <b>${greeting(user)[0].toUpperCase()}${greeting(user).slice(1)}, нагадування ${status}.</b>\n\nСніданок — ${escapeHtml(user.times?.breakfast || '08:00')}\nВода — ${escapeHtml(user.times?.waterMorning || '10:30')} і ${escapeHtml(user.times?.waterAfternoon || '16:00')}\nОбід — ${escapeHtml(user.times?.lunch || '13:00')}\nВечеря — ${escapeHtml(user.times?.dinner || '19:00')}\nМентальна пауза — ${escapeHtml(user.times?.mental || '21:00')}\n\nПідключено PWA: <b>${pwaDeviceCount(user)}</b>.`);
-      return json({ ok: true });
-    }
-
-    if (/^\/water\b/i.test(command) || normalized === '💧 вода' || normalized.includes('скільки води') || normalized.includes('сколько воды')) {
-      await this.sendBotMessage(chatId, user, await this.waterStatusText(user));
-      return json({ ok: true });
-    }
-
-    if (/^\/(open|app)\b/i.test(command) || normalized.includes('відкрити застосунок') || normalized.includes('открыть приложение')) {
-      const ticket = await this.createLaunchTicket(user);
-      if (!user.appUrl) {
-        await this.sendBotMessage(chatId, user, 'Mini App ще не налаштовано на адресу застосунку. Спочатку виконайте деплой та відкрийте бот з оновленого проєкту.');
-      } else {
-        await telegramCall(this.env, 'sendMessage', {
-          chat_id: chatId,
-          parse_mode: 'HTML',
-          text: `🌿 <b>Відкриваю вашу спільну сесію, ${greeting(user)}.</b>\n\nКнопка нижче завжди веде до того самого Telegram-акаунта та спільного щоденника.`,
-          reply_markup: { inline_keyboard: [[this.miniAppButton(user, ticket)]] }
-        });
-        await this.sendBotMessage(chatId, user, 'Після закриття Mini App меню бота залишиться доступним нижче.');
+    if (user.botMode === 'recipe_delete') {
+      const records = await this.recipeRecords(user);
+      const index = Number(command) - 1;
+      if (!Number.isInteger(index) || index < 0 || index >= records.length) {
+        await this.sendBotMessage(chatId, user, 'Вкажіть номер рецепта зі списку.', { reply_markup: this.recipesKeyboard() });
+        return json({ ok: true });
       }
+      records.splice(index, 1);
+      await this.saveRecipeRecords(user, records);
+      user = await this.setBotMode(user, '');
+      await this.sendBotMessage(chatId, user, '🗑 <b>Рецепт видалено.</b>', { reply_markup: this.recipesKeyboard() });
       return json({ ok: true });
     }
 
-    if (/^\/(help|menu)\b/i.test(command) || normalized.includes('допомога') || normalized.includes('помощь')) {
-      await this.sendBotMessage(chatId, user, `❓ <b>myHabbit Bot ${APP_VERSION}</b>\n\n<b>Що я вмію, ${greeting(user)}:</b>\n\n🔗 <b>Підключити PWA</b> — створюю окремий код для кожного телефона.\n📱 <b>Мої PWA</b> — показую всі підключені пристрої.\n💧 <b>Вода</b> — показую записаний обсяг і денну ціль.\n🔔 <b>Нагадування</b> — показую розклад та дозволяю призупинити його.\n🌿 <b>Відкрити застосунок</b> — запускаю Mini App у спільній сесії.\n\nЯ працюю без генеративного AI — відповіді та дії визначені заздалегідь, тому дані не вигадуються.`);
+    const reminders = await this.routineRecords(user);
+    const nextId = () => reminders.reduce((max, item) => Math.max(max, Number(item.id) || 0), 0) + 1;
+
+    if (user.botMode === 'routine_daily') {
+      const match = command.match(/^((?:[01]\d|2[0-3]):[0-5]\d)\s+(.+)$/u);
+      if (!match) {
+        await this.sendBotMessage(chatId, user, 'Надішліть у форматі: <code>08:30 Сніданок</code>', { reply_markup: this.routineKeyboard() });
+        return json({ ok: true });
+      }
+      reminders.push({ id: nextId(), kind: 'routine', recurrence: 'daily', time: match[1], title: text(match[2], 220), enabled: true, createdAt: new Date().toISOString() });
+      await this.saveRoutineRecords(user, reminders);
+      user = await this.setBotMode(user, '');
+      await this.sendBotMessage(chatId, user, '✅ <b>Щоденну рутину додано.</b>', { reply_markup: this.routineKeyboard() });
+      return json({ ok: true });
+    }
+    if (user.botMode === 'routine_weekly') {
+      const time = this.parseTimes(command)[0];
+      const days = this.parseWeekdays(command);
+      const title = text(command.replace(/(?:[01]\d|2[0-3]):[0-5]\d/, '').replace(/^(?:пн|вт|ср|чт|пт|сб|нд|понеділок|вівторок|середа|четвер|п['’]ятниця|субота|неділя)(?:\s*[,;]\s*(?:пн|вт|ср|чт|пт|сб|нд|понеділок|вівторок|середа|четвер|п['’]ятниця|субота|неділя))*\s*/iu, ''), 220);
+      if (!time || !days.length || !title) {
+        await this.sendBotMessage(chatId, user, 'Надішліть у форматі: <code>пн, ср, пт 18:30 Тренування</code>', { reply_markup: this.routineKeyboard() });
+        return json({ ok: true });
+      }
+      reminders.push({ id: nextId(), kind: 'routine', recurrence: 'weekly', days, time, title, enabled: true, createdAt: new Date().toISOString() });
+      await this.saveRoutineRecords(user, reminders);
+      user = await this.setBotMode(user, '');
+      await this.sendBotMessage(chatId, user, '✅ <b>Розклад за днями додано.</b>', { reply_markup: this.routineKeyboard() });
+      return json({ ok: true });
+    }
+    if (user.botMode === 'note_once') {
+      const parsed = this.parseOneTime(command, user.timezone);
+      if (!parsed) {
+        await this.sendBotMessage(chatId, user, 'Надішліть дату, час і текст: <code>25.07.2026 18:30 Купити продукти</code>', { reply_markup: this.routineKeyboard() });
+        return json({ ok: true });
+      }
+      reminders.push({ id: nextId(), kind: 'note', recurrence: 'once', ...parsed, enabled: true, createdAt: new Date().toISOString() });
+      await this.saveRoutineRecords(user, reminders);
+      user = await this.setBotMode(user, '');
+      await this.sendBotMessage(chatId, user, `✅ <b>Нагадування створено:</b> ${escapeHtml(parsed.date)} о ${escapeHtml(parsed.time)}.`, { reply_markup: this.routineKeyboard() });
+      return json({ ok: true });
+    }
+    if (user.botMode === 'reminder_delete') {
+      const id = Number(command);
+      const kept = reminders.filter((item) => Number(item.id) !== id);
+      if (!Number.isInteger(id) || kept.length === reminders.length) {
+        await this.sendBotMessage(chatId, user, 'Вкажіть номер нагадування зі списку.', { reply_markup: this.routineKeyboard() });
+        return json({ ok: true });
+      }
+      await this.saveRoutineRecords(user, kept);
+      user = await this.setBotMode(user, '');
+      await this.sendBotMessage(chatId, user, '🗑 <b>Нагадування видалено.</b>', { reply_markup: this.routineKeyboard() });
+      return json({ ok: true });
+    }
+    if (user.botMode === 'health_water') {
+      const times = this.parseTimes(command);
+      if (!times.length) {
+        await this.sendBotMessage(chatId, user, 'Вкажіть один або кілька часів: <code>09:00, 12:00, 15:00, 18:00</code>', { reply_markup: this.healthKeyboard() });
+        return json({ ok: true });
+      }
+      const clean = reminders.filter((item) => !(item.kind === 'health' && item.healthType === 'water'));
+      for (const time of times) clean.push({ id: clean.reduce((m, i) => Math.max(m, Number(i.id) || 0), 0) + 1, kind: 'health', healthType: 'water', recurrence: 'daily', time, title: 'Час випити води', enabled: true });
+      await this.saveRoutineRecords(user, clean);
+      user = await this.setBotMode(user, '');
+      await this.sendBotMessage(chatId, user, `💧 <b>Нагадування про воду налаштовано:</b> ${times.join(', ')}.`, { reply_markup: this.healthKeyboard() });
+      return json({ ok: true });
+    }
+    if (user.botMode === 'health_rest') {
+      const times = this.parseTimes(command);
+      if (!times.length) {
+        await this.sendBotMessage(chatId, user, 'Вкажіть час пауз: <code>11:30, 16:30</code>', { reply_markup: this.healthKeyboard() });
+        return json({ ok: true });
+      }
+      const clean = reminders.filter((item) => !(item.kind === 'health' && item.healthType === 'rest'));
+      for (const time of times) clean.push({ id: clean.reduce((m, i) => Math.max(m, Number(i.id) || 0), 0) + 1, kind: 'health', healthType: 'rest', recurrence: 'daily', time, title: 'Час трохи відпочити', enabled: true });
+      await this.saveRoutineRecords(user, clean);
+      user = await this.setBotMode(user, '');
+      await this.sendBotMessage(chatId, user, `🧘 <b>Паузи для відпочинку налаштовано:</b> ${times.join(', ')}.`, { reply_markup: this.healthKeyboard() });
+      return json({ ok: true });
+    }
+    if (user.botMode === 'health_training') {
+      const time = this.parseTimes(command)[0];
+      const days = this.parseWeekdays(command);
+      if (!time || !days.length) {
+        await this.sendBotMessage(chatId, user, 'Надішліть дні й час: <code>пн, ср, пт 18:30</code>', { reply_markup: this.healthKeyboard() });
+        return json({ ok: true });
+      }
+      const clean = reminders.filter((item) => !(item.kind === 'health' && item.healthType === 'training'));
+      clean.push({ id: clean.reduce((m, i) => Math.max(m, Number(i.id) || 0), 0) + 1, kind: 'health', healthType: 'training', recurrence: 'weekly', days, time, title: 'Сьогодні тренування', enabled: true });
+      await this.saveRoutineRecords(user, clean);
+      user = await this.setBotMode(user, '');
+      await this.sendBotMessage(chatId, user, `🏋️ <b>Тренування налаштовано:</b> ${this.weekdayLabel(days)} о ${time}.`, { reply_markup: this.healthKeyboard() });
       return json({ ok: true });
     }
 
-    await this.sendBotMessage(chatId, user, `Я вас почув, ${greeting(user)}. Я працюю без AI, тому виконую конкретні команди й кнопки. Оберіть потрібну дію в меню нижче або напишіть: «код», «вода», «пристрої», «нагадування».`);
+    if (/^\/recipes\b/i.test(command) || normalized === '📖 рецепти') {
+      user = await this.setBotMode(user, '');
+      await this.sendBotMessage(chatId, user, '📖 <b>Рецепти</b>\n\nТут можна зберігати назву, інгредієнти, спосіб приготування або посилання.', { reply_markup: this.recipesKeyboard() });
+      return json({ ok: true });
+    }
+    if (normalized === '➕ записати рецепт') {
+      user = await this.setBotMode(user, 'recipe_add');
+      await this.sendBotMessage(chatId, user, 'Надішліть рецепт одним повідомленням. Можна додати посилання.', { reply_markup: this.recipesKeyboard() });
+      return json({ ok: true });
+    }
+    if (normalized === '📚 мої рецепти') {
+      await this.sendBotMessage(chatId, user, this.formatRecipes(await this.recipeRecords(user)), { reply_markup: this.recipesKeyboard() });
+      return json({ ok: true });
+    }
+    if (normalized === '🗑 видалити рецепт') {
+      user = await this.setBotMode(user, 'recipe_delete');
+      await this.sendBotMessage(chatId, user, `${this.formatRecipes(await this.recipeRecords(user))}\n\nНадішліть номер рецепта для видалення.`, { reply_markup: this.recipesKeyboard() });
+      return json({ ok: true });
+    }
+    if (/^\/calories\b/i.test(command) || normalized === '🍎 калькулятор калорій') {
+      await telegramCall(this.env, 'sendMessage', { chat_id: chatId, parse_mode: 'HTML', text: '🍎 <b>Калькулятор калорій</b>\n\nВідкрийте KusWise для розпізнавання їжі або розрахунку калорій і макросів.', reply_markup: this.calorieLinksKeyboard() });
+      await this.sendBotMessage(chatId, user, 'Головне меню залишається доступним нижче.');
+      return json({ ok: true });
+    }
+    if (/^\/routine\b/i.test(command) || normalized === '🗓 мій розпорядок' || normalized === '🗓 розпорядок дня') {
+      user = await this.setBotMode(user, '');
+      await this.sendBotMessage(chatId, user, '🗓 <b>Особистий розпорядок</b>\n\nДодавайте щоденні справи, події за днями тижня та разові замітки з майбутнім нагадуванням.', { reply_markup: this.routineKeyboard() });
+      return json({ ok: true });
+    }
+    if (normalized === '➕ щоденна рутина') {
+      user = await this.setBotMode(user, 'routine_daily');
+      await this.sendBotMessage(chatId, user, 'Надішліть час і назву: <code>08:30 Сніданок</code>', { reply_markup: this.routineKeyboard() });
+      return json({ ok: true });
+    }
+    if (normalized === '📅 розклад за днями') {
+      user = await this.setBotMode(user, 'routine_weekly');
+      await this.sendBotMessage(chatId, user, 'Надішліть дні, час і назву: <code>пн, ср, пт 18:30 Тренування</code>', { reply_markup: this.routineKeyboard() });
+      return json({ ok: true });
+    }
+    if (/^\/note\b/i.test(command) || normalized === '📝 нагадати мені' || normalized === '📝 разове нагадування') {
+      user = await this.setBotMode(user, 'note_once');
+      await this.sendBotMessage(chatId, user, 'Надішліть дату, час і замітку: <code>25.07.2026 18:30 Подзвонити мамі</code>', { reply_markup: this.routineKeyboard() });
+      return json({ ok: true });
+    }
+    if (/^\/reminders\b/i.test(command) || normalized === '📋 усі нагадування' || normalized === '📋 мій план') {
+      await this.sendBotMessage(chatId, user, this.reminderRecordsText(reminders), { reply_markup: this.routineKeyboard() });
+      return json({ ok: true });
+    }
+    if (normalized === '🗑 видалити нагадування') {
+      user = await this.setBotMode(user, 'reminder_delete');
+      await this.sendBotMessage(chatId, user, `${this.reminderRecordsText(reminders)}\n\nНадішліть номер для видалення.`, { reply_markup: this.routineKeyboard() });
+      return json({ ok: true });
+    }
+    if (/^\/health\b/i.test(command) || normalized === '⚙️ рутини здоров’я' || normalized === "⚙️ рутини здоров'я") {
+      user = await this.setBotMode(user, '');
+      await this.sendBotMessage(chatId, user, '⚙️ <b>Рутини здоров’я</b>\n\nОкремо налаштуйте воду, короткі паузи та дні тренувань.', { reply_markup: this.healthKeyboard() });
+      return json({ ok: true });
+    }
+    if (normalized === '💧 налаштувати воду') {
+      user = await this.setBotMode(user, 'health_water');
+      await this.sendBotMessage(chatId, user, 'Вкажіть часи через кому: <code>09:00, 12:00, 15:00, 18:00</code>', { reply_markup: this.healthKeyboard() });
+      return json({ ok: true });
+    }
+    if (normalized === '🧘 налаштувати відпочинок') {
+      user = await this.setBotMode(user, 'health_rest');
+      await this.sendBotMessage(chatId, user, 'Вкажіть час коротких пауз: <code>11:30, 16:30</code>', { reply_markup: this.healthKeyboard() });
+      return json({ ok: true });
+    }
+    if (normalized === '🏋️ налаштувати тренування') {
+      user = await this.setBotMode(user, 'health_training');
+      await this.sendBotMessage(chatId, user, 'Вкажіть дні та час: <code>пн, ср, пт 18:30</code>', { reply_markup: this.healthKeyboard() });
+      return json({ ok: true });
+    }
+    if (normalized === '❤️ мої рутини здоров’я' || normalized === "❤️ мої рутини здоров'я") {
+      await this.sendBotMessage(chatId, user, this.reminderRecordsText(reminders, 'health'), { reply_markup: this.healthKeyboard() });
+      return json({ ok: true });
+    }
+    if (normalized === '🗑 очистити рутини здоров’я' || normalized === "🗑 очистити рутини здоров'я") {
+      await this.saveRoutineRecords(user, reminders.filter((item) => item.kind !== 'health'));
+      await this.sendBotMessage(chatId, user, '🗑 <b>Усі рутини здоров’я видалено.</b>', { reply_markup: this.healthKeyboard() });
+      return json({ ok: true });
+    }
+
+    await this.sendBotMessage(chatId, user, 'Оберіть потрібний розділ у меню нижче.');
     return json({ ok: true });
   }
 
@@ -1595,40 +1803,45 @@ export class TelegramState {
     const now = new Date();
     let sent = 0;
     for (const user of users.values()) {
-      if (!user.enabled || !user.chatId) continue;
+      if (!user.chatId) continue;
       let local;
       try { local = localClock(now, user.timezone || 'Europe/Kyiv'); } catch { local = localClock(now, 'Europe/Kyiv'); }
-      const schedule = {
-        breakfast: user.times?.breakfast,
-        lunch: user.times?.lunch,
-        dinner: user.times?.dinner,
-        waterMorning: user.times?.waterMorning,
-        waterAfternoon: user.times?.waterAfternoon,
-        mental: user.times?.mental
-      };
-      for (const [type, time] of Object.entries(schedule)) {
-        if (time !== local.time) continue;
-        const sentKey = `sent:${user.id}:${local.date}:${type}`;
+      const reminders = await this.routineRecords(user);
+      const weekday = new Date(`${local.date}T12:00:00Z`).getUTCDay();
+      let changed = false;
+      const [currentHour, currentMinute] = local.time.split(':').map(Number);
+      const currentTotalMinutes = currentHour * 60 + currentMinute;
+      for (const item of reminders) {
+        if (item.enabled === false || !/^([01]\d|2[0-3]):[0-5]\d$/.test(String(item.time))) continue;
+        const [itemHour, itemMinute] = String(item.time).split(':').map(Number);
+        const delayMinutes = currentTotalMinutes - (itemHour * 60 + itemMinute);
+        if (delayMinutes < 0 || delayMinutes > 4) continue;
+        const matches = item.recurrence === 'daily'
+          || (item.recurrence === 'weekly' && Array.isArray(item.days) && item.days.includes(weekday))
+          || (item.recurrence === 'once' && item.date === local.date);
+        if (!matches) continue;
+        const sentKey = `sent:${user.id}:${local.date}:custom:${item.id}`;
         if (await this.state.storage.get(sentKey)) continue;
+        const icon = item.kind === 'health' ? (item.healthType === 'water' ? '💧' : item.healthType === 'rest' ? '🧘' : '🏋️') : item.kind === 'note' ? '📝' : '🗓';
         try {
           await telegramCall(this.env, 'sendMessage', {
             chat_id: user.chatId,
             parse_mode: 'HTML',
             disable_web_page_preview: true,
-            text: messageFor(user, type, local.date)
+            text: `${icon} <b>${escapeHtml(item.time)} — ${escapeHtml(item.title)}</b>\n\n${item.kind === 'health' ? 'Турботливе нагадування з ваших налаштувань здоров’я.' : item.kind === 'note' ? 'Ваша особиста замітка з майбутнім нагадуванням.' : 'Подія з вашого особистого розпорядку.'}`
           });
           await this.state.storage.put(sentKey, now.toISOString());
           sent += 1;
-        } catch (error) {
-          console.error('Telegram send failed', user.id, type, error.message);
-          if (error.status === 403) {
-            user.enabled = false;
-            user.lastError = 'Bot blocked or chat unavailable';
-            user.updatedAt = new Date().toISOString();
-            await this.state.storage.put(`user:${user.id}`, user);
+          if (item.recurrence === 'once') {
+            item.enabled = false;
+            item.completedAt = now.toISOString();
+            changed = true;
           }
+        } catch (error) {
+          console.error('Custom reminder failed', user.id, item.id, error.message);
         }
       }
+      if (changed) await this.saveRoutineRecords(user, reminders);
     }
     await this.cleanupSentKeys(now);
     return json({ ok: true, sent });
