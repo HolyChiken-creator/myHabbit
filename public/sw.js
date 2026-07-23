@@ -1,5 +1,5 @@
-const CACHE = 'myhabbit-stage94-recovery-v1';
-const CORE = ['/', '/index.html', '/styles.css?v=60s94', '/app.js?v=60s94', '/manifest.webmanifest',
+const CACHE = 'myhabbit-stage7-v1';
+const CORE = ['/', '/index.html', '/styles.css?v=60s1', '/app.js?v=60s1', '/manifest.webmanifest',
   '/content/index.json', '/icons/icon-32.png', '/icons/icon-180.png', '/icons/icon-192.png', '/icons/icon-512.png', '/icons/maskable-512.png', '/assets/myhabbit-stage7-v1'];
 const OPTIONAL = [];
 

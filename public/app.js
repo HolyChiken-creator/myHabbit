@@ -9,7 +9,7 @@
   const LAST_SERVER_PULL = 'myHabbitLastServerPullV1';
   const CONTENT_CACHE = 'myHabbitContentLibraryV1';
   const CONTENT_VERSION = '1.0.0';
-  const APP_VERSION = '6.0.0-stage9.4-stable-rollback';
+  const APP_VERSION = '6.0.0-stage9.5-safe-boot';
   const ACCOUNTS = 'myHabbitAccountsV1';
   const ACTIVE_ACCOUNT = 'myHabbitActiveAccountV1';
   const QUEST_CATEGORIES = ['family','relationship','home','sport','health','mind','reading','cinema','creativity','finance','discipline'];
@@ -338,7 +338,7 @@
   function skillLabel(k){return {family:'Наші разом',relationship:'Близькість',home:'Наш куточок',sport:'Руханка',health:'Сили й баланс',mind:'Цікавинки',reading:'Книжкові мандри',cinema:'Кіновечори',creativity:'Натхнення',finance:'Скарбничка',discipline:'Мій ритм',care:'Тепло',growth:'Нові відкриття'}[k]||k;}
   function skillIcon(k){return {family:'👨‍👩‍👧‍👦',relationship:'💞',home:'🏠',sport:'💪',health:'❤️',mind:'🧠',reading:'📖',cinema:'🎬',creativity:'🎨',finance:'💰',discipline:'🔥',care:'💞',growth:'🧠'}[k]||'⭐';}
   function rarityLabel(r){return {common:'Звичайна',uncommon:'Незвичайна',rare:'Рідкісна',epic:'Епічна',legendary:'Легендарна',secret:'Секретна'}[r]||r;}
-  function questFromCatalog(q){const skills=q.rewards?.skills||{};const primary=Object.keys(skills)[0]||q.category||'discipline';return {id:q.id,title:q.title,icon:skillIcon(q.category),description:q.description||'Завдання з бібліотеки myHabbit',type:q.type||'personal',participants:['pair','coop'].includes(q.type)?2:1,claimedBy:[],rewardCoins:Number(q.rewards?.coins||0),rewardXp:Number(q.rewards?.xp||0),skill:primary,skillXp:Number(skills[primary]||0),skillRewards:skills,status:q.active===false?'paused':'active',limited:q.type==='limited',stock:q.type==='limited'?1:null,difficulty:q.difficulty,rarity:q.rarity,repeatType:q.repeatType||'none',unlockLevel:Number(q.unlockLevel||1),catalog:true,resourceUrl:cleanResourceUrl(i.resourceUrl||i.referenceUrl||'')};}
+  function questFromCatalog(q){const skills=q.rewards?.skills||{};const primary=Object.keys(skills)[0]||q.category||'discipline';return {id:q.id,title:q.title,icon:skillIcon(q.category),description:q.description||'Завдання з бібліотеки myHabbit',type:q.type||'personal',participants:['pair','coop'].includes(q.type)?2:1,claimedBy:[],rewardCoins:Number(q.rewards?.coins||0),rewardXp:Number(q.rewards?.xp||0),skill:primary,skillXp:Number(skills[primary]||0),skillRewards:skills,status:q.active===false?'paused':'active',limited:q.type==='limited',stock:q.type==='limited'?1:null,difficulty:q.difficulty,rarity:q.rarity,repeatType:q.repeatType||'none',unlockLevel:Number(q.unlockLevel||1),catalog:true,resourceUrl:cleanResourceUrl(q.resourceUrl||q.referenceUrl||'')};}
   function achievementFromCatalog(a){
     const target=Number(a.condition?.value||a.targetValue||1);
     const achievement={id:a.id,icon:'🏆',title:String(a.title||'Досягнення').replace(/^\p{Extended_Pictographic}+\s*/u,''),description:a.description||'Виконай умову досягнення.',rarity:rarityLabel(a.rarity),target,progress:0,category:a.category,hidden:Boolean(a.hidden),catalog:true,resourceUrl:cleanResourceUrl(a.resourceUrl||a.referenceUrl||'')};
@@ -880,10 +880,34 @@
   }
 
   window.addEventListener('popstate',()=>{route=new URLSearchParams(location.search).get('screen')||(auth?'dashboard':'landing');render();});
-  if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(()=>{});
-  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')submitDailySnapshot({keepalive:true});});
-  window.addEventListener('pagehide',()=>submitDailySnapshot({keepalive:true}));
-  (async()=>{if(telegramInitData&&!auth&&!inviteToken)await resumeTelegramSession();if(auth?.token){await submitDailySnapshot();await pullRemote();}if(inviteToken&&!auth)await loadInviteInfo();render();if(auth?.token)setTimeout(checkDailyRoulette,350);})();
-})();
+  // Stage 9.5 safe boot: first paint must never wait for Telegram, network, IndexedDB or Service Worker.
+  const bootError=(error)=>{
+    console.error('[myHabbit boot]',error);
+    const box=document.getElementById('appBootError')||document.createElement('pre');
+    box.id='appBootError';
+    box.style.cssText='position:fixed;inset:12px;z-index:999999;overflow:auto;padding:16px;border-radius:18px;background:#fff1f1;color:#7c2020;font:13px/1.45 monospace;white-space:pre-wrap;box-shadow:0 10px 40px #0002';
+    box.textContent='Помилка запуску myHabbit\n\n'+String(error?.stack||error?.message||error);
+    if(!box.isConnected)document.body.appendChild(box);
+  };
+  window.addEventListener('error',e=>bootError(e.error||e.message));
+  window.addEventListener('unhandledrejection',e=>bootError(e.reason));
+  try{render();applyTheme();}catch(error){bootError(error);}
+  requestAnimationFrame(()=>document.getElementById('appSplash')?.classList.add('hidden'));
 
-requestAnimationFrame(()=>document.getElementById('appSplash')?.classList.add('hidden'));
+  // Remove all older workers/caches once. They are not allowed to control this recovery build.
+  if('serviceWorker' in navigator){navigator.serviceWorker.getRegistrations().then(items=>Promise.all(items.map(x=>x.unregister()))).catch(()=>{});}
+  if('caches' in window){caches.keys().then(keys=>Promise.all(keys.map(k=>caches.delete(k)))).catch(()=>{});}
+
+  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')submitDailySnapshot({keepalive:true}).catch?.(()=>{});});
+  window.addEventListener('pagehide',()=>{try{submitDailySnapshot({keepalive:true});}catch{}});
+  const withTimeout=(promise,ms=6000)=>Promise.race([promise,new Promise((_,reject)=>setTimeout(()=>reject(new Error('Перевищено час очікування сервера')),ms))]);
+  setTimeout(async()=>{
+    try{
+      if(telegramInitData&&!auth&&!inviteToken)await withTimeout(resumeTelegramSession());
+      if(auth?.token){await withTimeout(submitDailySnapshot()).catch(()=>{});await withTimeout(pullRemote()).catch(()=>{});}
+      if(inviteToken&&!auth)await withTimeout(loadInviteInfo()).catch(()=>{});
+      render();
+      if(auth?.token)setTimeout(checkDailyRoulette,350);
+    }catch(error){console.warn('[myHabbit background boot]',error);}
+  },50);
+})();

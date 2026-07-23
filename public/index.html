@@ -8,28 +8,34 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="myHabbit">
   <meta name="description" content="myHabbit — сімейна система спільних квестів, навичок, досягнень і реальних нагород.">
-  <link rel="manifest" href="/manifest.webmanifest">
-  <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
-  <link rel="shortcut icon" href="/icons/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180.png">
-  <link rel="apple-touch-startup-image" href="/assets/splash-1170x2532.png" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3)">
-  <link rel="apple-touch-startup-image" href="/assets/splash-1290x2796.png" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3)">
-  <link rel="apple-touch-startup-image" href="/assets/splash-1242x2688.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)">
-  <link rel="apple-touch-startup-image" href="/assets/splash-828x1792.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)">
-  <link rel="stylesheet" href="/styles.css?v=60s94">
+  <link rel="manifest" href="/manifest.webmanifest?v=95">
+  <link rel="stylesheet" href="/styles.css?v=95-safe-boot">
   <title>myHabbit</title>
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script>
+    window.__MYHABBIT_BOOT_STARTED__=Date.now();
+    window.addEventListener('error',function(e){
+      var app=document.getElementById('app');
+      if(app&&!app.innerHTML.trim()) app.innerHTML='<main style="padding:24px;font-family:system-ui"><h2>myHabbit не зміг запуститися</h2><p style="white-space:pre-wrap;color:#8b2b2b">'+String(e.message||'Невідома помилка')+'</p></main>';
+      document.getElementById('appSplash')?.classList.add('hidden');
+    });
+  </script>
+  <script src="https://telegram.org/js/telegram-web-app.js" async></script>
 </head>
 <body>
   <div id="appSplash" class="app-splash" role="status" aria-label="Завантаження myHabbit">
-    <img src="/assets/myhabbit-brand.webp" alt="myHabbit — щаслива пара серед хмар">
+    <img src="/assets/myhabbit-brand.webp" alt="myHabbit">
     <strong>myHabbit</strong>
     <span>Разом ростемо. Разом досягаємо.</span>
   </div>
-  <div id="app"></div>
+  <div id="app"><main style="padding:24px;font-family:system-ui"><h2>Запуск myHabbit…</h2><p>Готуємо локальні дані.</p></main></div>
   <div id="toast" class="toast" aria-live="polite"></div>
-  <script src="/app.js?v=60s94" defer onerror="document.getElementById('appSplash')?.classList.add('hidden');document.getElementById('app').innerHTML='<main style=&quot;padding:24px;font-family:system-ui&quot;><h1>Не вдалося завантажити застосунок</h1><p>Перевірте файл public/app.js.</p></main>'"></script>
-  <script>setTimeout(()=>document.getElementById('appSplash')?.classList.add('hidden'),4500)</script>
+  <script src="/app.js?v=95-safe-boot"></script>
+  <script>
+    setTimeout(function(){
+      document.getElementById('appSplash')?.classList.add('hidden');
+      var app=document.getElementById('app');
+      if(app && !app.innerHTML.trim()) app.innerHTML='<main style="padding:24px;font-family:system-ui"><h2>Інтерфейс не намалювався</h2><p>Основний JavaScript не виконався. Відкрийте цю сторінку ще раз після очищення кешу.</p></main>';
+    },2500);
+  </script>
 </body>
 </html>
