@@ -1,1 +1,2 @@
-6.0.0-stage9.5-safe-boot
+myHabbit Stage 9.6 diagnostic clean boot
+Build: 2026-07-23
