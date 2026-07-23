@@ -12,7 +12,7 @@
   const OFFLINE_STORE = 'library';
   const CONTENT_CACHE = 'myHabbitContentLibraryV1';
   const CONTENT_VERSION = '1.0.0';
-  const APP_VERSION = '6.0.0-stage9-offline-first';
+  const APP_VERSION = '6.0.1-stage9-offline-hotfix';
   const ACCOUNTS = 'myHabbitAccountsV1';
   const ACTIVE_ACCOUNT = 'myHabbitActiveAccountV1';
   const QUEST_CATEGORIES = ['family','relationship','home','sport','health','mind','reading','cinema','creativity','finance','discipline'];
@@ -957,15 +957,25 @@
   window.addEventListener('pagehide',()=>queueDailySnapshot());
   (async()=>{
     updateSplash(4,'Запускаємо myHabbit…');
-    const offlinePromise=prepareOfflineApp();
-    if(telegramInitData&&!auth&&!inviteToken)await resumeTelegramSession();
-    if(auth?.token)await runDailyServerSync();
-    if(inviteToken&&!auth)await loadInviteInfo();
-    await loadContentLibrary();
-    render();
-    await offlinePromise;
-    updateSplash(100,'Готово');
-    setTimeout(hideSplash,250);
-    if(auth?.token)setTimeout(checkDailyRoulette,350);
+    const splashFailsafe=setTimeout(()=>{updateSplash(100,'Готово');hideSplash();},5000);
+    try{
+      if(telegramInitData&&!auth&&!inviteToken)await resumeTelegramSession();
+      if(auth?.token)await runDailyServerSync();
+      if(inviteToken&&!auth)await loadInviteInfo();
+      await Promise.race([loadContentLibrary(),new Promise(resolve=>setTimeout(resolve,2500))]);
+      render();
+      updateSplash(100,'Готово');
+      clearTimeout(splashFailsafe);
+      setTimeout(hideSplash,180);
+      prepareOfflineApp().catch(()=>{});
+      if(auth?.token)setTimeout(checkDailyRoulette,350);
+    }catch(error){
+      console.error('Startup error:',error);
+      try{render();}catch{}
+      updateSplash(100,'Готово');
+      clearTimeout(splashFailsafe);
+      hideSplash();
+      prepareOfflineApp().catch(()=>{});
+    }
   })();
 })();

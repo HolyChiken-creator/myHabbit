@@ -1,4 +1,4 @@
-const APP_VERSION = '6.0.0-stage9.1-cloudflare-404-fix';
+const APP_VERSION = '4.2.0-family-controls';
 const JSON_HEADERS = {
   'content-type': 'application/json; charset=utf-8',
   'cache-control': 'no-store'
@@ -1766,31 +1766,7 @@ export default {
 
     // myHabbit intentionally has no external food database or barcode API.
 
-    // All non-API requests are served from the bundled ./public directory.
-    // Explicit handling prevents a successful Worker deploy from returning 404 at `/`.
-    if (!env.ASSETS || typeof env.ASSETS.fetch !== 'function') {
-      return new Response('Static assets binding is unavailable. Redeploy with the assets section from wrangler.jsonc.', {
-        status: 503,
-        headers: { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-store' }
-      });
-    }
-
-    if (request.method !== 'GET' && request.method !== 'HEAD') {
-      return json({ error: 'Method not allowed' }, 405);
-    }
-
-    const assetRequest = url.pathname === '/'
-      ? new Request(new URL('/index.html', request.url), request)
-      : request;
-    const assetResponse = await env.ASSETS.fetch(assetRequest);
-    if (assetResponse.status !== 404) return assetResponse;
-
-    // SPA fallback for client-side routes such as /profile or /museum.
-    const acceptsHtml = (request.headers.get('accept') || '').includes('text/html');
-    if (acceptsHtml) {
-      return env.ASSETS.fetch(new Request(new URL('/index.html', request.url), request));
-    }
-    return assetResponse;
+    return env.ASSETS.fetch(request);
   },
 
   async scheduled(_controller, env, ctx) {
