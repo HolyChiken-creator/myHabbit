@@ -125,8 +125,9 @@
   display:block;
   width:100%;
   height:100%;
-  object-fit:cover;
-  border-radius:50%;
+  object-fit:contain;
+  object-position:center;
+  border-radius:12px;
   user-select:none;
   -webkit-user-drag:none;
 }
@@ -135,14 +136,15 @@
   padding:0;
   background:rgba(255,255,255,.72);
 }
-.achievement-icon .achievement-art{transform:scale(1.04)}
+.achievement-icon .achievement-art{transform:none}
+.achievement-image-fallback{font-size:24px;color:var(--primary,#6d55b7);background:linear-gradient(145deg,#fff,#f2edff)}
 .achievement-toast-icon{
   overflow:hidden;
   padding:0;
   background:rgba(255,255,255,.9);
   box-shadow:inset 0 0 0 2px rgba(255,255,255,.72),0 4px 14px rgba(43,35,58,.18);
 }
-.achievement-toast-art{transform:scale(1.08)}
+.achievement-toast-art{transform:none}
 .achievement-emoji{display:grid;place-items:center}
 
 /* Stage 9: first-run offline preload progress */

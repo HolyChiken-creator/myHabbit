@@ -408,11 +408,26 @@
     let hash=0;for(const ch of String(achievement.id||achievement.title||''))hash=(hash*31+ch.charCodeAt(0))>>>0;
     return set[((stage>0?stage-1:hash)%set.length+set.length)%set.length];
   }
+  const ACHIEVEMENT_ASSET_VERSION='1101';
   function achievementIconHtml(achievement,className='achievement-art'){
     const src=achievementIconAsset(achievement);
-    if(src)return `<img class="${className}" src="${src}" alt="" loading="lazy">`;
-    return `<span class="${className} achievement-emoji">${escapeHtml(achievement?.icon||'🏆')}</span>`;
+    const fallback=escapeHtml((typeof achievement?.icon==='string'&&!achievement.icon.startsWith('/'))?achievement.icon:'🏆');
+    if(src){
+      const versioned=`${src}${src.includes('?')?'&':'?'}v=${ACHIEVEMENT_ASSET_VERSION}`;
+      return `<img class="${className}" src="${versioned}" alt="" loading="eager" decoding="async" data-achievement-fallback="${fallback}">`;
+    }
+    return `<span class="${className} achievement-emoji">${fallback}</span>`;
   }
+
+  // A missing or wrongly cached image must never leave an empty white tile.
+  document.addEventListener('error',(event)=>{
+    const image=event.target;
+    if(!(image instanceof HTMLImageElement)||!image.matches('.achievement-art,.achievement-toast-art'))return;
+    const fallback=document.createElement('span');
+    fallback.className=`${image.className} achievement-emoji achievement-image-fallback`;
+    fallback.textContent=image.dataset.achievementFallback||'🏆';
+    image.replaceWith(fallback);
+  },true);
 
   // Runtime state must be initialized only after achievement icon maps exist.
   // normalizeState() assigns icon assets, so calling it earlier triggers the
@@ -1237,7 +1252,7 @@
     if(navigator.storage?.persist)navigator.storage.persist().catch(()=>{});
     if(!('serviceWorker' in navigator))return false;
     try{
-      const registration=await navigator.serviceWorker.register('/sw.js?v=102',{updateViaCache:'none'});
+      const registration=await navigator.serviceWorker.register('/sw.js?v=1101',{updateViaCache:'none'});
       registration.update().catch(()=>{});
       await Promise.race([
         navigator.serviceWorker.ready,
