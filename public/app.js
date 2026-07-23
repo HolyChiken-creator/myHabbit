@@ -12,7 +12,7 @@
   const OFFLINE_STORE = 'library';
   const CONTENT_CACHE = 'myHabbitContentLibraryV1';
   const CONTENT_VERSION = '1.0.0';
-  const APP_VERSION = '6.0.0-stage10.6-reward-feedback';
+  const APP_VERSION = '6.0.0-stage10.7-live-daily-market';
   const ACCOUNTS = 'myHabbitAccountsV1';
   const ACTIVE_ACCOUNT = 'myHabbitActiveAccountV1';
   const QUEST_CATEGORIES = ['family','relationship','home','sport','health','mind','reading','cinema','creativity','finance','discipline'];
@@ -65,6 +65,51 @@
     ]
   };
 
+  const DAILY_QUEST_TEMPLATES = [
+    ['Застелити ліжко','🛏️','Почати день з маленького порядку','home','easy',25,20,true],
+    ['Прибрати після себе','🧽','Залишити спільний простір чистим','home','easy',30,25,true],
+    ['10 хвилин без телефона','🌿','Зробити коротку паузу для уваги','mind','easy',25,25,true],
+    ['Склянка води зранку','💧','Почати день зі склянки води','health','easy',20,20,true],
+    ['Сказати щось тепле','💬','Підтримати когось із близьких','care','easy',30,25,true],
+    ['Розкласти речі по місцях','🧺','Повернути порядок у маленькій зоні','home','easy',35,30,true],
+    ['Прогулянка 20 хвилин','🚶','Вийти на свіже повітря та пройтися','health','normal',55,50,true],
+    ['Прочитати 10 сторінок','📖','Продовжити поточну книгу','growth','normal',55,55,true],
+    ['Розминка 15 хвилин','🤸','Легка зарядка або мобільність','health','normal',60,55,true],
+    ['Навести лад на кухні','🍽️','Посуд, поверхні та дрібний порядок','home','normal',65,60,true],
+    ['Записати 3 вдячності','✨','Помітити хороше за сьогодні','mind','normal',50,55,true],
+    ['Перевірити бюджет дня','💰','Коротко переглянути витрати','finance','normal',55,50,true],
+    ['Спільна вечеря без екранів','🍲','Побути разом без телефонів','care','normal',75,70,true],
+    ['Допомогти без нагадування','🤝','Самостійно підхопити одну справу','care','normal',70,65,true],
+    ['30 хвилин навчання','🧠','Вивчити щось корисне для себе','growth','hard',95,90,false],
+    ['Повне тренування','🏋️','Не менше 40 хвилин активності','health','hard',110,100,false],
+    ['Розібрати одну складну зону','🧹','Шафа, комора, стіл або балкон','home','hard',105,95,false],
+    ['План на завтра','🗓️','Скласти реалістичний список справ','mind','normal',65,60,true],
+    ['Подзвонити рідним','📞','Приділити час важливій людині','care','normal',70,65,false],
+    ['Година творчості','🎨','Малювання, музика, текст або хобі','growth','hard',100,95,false],
+    ['День без зайвої покупки','🪙','Не купувати нічого імпульсивного','finance','hard',100,90,false],
+    ['Сімейна міні-нарада','👨‍👩‍👧','Обговорити плани й потреби команди','care','hard',120,110,false],
+    ['Новий корисний рецепт','🥗','Приготувати щось нове та збалансоване','health','hard',115,105,false],
+    ['Цифрове прибирання','🗂️','Видалити зайві файли або листи','growth','normal',70,65,false],
+    ['Маленький сюрприз','🎁','Зробити приємну несподіванку','care','hard',125,115,false],
+    ['Вечірня тиша 15 хвилин','🌙','Спокійно завершити день без екранів','mind','normal',60,60,true],
+    ['Підготувати одяг на завтра','👕','Зменшити ранковий поспіх','home','easy',30,25,true],
+    ['Винести сміття','🗑️','Закрити просту побутову справу','home','easy',25,20,true],
+    ['Оновити сімейний список покупок','📝','Додати потрібне та прибрати зайве','finance','normal',55,50,true],
+    ['Одна добра справа','💛','Допомогти людині або тварині','care','normal',75,70,false]
+  ];
+  function daySeed(){return Number(localDay().replaceAll('-',''))||1;}
+  function ensureDailyQuests(){
+    state.meta=state.meta||{};
+    const day=localDay();
+    if(state.meta.dailyQuestDay===day && (state.quests||[]).filter(q=>q.dailyDay===day&&q.status==='active').length>=25)return;
+    const custom=(state.quests||[]).filter(q=>q.source==='admin' || (!q.dailyDay && !String(q.id||'').startsWith('daily-')));
+    const recurring=DAILY_QUEST_TEMPLATES.filter(x=>x[7]);
+    const fresh=DAILY_QUEST_TEMPLATES.filter(x=>!x[7]);
+    const rotate=(arr,offset)=>arr.map((_,i)=>arr[(i+offset)%arr.length]);
+    const mixed=[...rotate(recurring,daySeed()%recurring.length).slice(0,16),...rotate(fresh,daySeed()%fresh.length).slice(0,9)];
+    const generated=mixed.map((t,i)=>({id:`daily-${day}-${i}`,title:t[0],icon:t[1],description:t[2],type:i%7===0?'coop':'personal',participants:i%7===0?2:1,claimedBy:[],rewardCoins:t[5],rewardXp:t[6],skill:t[3],skillXp:Math.max(8,Math.round(t[6]/4)),difficulty:t[4],status:'active',limited:false,dailyDay:day,recurring:Boolean(t[7]),source:'daily'}));
+    state.quests=[...custom,...generated];state.meta.dailyQuestDay=day;
+  }
   function normalizeState(){
     state = (state && typeof state === 'object') ? state : clone(seed);
     state.meta=state.meta||{};
@@ -76,6 +121,8 @@
     state.shop=Array.isArray(state.shop)?state.shop:clone(seed.shop);
     state.achievements=Array.isArray(state.achievements)?state.achievements:clone(seed.achievements);
     state.history=Array.isArray(state.history)?state.history:clone(seed.history);
+    state.quests.forEach(q=>{q.claimedBy=Array.isArray(q.claimedBy)?q.claimedBy:[];q.difficulty=q.difficulty||'normal';q.source=q.source||(q.catalog?'catalog':'admin');});
+    ensureDailyQuests();
     state.meta.version=APP_VERSION;
     const cosmeticDefaults=[
       {id:'cos_badge_cat',title:'Котик біля імені',kind:'badge',asset:'cat',price:180,rarity:'Звичайна'},
@@ -482,14 +529,14 @@
   function skillLabel(k){return {family:'Наші разом',relationship:'Близькість',home:'Наш куточок',sport:'Руханка',health:'Сили й баланс',mind:'Цікавинки',reading:'Книжкові мандри',cinema:'Кіновечори',creativity:'Натхнення',finance:'Скарбничка',discipline:'Мій ритм',care:'Тепло',growth:'Нові відкриття'}[k]||k;}
   function skillIcon(k){return {family:'👨‍👩‍👧‍👦',relationship:'💞',home:'🏠',sport:'💪',health:'❤️',mind:'🧠',reading:'📖',cinema:'🎬',creativity:'🎨',finance:'💰',discipline:'🔥',care:'💞',growth:'🧠'}[k]||'⭐';}
   function rarityLabel(r){return {common:'Звичайна',uncommon:'Незвичайна',rare:'Рідкісна',epic:'Епічна',legendary:'Легендарна',secret:'Секретна'}[r]||r;}
-  function questFromCatalog(q){const skills=q.rewards?.skills||{};const primary=Object.keys(skills)[0]||q.category||'discipline';return {id:q.id,title:q.title,icon:skillIcon(q.category),description:q.description||'Завдання з бібліотеки myHabbit',type:q.type||'personal',participants:['pair','coop'].includes(q.type)?2:1,claimedBy:[],rewardCoins:Number(q.rewards?.coins||0),rewardXp:Number(q.rewards?.xp||0),skill:primary,skillXp:Number(skills[primary]||0),skillRewards:skills,status:q.active===false?'paused':'active',limited:q.type==='limited',stock:q.type==='limited'?1:null,difficulty:q.difficulty,rarity:q.rarity,repeatType:q.repeatType||'none',unlockLevel:Number(q.unlockLevel||1),catalog:true,resourceUrl:cleanResourceUrl(q.resourceUrl||q.referenceUrl||'')};}
+  function questFromCatalog(q){const skills=q.rewards?.skills||{};const primary=Object.keys(skills)[0]||q.category||'discipline';return {id:q.id,title:q.title,icon:skillIcon(q.category),description:q.description||'Завдання з бібліотеки myHabbit',type:q.type||'personal',participants:['pair','coop'].includes(q.type)?2:1,claimedBy:[],rewardCoins:Number(q.rewards?.coins||0),rewardXp:Number(q.rewards?.xp||0),skill:primary,skillXp:Number(skills[primary]||0),skillRewards:skills,status:q.active===false?'paused':'active',limited:q.type==='limited',stock:q.type==='limited'?1:null,difficulty:q.difficulty,rarity:q.rarity,repeatType:q.repeatType||'none',unlockLevel:Number(q.unlockLevel||1),catalog:true,source:'catalog',resourceUrl:cleanResourceUrl(q.resourceUrl||q.referenceUrl||'')};}
   function achievementFromCatalog(a){
     const target=Number(a.condition?.value||a.targetValue||1);
     const achievement={id:a.id,icon:'🏆',title:String(a.title||'Досягнення').replace(/^\p{Extended_Pictographic}+\s*/u,''),description:a.description||'Виконай умову досягнення.',rarity:rarityLabel(a.rarity),target,progress:0,category:a.category,hidden:Boolean(a.hidden),catalog:true,resourceUrl:cleanResourceUrl(a.resourceUrl||a.referenceUrl||'')};
     achievement.icon=achievementIconAsset(achievement)||achievement.icon;
     return achievement;
   }
-  function shopFromCatalog(i){return {id:i.id,title:i.title,icon:{family:'👨‍👩‍👧‍👦',collective:'🤝',theme:'🎨',avatar:'🙂',frame:'🖼️',personal:'🎁'}[i.type]||'🎁',description:i.description||'Нагорода з каталогу myHabbit.',price:Number(i.price||0),stock:i.stock==null?999:Number(i.stock),type:i.type||'personal',catalog:true,resourceUrl:cleanResourceUrl(i.resourceUrl||i.referenceUrl||'')};}
+  function shopFromCatalog(i){return {id:i.id,title:i.title,icon:{family:'👨‍👩‍👧‍👦',collective:'🤝',theme:'🎨',avatar:'🙂',frame:'🖼️',personal:'🎁'}[i.type]||'🎁',description:i.description||'Нагорода з каталогу myHabbit.',price:Number(i.price||0),stock:i.stock==null?999:Number(i.stock),type:i.type||'personal',catalog:true,source:'catalog',resourceUrl:cleanResourceUrl(i.resourceUrl||i.referenceUrl||'')};}
   function openOfflineDb(){
     return new Promise((resolve,reject)=>{
       if(!('indexedDB' in window))return resolve(null);
@@ -562,7 +609,7 @@
     return {
       user:{id:u.id,name:u.name,avatar:u.avatar,role:u.role,telegramLinked:u.telegramLinked,telegramUsername:u.telegramUsername,createdAt:u.createdAt,importantDates:(u.importantDates||[]).slice(0,20),level:u.level,xp:u.xp,coins:u.coins,streak:u.streak,skills:u.skills,achievements:u.achievements,activity:(u.activity||[]).slice(0,20)},
       family:{name:state.family.name,code:state.family.code,level:state.family.level,xp:state.family.xp,coins:state.family.coins},
-      quests:(state.quests||[]).map(q=>({id:q.id,title:q.title,icon:q.icon,description:q.description,type:q.type,participants:q.participants,claimedBy:q.claimedBy,rewardCoins:q.rewardCoins,rewardXp:q.rewardXp,skill:q.skill,skillXp:q.skillXp,status:q.status,limited:q.limited,stock:q.stock})),
+      quests:(state.quests||[]).map(q=>({id:q.id,title:q.title,icon:q.icon,description:q.description,type:q.type,participants:q.participants,claimedBy:q.claimedBy,rewardCoins:q.rewardCoins,rewardXp:q.rewardXp,skill:q.skill,skillXp:q.skillXp,status:q.status,limited:q.limited,stock:q.stock,difficulty:q.difficulty,source:q.source,dailyDay:q.dailyDay,recurring:q.recurring})),
       shop:(state.shop||[]).map(i=>({id:i.id,title:i.title,icon:i.icon,description:i.description,price:i.price,stock:i.stock,type:i.type,fund:i.fund||0,resourceUrl:cleanResourceUrl(i.resourceUrl)})),
       history:(state.history||[]).slice(0,20)
     };
@@ -586,6 +633,13 @@
   }
   let serverRevision=0;
   let livePullTimer=0;
+  let liveSessionStartedAt=0;
+  let lastFamilyPullAt=0;
+  let lastUserActivityAt=Date.now();
+  const FAST_REFRESH_MS=20000;
+  const QUIET_REFRESH_MS=300000;
+  const ACTIVE_WINDOW_MS=300000;
+  const FAST_WINDOW_MS=60000;
   let immediateSyncTimer=0;
   let familySyncBusy=false;
   let familySyncAgain=false;
@@ -603,6 +657,7 @@
       if(!data.state)return false;
       const changed=stateSignature(data.state)!==stateSignature(state);
       state=data.state;serverRevision=Number(data.revision||serverRevision||0);normalizeState();observeRewardChanges();
+      lastFamilyPullAt=Date.now();
       localStorage.setItem(STORAGE,JSON.stringify(state));persistAccount();localStorage.setItem(LAST_SERVER_PULL,new Date().toISOString());
       if(changed)broadcastLocalState();
       return changed;
@@ -624,20 +679,41 @@
       if(familySyncAgain){familySyncAgain=false;scheduleImmediateFamilySync(250);}
     }
   }
-  function scheduleImmediateFamilySync(delay=650){
+  function scheduleImmediateFamilySync(delay=180){
     clearTimeout(immediateSyncTimer);
     if(!auth?.token||auth?.demo)return;
     immediateSyncTimer=setTimeout(()=>pushLocalStateNow().catch(()=>{}),delay);
   }
-  async function pullRemoteAndRender(){
+  async function pullRemoteAndRender({force=false}={}){
+    if(!auth?.token||auth?.demo||document.visibilityState==='hidden')return false;
+    const now=Date.now();
+    if(!force&&now-lastFamilyPullAt<15000)return false;
+    const changed=await pullRemote();
+    if(changed)render();
+    return changed;
+  }
+  function scheduleFamilyRefresh(){
+    clearTimeout(livePullTimer);
     if(!auth?.token||auth?.demo||document.visibilityState==='hidden')return;
-    if(await pullRemote())render();
+    const now=Date.now();
+    if(now-lastUserActivityAt>ACTIVE_WINDOW_MS)return;
+    const delay=now-liveSessionStartedAt<FAST_WINDOW_MS?FAST_REFRESH_MS:QUIET_REFRESH_MS;
+    livePullTimer=setTimeout(async()=>{
+      await pullRemoteAndRender().catch(()=>{});
+      scheduleFamilyRefresh();
+    },delay);
+  }
+  function noteFamilyActivity(){
+    lastUserActivityAt=Date.now();
+    if(!liveSessionStartedAt)liveSessionStartedAt=Date.now();
+    scheduleFamilyRefresh();
   }
   function startLiveFamilyRefresh(){
-    clearInterval(livePullTimer);
+    clearTimeout(livePullTimer);
     if(!auth?.token||auth?.demo)return;
-    pullRemoteAndRender().catch(()=>{});
-    livePullTimer=setInterval(()=>pullRemoteAndRender().catch(()=>{}),3000);
+    liveSessionStartedAt=Date.now();
+    lastUserActivityAt=Date.now();
+    pullRemoteAndRender({force:true}).catch(()=>{}).finally(scheduleFamilyRefresh);
   }
   familyChannel?.addEventListener('message',event=>{
     const msg=event.data||{};
@@ -645,9 +721,13 @@
     if(stateSignature(msg.state)===stateSignature(state))return;
     state=msg.state;normalizeState();observeRewardChanges();localStorage.setItem(STORAGE,JSON.stringify(state));persistAccount();render();
   });
-  window.addEventListener('focus',()=>pullRemoteAndRender().catch(()=>{}));
-  window.addEventListener('online',()=>{pushLocalStateNow().then(()=>pullRemoteAndRender()).catch(()=>{});});
-  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')pullRemoteAndRender().catch(()=>{});});
+  ['pointerdown','keydown','touchstart'].forEach(type=>window.addEventListener(type,noteFamilyActivity,{passive:true}));
+  window.addEventListener('focus',()=>{noteFamilyActivity();pullRemoteAndRender({force:true}).catch(()=>{});});
+  window.addEventListener('online',()=>{noteFamilyActivity();pushLocalStateNow().then(()=>pullRemoteAndRender({force:true})).catch(()=>{});});
+  document.addEventListener('visibilitychange',()=>{
+    if(document.visibilityState==='visible'){noteFamilyActivity();pullRemoteAndRender({force:true}).catch(()=>{});}
+    else clearTimeout(livePullTimer);
+  });
   async function refreshAdminSyncStatus(){
     if(!auth?.token||!isAdmin())return;
     try{
@@ -679,7 +759,7 @@
     const nav=navItems().map(([id,icon,label])=>`<button data-route="${id}" class="${route===id?'active':''}"><span class="nav-icon">${icon}</span>${label}</button>`).join('');
     const sessionAction=auth?.demo?'<button class="btn danger" data-action="exit-demo">Вийти з демо</button>':'<button class="btn danger" data-action="logout">Вийти</button>';
     const demoBanner=auth?.demo?'<div class="demo-banner"><div><strong>Демо-режим</strong><span>Зміни зберігаються лише на цьому пристрої.</span></div><button class="btn small" data-action="exit-demo">Вийти з демо</button></div>':'';
-    return `<div class="app-layout"><main class="main">${demoBanner}<header class="topbar"><button class="menu-trigger" data-action="toggle-menu" aria-label="Відкрити меню">☰</button><div class="top-title"><h1>${title}</h1><p>${subtitle}</p></div><div class="top-actions"><span class="coin-pill">🪙 ${format(u.coins)}</span></div></header>${content}</main><div class="menu-backdrop" data-action="close-menu"></div><aside class="dropdown-menu"><div class="menu-profile"><div class="member-initial">${(u.name||'?').slice(0,1).toUpperCase()}</div><div><strong>${u.telegramUsername?'@'+u.telegramUsername:u.name}</strong><small>${u.level} рівень · ${format(u.coins)} 🪙</small></div><button class="close" data-action="close-menu">×</button></div><nav class="nav">${nav}</nav><div class="menu-footer"><button class="btn soft" data-action="accounts">Мої профілі</button>${sessionAction}</div></aside></div>`;
+    return `<div class="app-layout"><main class="main">${demoBanner}<header class="topbar"><button class="menu-trigger" data-action="toggle-menu" aria-label="Відкрити меню"><svg class="menu-trigger-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7.5h14M5 12h14M5 16.5h14"/></svg></button><div class="top-title"><h1>${title}</h1><p>${subtitle}</p></div><div class="top-actions"><span class="coin-pill">🪙 ${format(u.coins)}</span></div></header>${content}</main><div class="menu-backdrop" data-action="close-menu"></div><aside class="dropdown-menu"><div class="menu-profile"><div class="member-initial">${(u.name||'?').slice(0,1).toUpperCase()}</div><div><strong>${u.telegramUsername?'@'+u.telegramUsername:u.name}</strong><small>${u.level} рівень · ${format(u.coins)} 🪙</small></div><button class="close" data-action="close-menu">×</button></div><nav class="nav">${nav}</nav><div class="menu-footer"><button class="btn soft" data-action="accounts">Мої профілі</button>${sessionAction}</div></aside></div>`;
   }
 
   function landing(){
@@ -707,13 +787,16 @@
 
   function questCard(q){
     const user=currentUser(); const joined=q.claimedBy.includes(user.id); const full=q.claimedBy.length>=q.participants;
-    const type={personal:'Особистий',coop:'Спільний',pair:'Тільки вдвох',limited:'Лімітований'}[q.type];
-    return `<article class="quest"><span class="quest-icon">${q.icon}</span><div><h3>${q.title}</h3><div class="meta"><span>${q.description}</span><span class="tag ${q.type==='coop'||q.type==='pair'?'coop':''} ${q.limited?'limited':''}">${type}</span><span class="tag">${q.claimedBy.length}/${q.participants}</span></div></div><div class="quest-reward">+${q.rewardCoins} 🪙<small>+${q.rewardXp} XP · ${skillIcon(q.skill)} +${q.skillXp}</small><button class="btn small ${joined?'soft':'primary'}" data-quest="${q.id}" ${full&&!joined?'disabled':''}>${joined?'Завершити':'Взяти'}</button></div></article>`;
+    const type={personal:'Особистий',coop:'Спільний',pair:'Тільки вдвох',limited:'Лімітований'}[q.type]; const difficulty={easy:'Легка',normal:'Середня',hard:'Складна'}[q.difficulty||'normal'];
+    return `<article class="quest"><span class="quest-icon">${q.icon}</span><div><h3>${q.title}</h3><div class="meta"><span>${q.description}</span><span class="tag ${q.type==='coop'||q.type==='pair'?'coop':''} ${q.limited?'limited':''}">${type}</span><span class="tag difficulty-${q.difficulty||'normal'}">${difficulty}</span><span class="tag">${q.claimedBy.length}/${q.participants}</span></div></div><div class="quest-reward">+${q.rewardCoins} 🪙<small>+${q.rewardXp} XP · ${skillIcon(q.skill)} +${q.skillXp}</small><button class="btn small ${joined?'soft':'primary'}" data-quest="${q.id}" ${full&&!joined?'disabled':''}>${joined?'Завершити':'Взяти'}</button></div></article>`;
   }
 
   function questsScreen(){
-    return shell(`<div class="section-head"><div><h2>Доступні завдання</h2><small class="meta">Бібліотека: ${format(state.contentLibrary?.counts?.uniqueQuests||state.quests.length)} унікальних · ${format(state.contentLibrary?.counts?.dailyTasks||0)} щоденних</small></div>${isAdmin()?'<button class=\"btn primary\" data-action=\"new-quest\">+ Новий квест</button>':''}</div><div class="tabs">${['all:Усі','personal:Особисті','coop:Спільні','pair:Для двох','limited:Лімітовані'].map((x,i)=>{const [k,l]=x.split(':');return `<button class="${i===0?'active':''}" data-filter="${k}">${l}</button>`}).join('')}</div><div class="quest-list" id="questList">${state.quests.filter(q=>q.status==='active').map(questCard).join('')}</div>`,`Квести`,`Беріть справи самостійно або проходьте їх разом.`);
+    ensureDailyQuests();
+    const active=state.quests.filter(q=>q.status==='active');
+    return shell(`<div class="section-head"><div><h2>25 завдань на сьогодні</h2><small class="meta">Побутові повторювані справи та щоденні новинки · доступно кожному учаснику</small></div>${isAdmin()?'<button class="btn primary" data-action="new-quest">+ Власне завдання</button>':''}</div><div class="quest-filter-block"><div class="tabs quest-type-tabs">${['all:Усі','personal:Особисті','coop:Спільні','pair:Для двох','limited:Лімітовані'].map((x,i)=>{const [k,l]=x.split(':');return `<button class="${i===0?'active':''}" data-filter="${k}">${l}</button>`}).join('')}</div><div class="tabs difficulty-tabs">${['all:Будь-яка складність','easy:Легкі','normal:Середні','hard:Складні'].map((x,i)=>{const [k,l]=x.split(':');return `<button class="${i===0?'active':''}" data-difficulty-filter="${k}">${l}</button>`}).join('')}</div></div><div class="daily-quest-summary"><span>🔁 ${active.filter(q=>q.recurring).length} повторюваних</span><span>✨ ${active.filter(q=>!q.recurring).length} нових</span><span>✓ ${active.length}/25 доступно</span></div><div class="quest-list" id="questList">${active.map(questCard).join('')}</div>`,`Квести`,`Щодня формується збалансований набір із 25 справ для кожного учасника.`);
   }
+
 
   function achievementCard(a,u=currentUser()){const unlocked=Boolean(u?.achievements?.includes(a.id))||Number(a.progress||0)>=Number(a.target||1);const progress=Math.min(100,Math.round((Number(a.progress||0)/Math.max(1,Number(a.target||1)))*100));return `<article class="achievement-card ${unlocked?'unlocked':'locked'}"><div class="achievement-icon">${achievementIconHtml(a)}</div><div><span class="rarity">${a.rarity||'Звичайна'}</span><h3>${a.title||'Досягнення'}</h3><p>${a.description||''}</p><div class="progress"><i style="width:${unlocked?100:progress}%"></i></div><small>${unlocked?'Відкрито':`${Number(a.progress||0)} / ${Number(a.target||1)}`}</small></div></article>`;}
 
@@ -744,8 +827,13 @@
     const cosmetics=(state.cosmeticsCatalog||[]).map(item=>`<div class="cosmetic-filter-item" data-kind="${item.kind}">${cosmeticShopCard(item)}</div>`).join('');
     const filters=cosmeticKinds.map(([id,label])=>`<button class="cosmetic-filter ${id==='all'?'active':''}" data-cosmetic-filter="${id}">${label}</button>`).join('');
     const real=state.shop.map(i=>{const resourceUrl=cleanResourceUrl(i.resourceUrl);return `<article class="shop-card"><div class="shop-top"><span class="shop-icon">${i.icon}</span><span class="stock ${i.stock?'':'out'}">${i.stock?`Залишок ${i.stock}`:'Немає'}</span></div><h3>${i.title}</h3><p>${i.description}</p>${resourceUrl?`<a class="shop-reference-link" href="${resourceUrl.replace(/&/g,'&amp;').replace(/"/g,'&quot;')}" target="_blank" rel="noopener noreferrer">↗ Подивитися, що мається на увазі</a>`:''}<div class="shop-bottom"><span class="price">${format(i.price)} 🪙</span><button class="btn primary small" data-buy="${i.id}" ${i.stock?'':'disabled'}>Обрати</button></div></article>`}).join('');
-    return shell(`<div class="section-head"><h2>Стікер-бокси</h2><span class="tag">7 колекцій · 285 стікерів</span></div><div class="shop-grid">${boxes}</div><div class="section-head"><h2>Косметика та стікерпакети</h2><span class="tag">${state.cosmeticsCatalog.length} предметів</span></div><div class="cosmetic-filters">${filters}</div><div class="shop-grid cosmetics-shop-grid">${cosmetics}</div><div class="section-head"><h2>Сімейні можливості</h2></div><div class="shop-grid">${real}</div>`,`Магазин`,`Стікери, рамочки, анімації, теми та сімейні нагороди.`);
+    return shell(`<div class="section-head"><h2>Стікер-бокси</h2><span class="tag">7 колекцій · 285 стікерів</span></div><div class="shop-grid">${boxes}</div><div class="section-head"><h2>Косметика та стікерпакети</h2><span class="tag">${state.cosmeticsCatalog.length} предметів</span></div><div class="cosmetic-filters">${filters}</div><div class="shop-grid cosmetics-shop-grid">${cosmetics}</div><section class="custom-shop-entry"><div><span class="eyebrow">Окремий розділ</span><h2>Товари від адміністратора</h2><p>Реальні подарунки, дозволи та сімейні цілі не змішуються з рамками й косметикою.</p></div><button class="btn primary" data-route="custom-shop">Відкрити товари →</button></section>`,`Магазин косметики`,`Стікери, рамочки, анімації та теми профілю.`);
   }
+  function customShopScreen(){
+    const real=(state.shop||[]).map(i=>{const resourceUrl=cleanResourceUrl(i.resourceUrl);return `<article class="shop-card admin-product-card"><div class="shop-top"><span class="shop-icon">${i.icon}</span><span class="stock ${i.stock?'':'out'}">${i.stock?`Залишок ${i.stock}`:'Немає'}</span></div><h3>${i.title}</h3><p>${i.description}</p>${resourceUrl?`<a class="shop-reference-link" href="${resourceUrl.replace(/&/g,'&amp;').replace(/"/g,'&quot;')}" target="_blank" rel="noopener noreferrer">↗ Подивитися приклад</a>`:''}${i.type==='collective'?`<div class="progress"><i style="width:${Math.min(100,(i.fund||0)/i.price*100)}%"></i></div><small>${format(i.fund||0)} / ${format(i.price)} 🪙</small>`:`<div class="price">${format(i.price)} 🪙</div>`}<button class="btn ${i.type==='collective'?'soft':'primary'}" data-shop="${i.id}" ${i.stock<=0?'disabled':''}>${i.type==='collective'?'Зробити внесок':'Придбати'}</button></article>`}).join('');
+    return shell(`<div class="section-head"><div><h2>Товари від адміністратора</h2><small class="meta">Окрема сторінка для реальних винагород та сімейних цілей</small></div><button class="btn soft" data-route="shop">← До косметики</button></div><div class="shop-grid">${real||'<div class="card empty">Адміністратор ще не додав товари.</div>'}</div>`,`Сімейна крамниця`,`Тут лише товари, які додав адміністратор.`);
+  }
+
   function collectionTheme(id){return {
     'cozy-cats':{icon:'🐱',tone:'peach',subtitle:'Теплі вечори й пухнасті історії'},
     'bunny-love':{icon:'🐰',tone:'rose',subtitle:'Ніжність, обійми та маленькі дива'},
@@ -832,13 +920,13 @@
     if(!isAdmin()) return shell('<div class="card empty">Цей розділ доступний лише адміністратору сімʼї.</div>','Куточок господаря','Керування сімейним простором.');
     const active=state.quests.filter(q=>q.status==='active').length;
     const lowStock=state.shop.filter(x=>x.stock<=1).length;
-    return shell(`<section class="admin-hero"><div><span class="eyebrow">Центр керування</span><h2>Налаштування нашого простору</h2><p>Завдання, магазин, учасники й Telegram — в одному спокійному інтерфейсі.</p></div><button class="btn primary" data-action="telegram-refresh">Перевірити Telegram</button></section><section class="card sync-panel"><div><span class="eyebrow">Local-first синхронізація</span><h2>Оновлення сімейної статистики</h2><p>Дані зберігаються на пристроях. Автоматичне серверне оновлення виконується після 09:00, а адміністратор може запустити його вручну.</p><div class="sync-meta"><span>Очікують: <strong id="pendingSyncCount">…</strong> пакетів</span><span>Учасників: <strong id="pendingSyncUsers">…</strong></span><span>Останнє: <strong id="lastSyncAt">…</strong></span></div></div><button class="btn primary" data-action="admin-process-now">Оновити дані зараз</button></section><section class="grid metrics"><div class="card"><div class="metric-label">Активні квести</div><div class="metric-value">${active}</div><div class="metric-foot">${state.quests.length-active} завершено</div></div><div class="card"><div class="metric-label">Асортимент</div><div class="metric-value">${state.shop.length}</div><div class="metric-foot">${lowStock} позиції закінчуються</div></div><div class="card"><div class="metric-label">Наші люди</div><div class="metric-value">${visibleFamilyUsers().length}/5</div><div class="metric-foot">${state.users.filter(u=>u.telegramLinked).length} з Telegram · ${state.users.filter(u=>u.hiddenFromFamily).length} приховано</div></div><div class="card"><div class="metric-label">Сімейний фонд</div><div class="metric-value">${format(state.family.coins)} 🪙</div><div class="metric-foot">Спільний баланс</div></div></section><div class="admin-grid"><section><div class="section-head"><h2>Наші пригоди</h2><button class="btn primary small" data-action="new-quest">+ Додати</button></div><div class="admin-list">${state.quests.map(q=>`<article class="admin-row"><span class="quest-icon">${q.icon}</span><div><strong>${q.title}</strong><small>${q.status==='active'?'Активне':'Завершене'} · ${q.rewardCoins} 🪙 · ${q.rewardXp} XP</small></div><div class="admin-actions"><button class="btn small soft" data-admin-toggle-quest="${q.id}">${q.status==='active'?'Пауза':'Активувати'}</button><button class="icon-btn danger-text" data-admin-delete-quest="${q.id}" aria-label="Видалити">×</button></div></article>`).join('')}</div></section><section><div class="section-head"><h2>Асортимент магазину</h2><button class="btn primary small" data-action="new-shop">+ Додати</button></div><div class="admin-list">${state.shop.map(i=>`<article class="admin-row"><span class="shop-icon">${i.icon}</span><div><strong>${i.title}</strong><small>${format(i.price)} 🪙 · залишок ${i.stock}${cleanResourceUrl(i.resourceUrl)?' · є приховане посилання':''}</small></div><div class="stock-stepper"><button data-stock="${i.id}" data-delta="-1">−</button><strong>${i.stock}</strong><button data-stock="${i.id}" data-delta="1">+</button></div><button class="icon-btn danger-text" data-admin-delete-shop="${i.id}" aria-label="Видалити">×</button></article>`).join('')}</div></section></div><div class="section-head"><h2>Керування учасниками</h2><button class="btn primary small" data-action="grant-coins">Видати монетки</button></div><section class="card"><div class="admin-list">${state.users.map(adminMemberRow).join('')}</div></section><div class="section-head"><h2>Новий початок профілю</h2></div><section class="card danger-zone"><div><strong>Подарувати профілю новий початок</strong><p>Скидає XP, монети, серію, навички, досягнення, локальні пакети та Telegram-прив’язку. Потрібен сімейний PIN.</p></div><div class="admin-list">${state.users.map(u=>`<article class="admin-row"><span class="avatar">${u.avatar}</span><div><strong>${u.name}</strong><small>${u.level} рівень · ${u.telegramLinked?'Telegram підключено':'без Telegram'}</small></div><button class="btn danger small" data-reset-user="${u.id}">Скинути</button></article>`).join('')}</div></section>`,`Куточок господаря`,`Контролюйте контент, асортимент і стан сімейного простору.`);
+    return shell(`<section class="admin-hero"><div><span class="eyebrow">Центр керування</span><h2>Налаштування нашого простору</h2><p>Завдання, магазин, учасники й Telegram — в одному спокійному інтерфейсі.</p></div><button class="btn primary" data-action="telegram-refresh">Перевірити Telegram</button></section><section class="card sync-panel"><div><span class="eyebrow">Local-first синхронізація</span><h2>Оновлення сімейної статистики</h2><p>Дані зберігаються на пристроях. Зміни надсилаються одразу. Після відкриття застосунок коротко перевіряє оновлення частіше, потім переходить на економний режим раз на 5 хвилин і повністю зупиняє перевірки без активності.</p><div class="sync-meta"><span>Очікують: <strong id="pendingSyncCount">…</strong> пакетів</span><span>Учасників: <strong id="pendingSyncUsers">…</strong></span><span>Останнє: <strong id="lastSyncAt">…</strong></span></div></div><button class="btn primary" data-action="admin-process-now">Оновити дані зараз</button></section><section class="grid metrics"><div class="card"><div class="metric-label">Активні квести</div><div class="metric-value">${active}</div><div class="metric-foot">${state.quests.length-active} завершено</div></div><div class="card"><div class="metric-label">Асортимент</div><div class="metric-value">${state.shop.length}</div><div class="metric-foot">${lowStock} позиції закінчуються</div></div><div class="card"><div class="metric-label">Наші люди</div><div class="metric-value">${visibleFamilyUsers().length}/5</div><div class="metric-foot">${state.users.filter(u=>u.telegramLinked).length} з Telegram · ${state.users.filter(u=>u.hiddenFromFamily).length} приховано</div></div><div class="card"><div class="metric-label">Сімейний фонд</div><div class="metric-value">${format(state.family.coins)} 🪙</div><div class="metric-foot">Спільний баланс</div></div></section><div class="admin-grid"><section><div class="section-head"><h2>Наші пригоди</h2><button class="btn primary small" data-action="new-quest">+ Додати</button></div><div class="admin-list">${state.quests.map(q=>`<article class="admin-row"><span class="quest-icon">${q.icon}</span><div><strong>${q.title}</strong><small>${q.status==='active'?'Активне':'Завершене'} · ${q.rewardCoins} 🪙 · ${q.rewardXp} XP</small></div><div class="admin-actions"><button class="btn small soft" data-admin-toggle-quest="${q.id}">${q.status==='active'?'Пауза':'Активувати'}</button><button class="icon-btn danger-text" data-admin-delete-quest="${q.id}" aria-label="Видалити">×</button></div></article>`).join('')}</div></section><section><div class="section-head"><h2>Асортимент магазину</h2><button class="btn primary small" data-action="new-shop">+ Додати</button></div><div class="admin-list">${state.shop.map(i=>`<article class="admin-row"><span class="shop-icon">${i.icon}</span><div><strong>${i.title}</strong><small>${format(i.price)} 🪙 · залишок ${i.stock}${cleanResourceUrl(i.resourceUrl)?' · є приховане посилання':''}</small></div><div class="stock-stepper"><button data-stock="${i.id}" data-delta="-1">−</button><strong>${i.stock}</strong><button data-stock="${i.id}" data-delta="1">+</button></div><button class="icon-btn danger-text" data-admin-delete-shop="${i.id}" aria-label="Видалити">×</button></article>`).join('')}</div></section></div><div class="section-head"><h2>Керування учасниками</h2><button class="btn primary small" data-action="grant-coins">Видати монетки</button></div><section class="card"><div class="admin-list">${state.users.map(adminMemberRow).join('')}</div></section><div class="section-head"><h2>Новий початок профілю</h2></div><section class="card danger-zone"><div><strong>Подарувати профілю новий початок</strong><p>Скидає XP, монети, серію, навички, досягнення, локальні пакети та Telegram-прив’язку. Потрібен сімейний PIN.</p></div><div class="admin-list">${state.users.map(u=>`<article class="admin-row"><span class="avatar">${u.avatar}</span><div><strong>${u.name}</strong><small>${u.level} рівень · ${u.telegramLinked?'Telegram підключено':'без Telegram'}</small></div><button class="btn danger small" data-reset-user="${u.id}">Скинути</button></article>`).join('')}</div></section>`,`Куточок господаря`,`Контролюйте контент, асортимент і стан сімейного простору.`);
   }
 
   function modal(type){
     if(type==='invite') return `<div class="modal-backdrop"><div class="modal"><div class="modal-head"><h2>Тепле запрошення</h2><button class="close" data-close>×</button></div><p>Створіть своє персональне реферальне посилання. Коли людина приєднається, запрошення буде зараховано вам і може відкрити ачивку.</p><div class="form-grid"><div class="field"><label>Скільки діє</label><select id="inviteTtl"><option value="24">24 години</option><option value="72">3 дні</option><option value="168">7 днів</option></select></div><div class="field"><label>Кількість входів</label><select id="inviteUses"><option value="1">Одна людина</option><option value="2">Дві людини</option><option value="4">До чотирьох</option></select></div><div class="field full"><label>Посилання</label><input id="inviteLink" readonly placeholder="Натисніть «Створити»"></div></div><div class="modal-actions"><button class="btn" data-action="copy-invite">Копіювати</button><button class="btn soft" data-action="share-invite">Поділитися</button><button class="btn primary" data-action="create-invite">Створити посилання</button></div></div></div>`;
     if(type==='switch-user') return `<div class="modal-backdrop"><div class="modal"><div class="modal-head"><h2>Оберіть профіль</h2><button class="close" data-close>×</button></div><div class="member-grid" style="grid-template-columns:1fr;margin-top:18px">${state.users.map(u=>`<button class="member" data-select-user="${u.id}" style="text-align:left"><div class="member-head"><span class="avatar">${u.avatar}</span><div><strong>${u.name}</strong><small>${u.level} рівень · ${format(u.coins)} 🪙</small></div></div></button>`).join('')}</div></div></div>`;
-    if(type==='new-quest') return `<div class="modal-backdrop"><div class="modal"><div class="modal-head"><h2>Новий квест</h2><button class="close" data-close>×</button></div><div class="form-grid"><div class="field full"><label>Назва</label><input id="qTitle" placeholder="Наприклад, Прибрати кухню"></div><div class="field"><label>Тип</label><select id="qType"><option value="personal">Особистий</option><option value="coop">Спільний</option><option value="pair">Тільки вдвох</option><option value="limited">Лімітований</option></select></div><div class="field"><label>Навичка</label><select id="qSkill"><option value="home">Дім</option><option value="care">Турбота</option><option value="health">Здоровʼя</option><option value="growth">Розвиток</option><option value="finance">Фінанси</option></select></div><div class="field"><label>Монети</label><input id="qCoins" type="number" value="100"></div><div class="field"><label>XP</label><input id="qXp" type="number" value="80"></div><div class="field full"><label>Опис</label><textarea id="qDesc"></textarea></div></div><div class="modal-actions"><button class="btn" data-close>Скасувати</button><button class="btn primary" data-action="save-quest">Створити</button></div></div></div>`;
+    if(type==='new-quest') return `<div class="modal-backdrop"><div class="modal"><div class="modal-head"><h2>Новий квест</h2><button class="close" data-close>×</button></div><div class="form-grid"><div class="field full"><label>Назва</label><input id="qTitle" placeholder="Наприклад, Прибрати кухню"></div><div class="field"><label>Тип</label><select id="qType"><option value="personal">Особистий</option><option value="coop">Спільний</option><option value="pair">Тільки вдвох</option><option value="limited">Лімітований</option></select></div><div class="field"><label>Складність</label><select id="qDifficulty"><option value="easy">Легка</option><option value="normal" selected>Середня</option><option value="hard">Складна</option></select></div><div class="field"><label>Навичка</label><select id="qSkill"><option value="home">Дім</option><option value="care">Турбота</option><option value="health">Здоровʼя</option><option value="growth">Розвиток</option><option value="finance">Фінанси</option></select></div><div class="field"><label>Монети</label><input id="qCoins" type="number" value="100"></div><div class="field"><label>XP</label><input id="qXp" type="number" value="80"></div><div class="field full"><label>Опис</label><textarea id="qDesc"></textarea></div></div><div class="modal-actions"><button class="btn" data-close>Скасувати</button><button class="btn primary" data-action="save-quest">Створити</button></div></div></div>`;
     if(type==='new-shop') return `<div class="modal-backdrop"><div class="modal"><div class="modal-head"><h2>Нова можливість</h2><button class="close" data-close>×</button></div><div class="form-grid"><div class="field full"><label>Назва</label><input id="sTitle" placeholder="Наприклад, Новий велосипед"></div><div class="field"><label>Тип</label><select id="sType"><option value="personal">Особиста</option><option value="family">Для всієї сімʼї</option><option value="collective">Спільний фонд</option></select></div><div class="field"><label>Ціна</label><input id="sPrice" type="number" value="2000"></div><div class="field"><label>Кількість</label><input id="sStock" type="number" value="1"></div><div class="field full"><label>Опис</label><textarea id="sDesc"></textarea></div><div class="field full"><label>Приховане посилання на приклад <small>(необов’язково)</small></label><input id="sResourceUrl" type="url" inputmode="url" placeholder="https://…"><small>У магазині URL не показується — людина бачить лише кнопку «Подивитися, що мається на увазі».</small></div></div><div class="modal-actions"><button class="btn" data-close>Скасувати</button><button class="btn primary" data-action="save-shop">Додати</button></div></div></div>`;
 
     if(type==='accounts') { const list=loadAccounts(); return `<div class="modal-backdrop"><div class="modal"><div class="modal-head"><h2>Мої профілі</h2><button class="close" data-close>×</button></div><p>Тримайте кілька профілів у цьому PWA або перенесіть захищену копію на інший пристрій.</p><div class="account-vault">${list.length?list.map(a=>`<button class="account-vault-item ${a.id===accountId()?'active':''}" data-account-id="${a.id}"><span class="member-initial">${(a.label||'?').slice(0,1).toUpperCase()}</span><span><strong>${a.label}</strong><small>${a.familyName||'Мій простір'} · ${new Date(a.updatedAt).toLocaleDateString('uk-UA')}</small></span><b>${a.id===accountId()?'Відкрито':'Перейти'}</b></button>`).join(''):'<div class="card empty">Збережених профілів поки немає</div>'}</div><div class="field"><label>Пароль для перенесення</label><input id="transferPassword" type="password" minlength="6" placeholder="Не менше 6 символів"></div><input id="accountImportFile" type="file" accept="application/json,.json" hidden><div class="modal-actions wrap"><button class="btn" data-action="add-account">+ Додати профіль</button><button class="btn" data-action="import-account">Відкрити JSON</button><button class="btn primary" data-action="export-account">Зберегти JSON</button></div><p class="auth-help">JSON містить сесію лише у зашифрованому вигляді. Не передавайте файл і пароль разом.</p></div></div>`; }
@@ -862,7 +950,7 @@
 
   function render(){
     normalizeState();
-    const screens={landing,auth:authScreen,dashboard,quests:questsScreen,shop:shopScreen,collections:collectionsScreen,museum:museumScreen,achievements:achievementsScreen,family:familyScreen,profile:()=>profileScreen(),admin:adminScreen};
+    const screens={landing,auth:authScreen,dashboard,quests:questsScreen,shop:shopScreen,'custom-shop':customShopScreen,collections:collectionsScreen,museum:museumScreen,achievements:achievementsScreen,family:familyScreen,profile:()=>profileScreen(),admin:adminScreen};
     try{
       app.innerHTML=(screens[route]||landing)(); applyTheme(); bind(); if(route==='admin')setTimeout(refreshAdminSyncStatus,0);
     }catch(error){
@@ -891,7 +979,7 @@
     document.querySelectorAll('[data-kick-user]').forEach(el=>el.addEventListener('click',()=>{document.body.insertAdjacentHTML('beforeend',modal(`kick-user:${el.dataset.kickUser}`));bindModal();}));
     document.querySelectorAll('[data-toggle-admin-hidden]').forEach(el=>el.addEventListener('click',()=>toggleAdminFamilyVisibility(el.dataset.toggleAdminHidden)));
     document.querySelectorAll('[data-stock]').forEach(el=>el.addEventListener('click',()=>{const i=state.shop.find(x=>x.id===el.dataset.stock);if(i){i.stock=Math.max(0,i.stock+Number(el.dataset.delta));save();render();}}));
-    document.querySelectorAll('[data-filter]').forEach(el=>el.addEventListener('click',()=>{document.querySelectorAll('[data-filter]').forEach(x=>x.classList.remove('active'));el.classList.add('active');const f=el.dataset.filter;document.getElementById('questList').innerHTML=state.quests.filter(q=>q.status==='active'&&(f==='all'||q.type===f)).map(questCard).join('');bind();}));
+    document.querySelectorAll('[data-filter],[data-difficulty-filter]').forEach(el=>el.addEventListener('click',()=>{const group=el.hasAttribute('data-filter')?'[data-filter]':'[data-difficulty-filter]';document.querySelectorAll(group).forEach(x=>x.classList.remove('active'));el.classList.add('active');const type=document.querySelector('[data-filter].active')?.dataset.filter||'all',difficulty=document.querySelector('[data-difficulty-filter].active')?.dataset.difficultyFilter||'all';document.getElementById('questList').innerHTML=state.quests.filter(q=>q.status==='active'&&(type==='all'||q.type===type)&&(difficulty==='all'||(q.difficulty||'normal')===difficulty)).map(questCard).join('');bind();}));
     document.querySelectorAll('[data-auth-tab]').forEach(el=>el.addEventListener('click',()=>{authMode=el.dataset.authTab;document.querySelectorAll('[data-auth-tab]').forEach(x=>x.classList.remove('active'));el.classList.add('active');document.getElementById('authForm').innerHTML=authForm(authMode);bind();}));
   }
 
@@ -1077,10 +1165,10 @@
   }
 
   function saveQuest(){
-    const title=document.getElementById('qTitle').value.trim();if(!title)return showToast('Вкажіть назву');const type=document.getElementById('qType').value;state.quests.unshift({id:crypto.randomUUID(),title,icon:{home:'🧹',care:'🎁',health:'🏋️',growth:'📚',finance:'💰'}[document.getElementById('qSkill').value],description:document.getElementById('qDesc').value.trim()||'Сімейне завдання',type,participants:type==='pair'||type==='coop'?2:1,claimedBy:[],rewardCoins:Number(document.getElementById('qCoins').value)||50,rewardXp:Number(document.getElementById('qXp').value)||50,skill:document.getElementById('qSkill').value,skillXp:15,status:'active',limited:type==='limited',stock:type==='limited'?1:null});save();document.querySelector('.modal-backdrop').remove();render();showToast('Квест створено');
+    const title=document.getElementById('qTitle').value.trim();if(!title)return showToast('Вкажіть назву');const type=document.getElementById('qType').value;state.quests.unshift({id:crypto.randomUUID(),title,icon:{home:'🧹',care:'🎁',health:'🏋️',growth:'📚',finance:'💰'}[document.getElementById('qSkill').value],description:document.getElementById('qDesc').value.trim()||'Сімейне завдання',type,participants:type==='pair'||type==='coop'?2:1,claimedBy:[],rewardCoins:Number(document.getElementById('qCoins').value)||50,rewardXp:Number(document.getElementById('qXp').value)||50,skill:document.getElementById('qSkill').value,skillXp:15,difficulty:document.getElementById('qDifficulty')?.value||'normal',source:'admin',status:'active',limited:type==='limited',stock:type==='limited'?1:null});save();document.querySelector('.modal-backdrop').remove();render();showToast('Квест створено');
   }
   function saveShop(){
-    const title=document.getElementById('sTitle').value.trim();if(!title)return showToast('Вкажіть назву');const rawUrl=document.getElementById('sResourceUrl')?.value||'',resourceUrl=cleanResourceUrl(rawUrl);if(rawUrl.trim()&&!resourceUrl)return showToast('Посилання має починатися з http:// або https://');state.shop.unshift({id:crypto.randomUUID(),title,icon:'✨',description:document.getElementById('sDesc').value.trim()||'Нова реальна можливість',price:Number(document.getElementById('sPrice').value)||1000,stock:Number(document.getElementById('sStock').value)||1,type:document.getElementById('sType').value,fund:0,resourceUrl});save();document.querySelector('.modal-backdrop').remove();render();showToast('Можливість додано');
+    const title=document.getElementById('sTitle').value.trim();if(!title)return showToast('Вкажіть назву');const rawUrl=document.getElementById('sResourceUrl')?.value||'',resourceUrl=cleanResourceUrl(rawUrl);if(rawUrl.trim()&&!resourceUrl)return showToast('Посилання має починатися з http:// або https://');state.shop.unshift({id:crypto.randomUUID(),title,icon:'✨',description:document.getElementById('sDesc').value.trim()||'Нова реальна можливість',price:Number(document.getElementById('sPrice').value)||1000,stock:Number(document.getElementById('sStock').value)||1,type:document.getElementById('sType').value,fund:0,resourceUrl,source:'admin'});save();document.querySelector('.modal-backdrop').remove();render();showToast('Можливість додано');
   }
 
 

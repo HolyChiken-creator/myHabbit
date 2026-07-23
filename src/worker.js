@@ -1,4 +1,4 @@
-const APP_VERSION = '4.2.0-family-controls';
+const APP_VERSION = '6.0.0-stage10.7-live-daily-market';
 const JSON_HEADERS = {
   'content-type': 'application/json; charset=utf-8',
   'cache-control': 'no-store'

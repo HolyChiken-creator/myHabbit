@@ -1,1 +1,1 @@
-6.0.0-stage10.6-reward-feedback
+6.0.0-stage10.8-smart-sync-menu
