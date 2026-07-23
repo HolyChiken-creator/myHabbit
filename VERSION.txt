@@ -1,1 +1,1 @@
-6.0.1-stage9-offline-hotfix
+6.0.2-stage9-splash-recovery

@@ -17,7 +17,7 @@
   <link rel="apple-touch-startup-image" href="/assets/splash-1290x2796.png" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3)">
   <link rel="apple-touch-startup-image" href="/assets/splash-1242x2688.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)">
   <link rel="apple-touch-startup-image" href="/assets/splash-828x1792.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)">
-  <link rel="stylesheet" href="/styles.css?v=60s91">
+  <link rel="stylesheet" href="/styles.css?v=60s92">
   <title>myHabbit</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
@@ -29,6 +29,19 @@
   </div>
   <div id="app"></div>
   <div id="toast" class="toast" aria-live="polite"></div>
-  <script src="/app.js?v=60s91" defer></script>
+  <script>
+  // Recovery watchdog: an old Service Worker must never keep the splash screen forever.
+  window.__myHabbitBootWatchdog = setTimeout(function () {
+    var splash = document.getElementById('appSplash');
+    var status = document.getElementById('splashStatus');
+    var bar = document.getElementById('splashProgressBar');
+    var text = document.getElementById('splashProgressText');
+    if (status) status.textContent = 'Запускаємо застосунок…';
+    if (bar) bar.style.width = '100%';
+    if (text) text.textContent = '100%';
+    if (splash) splash.classList.add('hidden');
+  }, 6000);
+</script>
+<script src="/app92.js?v=60s92" defer onerror="document.getElementById('splashStatus').textContent='Не вдалося завантажити застосунок. Оновіть сторінку.'"></script>
 </body>
 </html>
