@@ -1,1 +1,1 @@
-6.0.0-stage9-offline-first
+6.0.0-stage8-achievement-icons
