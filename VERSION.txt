@@ -1,2 +1,3 @@
-myHabbit 6.0 Stage 9.7 UI Isolation
+myHabbit Stage 9.8 Debug Loader
 Build: 2026-07-23
+Purpose: load legacy-app.js separately and show exact syntax/runtime error on screen.
