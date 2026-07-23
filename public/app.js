@@ -603,7 +603,16 @@
     <div class="cozy-folds">${own?referralStatsBlock(u):''}${importantDatesBlock(u,own)}<details class="cozy-fold"><summary>${cuteIcon('leaf')}<strong>Мої барви</strong><small>${skills.length}</small></summary><div class="fold-body skill-list">${skills.map(([k,v])=>`<div class="skill-row cozy-skill"><span class="skill-icon">${cuteIcon('sparkle')}</span><div><div class="skill-name"><strong>${skillLabel(k)}</strong><span>${v}</span></div><div class="progress"><i style="width:${Math.min(100,(v%10)*10)}%"></i></div></div></div>`).join('')}</div></details><details class="cozy-fold"><summary>${cuteIcon('trophy')}<strong>Мої знахідки</strong><small>${achievements.length}</small></summary><div class="fold-body achievement-grid compact-achievements">${achievements.map(a=>achievementCard(a,u)).join('')}</div></details></div>`,own?'Мій затишний куточок':`${escapeHtml(u.name)} · профіль`,own?'Загальний рівень, запрошення та маленькі перемоги.':'Профіль близької людини.');
   }
 
-  function familyScreen(){const visibleUsers=visibleFamilyUsers();return shell(`<section class="card"><div class="profile-hero"><span class="avatar">✨</span><div><div class="profile-level">${state.family.name}</div><div class="meta">Код сімʼї: <strong>${state.family.code}</strong> · ${visibleUsers.length}/5 учасників</div><div class="progress" style="margin-top:10px"><i style="width:${state.family.xp%1000/10}%"></i></div></div><div class="profile-actions"><button class="btn primary" data-action="invite">Запросити</button><button class="btn danger" data-action="leave-family">Вийти із сімʼї</button></div></div></section><div class="section-head"><h2>Наші люди</h2></div><div class="member-grid">${visibleUsers.map(memberCard).join('')||'<div class="card empty">У видимому списку поки немає учасників</div>'}</div><div class="section-head"><h2>Telegram-зв’язок</h2></div><div class="card telegram-panel"><div><strong>Бот myHabbit</strong><p>Відкривайте Mini App із Telegram, отримуйте нагадування та швидко переходьте до сімейних справ.</p></div><button class="btn primary" data-action="telegram-connect">Підключити Telegram</button></div><div class="section-head"><h2>Сімейна активність</h2></div><div class="card">${state.history.map(h=>`<div class="activity"><span class="activity-icon">${h.icon}</span><div><p>${h.text}</p><small>${h.time}</small></div></div>`).join('')}</div>`,`Сімʼя`,`Спільний прогрес без публічних рейтингів і сторонніх людей.`)}
+  function familyActivityItems(){
+    const adminNames=state.users.filter(u=>u.role==='admin'||u.role==='owner').map(u=>(u.name||'').trim()).filter(Boolean);
+    return state.history.filter(item=>{
+      const text=String(item?.text||'').trim();
+      if(item?.userId&&state.users.some(u=>u.id===item.userId&&(u.role==='admin'||u.role==='owner')))return false;
+      return !adminNames.some(name=>text===name||text.startsWith(`${name} `)||text.includes(` ${name} `));
+    });
+  }
+
+  function familyScreen(){const visibleUsers=visibleFamilyUsers(),familyActivity=familyActivityItems();return shell(`<section class="card"><div class="profile-hero"><span class="avatar">✨</span><div><div class="profile-level">${state.family.name}</div><div class="meta">Код сімʼї: <strong>${state.family.code}</strong> · ${visibleUsers.length}/5 учасників</div><div class="progress" style="margin-top:10px"><i style="width:${state.family.xp%1000/10}%"></i></div></div><div class="profile-actions"><button class="btn primary" data-action="invite">Запросити</button><button class="btn danger" data-action="leave-family">Вийти із сімʼї</button></div></div></section><div class="section-head"><h2>Наші люди</h2></div><div class="member-grid">${visibleUsers.map(memberCard).join('')||'<div class="card empty">У видимому списку поки немає учасників</div>'}</div><div class="section-head"><h2>Telegram-зв’язок</h2></div><div class="card telegram-panel"><div><strong>Бот myHabbit</strong><p>Відкривайте Mini App із Telegram, отримуйте нагадування та швидко переходьте до сімейних справ.</p></div><button class="btn primary" data-action="telegram-connect">Підключити Telegram</button></div><div class="section-head"><h2>Сімейна активність</h2></div><div class="card">${familyActivity.length?familyActivity.map(h=>`<div class="activity"><span class="activity-icon">${h.icon}</span><div><p>${h.text}</p><small>${h.time}</small></div></div>`).join(''):'<div class="empty">Поки немає нових подій учасників</div>'}</div>`,`Сімʼя`,`Спільний прогрес без публічних рейтингів і сторонніх людей.`)}
 
   function adminMemberRow(u){
     const roleLabel=u.role==='owner'?'Власник':u.role==='admin'?'Адміністратор':'Учасник';
@@ -934,7 +943,7 @@
     if(navigator.storage?.persist)navigator.storage.persist().catch(()=>{});
     if(!('serviceWorker' in navigator))return false;
     try{
-      const registration=await navigator.serviceWorker.register('/sw.js?v=101',{updateViaCache:'none'});
+      const registration=await navigator.serviceWorker.register('/sw.js?v=102',{updateViaCache:'none'});
       registration.update().catch(()=>{});
       await Promise.race([
         navigator.serviceWorker.ready,
@@ -988,8 +997,14 @@
       // First paint uses local state only and happens before network, Telegram,
       // IndexedDB, content downloads, or Service Worker preparation.
       render();
-      updateSplash(35,'Інтерфейс готовий');
-      setTimeout(hideSplash,450);
+      updateSplash(42,'Готуємо ваш простір…');
+
+      // Decorative loading sequence: it keeps the pleasant splash visible,
+      // but never waits for network, Telegram, IndexedDB or full offline cache.
+      setTimeout(()=>updateSplash(68,'Завантажуємо локальні дані…'),260);
+      setTimeout(()=>updateSplash(86,'Майже готово…'),620);
+      setTimeout(()=>updateSplash(100,'Готово ✨'),980);
+      setTimeout(hideSplash,1250);
 
       // Everything else is progressive enhancement in the background.
       prepareOfflineApp().catch(()=>{});

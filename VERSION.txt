@@ -1,2 +1,2 @@
-myHabbit v6.0 Stage 10.1 — Offline Safe Fix
+myHabbit v6.0 Stage 10.2 — Splash + Admin Activity Privacy
 Build: 2026-07-23
