@@ -7,12 +7,9 @@
   const AUTH = 'familyQuestAuthV1';
   const DAILY_QUEUE = 'myHabbitDailyQueueV1';
   const LAST_SERVER_PULL = 'myHabbitLastServerPullV1';
-  const LAST_DAILY_SYNC = 'myHabbitLastDailySyncV1';
-  const OFFLINE_DB = 'myHabbitOfflineV1';
-  const OFFLINE_STORE = 'library';
   const CONTENT_CACHE = 'myHabbitContentLibraryV1';
   const CONTENT_VERSION = '1.0.0';
-  const APP_VERSION = '6.0.0-stage9-offline-first';
+  const APP_VERSION = '6.0.0-stage8-achievement-icons';
   const ACCOUNTS = 'myHabbitAccountsV1';
   const ACTIVE_ACCOUNT = 'myHabbitActiveAccountV1';
   const QUEST_CATEGORIES = ['family','relationship','home','sport','health','mind','reading','cinema','creativity','finance','discipline'];
@@ -341,7 +338,7 @@
   function skillLabel(k){return {family:'Наші разом',relationship:'Близькість',home:'Наш куточок',sport:'Руханка',health:'Сили й баланс',mind:'Цікавинки',reading:'Книжкові мандри',cinema:'Кіновечори',creativity:'Натхнення',finance:'Скарбничка',discipline:'Мій ритм',care:'Тепло',growth:'Нові відкриття'}[k]||k;}
   function skillIcon(k){return {family:'👨‍👩‍👧‍👦',relationship:'💞',home:'🏠',sport:'💪',health:'❤️',mind:'🧠',reading:'📖',cinema:'🎬',creativity:'🎨',finance:'💰',discipline:'🔥',care:'💞',growth:'🧠'}[k]||'⭐';}
   function rarityLabel(r){return {common:'Звичайна',uncommon:'Незвичайна',rare:'Рідкісна',epic:'Епічна',legendary:'Легендарна',secret:'Секретна'}[r]||r;}
-  function questFromCatalog(q){const skills=q.rewards?.skills||{};const primary=Object.keys(skills)[0]||q.category||'discipline';return {id:q.id,title:q.title,icon:skillIcon(q.category),description:q.description||'Завдання з бібліотеки myHabbit',type:q.type||'personal',participants:['pair','coop'].includes(q.type)?2:1,claimedBy:[],rewardCoins:Number(q.rewards?.coins||0),rewardXp:Number(q.rewards?.xp||0),skill:primary,skillXp:Number(skills[primary]||0),skillRewards:skills,status:q.active===false?'paused':'active',limited:q.type==='limited',stock:q.type==='limited'?1:null,difficulty:q.difficulty,rarity:q.rarity,repeatType:q.repeatType||'none',unlockLevel:Number(q.unlockLevel||1),catalog:true,resourceUrl:cleanResourceUrl(q.resourceUrl||q.referenceUrl||'')};}
+  function questFromCatalog(q){const skills=q.rewards?.skills||{};const primary=Object.keys(skills)[0]||q.category||'discipline';return {id:q.id,title:q.title,icon:skillIcon(q.category),description:q.description||'Завдання з бібліотеки myHabbit',type:q.type||'personal',participants:['pair','coop'].includes(q.type)?2:1,claimedBy:[],rewardCoins:Number(q.rewards?.coins||0),rewardXp:Number(q.rewards?.xp||0),skill:primary,skillXp:Number(skills[primary]||0),skillRewards:skills,status:q.active===false?'paused':'active',limited:q.type==='limited',stock:q.type==='limited'?1:null,difficulty:q.difficulty,rarity:q.rarity,repeatType:q.repeatType||'none',unlockLevel:Number(q.unlockLevel||1),catalog:true,resourceUrl:cleanResourceUrl(i.resourceUrl||i.referenceUrl||'')};}
   function achievementFromCatalog(a){
     const target=Number(a.condition?.value||a.targetValue||1);
     const achievement={id:a.id,icon:'🏆',title:String(a.title||'Досягнення').replace(/^\p{Extended_Pictographic}+\s*/u,''),description:a.description||'Виконай умову досягнення.',rarity:rarityLabel(a.rarity),target,progress:0,category:a.category,hidden:Boolean(a.hidden),catalog:true,resourceUrl:cleanResourceUrl(a.resourceUrl||a.referenceUrl||'')};
@@ -349,28 +346,11 @@
     return achievement;
   }
   function shopFromCatalog(i){return {id:i.id,title:i.title,icon:{family:'👨‍👩‍👧‍👦',collective:'🤝',theme:'🎨',avatar:'🙂',frame:'🖼️',personal:'🎁'}[i.type]||'🎁',description:i.description||'Нагорода з каталогу myHabbit.',price:Number(i.price||0),stock:i.stock==null?999:Number(i.stock),type:i.type||'personal',catalog:true,resourceUrl:cleanResourceUrl(i.resourceUrl||i.referenceUrl||'')};}
-  function openOfflineDb(){
-    return new Promise((resolve,reject)=>{
-      if(!('indexedDB' in window))return resolve(null);
-      const request=indexedDB.open(OFFLINE_DB,1);
-      request.onupgradeneeded=()=>{const db=request.result;if(!db.objectStoreNames.contains(OFFLINE_STORE))db.createObjectStore(OFFLINE_STORE);};
-      request.onsuccess=()=>resolve(request.result);
-      request.onerror=()=>reject(request.error);
-    });
-  }
-  async function idbGet(key){
-    try{const db=await openOfflineDb();if(!db)return null;return await new Promise((resolve,reject)=>{const tx=db.transaction(OFFLINE_STORE,'readonly');const req=tx.objectStore(OFFLINE_STORE).get(key);req.onsuccess=()=>resolve(req.result||null);req.onerror=()=>reject(req.error);});}catch{return null;}
-  }
-  async function idbSet(key,value){
-    try{const db=await openOfflineDb();if(!db)return false;await new Promise((resolve,reject)=>{const tx=db.transaction(OFFLINE_STORE,'readwrite');tx.objectStore(OFFLINE_STORE).put(value,key);tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error);});return true;}catch{return false;}
-  }
   async function fetchJson(path){const r=await fetch(path,{cache:'force-cache'});if(!r.ok)throw new Error(`Не вдалося завантажити ${path}`);return r.json();}
   async function loadContentLibrary(){
     try{
-      const idbCached=await idbGet(CONTENT_CACHE);
-      if(idbCached?.version===CONTENT_VERSION&&idbCached.quests?.length){mergeContent(idbCached);return;}
       const cached=JSON.parse(localStorage.getItem(CONTENT_CACHE)||'null');
-      if(cached?.version===CONTENT_VERSION&&cached.quests?.length){await idbSet(CONTENT_CACHE,cached);mergeContent(cached);return;}
+      if(cached?.version===CONTENT_VERSION&&cached.quests?.length){mergeContent(cached);return;}
       const index=await fetchJson('/content/index.json');
       const questSets=await Promise.all(QUEST_CATEGORIES.map(c=>fetchJson(`/content/quests/${c}.json`)));
       const dailySets=await Promise.all(['relationship','health','sport','home','discipline','reading'].map(c=>fetchJson(`/content/daily/${c}.json`)));
@@ -380,9 +360,7 @@
       const level=currentUser()?.level||1;
       const pick=(arr,n)=>arr.filter(x=>x.active!==false&&Number(x.unlockLevel||1)<=level).slice(0,n);
       const content={version:index.libraryVersion||CONTENT_VERSION,index,quests:[...questSets.flatMap(x=>pick(x,18)),...dailySets.flatMap(x=>pick(x,8)),...weeklySets.flatMap(x=>pick(x,6))].map(questFromCatalog),achievements:achievementSets.flatMap(x=>x.filter(a=>a.active!==false).slice(0,30)).map(achievementFromCatalog),shop:shop.filter(i=>i.active!==false).slice(0,120).map(shopFromCatalog)};
-      await idbSet(CONTENT_CACHE,content);
-      try{localStorage.setItem(CONTENT_CACHE,JSON.stringify(content));}catch{}
-      mergeContent(content);
+      localStorage.setItem(CONTENT_CACHE,JSON.stringify(content));mergeContent(content);
     }catch(e){console.warn('Content library:',e);}
   }
   function mergeContent(content){
@@ -402,19 +380,6 @@
   function localDay(){
     const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Kyiv',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date()).reduce((a,p)=>(p.type!=='literal'&&(a[p.type]=p.value),a),{});
     return `${parts.year}-${parts.month}-${parts.day}`;
-  }
-  function kyivHour(){return Number(new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Kyiv',hour:'2-digit',hour12:false}).format(new Date()));}
-  function dailySyncIsDue(){
-    const last=localStorage.getItem(LAST_DAILY_SYNC)||'';
-    return kyivHour()>=9&&last!==localDay();
-  }
-  async function runDailyServerSync(){
-    if(!auth?.token||auth?.demo||!dailySyncIsDue())return false;
-    const pushed=await submitDailySnapshot();
-    if(!pushed)return false;
-    await pullRemote();
-    localStorage.setItem(LAST_DAILY_SYNC,localDay());
-    return true;
   }
   function compactDailyData(){
     const u=currentUser();
@@ -914,58 +879,11 @@
     }catch(e){button.disabled=false;button.textContent='Спробувати ще раз';showToast(e.message);}
   }
 
-  function updateSplash(percent,text){
-    const value=Math.max(0,Math.min(100,Number(percent)||0));
-    const bar=document.getElementById('splashProgressBar');
-    const label=document.getElementById('splashProgressText');
-    const status=document.getElementById('splashStatus');
-    if(bar)bar.style.width=`${value}%`;
-    if(label)label.textContent=`${value}%`;
-    if(status&&text)status.textContent=text;
-  }
-  function hideSplash(){document.getElementById('appSplash')?.classList.add('hidden');}
-  async function prepareOfflineApp(){
-    if(navigator.storage?.persist)navigator.storage.persist().catch(()=>{});
-    if(!('serviceWorker' in navigator)){updateSplash(100,'Готово до роботи');return;}
-    try{
-      const registration=await navigator.serviceWorker.register('/sw.js');
-      await navigator.serviceWorker.ready;
-      const worker=registration.active||registration.waiting||registration.installing;
-      if(!worker){updateSplash(100,'Готово до роботи');return;}
-      const ready=await new Promise(resolve=>{
-        let settled=false;
-        const finish=value=>{if(settled)return;settled=true;resolve(value);};
-        const onMessage=event=>{
-          const data=event.data||{};
-          if(data.type==='OFFLINE_STATUS'){
-            if(data.ready){updateSplash(100,'Автономна версія готова');navigator.serviceWorker.removeEventListener('message',onMessage);finish(true);}
-            else worker.postMessage({type:'PRELOAD_ALL'});
-          }
-          if(data.type==='OFFLINE_PRELOAD_PROGRESS')updateSplash(data.percent,`Завантажуємо дані на телефон · ${data.completed}/${data.total}`);
-          if(data.type==='OFFLINE_PRELOAD_COMPLETE'){updateSplash(100,'Усе збережено для автономної роботи');navigator.serviceWorker.removeEventListener('message',onMessage);finish(true);}
-        };
-        navigator.serviceWorker.addEventListener('message',onMessage);
-        worker.postMessage({type:'GET_OFFLINE_STATUS'});
-        setTimeout(()=>{navigator.serviceWorker.removeEventListener('message',onMessage);finish(false);},45000);
-      });
-      if(!ready)updateSplash(100,'Основні дані готові');
-    }catch{updateSplash(100,'Працюємо з локальними даними');}
-  }
-
   window.addEventListener('popstate',()=>{route=new URLSearchParams(location.search).get('screen')||(auth?'dashboard':'landing');render();});
-  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')queueDailySnapshot();});
-  window.addEventListener('pagehide',()=>queueDailySnapshot());
-  (async()=>{
-    updateSplash(4,'Запускаємо myHabbit…');
-    const offlinePromise=prepareOfflineApp();
-    if(telegramInitData&&!auth&&!inviteToken)await resumeTelegramSession();
-    if(auth?.token)await runDailyServerSync();
-    if(inviteToken&&!auth)await loadInviteInfo();
-    await loadContentLibrary();
-    render();
-    await offlinePromise;
-    updateSplash(100,'Готово');
-    setTimeout(hideSplash,250);
-    if(auth?.token)setTimeout(checkDailyRoulette,350);
-  })();
+  if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(()=>{});
+  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')submitDailySnapshot({keepalive:true});});
+  window.addEventListener('pagehide',()=>submitDailySnapshot({keepalive:true}));
+  (async()=>{if(telegramInitData&&!auth&&!inviteToken)await resumeTelegramSession();if(auth?.token){await submitDailySnapshot();await pullRemote();}if(inviteToken&&!auth)await loadInviteInfo();render();if(auth?.token)setTimeout(checkDailyRoulette,350);})();
 })();
+
+requestAnimationFrame(()=>document.getElementById('appSplash')?.classList.add('hidden'));

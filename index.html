@@ -17,7 +17,7 @@
   <link rel="apple-touch-startup-image" href="/assets/splash-1290x2796.png" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3)">
   <link rel="apple-touch-startup-image" href="/assets/splash-1242x2688.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)">
   <link rel="apple-touch-startup-image" href="/assets/splash-828x1792.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)">
-  <link rel="stylesheet" href="/styles.css?v=60s9">
+  <link rel="stylesheet" href="/styles.css?v=60s1">
   <title>myHabbit</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
@@ -25,10 +25,11 @@
   <div id="appSplash" class="app-splash" role="status" aria-label="Завантаження myHabbit">
     <img src="/assets/myhabbit-brand.webp" alt="myHabbit — щаслива пара серед хмар">
     <strong>myHabbit</strong>
-    <span id="splashStatus">Готуємо автономну версію…</span><div class="splash-progress" aria-hidden="true"><i id="splashProgressBar"></i></div><small id="splashProgressText">0%</small>
+    <span>Разом ростемо. Разом досягаємо.</span>
   </div>
   <div id="app"></div>
   <div id="toast" class="toast" aria-live="polite"></div>
-  <script src="/app.js?v=60s9" defer></script>
+  <script src="/app.js?v=60s1" defer></script>
+  <script>setTimeout(()=>document.getElementById('appSplash')?.classList.add('hidden'),4500)</script>
 </body>
 </html>
