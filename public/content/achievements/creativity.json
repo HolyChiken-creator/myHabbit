@@ -1,0 +1,1476 @@
+[
+  {
+    "id": "achievement_creativity_0009",
+    "title": "🎨 Creativity — етап 1",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {
+        "creativity": 30
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0027",
+    "title": "🎨 Creativity — етап 2",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "creativity": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0045",
+    "title": "🎨 Creativity — етап 3",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "creativity": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0063",
+    "title": "🎨 Creativity — етап 4",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {
+        "creativity": 180
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0081",
+    "title": "🎨 Creativity — етап 5",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {
+        "creativity": 18
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0099",
+    "title": "🎨 Creativity — етап 6",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "creativity": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0117",
+    "title": "🎨 Creativity — етап 7",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "creativity": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0135",
+    "title": "🎨 Creativity — етап 8",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {
+        "creativity": 30
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0153",
+    "title": "🎨 Creativity — етап 9",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {
+        "creativity": 18
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0171",
+    "title": "🎨 Creativity — етап 10",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {
+        "creativity": 120
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0189",
+    "title": "🎨 Creativity — етап 11",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {
+        "creativity": 36
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0207",
+    "title": "🎨 Creativity — етап 12",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {
+        "creativity": 300
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0225",
+    "title": "🎨 Creativity — етап 13",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "creativity": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0243",
+    "title": "🎨 Creativity — етап 14",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {
+        "creativity": 60
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0261",
+    "title": "🎨 Creativity — етап 15",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {
+        "creativity": 18
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0279",
+    "title": "🎨 Creativity — етап 16",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {
+        "creativity": 18
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0297",
+    "title": "🎨 Creativity — етап 17",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "creativity": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0315",
+    "title": "🎨 Creativity — етап 18",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {
+        "creativity": 120
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0333",
+    "title": "🎨 Creativity — етап 19",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {
+        "creativity": 300
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0351",
+    "title": "🎨 Creativity — етап 20",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {
+        "creativity": 30
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0369",
+    "title": "🎨 Creativity — етап 21",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {
+        "creativity": 90
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0387",
+    "title": "🎨 Creativity — етап 22",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {
+        "creativity": 30
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0405",
+    "title": "🎨 Creativity — етап 23",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {
+        "creativity": 120
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0423",
+    "title": "🎨 Creativity — етап 24",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {
+        "creativity": 36
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0441",
+    "title": "🎨 Creativity — етап 25",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {
+        "creativity": 120
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0459",
+    "title": "🎨 Creativity — етап 26",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {
+        "creativity": 90
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0477",
+    "title": "🎨 Creativity — етап 27",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "creativity": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0495",
+    "title": "🎨 Creativity — етап 28",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "creativity": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0513",
+    "title": "🎨 Creativity — етап 29",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {
+        "creativity": 60
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0531",
+    "title": "🎨 Creativity — етап 30",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "creativity": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0549",
+    "title": "🎨 Creativity — етап 31",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {
+        "creativity": 18
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0567",
+    "title": "🎨 Creativity — етап 32",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {
+        "creativity": 30
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0585",
+    "title": "🎨 Creativity — етап 33",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "creativity": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0603",
+    "title": "🎨 Creativity — етап 34",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {
+        "creativity": 180
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0621",
+    "title": "🎨 Creativity — етап 35",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {
+        "creativity": 90
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0639",
+    "title": "🎨 Creativity — етап 36",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "legendary",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {
+        "creativity": 12
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0657",
+    "title": "🎨 Creativity — етап 37",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {
+        "creativity": 300
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0675",
+    "title": "🎨 Creativity — етап 38",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "creativity": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0693",
+    "title": "🎨 Creativity — етап 39",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "creativity": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0711",
+    "title": "🎨 Creativity — етап 40",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "creativity": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0729",
+    "title": "🎨 Creativity — етап 41",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {
+        "creativity": 30
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0747",
+    "title": "🎨 Creativity — етап 42",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {
+        "creativity": 600
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0765",
+    "title": "🎨 Creativity — етап 43",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "creativity": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0783",
+    "title": "🎨 Creativity — етап 44",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "legendary",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {
+        "creativity": 120
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0801",
+    "title": "🎨 Creativity — етап 45",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {
+        "creativity": 12
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0819",
+    "title": "🎨 Creativity — етап 46",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "creativity": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0837",
+    "title": "🎨 Creativity — етап 47",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {
+        "creativity": 120
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0855",
+    "title": "🎨 Creativity — етап 48",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "creativity": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0873",
+    "title": "🎨 Creativity — етап 49",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {
+        "creativity": 36
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0891",
+    "title": "🎨 Creativity — етап 50",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "creativity": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0909",
+    "title": "🎨 Creativity — етап 51",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "creativity": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0927",
+    "title": "🎨 Creativity — етап 52",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {
+        "creativity": 120
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0945",
+    "title": "🎨 Creativity — етап 53",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "creativity": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0963",
+    "title": "🎨 Creativity — етап 54",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "creativity": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0981",
+    "title": "🎨 Creativity — етап 55",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {
+        "creativity": 30
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_0999",
+    "title": "🎨 Creativity — етап 56",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {
+        "creativity": 60
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_1017",
+    "title": "🎨 Creativity — етап 57",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {
+        "creativity": 30
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_1035",
+    "title": "🎨 Creativity — етап 58",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {
+        "creativity": 90
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_1053",
+    "title": "🎨 Creativity — етап 59",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {
+        "creativity": 30
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_1071",
+    "title": "🎨 Creativity — етап 60",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "creativity": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_1089",
+    "title": "🎨 Creativity — етап 61",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {
+        "creativity": 120
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_1107",
+    "title": "🎨 Creativity — етап 62",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "creativity": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_1125",
+    "title": "🎨 Creativity — етап 63",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {
+        "creativity": 12
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_1143",
+    "title": "🎨 Creativity — етап 64",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {
+        "creativity": 36
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_1161",
+    "title": "🎨 Creativity — етап 65",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {
+        "creativity": 180
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_1179",
+    "title": "🎨 Creativity — етап 66",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {
+        "creativity": 18
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_creativity_1197",
+    "title": "🎨 Creativity — етап 67",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "creativity",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "creativeQuestsCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {
+        "creativity": 60
+      }
+    },
+    "active": true,
+    "version": 1
+  }
+]

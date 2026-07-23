@@ -1,0 +1,1476 @@
+[
+  {
+    "id": "achievement_relationship_0003",
+    "title": "❤️ Relationship — етап 1",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {
+        "relationship": 12
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0021",
+    "title": "❤️ Relationship — етап 2",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {
+        "relationship": 90
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0039",
+    "title": "❤️ Relationship — етап 3",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "relationship": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0057",
+    "title": "❤️ Relationship — етап 4",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "relationship": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0075",
+    "title": "❤️ Relationship — етап 5",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {
+        "relationship": 300
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0093",
+    "title": "❤️ Relationship — етап 6",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {
+        "relationship": 180
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0111",
+    "title": "❤️ Relationship — етап 7",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "relationship": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0129",
+    "title": "❤️ Relationship — етап 8",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {
+        "relationship": 600
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0147",
+    "title": "❤️ Relationship — етап 9",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {
+        "relationship": 60
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0165",
+    "title": "❤️ Relationship — етап 10",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "relationship": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0183",
+    "title": "❤️ Relationship — етап 11",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {
+        "relationship": 60
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0201",
+    "title": "❤️ Relationship — етап 12",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {
+        "relationship": 90
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0219",
+    "title": "❤️ Relationship — етап 13",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {
+        "relationship": 18
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0237",
+    "title": "❤️ Relationship — етап 14",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {
+        "relationship": 30
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0255",
+    "title": "❤️ Relationship — етап 15",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {
+        "relationship": 600
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0273",
+    "title": "❤️ Relationship — етап 16",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {
+        "relationship": 18
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0291",
+    "title": "❤️ Relationship — етап 17",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "relationship": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0309",
+    "title": "❤️ Relationship — етап 18",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "relationship": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0327",
+    "title": "❤️ Relationship — етап 19",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "relationship": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0345",
+    "title": "❤️ Relationship — етап 20",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "relationship": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0363",
+    "title": "❤️ Relationship — етап 21",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {
+        "relationship": 18
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0381",
+    "title": "❤️ Relationship — етап 22",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "relationship": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0399",
+    "title": "❤️ Relationship — етап 23",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {
+        "relationship": 30
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0417",
+    "title": "❤️ Relationship — етап 24",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "relationship": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0435",
+    "title": "❤️ Relationship — етап 25",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {
+        "relationship": 90
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0453",
+    "title": "❤️ Relationship — етап 26",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "relationship": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0471",
+    "title": "❤️ Relationship — етап 27",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {
+        "relationship": 300
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0489",
+    "title": "❤️ Relationship — етап 28",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {
+        "relationship": 90
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0507",
+    "title": "❤️ Relationship — етап 29",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {
+        "relationship": 180
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0525",
+    "title": "❤️ Relationship — етап 30",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {
+        "relationship": 12
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0543",
+    "title": "❤️ Relationship — етап 31",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {
+        "relationship": 30
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0561",
+    "title": "❤️ Relationship — етап 32",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "relationship": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0579",
+    "title": "❤️ Relationship — етап 33",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {
+        "relationship": 600
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0597",
+    "title": "❤️ Relationship — етап 34",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {
+        "relationship": 120
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0615",
+    "title": "❤️ Relationship — етап 35",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "relationship": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0633",
+    "title": "❤️ Relationship — етап 36",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {
+        "relationship": 12
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0651",
+    "title": "❤️ Relationship — етап 37",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {
+        "relationship": 180
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0669",
+    "title": "❤️ Relationship — етап 38",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {
+        "relationship": 60
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0687",
+    "title": "❤️ Relationship — етап 39",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "relationship": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0705",
+    "title": "❤️ Relationship — етап 40",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {
+        "relationship": 36
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0723",
+    "title": "❤️ Relationship — етап 41",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {
+        "relationship": 300
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0741",
+    "title": "❤️ Relationship — етап 42",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {
+        "relationship": 36
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0759",
+    "title": "❤️ Relationship — етап 43",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {
+        "relationship": 36
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0777",
+    "title": "❤️ Relationship — етап 44",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {
+        "relationship": 300
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0795",
+    "title": "❤️ Relationship — етап 45",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "relationship": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0813",
+    "title": "❤️ Relationship — етап 46",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "relationship": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0831",
+    "title": "❤️ Relationship — етап 47",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {
+        "relationship": 120
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0849",
+    "title": "❤️ Relationship — етап 48",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {
+        "relationship": 120
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0867",
+    "title": "❤️ Relationship — етап 49",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {
+        "relationship": 90
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0885",
+    "title": "❤️ Relationship — етап 50",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "relationship": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0903",
+    "title": "❤️ Relationship — етап 51",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "relationship": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0921",
+    "title": "❤️ Relationship — етап 52",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {
+        "relationship": 36
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0939",
+    "title": "❤️ Relationship — етап 53",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "relationship": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0957",
+    "title": "❤️ Relationship — етап 54",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {
+        "relationship": 180
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0975",
+    "title": "❤️ Relationship — етап 55",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {
+        "relationship": 36
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_0993",
+    "title": "❤️ Relationship — етап 56",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {
+        "relationship": 12
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_1011",
+    "title": "❤️ Relationship — етап 57",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "relationship": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_1029",
+    "title": "❤️ Relationship — етап 58",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {
+        "relationship": 12
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_1047",
+    "title": "❤️ Relationship — етап 59",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {
+        "relationship": 300
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_1065",
+    "title": "❤️ Relationship — етап 60",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "relationship": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_1083",
+    "title": "❤️ Relationship — етап 61",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "relationship": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_1101",
+    "title": "❤️ Relationship — етап 62",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {
+        "relationship": 90
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_1119",
+    "title": "❤️ Relationship — етап 63",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {
+        "relationship": 12
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_1137",
+    "title": "❤️ Relationship — етап 64",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "relationship": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_1155",
+    "title": "❤️ Relationship — етап 65",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {
+        "relationship": 120
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_1173",
+    "title": "❤️ Relationship — етап 66",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "relationship": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_relationship_1191",
+    "title": "❤️ Relationship — етап 67",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "relationship",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "relationshipQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {
+        "relationship": 90
+      }
+    },
+    "active": true,
+    "version": 1
+  }
+]

@@ -1,0 +1,1476 @@
+[
+  {
+    "id": "achievement_health_0005",
+    "title": "🌿 Health — етап 1",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "health": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0023",
+    "title": "🌿 Health — етап 2",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {
+        "health": 300
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0041",
+    "title": "🌿 Health — етап 3",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "health": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0059",
+    "title": "🌿 Health — етап 4",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {
+        "health": 12
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0077",
+    "title": "🌿 Health — етап 5",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {
+        "health": 60
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0095",
+    "title": "🌿 Health — етап 6",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "health": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0113",
+    "title": "🌿 Health — етап 7",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {
+        "health": 60
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0131",
+    "title": "🌿 Health — етап 8",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {
+        "health": 300
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0149",
+    "title": "🌿 Health — етап 9",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "health": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0167",
+    "title": "🌿 Health — етап 10",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "health": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0185",
+    "title": "🌿 Health — етап 11",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {
+        "health": 90
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0203",
+    "title": "🌿 Health — етап 12",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {
+        "health": 60
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0221",
+    "title": "🌿 Health — етап 13",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {
+        "health": 90
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0239",
+    "title": "🌿 Health — етап 14",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "legendary",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {
+        "health": 120
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0257",
+    "title": "🌿 Health — етап 15",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {
+        "health": 300
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0275",
+    "title": "🌿 Health — етап 16",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {
+        "health": 36
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0293",
+    "title": "🌿 Health — етап 17",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {
+        "health": 36
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0311",
+    "title": "🌿 Health — етап 18",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {
+        "health": 30
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0329",
+    "title": "🌿 Health — етап 19",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "health": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0347",
+    "title": "🌿 Health — етап 20",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {
+        "health": 12
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0365",
+    "title": "🌿 Health — етап 21",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {
+        "health": 36
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0383",
+    "title": "🌿 Health — етап 22",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {
+        "health": 36
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0401",
+    "title": "🌿 Health — етап 23",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "health": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0419",
+    "title": "🌿 Health — етап 24",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {
+        "health": 300
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0437",
+    "title": "🌿 Health — етап 25",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {
+        "health": 180
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0455",
+    "title": "🌿 Health — етап 26",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {
+        "health": 60
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0473",
+    "title": "🌿 Health — етап 27",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "health": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0491",
+    "title": "🌿 Health — етап 28",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "health": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0509",
+    "title": "🌿 Health — етап 29",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {
+        "health": 36
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0527",
+    "title": "🌿 Health — етап 30",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "health": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0545",
+    "title": "🌿 Health — етап 31",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {
+        "health": 12
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0563",
+    "title": "🌿 Health — етап 32",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {
+        "health": 600
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0581",
+    "title": "🌿 Health — етап 33",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {
+        "health": 18
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0599",
+    "title": "🌿 Health — етап 34",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {
+        "health": 90
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0617",
+    "title": "🌿 Health — етап 35",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {
+        "health": 30
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0635",
+    "title": "🌿 Health — етап 36",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {
+        "health": 30
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0653",
+    "title": "🌿 Health — етап 37",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {
+        "health": 60
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0671",
+    "title": "🌿 Health — етап 38",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {
+        "health": 12
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0689",
+    "title": "🌿 Health — етап 39",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {
+        "health": 90
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0707",
+    "title": "🌿 Health — етап 40",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "health": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0725",
+    "title": "🌿 Health — етап 41",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {
+        "health": 36
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0743",
+    "title": "🌿 Health — етап 42",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "health": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0761",
+    "title": "🌿 Health — етап 43",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "health": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0779",
+    "title": "🌿 Health — етап 44",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {
+        "health": 60
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0797",
+    "title": "🌿 Health — етап 45",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {
+        "health": 30
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0815",
+    "title": "🌿 Health — етап 46",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "health": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0833",
+    "title": "🌿 Health — етап 47",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {
+        "health": 120
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0851",
+    "title": "🌿 Health — етап 48",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {
+        "health": 120
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0869",
+    "title": "🌿 Health — етап 49",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "health": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0887",
+    "title": "🌿 Health — етап 50",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {
+        "health": 12
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0905",
+    "title": "🌿 Health — етап 51",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "health": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0923",
+    "title": "🌿 Health — етап 52",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {
+        "health": 120
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0941",
+    "title": "🌿 Health — етап 53",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {
+        "health": 60
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0959",
+    "title": "🌿 Health — етап 54",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "health": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0977",
+    "title": "🌿 Health — етап 55",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "legendary",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "health": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_0995",
+    "title": "🌿 Health — етап 56",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "health": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_1013",
+    "title": "🌿 Health — етап 57",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {
+        "health": 600
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_1031",
+    "title": "🌿 Health — етап 58",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "health": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_1049",
+    "title": "🌿 Health — етап 59",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {
+        "health": 120
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_1067",
+    "title": "🌿 Health — етап 60",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {
+        "health": 18
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_1085",
+    "title": "🌿 Health — етап 61",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "health": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_1103",
+    "title": "🌿 Health — етап 62",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {
+        "health": 12
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_1121",
+    "title": "🌿 Health — етап 63",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {
+        "health": 60
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_1139",
+    "title": "🌿 Health — етап 64",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "health": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_1157",
+    "title": "🌿 Health — етап 65",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "health": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_1175",
+    "title": "🌿 Health — етап 66",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {
+        "health": 18
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_health_1193",
+    "title": "🌿 Health — етап 67",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "health",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "healthQuestsCompleted",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {
+        "health": 18
+      }
+    },
+    "active": true,
+    "version": 1
+  }
+]
