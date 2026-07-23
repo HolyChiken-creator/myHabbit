@@ -1,1 +1,1 @@
-6.0.3-stage9.3-immediate-render
+6.0.0-stage9.4-stable-rollback
