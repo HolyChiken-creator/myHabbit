@@ -1,0 +1,1476 @@
+[
+  {
+    "id": "achievement_family_0002",
+    "title": "👨‍👩‍👧‍👦 Family — етап 1",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {
+        "family": 90
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0020",
+    "title": "👨‍👩‍👧‍👦 Family — етап 2",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {
+        "family": 12
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0038",
+    "title": "👨‍👩‍👧‍👦 Family — етап 3",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "family": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0056",
+    "title": "👨‍👩‍👧‍👦 Family — етап 4",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "family": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0074",
+    "title": "👨‍👩‍👧‍👦 Family — етап 5",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {
+        "family": 30
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0092",
+    "title": "👨‍👩‍👧‍👦 Family — етап 6",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {
+        "family": 36
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0110",
+    "title": "👨‍👩‍👧‍👦 Family — етап 7",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {
+        "family": 180
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0128",
+    "title": "👨‍👩‍👧‍👦 Family — етап 8",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "family": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0146",
+    "title": "👨‍👩‍👧‍👦 Family — етап 9",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {
+        "family": 60
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0164",
+    "title": "👨‍👩‍👧‍👦 Family — етап 10",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "family": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0182",
+    "title": "👨‍👩‍👧‍👦 Family — етап 11",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {
+        "family": 180
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0200",
+    "title": "👨‍👩‍👧‍👦 Family — етап 12",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "family": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0218",
+    "title": "👨‍👩‍👧‍👦 Family — етап 13",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {
+        "family": 90
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0236",
+    "title": "👨‍👩‍👧‍👦 Family — етап 14",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {
+        "family": 36
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0254",
+    "title": "👨‍👩‍👧‍👦 Family — етап 15",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {
+        "family": 120
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0272",
+    "title": "👨‍👩‍👧‍👦 Family — етап 16",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "legendary",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {
+        "family": 12
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0290",
+    "title": "👨‍👩‍👧‍👦 Family — етап 17",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {
+        "family": 18
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0308",
+    "title": "👨‍👩‍👧‍👦 Family — етап 18",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "family": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0326",
+    "title": "👨‍👩‍👧‍👦 Family — етап 19",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "family": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0344",
+    "title": "👨‍👩‍👧‍👦 Family — етап 20",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "family": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0362",
+    "title": "👨‍👩‍👧‍👦 Family — етап 21",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {
+        "family": 18
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0380",
+    "title": "👨‍👩‍👧‍👦 Family — етап 22",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {
+        "family": 300
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0398",
+    "title": "👨‍👩‍👧‍👦 Family — етап 23",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {
+        "family": 600
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0416",
+    "title": "👨‍👩‍👧‍👦 Family — етап 24",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {
+        "family": 300
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0434",
+    "title": "👨‍👩‍👧‍👦 Family — етап 25",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {
+        "family": 90
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0452",
+    "title": "👨‍👩‍👧‍👦 Family — етап 26",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "family": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0470",
+    "title": "👨‍👩‍👧‍👦 Family — етап 27",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "family": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0488",
+    "title": "👨‍👩‍👧‍👦 Family — етап 28",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {
+        "family": 300
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0506",
+    "title": "👨‍👩‍👧‍👦 Family — етап 29",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {
+        "family": 36
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0524",
+    "title": "👨‍👩‍👧‍👦 Family — етап 30",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {
+        "family": 90
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0542",
+    "title": "👨‍👩‍👧‍👦 Family — етап 31",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {
+        "family": 180
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0560",
+    "title": "👨‍👩‍👧‍👦 Family — етап 32",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {
+        "family": 12
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0578",
+    "title": "👨‍👩‍👧‍👦 Family — етап 33",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {
+        "family": 12
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0596",
+    "title": "👨‍👩‍👧‍👦 Family — етап 34",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "family": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0614",
+    "title": "👨‍👩‍👧‍👦 Family — етап 35",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {
+        "family": 30
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0632",
+    "title": "👨‍👩‍👧‍👦 Family — етап 36",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {
+        "family": 12
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0650",
+    "title": "👨‍👩‍👧‍👦 Family — етап 37",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {
+        "family": 12
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0668",
+    "title": "👨‍👩‍👧‍👦 Family — етап 38",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "legendary",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "family": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0686",
+    "title": "👨‍👩‍👧‍👦 Family — етап 39",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {
+        "family": 600
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0704",
+    "title": "👨‍👩‍👧‍👦 Family — етап 40",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "family": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0722",
+    "title": "👨‍👩‍👧‍👦 Family — етап 41",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {
+        "family": 60
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0740",
+    "title": "👨‍👩‍👧‍👦 Family — етап 42",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {
+        "family": 90
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0758",
+    "title": "👨‍👩‍👧‍👦 Family — етап 43",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {
+        "family": 12
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0776",
+    "title": "👨‍👩‍👧‍👦 Family — етап 44",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {
+        "family": 180
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0794",
+    "title": "👨‍👩‍👧‍👦 Family — етап 45",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "family": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0812",
+    "title": "👨‍👩‍👧‍👦 Family — етап 46",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "family": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0830",
+    "title": "👨‍👩‍👧‍👦 Family — етап 47",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {
+        "family": 600
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0848",
+    "title": "👨‍👩‍👧‍👦 Family — етап 48",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "family": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0866",
+    "title": "👨‍👩‍👧‍👦 Family — етап 49",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {
+        "family": 60
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0884",
+    "title": "👨‍👩‍👧‍👦 Family — етап 50",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {
+        "family": 12
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0902",
+    "title": "👨‍👩‍👧‍👦 Family — етап 51",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {
+        "family": 120
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0920",
+    "title": "👨‍👩‍👧‍👦 Family — етап 52",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {
+        "family": 90
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0938",
+    "title": "👨‍👩‍👧‍👦 Family — етап 53",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "family": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0956",
+    "title": "👨‍👩‍👧‍👦 Family — етап 54",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {
+        "family": 180
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0974",
+    "title": "👨‍👩‍👧‍👦 Family — етап 55",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "family": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_0992",
+    "title": "👨‍👩‍👧‍👦 Family — етап 56",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {
+        "family": 36
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_1010",
+    "title": "👨‍👩‍👧‍👦 Family — етап 57",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {
+        "family": 120
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_1028",
+    "title": "👨‍👩‍👧‍👦 Family — етап 58",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {
+        "family": 300
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_1046",
+    "title": "👨‍👩‍👧‍👦 Family — етап 59",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {
+        "family": 36
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_1064",
+    "title": "👨‍👩‍👧‍👦 Family — етап 60",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {
+        "family": 90
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_1082",
+    "title": "👨‍👩‍👧‍👦 Family — етап 61",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {
+        "family": 36
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_1100",
+    "title": "👨‍👩‍👧‍👦 Family — етап 62",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {
+        "family": 12
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_1118",
+    "title": "👨‍👩‍👧‍👦 Family — етап 63",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "family": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_1136",
+    "title": "👨‍👩‍👧‍👦 Family — етап 64",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {
+        "family": 12
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_1154",
+    "title": "👨‍👩‍👧‍👦 Family — етап 65",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {
+        "family": 30
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_1172",
+    "title": "👨‍👩‍👧‍👦 Family — етап 66",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {
+        "family": 180
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_family_1190",
+    "title": "👨‍👩‍👧‍👦 Family — етап 67",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "family",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "familyQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "family": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  }
+]

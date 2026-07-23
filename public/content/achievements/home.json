@@ -1,0 +1,1476 @@
+[
+  {
+    "id": "achievement_home_0001",
+    "title": "🏠 Home — етап 1",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "home": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0019",
+    "title": "🏠 Home — етап 2",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {
+        "home": 30
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0037",
+    "title": "🏠 Home — етап 3",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "home": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0055",
+    "title": "🏠 Home — етап 4",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {
+        "home": 12
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0073",
+    "title": "🏠 Home — етап 5",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {
+        "home": 120
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0091",
+    "title": "🏠 Home — етап 6",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {
+        "home": 600
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0109",
+    "title": "🏠 Home — етап 7",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {
+        "home": 60
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0127",
+    "title": "🏠 Home — етап 8",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {
+        "home": 120
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0145",
+    "title": "🏠 Home — етап 9",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "home": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0163",
+    "title": "🏠 Home — етап 10",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "home": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0181",
+    "title": "🏠 Home — етап 11",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {
+        "home": 180
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0199",
+    "title": "🏠 Home — етап 12",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {
+        "home": 36
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0217",
+    "title": "🏠 Home — етап 13",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {
+        "home": 180
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0235",
+    "title": "🏠 Home — етап 14",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {
+        "home": 180
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0253",
+    "title": "🏠 Home — етап 15",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {
+        "home": 300
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0271",
+    "title": "🏠 Home — етап 16",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {
+        "home": 36
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0289",
+    "title": "🏠 Home — етап 17",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {
+        "home": 600
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0307",
+    "title": "🏠 Home — етап 18",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {
+        "home": 30
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0325",
+    "title": "🏠 Home — етап 19",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "home": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0343",
+    "title": "🏠 Home — етап 20",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "home": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0361",
+    "title": "🏠 Home — етап 21",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "home": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0379",
+    "title": "🏠 Home — етап 22",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "home": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0397",
+    "title": "🏠 Home — етап 23",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "home": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0415",
+    "title": "🏠 Home — етап 24",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "home": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0433",
+    "title": "🏠 Home — етап 25",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {
+        "home": 60
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0451",
+    "title": "🏠 Home — етап 26",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "home": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0469",
+    "title": "🏠 Home — етап 27",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {
+        "home": 90
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0487",
+    "title": "🏠 Home — етап 28",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {
+        "home": 18
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0505",
+    "title": "🏠 Home — етап 29",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "home": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0523",
+    "title": "🏠 Home — етап 30",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "home": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0541",
+    "title": "🏠 Home — етап 31",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {
+        "home": 600
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0559",
+    "title": "🏠 Home — етап 32",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {
+        "home": 120
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0577",
+    "title": "🏠 Home — етап 33",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "home": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0595",
+    "title": "🏠 Home — етап 34",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "home": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0613",
+    "title": "🏠 Home — етап 35",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "home": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0631",
+    "title": "🏠 Home — етап 36",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {
+        "home": 30
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0649",
+    "title": "🏠 Home — етап 37",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "home": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0667",
+    "title": "🏠 Home — етап 38",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "home": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0685",
+    "title": "🏠 Home — етап 39",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {
+        "home": 60
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0703",
+    "title": "🏠 Home — етап 40",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "home": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0721",
+    "title": "🏠 Home — етап 41",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {
+        "home": 120
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0739",
+    "title": "🏠 Home — етап 42",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {
+        "home": 12
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0757",
+    "title": "🏠 Home — етап 43",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "home": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0775",
+    "title": "🏠 Home — етап 44",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {
+        "home": 180
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0793",
+    "title": "🏠 Home — етап 45",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "home": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0811",
+    "title": "🏠 Home — етап 46",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {
+        "home": 120
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0829",
+    "title": "🏠 Home — етап 47",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {
+        "home": 60
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0847",
+    "title": "🏠 Home — етап 48",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "legendary",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {
+        "home": 36
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0865",
+    "title": "🏠 Home — етап 49",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {
+        "home": 180
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0883",
+    "title": "🏠 Home — етап 50",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {
+        "home": 60
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0901",
+    "title": "🏠 Home — етап 51",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "home": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0919",
+    "title": "🏠 Home — етап 52",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {
+        "home": 600
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0937",
+    "title": "🏠 Home — етап 53",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {
+        "home": 120
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0955",
+    "title": "🏠 Home — етап 54",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "home": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0973",
+    "title": "🏠 Home — етап 55",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {
+        "home": 18
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_0991",
+    "title": "🏠 Home — етап 56",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "home": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_1009",
+    "title": "🏠 Home — етап 57",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "home": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_1027",
+    "title": "🏠 Home — етап 58",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "home": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_1045",
+    "title": "🏠 Home — етап 59",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {
+        "home": 30
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_1063",
+    "title": "🏠 Home — етап 60",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {
+        "home": 12
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_1081",
+    "title": "🏠 Home — етап 61",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "legendary",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {
+        "home": 90
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_1099",
+    "title": "🏠 Home — етап 62",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {
+        "home": 90
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_1117",
+    "title": "🏠 Home — етап 63",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {
+        "home": 600
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_1135",
+    "title": "🏠 Home — етап 64",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "home": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_1153",
+    "title": "🏠 Home — етап 65",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "home": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_1171",
+    "title": "🏠 Home — етап 66",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {
+        "home": 1200
+      }
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_home_1189",
+    "title": "🏠 Home — етап 67",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "home",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "homeQuestsCompleted",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {
+        "home": 10
+      }
+    },
+    "active": true,
+    "version": 1
+  }
+]

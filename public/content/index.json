@@ -1,0 +1,29 @@
+{
+  "libraryVersion": "1.0.0",
+  "language": "uk",
+  "generatedAt": "2026-07-22",
+  "counts": {
+    "uniqueQuests": 5500,
+    "dailyTasks": 700,
+    "weeklyTasks": 350,
+    "challenges": 450,
+    "achievements": 1200,
+    "shopItems": 300,
+    "totalContentItems": 8500
+  },
+  "repeatRules": {
+    "uniqueQuests": "none",
+    "dailyTasks": "daily",
+    "weeklyTasks": "weekly",
+    "challenges": "custom"
+  },
+  "featuredAchievementsLimit": 3,
+  "paths": {
+    "quests": "quests/*.json",
+    "daily": "daily/*.json",
+    "weekly": "weekly/*.json",
+    "challenges": "challenges/all.json",
+    "achievements": "achievements/*.json",
+    "shop": "shop/catalog.json"
+  }
+}
