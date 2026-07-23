@@ -12,7 +12,7 @@
   const OFFLINE_STORE = 'library';
   const CONTENT_CACHE = 'myHabbitContentLibraryV1';
   const CONTENT_VERSION = '1.0.0';
-  const APP_VERSION = '6.0.1-stage9-offline-hotfix';
+  const APP_VERSION = '6.0.2-stage9-splash-recovery';
   const ACCOUNTS = 'myHabbitAccountsV1';
   const ACTIVE_ACCOUNT = 'myHabbitActiveAccountV1';
   const QUEST_CATEGORIES = ['family','relationship','home','sport','health','mind','reading','cinema','creativity','finance','discipline'];
@@ -928,7 +928,7 @@
     if(navigator.storage?.persist)navigator.storage.persist().catch(()=>{});
     if(!('serviceWorker' in navigator)){updateSplash(100,'Готово до роботи');return;}
     try{
-      const registration=await navigator.serviceWorker.register('/sw.js');
+      const registration=await navigator.serviceWorker.register('/sw92.js');
       await navigator.serviceWorker.ready;
       const worker=registration.active||registration.waiting||registration.installing;
       if(!worker){updateSplash(100,'Готово до роботи');return;}
