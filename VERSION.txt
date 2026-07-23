@@ -1,1 +1,1 @@
-6.0.0-stage9.1-cloudflare-404-fix
+6.0.0-stage8-achievement-icons
