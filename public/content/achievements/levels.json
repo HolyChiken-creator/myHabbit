@@ -1,0 +1,1322 @@
+[
+  {
+    "id": "achievement_levels_0013",
+    "title": "⭐ Levels — етап 1",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0031",
+    "title": "⭐ Levels — етап 2",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0049",
+    "title": "⭐ Levels — етап 3",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0067",
+    "title": "⭐ Levels — етап 4",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0085",
+    "title": "⭐ Levels — етап 5",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0103",
+    "title": "⭐ Levels — етап 6",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0121",
+    "title": "⭐ Levels — етап 7",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0139",
+    "title": "⭐ Levels — етап 8",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0157",
+    "title": "⭐ Levels — етап 9",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0175",
+    "title": "⭐ Levels — етап 10",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0193",
+    "title": "⭐ Levels — етап 11",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0211",
+    "title": "⭐ Levels — етап 12",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0229",
+    "title": "⭐ Levels — етап 13",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0247",
+    "title": "⭐ Levels — етап 14",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0265",
+    "title": "⭐ Levels — етап 15",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0283",
+    "title": "⭐ Levels — етап 16",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0301",
+    "title": "⭐ Levels — етап 17",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0319",
+    "title": "⭐ Levels — етап 18",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0337",
+    "title": "⭐ Levels — етап 19",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0355",
+    "title": "⭐ Levels — етап 20",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0373",
+    "title": "⭐ Levels — етап 21",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0391",
+    "title": "⭐ Levels — етап 22",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0409",
+    "title": "⭐ Levels — етап 23",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0427",
+    "title": "⭐ Levels — етап 24",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0445",
+    "title": "⭐ Levels — етап 25",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0463",
+    "title": "⭐ Levels — етап 26",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0481",
+    "title": "⭐ Levels — етап 27",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0499",
+    "title": "⭐ Levels — етап 28",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0517",
+    "title": "⭐ Levels — етап 29",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0535",
+    "title": "⭐ Levels — етап 30",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0553",
+    "title": "⭐ Levels — етап 31",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0571",
+    "title": "⭐ Levels — етап 32",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0589",
+    "title": "⭐ Levels — етап 33",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0607",
+    "title": "⭐ Levels — етап 34",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0625",
+    "title": "⭐ Levels — етап 35",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0643",
+    "title": "⭐ Levels — етап 36",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0661",
+    "title": "⭐ Levels — етап 37",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0679",
+    "title": "⭐ Levels — етап 38",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0697",
+    "title": "⭐ Levels — етап 39",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0715",
+    "title": "⭐ Levels — етап 40",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0733",
+    "title": "⭐ Levels — етап 41",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0751",
+    "title": "⭐ Levels — етап 42",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0769",
+    "title": "⭐ Levels — етап 43",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0787",
+    "title": "⭐ Levels — етап 44",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0805",
+    "title": "⭐ Levels — етап 45",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0823",
+    "title": "⭐ Levels — етап 46",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0841",
+    "title": "⭐ Levels — етап 47",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0859",
+    "title": "⭐ Levels — етап 48",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0877",
+    "title": "⭐ Levels — етап 49",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0895",
+    "title": "⭐ Levels — етап 50",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0913",
+    "title": "⭐ Levels — етап 51",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0931",
+    "title": "⭐ Levels — етап 52",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0949",
+    "title": "⭐ Levels — етап 53",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0967",
+    "title": "⭐ Levels — етап 54",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_0985",
+    "title": "⭐ Levels — етап 55",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_1003",
+    "title": "⭐ Levels — етап 56",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_1021",
+    "title": "⭐ Levels — етап 57",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_1039",
+    "title": "⭐ Levels — етап 58",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_1057",
+    "title": "⭐ Levels — етап 59",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_1075",
+    "title": "⭐ Levels — етап 60",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_1093",
+    "title": "⭐ Levels — етап 61",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_1111",
+    "title": "⭐ Levels — етап 62",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_1129",
+    "title": "⭐ Levels — етап 63",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_1147",
+    "title": "⭐ Levels — етап 64",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_1165",
+    "title": "⭐ Levels — етап 65",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_levels_1183",
+    "title": "⭐ Levels — етап 66",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "levels",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "levelReached",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  }
+]
