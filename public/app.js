@@ -1256,10 +1256,6 @@
     const ownedCosmetics=(Array.isArray(u.inventory)?u.inventory:[]).map(cosmetic).filter(Boolean);
     const completed=collections.filter(c=>c.stickers.length&&c.stickers.every(st=>stickerCount(u,st.id)>0)).length;
     const achievements=(Array.isArray(u.achievements)?u.achievements:[]).map(id=>state.achievements.find(a=>a.id===id)).filter(Boolean);
-    const giftOptions=[];
-    for(const st of ownedStickers)giftOptions.push(`<option value="sticker:${escapeHtml(st.id)}">🎴 ${escapeHtml(st.name||'Стікер')} (${stickerCount(u,st.id)} шт.)</option>`);
-    for(const item of ownedCosmetics)giftOptions.push(`<option value="cosmetic:${escapeHtml(item.id)}">✨ ${escapeHtml(item.title||'Косметика')}</option>`);
-    const recipients=(state.users||[]).filter(x=>x&&x.id!==u.id).map(x=>`<option value="${escapeHtml(x.id)}">${escapeHtml(x.name||'Учасник')}</option>`).join('');
     const history=(Array.isArray(state.giftHistory)?state.giftHistory:[]).slice().reverse().map(g=>`<article class="museum-history-row"><span>${g.icon||'🎁'}</span><div><strong>${escapeHtml(g.title||'Подарунок')}</strong><small>${escapeHtml(g.fromName||'')} → ${escapeHtml(g.toName||'')} · ${g.createdAt?new Date(g.createdAt).toLocaleDateString('uk-UA'):'без дати'}</small>${g.note?`<p>${escapeHtml(g.note)}</p>`:''}</div></article>`).join('')||'<div class="empty-soft">Подарунків ще не було.</div>';
     const achievementCards=achievements.length?achievements.map(a=>achievementCard(a,u)).join(''):'<div class="empty-soft">Перша ачивка з’явиться після виконаного завдання.</div>';
     return shell(`<section class="museum-hero"><div><span class="eyebrow">Особиста скарбниця</span><h2>Музей ${escapeHtml(u.name||'учасника')}</h2><p>Колекції, косметика, ачивки та історія подарунків.</p></div><div class="museum-seal">🏛️</div></section>
@@ -1267,31 +1263,43 @@
     <div class="museum-grid"><section class="card museum-section"><div class="section-head"><h2>Відкриті стікери</h2><small>${ownedStickers.length}</small></div><div class="museum-sticker-grid">${ownedStickers.length?ownedStickers.map(st=>`<article class="museum-sticker rarity-${st.rarity||'common'}"><div>${stickerVisual(st)}</div><strong>${escapeHtml(st.name||'Стікер')}</strong><small>${escapeHtml(st.collectionTitle)}</small></article>`).join(''):'<div class="empty-soft">Перші стікери ще чекають на відкриття.</div>'}</div></section>
     <section class="card museum-section"><div class="section-head"><h2>Косметика</h2><small>${ownedCosmetics.length}</small></div><div class="museum-cosmetics">${ownedCosmetics.length?ownedCosmetics.map(x=>`<article><span>${x.kind==='animatedFrame'?'🖼️':x.kind==='nicknameEffect'?'🌈':'✨'}</span><div><strong>${escapeHtml(x.title||'Косметика')}</strong><small>${escapeHtml(x.rarity||'')}</small></div></article>`).join(''):'<div class="empty-soft">Косметика з’явиться після отримання нагород.</div>'}</div></section></div>
     <section class="card museum-section"><div class="section-head"><h2>Отримані ачивки</h2><small>${achievements.length}</small></div><div class="achievement-grid compact-achievements">${achievementCards}</div></section>
-    <section class="card gift-station"><div class="section-head"><div><h2>Подарувати назавжди</h2><small>Стікери та косметика переходять іншому учаснику</small></div></div>${recipients&&giftOptions.length?`<div class="gift-form"><select id="museumGiftRecipient">${recipients}</select><select id="museumGiftItem">${giftOptions.join('')}</select><input id="museumGiftNote" maxlength="120" placeholder="Коротка листівка, до 120 символів"><button class="btn primary" data-action="send-museum-gift">Подарувати 🎁</button></div>`:'<div class="empty-soft">Потрібен інший учасник і хоча б один доступний предмет.</div>'}</section>
     <section class="card museum-section"><div class="section-head"><h2>Історія подарунків</h2><small>зберігається назавжди</small></div><div class="museum-history">${history}</div></section>`,'Музей','Ваші відкриття, рідкісні предмети та теплі подарунки в одному місці.');
   }
 
-  function sendMuseumGift(){
-    const from=currentUser(),toId=document.getElementById('museumGiftRecipient')?.value,itemValue=document.getElementById('museumGiftItem')?.value,note=(document.getElementById('museumGiftNote')?.value||'').trim().slice(0,120),to=state.users.find(x=>x.id===toId);
-    if(!from||!to||!itemValue)return showToast('Оберіть отримувача і подарунок');
+  function profileGiftOptions(from){
+    const options=[];
+    for(const c of state.stickerCollections||[])for(const st of c.stickers||[])if(stickerCount(from,st.id)>0)options.push(`<option value="sticker:${escapeHtml(st.id)}">🎴 ${escapeHtml(st.name||'Стікер')} (${stickerCount(from,st.id)} шт.)</option>`);
+    for(const id of Array.isArray(from.inventory)?from.inventory:[]){const item=cosmetic(id);if(item)options.push(`<option value="cosmetic:${escapeHtml(item.id)}">✨ ${escapeHtml(item.title||'Косметика')}</option>`);}
+    return options;
+  }
+  function profileGiftStation(target){
+    const from=currentUser(),options=from?profileGiftOptions(from):[];
+    if(!from||!target||from.id===target.id)return '';
+    return `<section class="card profile-gift-station"><div class="section-head"><div><h2>Подарунок для ${escapeHtml(target.name||'учасника')}</h2><small>Оберіть предмет зі своєї колекції</small></div></div>${options.length?`<div class="gift-form"><input type="hidden" id="profileGiftRecipient" value="${escapeHtml(target.id)}"><select id="profileGiftItem">${options.join('')}</select><input id="profileGiftNote" maxlength="120" placeholder="Коротка листівка, до 120 символів"><button class="btn primary" data-action="send-profile-gift">Подарувати 🎁</button></div>`:'<div class="empty-soft">У вашій колекції поки немає предметів, які можна подарувати.</div>'}</section>`;
+  }
+  function sendProfileGift(){
+    const from=currentUser(),toId=document.getElementById('profileGiftRecipient')?.value,itemValue=document.getElementById('profileGiftItem')?.value,note=(document.getElementById('profileGiftNote')?.value||'').trim().slice(0,120),to=state.users.find(x=>x.id===toId);
+    if(!from||!to||!itemValue)return showToast('Оберіть подарунок');
     const [kind,id]=itemValue.split(':');let title='',icon='🎁';
+    from.stickerInventory=from.stickerInventory||{};to.stickerInventory=to.stickerInventory||{};from.inventory=Array.isArray(from.inventory)?from.inventory:[];to.inventory=Array.isArray(to.inventory)?to.inventory:[];from.stats=from.stats||{};from.activity=Array.isArray(from.activity)?from.activity:[];to.activity=Array.isArray(to.activity)?to.activity:[];
     if(kind==='sticker'){
       if(stickerCount(from,id)<1)return showToast('Цього стікера вже немає');
       from.stickerInventory[id]-=1;if(from.stickerInventory[id]<=0)delete from.stickerInventory[id];to.stickerInventory[id]=stickerCount(to,id)+1;title=stickerName(id);icon='🎴';from.stats.stickersGiven=(from.stats.stickersGiven||0)+1;
     }else if(kind==='cosmetic'){
-      const index=(from.inventory||[]).indexOf(id);if(index<0)return showToast('Цієї косметики вже немає');
+      const index=from.inventory.indexOf(id);if(index<0)return showToast('Цієї косметики вже немає');
       from.inventory.splice(index,1);if(!to.inventory.includes(id))to.inventory.push(id);const item=cosmetic(id);title=item?.title||id;icon='✨';
-      for(const key of ['badge','frame','animatedFrame','nicknameEffect','theme'])if(from.equipped?.[key]===id)from.equipped[key]=key==='theme'?'light':null;
+      for(const key of ['badge','frame','animatedFrame','nicknameEffect','profileEffect','theme'])if(from.equipped?.[key]===id)from.equipped[key]=key==='theme'?'light':null;
     }else return;
     const gift={id:`gift_${Date.now()}_${Math.random().toString(36).slice(2,7)}`,fromId:from.id,toId:to.id,fromName:from.name,toName:to.name,kind,itemId:id,title,note,icon,createdAt:new Date().toISOString()};
-    state.giftHistory.push(gift);to.receivedGifts.push(gift);to.activity.unshift(`Отримано подарунок «${title}» від ${from.name}`);from.activity.unshift(`Подаровано «${title}» для ${to.name}`);state.history.unshift({icon,text:`${from.name} подарував(ла) ${to.name} «${title}»`,time:'Щойно'});addXp(from,10,'подарунок');addXp(to,5,'отриманий подарунок');save();render();showToast(`Подарунок для ${to.name} надіслано`);
+    state.giftHistory=Array.isArray(state.giftHistory)?state.giftHistory:[];to.receivedGifts=Array.isArray(to.receivedGifts)?to.receivedGifts:[];state.history=Array.isArray(state.history)?state.history:[];
+    state.giftHistory.push(gift);to.receivedGifts.push(gift);to.activity.unshift(`Отримано подарунок «${title}» від ${from.name}`);from.activity.unshift(`Подаровано «${title}» для ${to.name}`);state.history.unshift({icon,text:`${from.name} подарував(ла) ${to.name} «${title}»`,time:'Щойно'});addXp(from,10,'подарунок');addXp(to,5,'отриманий подарунок');save();app.innerHTML=profileScreen(to.id);bind();showToast(`Подарунок для ${to.name} надіслано`);
   }
 
   function profileScreen(userId=state.currentUserId){
     const u=state.users.find(x=>x.id===userId)||currentUser(),own=u.id===state.currentUserId;evaluateReferralAchievements(u);const skills=Object.entries(u.skills||{}),achievements=state.achievements.filter(a=>u.achievements.includes(a.id)),badge=cosmetic(u.equipped?.badge),frame=u.equipped?.frame||'',animatedFrame=cosmetic(u.equipped?.animatedFrame),nickEffect=cosmetic(u.equipped?.nicknameEffect),profileEffect=cosmetic(u.equipped?.profileEffect),stickers=state.profileStickers.filter(x=>x.to===u.id).slice(-10).reverse(),nextRewards=state.levelRewards.filter(r=>!u.claimedLevelRewards.includes(r.level)).slice(0,4);
     return shell(`<section class="card cozy-profile-head profile-frame-${frame} animated-frame-${animatedFrame?.asset||'none'} profile-effect-${profileEffect?.asset||'none'}"><div class="profile-minimal"><div class="member-initial large">${cuteIcon('cat')}</div><div><div class="profile-level"><span class="animated-name nick-${nickEffect?.asset||'none'}">${escapeHtml(u.name)}</span> ${badge?cuteIcon(badge.asset.includes('bunny')?'bunny':'cat'):''}</div><div class="meta">${u.level} загальний рівень · ${format(u.xp)} / ${format(xpRequiredForLevel(u.level))} XP · ${format(u.coins)} 🪙</div><div class="profile-joined">${u.telegramUsername?'@'+escapeHtml(u.telegramUsername)+' · ':''}у myHabbit з <span class="profile-join-date">${numericJoinDate(u.createdAt)}</span></div><div class="progress soft-progress"><i style="width:${xpPct(u)}%"></i></div></div>${own?'<div class="profile-actions"><button class="btn primary" data-action="invite">Запросити в сімʼю</button><button class="btn" data-action="edit-profile">Налаштувати</button><button class="btn soft" data-action="claim-level-rewards">Подарунки рівня</button><button class="btn soft recovery-subtle" data-action="create-account-recovery">Резервний код профілю</button></div>':'<button class="btn soft" data-action="leave-sticker" data-user-id="'+u.id+'">Залишити слід</button>'}</div></section>
     <section class="grid metrics minimal-stats"><div class="card"><div class="metric-label">Квести</div><div class="metric-value">${u.stats.questsCompleted||0}</div></div><div class="card"><div class="metric-label">Ранкові подарунки</div><div class="metric-value">${u.stats.giftsOpened||0}</div></div><div class="card"><div class="metric-label">Джекпоти</div><div class="metric-value">${u.stats.jackpots||0}</div></div><div class="card"><div class="metric-label">Стікери друзям</div><div class="metric-value">${u.stats.stickersGiven||0}</div></div></section>
-    <div class="cozy-folds">${own?referralStatsBlock(u):''}${importantDatesBlock(u,own)}<details class="cozy-fold"><summary>${cuteIcon('leaf')}<strong>Мої барви</strong><small>${skills.length}</small></summary><div class="fold-body skill-list">${skills.map(([k,v])=>`<div class="skill-row cozy-skill"><span class="skill-icon">${cuteIcon('sparkle')}</span><div><div class="skill-name"><strong>${skillLabel(k)}</strong><span>${v}</span></div><div class="progress"><i style="width:${Math.min(100,(v%10)*10)}%"></i></div></div></div>`).join('')}</div></details><details class="cozy-fold"><summary>${cuteIcon('trophy')}<strong>Мої знахідки</strong><small>${achievements.length}</small></summary><div class="fold-body achievement-grid compact-achievements">${achievements.map(a=>achievementCard(a,u)).join('')}</div></details></div>`,own?'Мій затишний куточок':`${escapeHtml(u.name)} · профіль`,own?'Загальний рівень, запрошення та маленькі перемоги.':'Профіль близької людини.');
+    <div class="cozy-folds">${own?referralStatsBlock(u):''}${importantDatesBlock(u,own)}<details class="cozy-fold"><summary>${cuteIcon('leaf')}<strong>Мої барви</strong><small>${skills.length}</small></summary><div class="fold-body skill-list">${skills.map(([k,v])=>`<div class="skill-row cozy-skill"><span class="skill-icon">${cuteIcon('sparkle')}</span><div><div class="skill-name"><strong>${skillLabel(k)}</strong><span>${v}</span></div><div class="progress"><i style="width:${Math.min(100,(v%10)*10)}%"></i></div></div></div>`).join('')}</div></details><details class="cozy-fold"><summary>${cuteIcon('trophy')}<strong>Мої знахідки</strong><small>${achievements.length}</small></summary><div class="fold-body achievement-grid compact-achievements">${achievements.map(a=>achievementCard(a,u)).join('')}</div></details></div>${own?'':profileGiftStation(u)}`,own?'Мій затишний куточок':`${escapeHtml(u.name)} · профіль`,own?'Загальний рівень, запрошення та маленькі перемоги.':'Профіль близької людини.');
   }
 
   function familyActivityItems(){
@@ -1561,7 +1569,7 @@
     if(name==='spin-daily-roulette') spinDailyRoulette();
     if(name==='claim-level-rewards') claimLevelRewards();
     if(name==='start-match3') startMatch3();
-    if(name==='send-museum-gift') sendMuseumGift();
+    if(name==='send-profile-gift') sendProfileGift();
     if(name==='edit-profile'){document.body.insertAdjacentHTML('beforeend',modal('edit-profile'));bindModal();}
     if(name==='manage-important-dates'){document.body.insertAdjacentHTML('beforeend',modal('important-dates'));bindModal();}
     if(name==='add-important-date') addImportantDate();
@@ -1619,7 +1627,7 @@
     const key=await deriveTransferKey(code,salt);const payload={format:'myHabbit-recovery-session',version:1,scope,createdAt:new Date().toISOString(),familyId:state.family?.id||null,userId:currentUser()?.id||null,account};
     const encrypted=await crypto.subtle.encrypt({name:'AES-GCM',iv},key,new TextEncoder().encode(JSON.stringify(payload)));
     const box={format:'myHabbit-recovery-box',version:1,scope,salt:b64(salt),iv:b64(iv),data:b64(encrypted)};
-    try{await api('/api/recovery/store',{method:'POST',body:JSON.stringify({lookup:await recoveryHash(code),box})});
+    try{await api('/api/recovery/store',{method:'POST',body:JSON.stringify({lookup:await recoveryHash(code),box,token:auth?.token||''})});
       document.body.insertAdjacentHTML('beforeend',`<div class="modal-backdrop"><div class="modal"><div class="modal-head"><h2>Резервний код ${scope==='family'?'сімʼї':'профілю'}</h2><button class="close" data-close>×</button></div><p>Збережіть код окремо. Сервер бачить лише зашифровану копію і не може відкрити її без цього коду.</p><div class="recovery-code">${code}</div><p class="auth-help">Після вайпу Owner вводить цей код у своїй панелі та отримує JSON-сесію. Втрата коду означає втрату доступу до копії.</p><div class="modal-actions"><button class="btn primary" data-action="download-recovery-code">Зберегти код файлом</button></div></div></div>`);
       window.__lastRecovery={code,scope};bindModal();
     }catch(e){showToast(e.message||'Не вдалося зберегти резервну копію');}

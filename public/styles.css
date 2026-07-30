@@ -487,3 +487,16 @@
 
 /* 9.5.5 activity rendering stability */
 .activity-icon{flex:0 0 35px;overflow:hidden}.activity-icon-image{display:block;width:24px;height:24px;object-fit:contain}.activity-icon-fallback{display:grid;place-items:center;width:100%;height:100%;font-size:18px}.activity>div{min-width:0;flex:1}.activity p{overflow-wrap:anywhere}.activity small{display:block}
+
+/* 9.5.9 — compact Minecraft-like achievements and profile gifting */
+.achievement-grid{grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.achievement-card{min-height:74px;padding:9px 10px;display:grid;grid-template-columns:46px minmax(0,1fr);gap:9px;align-items:center;border-radius:8px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.45),0 2px 0 rgba(70,55,40,.16);overflow:hidden}
+.achievement-card .achievement-icon{width:44px;height:44px;min-width:44px;min-height:44px;border-radius:4px;background:#d9d2c4;border:2px solid #f7f2e8;box-shadow:0 0 0 2px #7a7064,inset 0 0 0 1px rgba(0,0,0,.15)}
+.achievement-card h3{margin:1px 0 2px;font-size:.86rem;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.achievement-card p{margin:0;color:var(--muted);font-size:.7rem;line-height:1.2;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.achievement-card .rarity{font-size:.59rem;letter-spacing:.04em}
+.achievement-card .progress{height:4px;margin-top:5px}
+.achievement-card small{font-size:.62rem}
+.compact-achievements{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))!important}
+.profile-gift-station{margin-top:14px;border-style:dashed}.profile-gift-station h2{margin:0 0 3px}.profile-gift-station .gift-form{display:grid;grid-template-columns:minmax(180px,1fr) minmax(180px,1fr) auto;gap:9px}
+@media(max-width:700px){.achievement-grid,.compact-achievements{grid-template-columns:1fr!important}.achievement-card{min-height:68px;grid-template-columns:42px minmax(0,1fr)}.achievement-card .achievement-icon{width:40px;height:40px;min-width:40px;min-height:40px}.profile-gift-station .gift-form{grid-template-columns:1fr}.profile-gift-station .btn{width:100%}}
