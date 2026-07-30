@@ -12,11 +12,45 @@
   const OFFLINE_STORE = 'library';
   const CONTENT_CACHE = 'myHabbitContentLibraryV1';
   const CONTENT_VERSION = '1.0.0';
-  const APP_VERSION = '9.4.3-owner-password';
+  const APP_VERSION = '9.7.1-sakura-sweetlife-tedyk-achievements';
   const ACCOUNTS = 'myHabbitAccountsV1';
   const ACTIVE_ACCOUNT = 'myHabbitActiveAccountV1';
   const LOGOUT_TOMBSTONE = 'myHabbitLogoutTombstoneV1';
   const PWA_ONBOARDING_SEEN = 'myHabbitPwaInstallGuideV1';
+  const LANGUAGE_KEY = 'myHabbitLanguageV1';
+  let appLanguage = localStorage.getItem(LANGUAGE_KEY) || ((navigator.language||'').toLowerCase().startsWith('en') ? 'en' : 'uk');
+  const EN_TEXT = {
+    'Головна':'Home','Квести':'Quests','Три в ряд':'Match 3','Магазин':'Shop','Колекції':'Collections','Музей':'Museum','Ачивки':'Achievements','Сімʼя':'Family','Профіль':'Profile','Адмін':'Admin',
+    'Вийти':'Log out','Мої профілі':'My profiles','Відкрити меню':'Open menu','Поточне оновлення':'Current update','Демо-режим':'Demo mode','Вийти з демо':'Exit demo',
+    'Моя сходинка':'My level','Наша спільна сходинка':'Family level','Баланс':'Balance','Мій ритм':'My streak','Квести на сьогодні':'Today’s quests','Усі квести':'All quests','Остання ачивка':'Latest achievement','Останні події':'Latest activity','Сімейний фокус':'Family focus','Головна ціль тижня':'Main weekly goal','Командна активність':'Team activity',
+    'Поки немає ачивок':'No achievements yet','Подія':'Activity','Щойно':'Just now','Сьогодні':'Today','Учора':'Yesterday','Рівень':'Level','Монети':'Coins','Учасники':'Members','Наші люди':'Our people','Сімейна активність':'Family activity','Запросити':'Invite','Вийти із сімʼї':'Leave family',
+    'Налаштування нашого простору':'Our space settings','Центр керування':'Control center','Перевірити Telegram':'Check Telegram','Зберегти':'Save','Скасувати':'Cancel','Додати':'Add','Видалити':'Delete','Закрити':'Close','Відкрити':'Open','Отримано':'Unlocked','Недостатньо монет':'Not enough coins',
+    'Ласкаво просимо додому':'Welcome home','Раді бачити вас знову':'Welcome back','Створити сімʼю':'Create family','Приєднатися':'Join','Відкрити файл профілю':'Open profile file','Керувати профілями':'Manage profiles','Подивитися демо':'View demo','Увійти в акаунт':'Sign in','Назад':'Back',
+    'Щоденний сюрприз':'Daily surprise','Один оберт на день':'One spin per day','Крути колесо удачі':'Spin the wheel','Крутити рулетку':'Spin','Забрати подарунок':'Claim gift','Спробувати ще раз':'Try again',
+    'Важливі дати':'Important dates','День':'Day','Місяць':'Month','Назва':'Title','Додати дату':'Add date','Список поки порожній.':'The list is empty.','Налаштування збережено':'Settings saved','Гаразд':'OK','Чудово':'Great','Далі':'Next',
+    'Українська':'Ukrainian','Англійська':'English','Мова інтерфейсу':'Interface language'
+  };
+  function currentLocale(){return appLanguage==='en'?'en-US':'uk-UA';}
+  function translateTextValue(value){
+    if(appLanguage!=='en'||!value)return value;
+    const trimmed=value.trim();
+    if(EN_TEXT[trimmed])return value.replace(trimmed,EN_TEXT[trimmed]);
+    return value
+      .replace(/(\d+) рівень/g,'Level $1')
+      .replace(/(\d+) учасник(?:и|ів)?/g,'$1 members')
+      .replace(/Код сімʼї:/g,'Family code:')
+      .replace(/Днів у приємному ритмі/g,'Days in a steady rhythm')
+      .replace(/Спільний прогрес команди/g,'Shared team progress')
+      .replace(/На реальні можливості/g,'For real rewards')
+      .replace(/Поки немає нових подій учасників/g,'No new member activity yet');
+  }
+  function applyLanguage(root=document){
+    document.documentElement.lang=appLanguage;
+    if(appLanguage!=='en')return;
+    const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement&& !['SCRIPT','STYLE','TEXTAREA'].includes(n.parentElement.tagName)&&n.nodeValue.trim()?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT});
+    const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);nodes.forEach(n=>{n.nodeValue=translateTextValue(n.nodeValue);});
+    root.querySelectorAll?.('[placeholder],[aria-label],[title]').forEach(el=>['placeholder','aria-label','title'].forEach(a=>{if(el.hasAttribute(a))el.setAttribute(a,translateTextValue(el.getAttribute(a)));}));
+  }
   let deferredInstallPrompt = null;
   let pwaGuideStep = 0;
   const QUEST_CATEGORIES = ['family','relationship','home','sport','health','mind','reading','cinema','creativity','finance','discipline'];
@@ -149,6 +183,7 @@
     state.shop=Array.isArray(state.shop)?state.shop:clone(seed.shop);
     state.achievements=Array.isArray(state.achievements)?state.achievements:clone(seed.achievements);
     state.history=Array.isArray(state.history)?state.history:clone(seed.history);
+    maintainDailyActionRetention();
     state.quests.forEach(q=>{q.claimedBy=Array.isArray(q.claimedBy)?q.claimedBy:[];q.difficulty=q.difficulty||'normal';q.source=q.source||(q.catalog?'catalog':'admin');});
     ensureDailyQuests();
     state.meta.version=APP_VERSION;
@@ -271,13 +306,13 @@
   function cuteIcon(name){return `<img class="cute-icon" src="/icons/cozy/${name}.svg" alt="">`;}
   function cosmetic(id){return state.cosmeticsCatalog?.find(x=>x.id===id);}
   function stickerName(id){for(const c of (state.stickerCollections||[])){const x=c.stickers.find(s=>s.id===id);if(x)return x.name;}return id;}
-  function buildStickerSet(prefix,count,names,mediaFolder=''){
+  function buildStickerSet(prefix,count,names,mediaFolder='',mediaExt='webm'){
     const rarities=['common','common','common','uncommon','uncommon','rare','rare','epic','legendary','mythic'];
     return Array.from({length:count},(_,i)=>({
       id:`${prefix}_${String(i+1).padStart(2,'0')}`,
       name:names[i]||`${names[i%names.length]} ${i+1}`,
       rarity:rarities[Math.min(rarities.length-1,Math.floor(i/count*rarities.length))],
-      media:mediaFolder?`/assets/stickers/${mediaFolder}/${mediaFolder}-${String(i+1).padStart(2,'0')}.webm`:''
+      media:mediaFolder?`/assets/stickers/${mediaFolder}/${mediaFolder}-${String(i+1).padStart(2,'0')}.${mediaExt}`:''
     }));
   }
   function defaultStickerCollections(){
@@ -290,7 +325,7 @@
       ['halloween','Halloween Cute','halloween','Ефект «Магічні іскри»',50,['Котик-чарівник','Милий гарбуз','Добрий привид','Цукерки або обійми','Капелюх відьми','Кажанчик','Чарівне зілля','Чорний кіт','Гелловінський місяць','Король ночі']],
       ['easter','Easter Bunny','easter','Рамка «Весняне диво»',50,['Писанка','Великодній кролик','Святковий кошик','Весняна квітка','Курчатко','Паска','Сонячний зайчик','Квітучий вінок','Весняне сонце','Великоднє диво']]
     ];
-    return sets.map(([id,title,season,reward,count,names])=>({id,title,season,reward,stickers:buildStickerSet(id.replace(/-/g,'_'),count,names,['cozy-cats','bunny-love'].includes(id)?id:'')}));
+    return sets.map(([id,title,season,reward,count,names])=>({id,title,season,reward,stickers:buildStickerSet(id.replace(/-/g,'_'),count,names,['cozy-cats','bunny-love','sakura','sweet-life'].includes(id)?id:'',['sakura','sweet-life'].includes(id)?'webp':'webm')}));
   }
   function defaultStickerBoxes(){return [
     {id:'box_cats',title:'Cozy Cats Box',collectionId:'cozy-cats',price:300},
@@ -302,9 +337,9 @@
     {id:'box_easter',title:'Easter Box',collectionId:'easter',price:450}
   ];}
   function easterDate(year){const a=year%19,b=Math.floor(year/100),c=year%100,d=Math.floor(b/4),e=b%4,f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3),h=(19*a+b-d-g+15)%30,i=Math.floor(c/4),k=c%4,l=(32+2*e+2*i-h-k)%7,m=Math.floor((a+11*h+22*l)/451),month=Math.floor((h+l-7*m+114)/31),day=((h+l-7*m+114)%31)+1;return new Date(year,month-1,day);}
-  function seasonInfo(season,date=new Date()){const y=date.getFullYear(),md=(date.getMonth()+1)*100+date.getDate();if(season==='always')return {active:true,label:'Доступна завжди'};if(season==='christmas')return {active:md>=1201||md<=107,label:'1 грудня — 7 січня'};if(season==='halloween')return {active:md>=1015&&md<=1102,label:'15 жовтня — 2 листопада'};if(season==='easter'){const e=easterDate(y),from=new Date(e),to=new Date(e);from.setDate(e.getDate()-14);to.setDate(e.getDate()+7);return {active:date>=from&&date<=to,label:`${from.toLocaleDateString('uk-UA')} — ${to.toLocaleDateString('uk-UA')}`};}return {active:false,label:'Сезон закритий'};}
+  function seasonInfo(season,date=new Date()){const y=date.getFullYear(),md=(date.getMonth()+1)*100+date.getDate();if(season==='always')return {active:true,label:'Доступна завжди'};if(season==='christmas')return {active:md>=1201||md<=107,label:'1 грудня — 7 січня'};if(season==='halloween')return {active:md>=1015&&md<=1102,label:'15 жовтня — 2 листопада'};if(season==='easter'){const e=easterDate(y),from=new Date(e),to=new Date(e);from.setDate(e.getDate()-14);to.setDate(e.getDate()+7);return {active:date>=from&&date<=to,label:`${from.toLocaleDateString(currentLocale())} — ${to.toLocaleDateString(currentLocale())}`};}return {active:false,label:'Сезон закритий'};}
   function roman(n){const map=[[1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],[50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']];let out='';for(const [v,s] of map)while(n>=v){out+=s;n-=v;}return out||'—';}
-  function numericJoinDate(value){const d=new Date(value);if(Number.isNaN(d.getTime()))return '—';return new Intl.DateTimeFormat('uk-UA',{day:'2-digit',month:'2-digit',year:'numeric'}).format(d);}
+  function numericJoinDate(value){const d=new Date(value);if(Number.isNaN(d.getTime()))return '—';return new Intl.DateTimeFormat(currentLocale(),{day:'2-digit',month:'2-digit',year:'numeric'}).format(d);}
   function escapeHtml(value){return String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));}
   function normalDate(day,month){return `${String(Number(day)||1).padStart(2,'0')}.${String(Number(month)||1).padStart(2,'0')}`;}
   function importantDateOrder(item){const now=new Date(),y=now.getFullYear();let d=new Date(y,Number(item.month)-1,Number(item.day));d.setHours(23,59,59,999);if(d<now)d=new Date(y+1,Number(item.month)-1,Number(item.day));return d.getTime();}
@@ -565,8 +600,9 @@
   }
   function queueAchievementToast(achievement){
     if(!achievement)return;
-    achievementToastQueue.push({...achievement,title:achievement.title||'Нове досягнення',rarity:achievement.rarity||'Звичайна',rewardXp:Number(achievement.rewardXp||0)}); CozyEvents.emit('achievement',achievement);
-    processAchievementToastQueue();
+    const item={...achievement,title:achievement.title||'Нове досягнення',rarity:achievement.rarity||'Звичайна',rewardXp:Number(achievement.rewardXp||0)};
+    achievementChime(achievementRarityClass(item.rarity));
+    CozyEvents.emit('achievement',item);
   }
   function dismissAchievementToast(card,done){
     if(!card||card.dataset.closing==='1')return;card.dataset.closing='1';card.classList.add('achievement-toast-out');
@@ -776,6 +812,15 @@
     localStorage.setItem(LAST_DAILY_SYNC,localDay());
     return true;
   }
+  function mergeUniqueActivity(primary=[],secondary=[]){return [...new Set([...(primary||[]),...(secondary||[])])].slice(0,100);}
+  function maintainDailyActionRetention(){
+    state.meta=state.meta||{};const day=localDay();
+    if(state.meta.actionRetentionDay&&state.meta.actionRetentionDay!==day){
+      (state.users||[]).forEach(u=>{u.activity=(u.activity||[]).slice(0,30);});
+      state.history=(state.history||[]).slice(0,60);
+    }
+    state.meta.actionRetentionDay=day;
+  }
   function compactDailyData(){
     const u=currentUser();
     return {
@@ -828,7 +873,10 @@
       const data=await api('/api/family/state');
       if(!data.state)return false;
       const changed=stateSignature(data.state)!==stateSignature(state);
-      state=data.state;serverRevision=Number(data.revision||serverRevision||0);normalizeState();observeRewardChanges();
+      const localDayBefore=localDay(),localHistory=(state.history||[]).slice(),localActivity=new Map((state.users||[]).map(u=>[u.id,(u.activity||[]).slice()]));
+      state=data.state;serverRevision=Number(data.revision||serverRevision||0);normalizeState();
+      if((state.meta?.actionRetentionDay||localDayBefore)===localDayBefore){state.history=mergeUniqueActivity(localHistory,state.history);(state.users||[]).forEach(u=>{u.activity=mergeUniqueActivity(localActivity.get(u.id)||[],u.activity||[]);});}
+      observeRewardChanges();
       lastFamilyPullAt=Date.now();
       safeJsonWrite(STORAGE,state);persistAccount();localStorage.setItem(LAST_SERVER_PULL,new Date().toISOString());
       if(changed)broadcastLocalState();
@@ -912,7 +960,7 @@
       const button=document.querySelector('[data-action="admin-process-now"]');
       if(count)count.textContent=String(data.pendingPackets||0);
       if(users)users.textContent=String(data.affectedUsers||0);
-      if(last)last.textContent=data.lastProcessedAt?new Date(data.lastProcessedAt).toLocaleString('uk-UA'):'Ще не виконувалось';
+      if(last)last.textContent=data.lastProcessedAt?new Date(data.lastProcessedAt).toLocaleString(currentLocale()):'Ще не виконувалось';
       if(button)button.disabled=!(data.pendingPackets>0||localStorage.getItem(DAILY_QUEUE));
     }catch{}
   }
@@ -1020,7 +1068,7 @@
     const nav=navItems().map(([id,icon,label])=>`<button data-route="${id}" class="${route===id?'active':''}"><span class="nav-icon">${icon}</span>${label}</button>`).join('');
     const sessionAction=auth?.demo?'<button class="btn danger" data-action="exit-demo">Вийти з демо</button>':'<button class="btn danger" data-action="logout">Вийти</button>';
     const demoBanner=auth?.demo?'<div class="demo-banner"><div><strong>Демо-режим</strong><span>Зміни зберігаються лише на цьому пристрої.</span></div><button class="btn small" data-action="exit-demo">Вийти з демо</button></div>':'';
-    return `<div class="app-layout"><main class="main">${demoBanner}<header class="topbar"><button class="menu-trigger" data-action="toggle-menu" aria-label="Відкрити меню"><svg class="menu-trigger-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7.5h14M5 12h14M5 16.5h14"/></svg></button><div class="top-title"><h1>${title}</h1><p>${subtitle}</p></div><div class="top-actions"><span class="coin-pill">🪙 ${format(u.coins)}</span></div></header>${content}<div class="release-label" title="Поточне оновлення">${escapeHtml(publicUpdateName)}</div></main><div class="menu-backdrop" data-action="close-menu"></div><aside class="dropdown-menu"><div class="menu-profile"><div class="member-initial">${(u.name||'?').slice(0,1).toUpperCase()}</div><div><strong>${u.telegramUsername?'@'+u.telegramUsername:u.name}</strong><small>${u.level} рівень · ${format(u.coins)} 🪙</small></div><button class="close" data-action="close-menu">×</button></div><nav class="nav">${nav}</nav><div class="menu-footer"><button class="btn soft" data-action="accounts">Мої профілі</button>${sessionAction}</div></aside></div>`;
+    return `<div class="app-layout"><main class="main">${demoBanner}<header class="topbar"><button class="menu-trigger" data-action="toggle-menu" aria-label="Відкрити меню"><svg class="menu-trigger-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7.5h14M5 12h14M5 16.5h14"/></svg></button><div class="top-title"><h1>${title}</h1><p>${subtitle}</p></div><div class="top-actions"><label class="language-switch" title="Мова інтерфейсу"><span>🌐</span><select data-language-select><option value="uk" ${appLanguage==='uk'?'selected':''}>UA</option><option value="en" ${appLanguage==='en'?'selected':''}>EN</option></select></label><span class="coin-pill">🪙 ${format(u.coins)}</span></div></header>${content}<div class="release-label" title="Поточне оновлення">${escapeHtml(publicUpdateName)}</div></main><div class="menu-backdrop" data-action="close-menu"></div><aside class="dropdown-menu"><div class="menu-profile"><div class="member-initial">${(u.name||'?').slice(0,1).toUpperCase()}</div><div><strong>${u.telegramUsername?'@'+u.telegramUsername:u.name}</strong><small>${u.level} рівень · ${format(u.coins)} 🪙</small></div><button class="close" data-action="close-menu">×</button></div><nav class="nav">${nav}</nav><div class="menu-footer"><button class="btn soft" data-action="accounts">Мої профілі</button>${sessionAction}</div></aside></div>`;
   }
 
   function accountHub(){
@@ -1035,7 +1083,7 @@
           <span class="welcome-steam steam-one"></span><span class="welcome-steam steam-two"></span>
         </div>
         <div class="welcome-content">
-          <div class="welcome-brand"><span class="welcome-brand-mark">♥</span><strong>myHabbit</strong></div>
+          <div class="welcome-brand"><span class="welcome-brand-mark">♥</span><strong>myHabbit</strong><label class="language-switch welcome-language" title="Мова інтерфейсу"><span>🌐</span><select data-language-select><option value="uk" ${appLanguage==='uk'?'selected':''}>UA</option><option value="en" ${appLanguage==='en'?'selected':''}>EN</option></select></label></div>
           <span class="welcome-kicker">Ваш затишний простір любові й турботи</span>
           <h1>${list.length?'Раді бачити вас знову':'Ласкаво просимо додому'}</h1>
           <p>${list.length?'Оберіть збережений профіль або додайте новий спосіб входу.':'Створюйте маленькі корисні звички, підтримуйте одне одного та проходьте цей шлях разом.'}</p>
@@ -1237,7 +1285,7 @@
     'easter':{icon:'🥚',tone:'spring',subtitle:'Весняні знахідки та сонячні сюрпризи'}
   }[id]||{icon:'✦',tone:'lavender',subtitle:'Особлива колекція myHabbit'};}
   function stickerVisual(sticker,size='normal'){
-    if(sticker?.media)return `<video class="sticker-media sticker-media-${size}" src="${escapeHtml(sticker.media)}" autoplay loop muted playsinline preload="metadata" aria-label="${escapeHtml(sticker.name||'Стікер')}"></video>`;
+    if(sticker?.media){const media=escapeHtml(sticker.media);if(/\.(webp|png|jpe?g|gif|avif)(?:\?|$)/i.test(media))return `<img class="sticker-media sticker-media-${size}" src="${media}" loading="lazy" decoding="async" alt="${escapeHtml(sticker.name||'Стікер')}">`;return `<video class="sticker-media sticker-media-${size}" src="${media}" autoplay loop muted playsinline preload="metadata" aria-label="${escapeHtml(sticker.name||'Стікер')}"></video>`;}
     return `<span class="sticker-fallback">${stickerGlyph(sticker?.id||'')}</span>`;
   }
   function stickerGlyph(id){if(id.includes('cat'))return '🐱';if(id.includes('bunny'))return '🐰';if(id.includes('tree'))return '🎄';if(id.includes('cocoa')||id.includes('coffee')||id.includes('tea'))return '☕';if(id.includes('book'))return '📖';if(id.includes('sleep')||id.includes('moon'))return '🌙';if(id.includes('star')||id.includes('sun'))return '⭐';if(id.includes('crown'))return '👑';if(id.includes('flower'))return '🌸';if(id.includes('pumpkin'))return '🎃';if(id.includes('ghost'))return '👻';if(id.includes('egg'))return '🥚';if(id.includes('basket'))return '🧺';return '✨';}
@@ -1261,7 +1309,7 @@
     const ownedCosmetics=(Array.isArray(u.inventory)?u.inventory:[]).map(cosmetic).filter(Boolean);
     const completed=collections.filter(c=>c.stickers.length&&c.stickers.every(st=>stickerCount(u,st.id)>0)).length;
     const achievements=(Array.isArray(u.achievements)?u.achievements:[]).map(id=>state.achievements.find(a=>a.id===id)).filter(Boolean);
-    const history=(Array.isArray(state.giftHistory)?state.giftHistory:[]).slice().reverse().map(g=>`<article class="museum-history-row"><span>${g.icon||'🎁'}</span><div><strong>${escapeHtml(g.title||'Подарунок')}</strong><small>${escapeHtml(g.fromName||'')} → ${escapeHtml(g.toName||'')} · ${g.createdAt?new Date(g.createdAt).toLocaleDateString('uk-UA'):'без дати'}</small>${g.note?`<p>${escapeHtml(g.note)}</p>`:''}</div></article>`).join('')||'<div class="empty-soft">Подарунків ще не було.</div>';
+    const history=(Array.isArray(state.giftHistory)?state.giftHistory:[]).slice().reverse().map(g=>`<article class="museum-history-row"><span>${g.icon||'🎁'}</span><div><strong>${escapeHtml(g.title||'Подарунок')}</strong><small>${escapeHtml(g.fromName||'')} → ${escapeHtml(g.toName||'')} · ${g.createdAt?new Date(g.createdAt).toLocaleDateString(currentLocale()):'без дати'}</small>${g.note?`<p>${escapeHtml(g.note)}</p>`:''}</div></article>`).join('')||'<div class="empty-soft">Подарунків ще не було.</div>';
     const achievementCards=achievements.length?achievements.map(a=>achievementCard(a,u)).join(''):'<div class="empty-soft">Перша ачивка з’явиться після виконаного завдання.</div>';
     return shell(`<section class="museum-hero"><div><span class="eyebrow">Особиста скарбниця</span><h2>Музей ${escapeHtml(u.name||'учасника')}</h2><p>Колекції, косметика, ачивки та історія подарунків.</p></div><div class="museum-seal">🏛️</div></section>
     <div class="grid metrics museum-metrics"><div class="card"><div class="metric-label">Стікери</div><div class="metric-value">${ownedStickers.length}/${allStickers.length}</div></div><div class="card"><div class="metric-label">Повні колекції</div><div class="metric-value">${completed}</div></div><div class="card"><div class="metric-label">Косметика</div><div class="metric-value">${ownedCosmetics.length}</div></div><div class="card"><div class="metric-label">Ачивки</div><div class="metric-value">${achievements.length}</div></div></div>
@@ -1375,7 +1423,7 @@
     if(type==='new-quest') return `<div class="modal-backdrop"><div class="modal"><div class="modal-head"><h2>Новий квест</h2><button class="close" data-close>×</button></div><div class="form-grid"><div class="field full"><label>Назва</label><input id="qTitle" placeholder="Наприклад, Прибрати кухню"></div><div class="field"><label>Тип</label><select id="qType"><option value="personal">Особистий</option><option value="coop">Спільний</option><option value="pair">Тільки вдвох</option><option value="limited">Лімітований</option></select></div><div class="field"><label>Складність</label><select id="qDifficulty"><option value="easy">Легка</option><option value="normal" selected>Середня</option><option value="hard">Складна</option></select></div><div class="field"><label>Навичка</label><select id="qSkill"><option value="home">Дім</option><option value="care">Турбота</option><option value="health">Здоровʼя</option><option value="growth">Розвиток</option><option value="finance">Фінанси</option></select></div><div class="field"><label>Монети</label><input id="qCoins" type="number" value="100"></div><div class="field"><label>XP</label><input id="qXp" type="number" value="80"></div><div class="field full"><label>Опис</label><textarea id="qDesc"></textarea></div></div><div class="modal-actions"><button class="btn" data-close>Скасувати</button><button class="btn primary" data-action="save-quest">Створити</button></div></div></div>`;
     if(type==='new-shop') return `<div class="modal-backdrop"><div class="modal"><div class="modal-head"><h2>Нова можливість</h2><button class="close" data-close>×</button></div><div class="form-grid"><div class="field full"><label>Назва</label><input id="sTitle" placeholder="Наприклад, Новий велосипед"></div><div class="field"><label>Іконка</label><input id="sIcon" maxlength="8" value="✨" placeholder="🎁"></div><div class="field"><label>Тип</label><select id="sType"><option value="personal">Особиста</option><option value="family">Для всієї сімʼї</option><option value="collective">Спільний фонд</option></select></div><div class="field"><label>Ціна</label><input id="sPrice" type="number" value="2000"></div><div class="field"><label>Кількість</label><input id="sStock" type="number" value="1"></div><div class="field full"><label>Опис</label><textarea id="sDesc"></textarea></div><div class="field full"><label>Приховане посилання на приклад <small>(необов’язково)</small></label><input id="sResourceUrl" type="url" inputmode="url" placeholder="https://…"><small>У магазині URL не показується — людина бачить лише кнопку «Подивитися, що мається на увазі».</small></div></div><div class="modal-actions"><button class="btn" data-close>Скасувати</button><button class="btn primary" data-action="save-shop">Додати</button></div></div></div>`;
 
-    if(type==='accounts') { const list=loadAccounts(); return `<div class="modal-backdrop accounts-window"><div class="modal accounts-modal"><div class="modal-head"><h2>Мої профілі</h2><button class="close" data-close>×</button></div><p>Перемикайте профілі або додавайте вхід з іншого пристрою.</p><div class="account-vault">${list.length?list.map(a=>`<button class="account-vault-item ${a.id===accountId()?'active':''}" data-account-id="${a.id}"><span class="member-initial">${(a.label||'?').slice(0,1).toUpperCase()}</span><span><strong>${a.label}</strong><small>${a.familyName||'Мій простір'} · ${new Date(a.updatedAt).toLocaleDateString('uk-UA')}</small></span><b>${a.id===accountId()?'Відкрито':'Перейти'}</b></button>`).join(''):'<div class="card empty">Збережених профілів поки немає</div>'}</div><div class="quick-login-note"><strong>Швидкий JSON входу</strong><p>Відкриває профіль без пароля. Зберігайте файл як ключ доступу.</p></div><input id="accountImportFile" type="file" accept="application/json,.json" hidden><div class="modal-actions wrap"><button class="btn" data-action="add-account">+ Додати профіль</button><button class="btn" data-action="import-account">Відкрити JSON</button><button class="btn primary" data-action="export-login-account">Зберегти JSON входу</button></div></div></div>`; }
+    if(type==='accounts') { const list=loadAccounts(); return `<div class="modal-backdrop accounts-window"><div class="modal accounts-modal"><div class="modal-head"><h2>Мої профілі</h2><button class="close" data-close>×</button></div><p>Перемикайте профілі або додавайте вхід з іншого пристрою.</p><div class="account-vault">${list.length?list.map(a=>`<button class="account-vault-item ${a.id===accountId()?'active':''}" data-account-id="${a.id}"><span class="member-initial">${(a.label||'?').slice(0,1).toUpperCase()}</span><span><strong>${a.label}</strong><small>${a.familyName||'Мій простір'} · ${new Date(a.updatedAt).toLocaleDateString(currentLocale())}</small></span><b>${a.id===accountId()?'Відкрито':'Перейти'}</b></button>`).join(''):'<div class="card empty">Збережених профілів поки немає</div>'}</div><div class="quick-login-note"><strong>Швидкий JSON входу</strong><p>Відкриває профіль без пароля. Зберігайте файл як ключ доступу.</p></div><input id="accountImportFile" type="file" accept="application/json,.json" hidden><div class="modal-actions wrap"><button class="btn" data-action="add-account">+ Додати профіль</button><button class="btn" data-action="import-account">Відкрити JSON</button><button class="btn primary" data-action="export-login-account">Зберегти JSON входу</button></div></div></div>`; }
     if(type==='edit-profile') { const u=currentUser(); const owned=(state.cosmeticsCatalog||[]).filter(i=>u.inventory.includes(i.id)); const opts=(kind,current)=>`<option value="">Без прикраси</option>${owned.filter(i=>i.kind===kind).map(i=>`<option value="${i.id}" ${current===i.id?'selected':''}>${i.title}</option>`).join('')}`; return `<div class="modal-backdrop"><div class="modal"><div class="modal-head"><h2>Оформлення профілю</h2><button class="close" data-close>×</button></div><div class="cosmetic-preview animated-frame-${cosmetic(u.equipped.animatedFrame)?.asset||'none'}"><span class="animated-name nick-${cosmetic(u.equipped.nicknameEffect)?.asset||'none'}">${u.name}</span><small>Попередній вигляд</small></div><div class="form-grid"><div class="field"><label>Значок біля імені</label><select id="profileBadge">${opts('badge',u.equipped.badge)}</select></div><div class="field"><label>Звичайна рамка</label><select id="profileFrame">${opts('frame',u.equipped.frame)}</select></div><div class="field"><label>Анімована рамка</label><select id="profileAnimatedFrame">${opts('animatedFrame',u.equipped.animatedFrame)}</select></div><div class="field"><label>Світне імʼя</label><select id="profileNicknameEffect">${opts('nicknameEffect',u.equipped.nicknameEffect)}</select></div><div class="field"><label>Ефект профілю</label><select id="profileEffect">${opts('profileEffect',u.equipped.profileEffect)}</select></div><div class="field full"><label>Тема застосунку</label><select id="profileTheme"><option value="light" ${u.equipped.theme==='light'?'selected':''}>Світла</option>${owned.filter(i=>i.kind==='theme').map(i=>`<option value="${i.asset}" ${u.equipped.theme===i.asset?'selected':''}>${i.title}</option>`).join('')}</select></div></div><p class="auth-help">Одночасно активна одна анімована рамка та один ефект нікнейму. Системне зменшення руху підтримується автоматично.</p><div class="modal-actions"><button class="btn" data-close>Скасувати</button><button class="btn primary" data-action="save-profile-settings">Зберегти</button></div></div></div>`; }
 
     if(type==='daily-roulette') return `<div class="modal-backdrop daily-gift-backdrop"><div class="modal daily-gift-modal"><div class="daily-gift-head"><span>Щоденний сюрприз</span><small>Один оберт на день</small></div><div class="roulette-wrap"><div class="roulette-pointer">▼</div><div id="dailyRouletteWheel" class="roulette-wheel"><div class="roulette-label r1">+5</div><div class="roulette-label r2">+10</div><div class="roulette-label r3">+50</div><div class="roulette-label r4">+100</div><div class="roulette-label r5">+500</div></div><div class="roulette-hub">✦</div></div><h2 id="rouletteTitle">Крути колесо удачі</h2><p id="rouletteText">На тебе вже чекає маленький подарунок 🌿</p><div class="modal-actions"><button id="rouletteSpinButton" class="btn primary roulette-spin" data-action="spin-daily-roulette">Крутити рулетку</button></div><div class="roulette-odds"><span>+5 · 62%</span><span>+10 · 25%</span><span>+50 · 10%</span><span>+100 · 2,5%</span><span>+500 · 0,5%</span></div></div></div>`;
@@ -1405,7 +1453,9 @@
     const KEY='myHabbitCozyCompanionV1';
     const stateOf=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch{return {}}};
     const write=value=>localStorage.setItem(KEY,JSON.stringify({...stateOf(),...value}));
-    let tour=null,stepIndex=0,tipTimer=0;
+    let tour=null,stepIndex=0,tipTimer=0,achievementTimer=0;
+    const companionAchievementQueue=[];
+    let companionAchievementBusy=false;
     const memberSteps=[
       {route:'dashboard',selector:'[data-route="dashboard"]',title:'Твій затишний простір',text:'Тут зібрано прогрес, серію та найважливіше на сьогодні.'},
       {route:'quests',selector:'[data-route="quests"]',title:'Щоденні квести',text:'Виконуй звички й отримуй XP та монетки. Починай з маленьких кроків.'},
@@ -1466,6 +1516,7 @@
       if(name==='prev'){stepIndex=Math.max(0,stepIndex-2);nextStep();}
       if(name==='skip'){finishTour(false);}
       if(name==='close')closeBubble();
+      if(name==='achievement-next')finishAchievementAnnouncement();
     }
     function clearHighlight(){document.querySelectorAll('.cozy-tour-target').forEach(x=>x.classList.remove('cozy-tour-target'));document.querySelector('.cozy-tour-overlay')?.remove();}
     function highlight(selector){
@@ -1498,6 +1549,22 @@
       write({lastTipDay:day});showBubble('Порада дня 🌱',tip,'<button data-cozy-action="close">Дякую</button>');
       if(!manual){clearTimeout(tipTimer);tipTimer=setTimeout(closeBubble,9000);}
     }
+    function finishAchievementAnnouncement(){
+      clearTimeout(achievementTimer);closeBubble();companionAchievementBusy=false;
+      setTimeout(processAchievementAnnouncements,220);
+    }
+    function processAchievementAnnouncements(){
+      if(companionAchievementBusy||!companionAchievementQueue.length||stateOf().muted)return;
+      companionAchievementBusy=true;
+      const a=companionAchievementQueue.shift();
+      const reward=Number(a?.rewardXp||0)>0?` · +${format(a.rewardXp)} XP`:'';
+      const description=a?.description?` ${a.description}`:'';
+      showBubble(`Нове досягнення! ${a?.icon&&!String(a.icon).startsWith('/')?a.icon:'🏆'}`,`${a?.title||'Ти зробив важливий крок.'}${reward}.${description}`,'<button class="primary" data-cozy-action="achievement-next">Чудово</button>');
+      clearTimeout(achievementTimer);achievementTimer=setTimeout(finishAchievementAnnouncement,8500);
+    }
+    function announceAchievement(a){
+      companionAchievementQueue.push(a||{});processAchievementAnnouncements();
+    }
     function contextualMessage(){
       if(stateOf().muted)return;
       const u=currentUser();if(!u)return;
@@ -1512,7 +1579,7 @@
       if(!data.tourCompleted&&!data.tourStarted&&!data.muted)setTimeout(()=>startTour(false),650);
       else if(!data.muted)setTimeout(contextualMessage,1100);
     }
-    CozyEvents.on('achievement',a=>{if(!stateOf().muted)showBubble('Нове досягнення! 🏆',a?.title||'Ти зробив важливий крок.','<button data-cozy-action="close">Чудово</button>');});
+    CozyEvents.on('achievement',a=>{if(!stateOf().muted)announceAchievement(a);});
     CozyEvents.on('levelup',d=>{if(!stateOf().muted)showBubble('Новий рівень! ⭐',`Тепер у тебе ${d.level} рівень. Я пишаюся тобою!`,'<button data-cozy-action="close">Далі</button>');});
     return {afterRender,startTour,showDailyTip,emit:CozyEvents.emit};
   })();
@@ -1522,16 +1589,17 @@
     normalizeState();
     const screens={landing,auth:authScreen,dashboard,quests:questsScreen,match3:match3Screen,shop:shopScreen,'custom-shop':customShopScreen,collections:collectionsScreen,museum:museumScreen,achievements:achievementsScreen,family:familyScreen,profile:()=>profileScreen(),admin:adminScreen};
     try{
-      app.innerHTML=(screens[route]||landing)(); applyTheme(); bind(); CozyCompanion.afterRender();
+      app.innerHTML=(screens[route]||landing)(); applyTheme(); bind(); applyLanguage(app); CozyCompanion.afterRender();
     }catch(error){
       console.error('Render error:',error);
       app.innerHTML=`<main class="fatal-card"><h1>Не вдалося відкрити розділ</h1><p>${String(error?.message||error)}</p><button class="btn primary" data-route="dashboard">На головну</button></main>`;
-      bind();
+      bind(); applyLanguage(app);
     }
   }
 
   function bind(){
     document.querySelectorAll('[data-route]').forEach(el=>el.addEventListener('click',()=>{document.body.classList.remove('menu-open');go(el.dataset.route);}));
+    document.querySelectorAll('[data-language-select]').forEach(el=>el.addEventListener('change',()=>{appLanguage=el.value==='en'?'en':'uk';localStorage.setItem(LANGUAGE_KEY,appLanguage);render();}));
     document.querySelectorAll('[data-action]').forEach(el=>el.addEventListener('click',()=>action(el.dataset.action,el)));
     document.querySelectorAll('[data-quest]').forEach(el=>el.addEventListener('click',()=>handleQuest(el.dataset.quest)));
     document.querySelectorAll('[data-shop]').forEach(el=>el.addEventListener('click',()=>handleShop(el.dataset.shop)));
