@@ -1,1 +1,1 @@
-9.5.7-cloudflare-do-deploy-fix
+9.5.8-durable-object-exports-fix
