@@ -21,6 +21,12 @@
       }
     ]
   },
+  "exports": {
+    "TelegramStateV2": {
+      "type": "durable-object",
+      "storage": "sqlite"
+    }
+  },
   "triggers": {
     "crons": ["*/5 * * * *"]
   },
