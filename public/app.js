@@ -1277,6 +1277,24 @@
     for(const id of Array.isArray(from.inventory)?from.inventory:[]){const item=cosmetic(id);if(item)options.push(`<option value="cosmetic:${escapeHtml(item.id)}">✨ ${escapeHtml(item.title||'Косметика')}</option>`);}
     return options;
   }
+  function profileCoinTransferStation(target){
+    const from=currentUser();
+    if(!from||!target||from.id===target.id)return '';
+    return `<section class="card profile-coin-transfer"><div class="section-head"><div><h2>Передати монетки</h2><small>Ваш баланс: ${format(Number(from.coins||0))} 🪙</small></div></div><div class="gift-form coin-transfer-form"><input type="hidden" id="coinTransferRecipient" value="${escapeHtml(target.id)}"><input id="coinTransferAmount" type="number" min="1" max="${Math.max(1,Number(from.coins||0))}" inputmode="numeric" placeholder="Кількість монет"><button class="btn primary" data-action="transfer-family-coins">Передати 🪙</button></div><p class="auth-help">Монетки одразу списуються з вашого профілю та зараховуються ${escapeHtml(target.name||'учаснику')}.</p></section>`;
+  }
+  async function transferFamilyCoins(){
+    const from=currentUser(),toId=document.getElementById('coinTransferRecipient')?.value,amount=Math.trunc(Number(document.getElementById('coinTransferAmount')?.value||0)),to=state.users.find(x=>x.id===toId);
+    if(!from||!to)return showToast('Учасника не знайдено');
+    if(!Number.isFinite(amount)||amount<1)return showToast('Вкажіть кількість монет');
+    if(amount>Number(from.coins||0))return showToast('Недостатньо монет');
+    try{
+      if(auth?.demo){from.coins-=amount;to.coins=Number(to.coins||0)+amount;state.history.unshift({icon:'🪙',text:`${from.name} передав(ла) ${to.name} ${amount} монеток`,time:'Щойно'});save();app.innerHTML=profileScreen(to.id);bind();showToast(`${amount} монеток передано`);return;}
+      const result=await api('/api/family/transfer-coins',{method:'POST',body:JSON.stringify({userId:to.id,amount})});
+      if(result?.state){state=normalize(result.state);save();}
+      app.innerHTML=profileScreen(to.id);bind();showToast(`${amount} монеток передано для ${to.name}`);
+    }catch(e){showToast(e.message||'Не вдалося передати монетки');}
+  }
+
   function profileGiftStation(target){
     const from=currentUser(),options=from?profileGiftOptions(from):[];
     if(!from||!target||from.id===target.id)return '';
@@ -1302,9 +1320,9 @@
 
   function profileScreen(userId=state.currentUserId){
     const u=state.users.find(x=>x.id===userId)||currentUser(),own=u.id===state.currentUserId;evaluateReferralAchievements(u);const skills=Object.entries(u.skills||{}),achievements=state.achievements.filter(a=>u.achievements.includes(a.id)),badge=cosmetic(u.equipped?.badge),frame=u.equipped?.frame||'',animatedFrame=cosmetic(u.equipped?.animatedFrame),nickEffect=cosmetic(u.equipped?.nicknameEffect),profileEffect=cosmetic(u.equipped?.profileEffect),stickers=state.profileStickers.filter(x=>x.to===u.id).slice(-10).reverse(),nextRewards=state.levelRewards.filter(r=>!u.claimedLevelRewards.includes(r.level)).slice(0,4);
-    return shell(`<section class="card cozy-profile-head profile-frame-${frame} animated-frame-${animatedFrame?.asset||'none'} profile-effect-${profileEffect?.asset||'none'}"><div class="profile-minimal"><div class="member-initial large">${cuteIcon('cat')}</div><div><div class="profile-level"><span class="animated-name nick-${nickEffect?.asset||'none'}">${escapeHtml(u.name)}</span> ${badge?cuteIcon(badge.asset.includes('bunny')?'bunny':'cat'):''}</div><div class="meta">${u.level} загальний рівень · ${format(u.xp)} / ${format(xpRequiredForLevel(u.level))} XP · ${format(u.coins)} 🪙</div><div class="profile-joined">${u.telegramUsername?'@'+escapeHtml(u.telegramUsername)+' · ':''}у myHabbit з <span class="profile-join-date">${numericJoinDate(u.createdAt)}</span></div><div class="progress soft-progress"><i style="width:${xpPct(u)}%"></i></div></div>${own?'<div class="profile-actions"><button class="btn primary" data-action="invite">Запросити в сімʼю</button><button class="btn" data-action="edit-profile">Налаштувати</button><button class="btn soft" data-action="claim-level-rewards">Подарунки рівня</button><button class="btn soft recovery-subtle" data-action="create-account-recovery">Резервний код профілю</button></div>':'<button class="btn soft" data-action="leave-sticker" data-user-id="'+u.id+'">Залишити слід</button>'}</div></section>
+    return shell(`<section class="card cozy-profile-head profile-frame-${frame} animated-frame-${animatedFrame?.asset||'none'} profile-effect-${profileEffect?.asset||'none'}"><div class="profile-minimal"><div class="member-initial large">${cuteIcon('cat')}</div><div><div class="profile-level"><span class="animated-name nick-${nickEffect?.asset||'none'}">${escapeHtml(u.name)}</span> ${badge?cuteIcon(badge.asset.includes('bunny')?'bunny':'cat'):''}</div><div class="meta">${u.level} загальний рівень · ${format(u.xp)} / ${format(xpRequiredForLevel(u.level))} XP · ${format(u.coins)} 🪙</div><div class="profile-joined">${u.telegramUsername?'@'+escapeHtml(u.telegramUsername)+' · ':''}у myHabbit з <span class="profile-join-date">${numericJoinDate(u.createdAt)}</span></div><div class="progress soft-progress"><i style="width:${xpPct(u)}%"></i></div></div>${own?'<div class="profile-actions"><button class="btn primary" data-action="invite">Запросити в сімʼю</button><button class="btn" data-action="edit-profile">Налаштувати</button><button class="btn soft" data-action="claim-level-rewards">Подарунки рівня</button></div>':'<button class="btn soft" data-action="leave-sticker" data-user-id="'+u.id+'">Залишити слід</button>'}</div></section>
     <section class="grid metrics minimal-stats"><div class="card"><div class="metric-label">Квести</div><div class="metric-value">${u.stats.questsCompleted||0}</div></div><div class="card"><div class="metric-label">Ранкові подарунки</div><div class="metric-value">${u.stats.giftsOpened||0}</div></div><div class="card"><div class="metric-label">Джекпоти</div><div class="metric-value">${u.stats.jackpots||0}</div></div><div class="card"><div class="metric-label">Стікери друзям</div><div class="metric-value">${u.stats.stickersGiven||0}</div></div></section>
-    <div class="cozy-folds">${own?referralStatsBlock(u):''}${importantDatesBlock(u,own)}<details class="cozy-fold"><summary>${cuteIcon('leaf')}<strong>Мої барви</strong><small>${skills.length}</small></summary><div class="fold-body skill-list">${skills.map(([k,v])=>`<div class="skill-row cozy-skill"><span class="skill-icon">${cuteIcon('sparkle')}</span><div><div class="skill-name"><strong>${skillLabel(k)}</strong><span>${v}</span></div><div class="progress"><i style="width:${Math.min(100,(v%10)*10)}%"></i></div></div></div>`).join('')}</div></details><details class="cozy-fold"><summary>${cuteIcon('trophy')}<strong>Мої знахідки</strong><small>${achievements.length}</small></summary><div class="fold-body achievement-grid compact-achievements">${achievements.map(a=>achievementCard(a,u)).join('')}</div></details></div>${own?'':profileGiftStation(u)}`,own?'Мій затишний куточок':`${escapeHtml(u.name)} · профіль`,own?'Загальний рівень, запрошення та маленькі перемоги.':'Профіль близької людини.');
+    <div class="cozy-folds">${own?referralStatsBlock(u):''}${importantDatesBlock(u,own)}<details class="cozy-fold"><summary>${cuteIcon('leaf')}<strong>Мої барви</strong><small>${skills.length}</small></summary><div class="fold-body skill-list">${skills.map(([k,v])=>`<div class="skill-row cozy-skill"><span class="skill-icon">${cuteIcon('sparkle')}</span><div><div class="skill-name"><strong>${skillLabel(k)}</strong><span>${v}</span></div><div class="progress"><i style="width:${Math.min(100,(v%10)*10)}%"></i></div></div></div>`).join('')}</div></details><details class="cozy-fold"><summary>${cuteIcon('trophy')}<strong>Мої знахідки</strong><small>${achievements.length}</small></summary><div class="fold-body achievement-grid compact-achievements">${achievements.map(a=>achievementCard(a,u)).join('')}</div></details></div>${own?'':profileCoinTransferStation(u)+profileGiftStation(u)}`,own?'Мій затишний куточок':`${escapeHtml(u.name)} · профіль`,own?'Загальний рівень, запрошення та маленькі перемоги.':'Профіль близької людини.');
   }
 
   function familyActivityItems(){
@@ -1316,7 +1334,7 @@
     });
   }
 
-  function familyScreen(){const visibleUsers=visibleFamilyUsers(),familyActivity=familyActivityItems();return shell(`<section class="card"><div class="profile-hero"><span class="avatar">✨</span><div><div class="profile-level">${state.family.name}</div><div class="meta">Код сімʼї: <strong>${state.family.code}</strong> · ${visibleUsers.length}/${familyMax()} учасників</div><div class="progress" style="margin-top:10px"><i style="width:${state.family.xp%1000/10}%"></i></div></div><div class="profile-actions"><button class="btn primary" data-action="invite">Запросити</button>${isAdmin()?'<button class="btn soft recovery-subtle" data-action="create-family-recovery">Резервний код сімʼї</button>':''}<button class="btn danger" data-action="leave-family">Вийти із сімʼї</button></div></div></section><div class="section-head"><h2>Наші люди</h2></div><div class="member-grid">${visibleUsers.map(memberCard).join('')||'<div class="card empty">У видимому списку поки немає учасників</div>'}</div><div class="section-head"><h2>Сімейна активність</h2></div><div class="card">${familyActivity.length?familyActivity.map(h=>`<div class="activity"><span class="activity-icon">${activityIconHtml(h.icon)}</span><div><p>${escapeHtml(h.text||'Подія')}</p><small>${escapeHtml(h.time||'')}</small></div></div>`).join(''):'<div class="empty">Поки немає нових подій учасників</div>'}</div>`,`Сімʼя`,`Спільний прогрес без публічних рейтингів і сторонніх людей.`)}
+  function familyScreen(){const visibleUsers=visibleFamilyUsers(),familyActivity=familyActivityItems();return shell(`<section class="card"><div class="profile-hero"><span class="avatar">✨</span><div><div class="profile-level">${state.family.name}</div><div class="meta">Код сімʼї: <strong>${state.family.code}</strong> · ${visibleUsers.length}/${familyMax()} учасників</div><div class="progress" style="margin-top:10px"><i style="width:${state.family.xp%1000/10}%"></i></div></div><div class="profile-actions"><button class="btn primary" data-action="invite">Запросити</button><button class="btn danger" data-action="leave-family">Вийти із сімʼї</button></div></div></section><div class="section-head"><h2>Наші люди</h2></div><div class="member-grid">${visibleUsers.map(memberCard).join('')||'<div class="card empty">У видимому списку поки немає учасників</div>'}</div><div class="section-head"><h2>Сімейна активність</h2></div><div class="card">${familyActivity.length?familyActivity.map(h=>`<div class="activity"><span class="activity-icon">${activityIconHtml(h.icon)}</span><div><p>${escapeHtml(h.text||'Подія')}</p><small>${escapeHtml(h.time||'')}</small></div></div>`).join(''):'<div class="empty">Поки немає нових подій учасників</div>'}</div>`,`Сімʼя`,`Спільний прогрес без публічних рейтингів і сторонніх людей.`)}
 
   function adminMemberRow(u){
     const roleLabel=u.role==='owner'?'Власник':u.role==='admin'?'Адміністратор':'Учасник';
@@ -1575,6 +1593,7 @@
     if(name==='claim-level-rewards') claimLevelRewards();
     if(name==='start-match3') startMatch3();
     if(name==='send-profile-gift') sendProfileGift();
+    if(name==='transfer-family-coins') transferFamilyCoins();
     if(name==='edit-profile'){document.body.insertAdjacentHTML('beforeend',modal('edit-profile'));bindModal();}
     if(name==='manage-important-dates'){document.body.insertAdjacentHTML('beforeend',modal('important-dates'));bindModal();}
     if(name==='add-important-date') addImportantDate();
@@ -1607,9 +1626,6 @@
     if(name==='confirm-share-account') performPendingAccountShare();
     if(name==='download-pending-account') downloadPendingAccountFile();
     if(name==='import-account') document.getElementById('accountImportFile')?.click();
-    if(name==='create-account-recovery') createRecoveryBackup('account');
-    if(name==='create-family-recovery') createRecoveryBackup('family');
-    if(name==='download-recovery-code') downloadRecoveryCode();
   }
   function openNamedModal(name){const html=modal(name);if(!html)return;document.body.insertAdjacentHTML('beforeend',html);bindModal();}
   function bindModal(){
@@ -1623,21 +1639,6 @@
   }
 
 
-  function recoveryCode(){const a=crypto.getRandomValues(new Uint8Array(18));return Array.from(a,b=>b.toString(16).padStart(2,'0')).join('').toUpperCase().match(/.{1,6}/g).join('-');}
-  async function recoveryHash(code){const d=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('myHabbit-recovery:'+code.replace(/\s/g,'')));return Array.from(new Uint8Array(d),b=>b.toString(16).padStart(2,'0')).join('');}
-  async function createRecoveryBackup(scope){
-    if(scope==='family'&&!isAdmin())return showToast('Лише адміністратор сімʼї може створити цей код');
-    persistAccount();const account=loadAccounts().find(x=>x.id===accountId());if(!account)return showToast('Не вдалося підготувати резервну копію');
-    const code=recoveryCode(),salt=crypto.getRandomValues(new Uint8Array(16)),iv=crypto.getRandomValues(new Uint8Array(12));
-    const key=await deriveTransferKey(code,salt);const payload={format:'myHabbit-recovery-session',version:1,scope,createdAt:new Date().toISOString(),familyId:state.family?.id||null,userId:currentUser()?.id||null,account};
-    const encrypted=await crypto.subtle.encrypt({name:'AES-GCM',iv},key,new TextEncoder().encode(JSON.stringify(payload)));
-    const box={format:'myHabbit-recovery-box',version:1,scope,salt:b64(salt),iv:b64(iv),data:b64(encrypted)};
-    try{await api('/api/recovery/store',{method:'POST',body:JSON.stringify({lookup:await recoveryHash(code),box,token:auth?.token||''})});
-      document.body.insertAdjacentHTML('beforeend',`<div class="modal-backdrop"><div class="modal"><div class="modal-head"><h2>Резервний код ${scope==='family'?'сімʼї':'профілю'}</h2><button class="close" data-close>×</button></div><p>Збережіть код окремо. Сервер бачить лише зашифровану копію і не може відкрити її без цього коду.</p><div class="recovery-code">${code}</div><p class="auth-help">Після вайпу Owner вводить цей код у своїй панелі та отримує JSON-сесію. Втрата коду означає втрату доступу до копії.</p><div class="modal-actions"><button class="btn primary" data-action="download-recovery-code">Зберегти код файлом</button></div></div></div>`);
-      window.__lastRecovery={code,scope};bindModal();
-    }catch(e){showToast(e.message||'Не вдалося зберегти резервну копію');}
-  }
-  function downloadRecoveryCode(){const r=window.__lastRecovery;if(!r)return;downloadBlobFile(new Blob([r.code+'\n'],{type:'text/plain'}),`myHabbit-${r.scope}-recovery-code.txt`);showToast('Код збережено');}
   async function deriveTransferKey(password,salt){const base=await crypto.subtle.importKey('raw',new TextEncoder().encode(password),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:180000,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['encrypt','decrypt']);}
   const b64=b=>btoa(String.fromCharCode(...new Uint8Array(b))); const unb64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
   async function createEncryptedAccountFile(){
