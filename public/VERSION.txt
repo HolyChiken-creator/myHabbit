@@ -1,1 +1,1 @@
-9.5.6-deploy-syntax-fix
+9.5.7-cloudflare-do-deploy-fix
