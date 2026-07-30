@@ -1,0 +1,37 @@
+{
+  "name": "myhabbit",
+  "main": "./src/worker.js",
+  "workers_dev": true,
+  "vars": {
+    "TELEGRAM_BOT_USERNAME": "",
+    "OWNER_MAX_FAMILIES": "50"
+  },
+  "compatibility_date": "2026-07-18",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*", "/owner-console", "/owner-console/*"]
+  },
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "TELEGRAM_STATE",
+        "class_name": "TelegramStateV2"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v2-telegram-state",
+      "new_sqlite_classes": ["TelegramStateV2"]
+    }
+  ],
+  "triggers": {
+    "crons": ["*/5 * * * *"]
+  },
+  "observability": {
+    "enabled": true
+  },
+  "keep_vars": true
+}
