@@ -1,7 +1,7 @@
-const CACHE = 'myhabbit-9.5.5-stability-repair';
-const META_CACHE = 'myhabbit-9.5.5-stability-repair-meta';
+const CACHE = 'myhabbit-9.5.6-deploy-syntax-fix';
+const META_CACHE = 'myhabbit-9.5.6-deploy-syntax-fix-meta';
 const CORE = [
-  '/', '/index.html', '/styles.css?v=9.5.5-stability-repair', '/app.js?v=9.5.5-stability-repair',
+  '/', '/index.html', '/styles.css?v=9.5.6-deploy-syntax-fix', '/app.js?v=9.5.6-deploy-syntax-fix',
   '/manifest.webmanifest?v=9.4.2', '/assets/myhabbit-brand.webp', '/assets/welcome-family-clean.webp',
   '/icons/icon-192.png', '/icons/icon-512.png'
 ];
