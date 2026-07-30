@@ -1,0 +1,3202 @@
+[
+  {
+    "id": "weekly_family_00001",
+    "title": "Обговоріть сімейну ціль про спогади",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про спогади» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 1,
+    "estimatedMinutes": 60,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 20,
+      "xp": 34,
+      "skills": {
+        "family": 30
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00002",
+    "title": "Обговоріть сімейну ціль про відпочинок",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про відпочинок» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 19,
+    "estimatedMinutes": 5,
+    "verification": "photo",
+    "rewards": {
+      "coins": 34,
+      "xp": 57,
+      "skills": {
+        "family": 51
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00003",
+    "title": "Обговоріть сімейну ціль про здоров’я",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про здоров’я» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 38,
+    "estimatedMinutes": 60,
+    "verification": "text",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "family": 22
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00004",
+    "title": "Створіть сімейну традицію навколо фінанси",
+    "description": "Виконай завдання «Створіть сімейну традицію навколо фінанси» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "hard",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 2,
+    "estimatedMinutes": 15,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 63,
+      "xp": 103,
+      "skills": {
+        "family": 91
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "hard",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00005",
+    "title": "Обговоріть сімейну ціль про майбутнє",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про майбутнє» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "expert",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 34,
+    "estimatedMinutes": 30,
+    "verification": "adminApproval",
+    "rewards": {
+      "coins": 90,
+      "xp": 140,
+      "skills": {
+        "family": 126
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "expert",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00006",
+    "title": "Допоможіть одне одному з прогулянки",
+    "description": "Виконай завдання «Допоможіть одне одному з прогулянки» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 40,
+    "estimatedMinutes": 90,
+    "verification": "number",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "family": 22
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00007",
+    "title": "Проведіть сімейний вечір із темою «майбутнє»",
+    "description": "Виконай завдання «Проведіть сімейний вечір із темою «майбутнє»» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 40,
+    "estimatedMinutes": 10,
+    "verification": "adminApproval",
+    "rewards": {
+      "coins": 34,
+      "xp": 57,
+      "skills": {
+        "family": 51
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00008",
+    "title": "Обговоріть сімейну ціль про фінанси",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про фінанси» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "legendary",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 22,
+    "estimatedMinutes": 5,
+    "verification": "text",
+    "rewards": {
+      "coins": 66,
+      "xp": 110,
+      "skills": {
+        "family": 98
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "legendary"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00009",
+    "title": "Обговоріть сімейну ціль про здоров’я",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про здоров’я» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "hard",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 30,
+    "estimatedMinutes": 60,
+    "verification": "text",
+    "rewards": {
+      "coins": 74,
+      "xp": 122,
+      "skills": {
+        "family": 109
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "hard",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00010",
+    "title": "Створіть сімейну традицію навколо фінанси",
+    "description": "Виконай завдання «Створіть сімейну традицію навколо фінанси» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 8,
+    "estimatedMinutes": 45,
+    "verification": "number",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "family": 25
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00011",
+    "title": "Допоможіть одне одному з фотоальбому",
+    "description": "Виконай завдання «Допоможіть одне одному з фотоальбому» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 37,
+    "estimatedMinutes": 60,
+    "verification": "photo",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "family": 44
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00012",
+    "title": "Обговоріть сімейну ціль про подорожі",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про подорожі» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 2,
+    "estimatedMinutes": 5,
+    "verification": "none",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "family": 22
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00013",
+    "title": "Обговоріть сімейну ціль про мрії",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про мрії» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 19,
+    "estimatedMinutes": 30,
+    "verification": "text",
+    "rewards": {
+      "coins": 40,
+      "xp": 68,
+      "skills": {
+        "family": 61
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00014",
+    "title": "Створіть сімейну традицію навколо мрії",
+    "description": "Виконай завдання «Створіть сімейну традицію навколо мрії» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "expert",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 6,
+    "estimatedMinutes": 15,
+    "verification": "none",
+    "rewards": {
+      "coins": 90,
+      "xp": 140,
+      "skills": {
+        "family": 126
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "expert",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00015",
+    "title": "Створіть сімейну традицію навколо відпочинок",
+    "description": "Виконай завдання «Створіть сімейну традицію навколо відпочинок» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 36,
+    "estimatedMinutes": 90,
+    "verification": "none",
+    "rewards": {
+      "coins": 34,
+      "xp": 57,
+      "skills": {
+        "family": 51
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00016",
+    "title": "Допоможіть одне одному з планування вихідних",
+    "description": "Виконай завдання «Допоможіть одне одному з планування вихідних» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 5,
+    "estimatedMinutes": 30,
+    "verification": "photo",
+    "rewards": {
+      "coins": 34,
+      "xp": 57,
+      "skills": {
+        "family": 51
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00017",
+    "title": "Створіть сімейну традицію навколо мрії",
+    "description": "Виконай завдання «Створіть сімейну традицію навколо мрії» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 15,
+    "estimatedMinutes": 20,
+    "verification": "photo",
+    "rewards": {
+      "coins": 34,
+      "xp": 57,
+      "skills": {
+        "family": 51
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00018",
+    "title": "Допоможіть одне одному з планування вихідних",
+    "description": "Виконай завдання «Допоможіть одне одному з планування вихідних» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "epic",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 22,
+    "estimatedMinutes": 45,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 51,
+      "xp": 85,
+      "skills": {
+        "family": 76
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "epic"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00019",
+    "title": "Обговоріть сімейну ціль про фінанси",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про фінанси» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 30,
+    "estimatedMinutes": 30,
+    "verification": "none",
+    "rewards": {
+      "coins": 34,
+      "xp": 57,
+      "skills": {
+        "family": 51
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00020",
+    "title": "Створіть сімейну традицію навколо подорожі",
+    "description": "Виконай завдання «Створіть сімейну традицію навколо подорожі» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 19,
+    "estimatedMinutes": 15,
+    "verification": "adminApproval",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "family": 25
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00021",
+    "title": "Зробіть разом фотоальбому",
+    "description": "Виконай завдання «Зробіть разом фотоальбому» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 16,
+    "estimatedMinutes": 90,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "family": 22
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00022",
+    "title": "Обговоріть сімейну ціль про мрії",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про мрії» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "hard",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 20,
+    "estimatedMinutes": 5,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 55,
+      "xp": 90,
+      "skills": {
+        "family": 80
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "hard",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00023",
+    "title": "Допоможіть одне одному з прибирання",
+    "description": "Виконай завдання «Допоможіть одне одному з прибирання» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 29,
+    "estimatedMinutes": 30,
+    "verification": "none",
+    "rewards": {
+      "coins": 20,
+      "xp": 34,
+      "skills": {
+        "family": 30
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00024",
+    "title": "Створіть сімейну традицію навколо вдячність",
+    "description": "Виконай завдання «Створіть сімейну традицію навколо вдячність» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 33,
+    "estimatedMinutes": 20,
+    "verification": "number",
+    "rewards": {
+      "coins": 34,
+      "xp": 57,
+      "skills": {
+        "family": 51
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00025",
+    "title": "Допоможіть одне одному з фотоальбому",
+    "description": "Виконай завдання «Допоможіть одне одному з фотоальбому» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 31,
+    "estimatedMinutes": 20,
+    "verification": "none",
+    "rewards": {
+      "coins": 20,
+      "xp": 34,
+      "skills": {
+        "family": 30
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00026",
+    "title": "Обговоріть сімейну ціль про здоров’я",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про здоров’я» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "hard",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 6,
+    "estimatedMinutes": 5,
+    "verification": "none",
+    "rewards": {
+      "coins": 55,
+      "xp": 90,
+      "skills": {
+        "family": 80
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "hard",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00027",
+    "title": "Обговоріть сімейну ціль про вдячність",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про вдячність» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 40,
+    "estimatedMinutes": 10,
+    "verification": "none",
+    "rewards": {
+      "coins": 34,
+      "xp": 57,
+      "skills": {
+        "family": 51
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00028",
+    "title": "Обговоріть сімейну ціль про фінанси",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про фінанси» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 22,
+    "estimatedMinutes": 45,
+    "verification": "photo",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "family": 25
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00029",
+    "title": "Проведіть сімейний вечір із темою «спогади»",
+    "description": "Виконай завдання «Проведіть сімейний вечір із темою «спогади»» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 26,
+    "estimatedMinutes": 5,
+    "verification": "none",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "family": 22
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00030",
+    "title": "Обговоріть сімейну ціль про вдячність",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про вдячність» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 13,
+    "estimatedMinutes": 15,
+    "verification": "adminApproval",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "family": 25
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00031",
+    "title": "Зробіть разом прогулянки",
+    "description": "Виконай завдання «Зробіть разом прогулянки» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 11,
+    "estimatedMinutes": 60,
+    "verification": "none",
+    "rewards": {
+      "coins": 20,
+      "xp": 34,
+      "skills": {
+        "family": 30
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00032",
+    "title": "Допоможіть одне одному з планування вихідних",
+    "description": "Виконай завдання «Допоможіть одне одному з планування вихідних» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 21,
+    "estimatedMinutes": 15,
+    "verification": "text",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "family": 22
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00033",
+    "title": "Обговоріть сімейну ціль про відпочинок",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про відпочинок» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 1,
+    "estimatedMinutes": 60,
+    "verification": "none",
+    "rewards": {
+      "coins": 34,
+      "xp": 57,
+      "skills": {
+        "family": 51
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00034",
+    "title": "Допоможіть одне одному з прибирання",
+    "description": "Виконай завдання «Допоможіть одне одному з прибирання» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "hard",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 37,
+    "estimatedMinutes": 60,
+    "verification": "number",
+    "rewards": {
+      "coins": 74,
+      "xp": 122,
+      "skills": {
+        "family": 109
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "hard",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00035",
+    "title": "Створіть сімейну традицію навколо вдячність",
+    "description": "Виконай завдання «Створіть сімейну традицію навколо вдячність» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "hard",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 28,
+    "estimatedMinutes": 60,
+    "verification": "none",
+    "rewards": {
+      "coins": 74,
+      "xp": 122,
+      "skills": {
+        "family": 109
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "hard",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00036",
+    "title": "Обговоріть сімейну ціль про подорожі",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про подорожі» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 16,
+    "estimatedMinutes": 90,
+    "verification": "none",
+    "rewards": {
+      "coins": 34,
+      "xp": 57,
+      "skills": {
+        "family": 51
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00037",
+    "title": "Обговоріть сімейну ціль про майбутнє",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про майбутнє» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 6,
+    "estimatedMinutes": 45,
+    "verification": "none",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "family": 22
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00038",
+    "title": "Створіть сімейну традицію навколо фінанси",
+    "description": "Виконай завдання «Створіть сімейну традицію навколо фінанси» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "hard",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 30,
+    "estimatedMinutes": 5,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 55,
+      "xp": 90,
+      "skills": {
+        "family": 80
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "hard",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00039",
+    "title": "Допоможіть одне одному з фотоальбому",
+    "description": "Виконай завдання «Допоможіть одне одному з фотоальбому» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 6,
+    "estimatedMinutes": 10,
+    "verification": "text",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "family": 44
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00040",
+    "title": "Зробіть разом прибирання",
+    "description": "Виконай завдання «Зробіть разом прибирання» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "hard",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 13,
+    "estimatedMinutes": 20,
+    "verification": "none",
+    "rewards": {
+      "coins": 55,
+      "xp": 90,
+      "skills": {
+        "family": 80
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "hard",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00041",
+    "title": "Обговоріть сімейну ціль про мрії",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про мрії» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 4,
+    "estimatedMinutes": 5,
+    "verification": "none",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "family": 44
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00042",
+    "title": "Допоможіть одне одному з вечері",
+    "description": "Виконай завдання «Допоможіть одне одному з вечері» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 37,
+    "estimatedMinutes": 10,
+    "verification": "none",
+    "rewards": {
+      "coins": 40,
+      "xp": 68,
+      "skills": {
+        "family": 61
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00043",
+    "title": "Обговоріть сімейну ціль про відпочинок",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про відпочинок» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 13,
+    "estimatedMinutes": 5,
+    "verification": "none",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "family": 44
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00044",
+    "title": "Створіть сімейну традицію навколо спогади",
+    "description": "Виконай завдання «Створіть сімейну традицію навколо спогади» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 14,
+    "estimatedMinutes": 60,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "family": 22
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00045",
+    "title": "Проведіть сімейний вечір із темою «майбутнє»",
+    "description": "Виконай завдання «Проведіть сімейний вечір із темою «майбутнє»» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 19,
+    "estimatedMinutes": 10,
+    "verification": "number",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "family": 22
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00046",
+    "title": "Зробіть разом планування вихідних",
+    "description": "Виконай завдання «Зробіть разом планування вихідних» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "hard",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 31,
+    "estimatedMinutes": 45,
+    "verification": "photo",
+    "rewards": {
+      "coins": 55,
+      "xp": 90,
+      "skills": {
+        "family": 80
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "hard",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00047",
+    "title": "Допоможіть одне одному з фотоальбому",
+    "description": "Виконай завдання «Допоможіть одне одному з фотоальбому» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 25,
+    "estimatedMinutes": 15,
+    "verification": "text",
+    "rewards": {
+      "coins": 34,
+      "xp": 57,
+      "skills": {
+        "family": 51
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00048",
+    "title": "Зробіть разом вечері",
+    "description": "Виконай завдання «Зробіть разом вечері» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 5,
+    "estimatedMinutes": 90,
+    "verification": "none",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "family": 44
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00049",
+    "title": "Допоможіть одне одному з прогулянки",
+    "description": "Виконай завдання «Допоможіть одне одному з прогулянки» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 6,
+    "estimatedMinutes": 45,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 40,
+      "xp": 68,
+      "skills": {
+        "family": 61
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00050",
+    "title": "Обговоріть сімейну ціль про мрії",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про мрії» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 6,
+    "estimatedMinutes": 20,
+    "verification": "none",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "family": 44
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00051",
+    "title": "Створіть сімейну традицію навколо мрії",
+    "description": "Виконай завдання «Створіть сімейну традицію навколо мрії» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "epic",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 22,
+    "estimatedMinutes": 15,
+    "verification": "number",
+    "rewards": {
+      "coins": 26,
+      "xp": 42,
+      "skills": {
+        "family": 37
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "epic"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00052",
+    "title": "Проведіть сімейний вечір із темою «фінанси»",
+    "description": "Виконай завдання «Проведіть сімейний вечір із темою «фінанси»» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 10,
+    "estimatedMinutes": 90,
+    "verification": "text",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "family": 22
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00053",
+    "title": "Обговоріть сімейну ціль про спогади",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про спогади» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 27,
+    "estimatedMinutes": 30,
+    "verification": "photo",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "family": 22
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00054",
+    "title": "Створіть сімейну традицію навколо відпочинок",
+    "description": "Виконай завдання «Створіть сімейну традицію навколо відпочинок» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "expert",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 16,
+    "estimatedMinutes": 5,
+    "verification": "none",
+    "rewards": {
+      "coins": 122,
+      "xp": 189,
+      "skills": {
+        "family": 169
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "expert",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00055",
+    "title": "Обговоріть сімейну ціль про відпочинок",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про відпочинок» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 26,
+    "estimatedMinutes": 60,
+    "verification": "text",
+    "rewards": {
+      "coins": 34,
+      "xp": 57,
+      "skills": {
+        "family": 51
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00056",
+    "title": "Створіть сімейну традицію навколо відпочинок",
+    "description": "Виконай завдання «Створіть сімейну традицію навколо відпочинок» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 17,
+    "estimatedMinutes": 45,
+    "verification": "none",
+    "rewards": {
+      "coins": 34,
+      "xp": 57,
+      "skills": {
+        "family": 51
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00057",
+    "title": "Обговоріть сімейну ціль про здоров’я",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про здоров’я» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "hard",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 5,
+    "estimatedMinutes": 60,
+    "verification": "none",
+    "rewards": {
+      "coins": 63,
+      "xp": 103,
+      "skills": {
+        "family": 91
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "hard",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00058",
+    "title": "Створіть сімейну традицію навколо подорожі",
+    "description": "Виконай завдання «Створіть сімейну традицію навколо подорожі» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 19,
+    "estimatedMinutes": 15,
+    "verification": "none",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "family": 44
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00059",
+    "title": "Допоможіть одне одному з вечері",
+    "description": "Виконай завдання «Допоможіть одне одному з вечері» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 38,
+    "estimatedMinutes": 20,
+    "verification": "number",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "family": 22
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00060",
+    "title": "Обговоріть сімейну ціль про подорожі",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про подорожі» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 27,
+    "estimatedMinutes": 15,
+    "verification": "photo",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "family": 25
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00061",
+    "title": "Обговоріть сімейну ціль про майбутнє",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про майбутнє» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 11,
+    "estimatedMinutes": 20,
+    "verification": "none",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "family": 44
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00062",
+    "title": "Проведіть сімейний вечір із темою «здоров’я»",
+    "description": "Виконай завдання «Проведіть сімейний вечір із темою «здоров’я»» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 35,
+    "estimatedMinutes": 10,
+    "verification": "text",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "family": 44
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00063",
+    "title": "Обговоріть сімейну ціль про вдячність",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про вдячність» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "legendary",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 28,
+    "estimatedMinutes": 60,
+    "verification": "none",
+    "rewards": {
+      "coins": 66,
+      "xp": 110,
+      "skills": {
+        "family": 98
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "legendary"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00064",
+    "title": "Створіть сімейну традицію навколо фінанси",
+    "description": "Виконай завдання «Створіть сімейну традицію навколо фінанси» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 15,
+    "estimatedMinutes": 10,
+    "verification": "none",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "family": 25
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00065",
+    "title": "Обговоріть сімейну ціль про майбутнє",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про майбутнє» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "hard",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 38,
+    "estimatedMinutes": 10,
+    "verification": "number",
+    "rewards": {
+      "coins": 55,
+      "xp": 90,
+      "skills": {
+        "family": 80
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "hard",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00066",
+    "title": "Створіть сімейну традицію навколо майбутнє",
+    "description": "Виконай завдання «Створіть сімейну традицію навколо майбутнє» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 32,
+    "estimatedMinutes": 20,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 40,
+      "xp": 68,
+      "skills": {
+        "family": 61
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00067",
+    "title": "Зробіть разом планування вихідних",
+    "description": "Виконай завдання «Зробіть разом планування вихідних» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 3,
+    "estimatedMinutes": 20,
+    "verification": "photo",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "family": 22
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00068",
+    "title": "Допоможіть одне одному з прибирання",
+    "description": "Виконай завдання «Допоможіть одне одному з прибирання» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 10,
+    "estimatedMinutes": 45,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 20,
+      "xp": 34,
+      "skills": {
+        "family": 30
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00069",
+    "title": "Створіть сімейну традицію навколо спогади",
+    "description": "Виконай завдання «Створіть сімейну традицію навколо спогади» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 35,
+    "estimatedMinutes": 30,
+    "verification": "none",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "family": 22
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00070",
+    "title": "Створіть сімейну традицію навколо спогади",
+    "description": "Виконай завдання «Створіть сімейну традицію навколо спогади» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 29,
+    "estimatedMinutes": 5,
+    "verification": "none",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "family": 25
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00071",
+    "title": "Зробіть разом прибирання",
+    "description": "Виконай завдання «Зробіть разом прибирання» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 12,
+    "estimatedMinutes": 5,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "family": 25
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00072",
+    "title": "Допоможіть одне одному з планування вихідних",
+    "description": "Виконай завдання «Допоможіть одне одному з планування вихідних» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 16,
+    "estimatedMinutes": 60,
+    "verification": "photo",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "family": 44
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00073",
+    "title": "Створіть сімейну традицію навколо фінанси",
+    "description": "Виконай завдання «Створіть сімейну традицію навколо фінанси» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "hard",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 28,
+    "estimatedMinutes": 30,
+    "verification": "none",
+    "rewards": {
+      "coins": 63,
+      "xp": 103,
+      "skills": {
+        "family": 91
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "hard",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00074",
+    "title": "Проведіть сімейний вечір із темою «здоров’я»",
+    "description": "Виконай завдання «Проведіть сімейний вечір із темою «здоров’я»» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "expert",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 8,
+    "estimatedMinutes": 5,
+    "verification": "text",
+    "rewards": {
+      "coins": 90,
+      "xp": 140,
+      "skills": {
+        "family": 126
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "expert",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00075",
+    "title": "Обговоріть сімейну ціль про спогади",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про спогади» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 33,
+    "estimatedMinutes": 20,
+    "verification": "number",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "family": 44
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00076",
+    "title": "Зробіть разом настільної гри",
+    "description": "Виконай завдання «Зробіть разом настільної гри» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "hard",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 31,
+    "estimatedMinutes": 5,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 55,
+      "xp": 90,
+      "skills": {
+        "family": 80
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "hard",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00077",
+    "title": "Обговоріть сімейну ціль про спогади",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про спогади» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "expert",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 14,
+    "estimatedMinutes": 5,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 103,
+      "xp": 161,
+      "skills": {
+        "family": 144
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "expert",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00078",
+    "title": "Допоможіть одне одному з вечері",
+    "description": "Виконай завдання «Допоможіть одне одному з вечері» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 19,
+    "estimatedMinutes": 20,
+    "verification": "number",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "family": 22
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00079",
+    "title": "Обговоріть сімейну ціль про майбутнє",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про майбутнє» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "legendary",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 38,
+    "estimatedMinutes": 90,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 33,
+      "xp": 55,
+      "skills": {
+        "family": 48
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "legendary"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00080",
+    "title": "Проведіть сімейний вечір із темою «відпочинок»",
+    "description": "Виконай завдання «Проведіть сімейний вечір із темою «відпочинок»» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 3,
+    "estimatedMinutes": 20,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "family": 22
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00081",
+    "title": "Проведіть сімейний вечір із темою «вдячність»",
+    "description": "Виконай завдання «Проведіть сімейний вечір із темою «вдячність»» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "epic",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 31,
+    "estimatedMinutes": 90,
+    "verification": "text",
+    "rewards": {
+      "coins": 51,
+      "xp": 85,
+      "skills": {
+        "family": 76
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "epic"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00082",
+    "title": "Зробіть разом прогулянки",
+    "description": "Виконай завдання «Зробіть разом прогулянки» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 37,
+    "estimatedMinutes": 45,
+    "verification": "none",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "family": 22
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00083",
+    "title": "Допоможіть одне одному з вечері",
+    "description": "Виконай завдання «Допоможіть одне одному з вечері» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 11,
+    "estimatedMinutes": 15,
+    "verification": "photo",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "family": 44
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00084",
+    "title": "Створіть сімейну традицію навколо мрії",
+    "description": "Виконай завдання «Створіть сімейну традицію навколо мрії» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 25,
+    "estimatedMinutes": 90,
+    "verification": "none",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "family": 22
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00085",
+    "title": "Зробіть разом прогулянки",
+    "description": "Виконай завдання «Зробіть разом прогулянки» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 21,
+    "estimatedMinutes": 10,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 40,
+      "xp": 68,
+      "skills": {
+        "family": 61
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00086",
+    "title": "Створіть сімейну традицію навколо мрії",
+    "description": "Виконай завдання «Створіть сімейну традицію навколо мрії» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 17,
+    "estimatedMinutes": 60,
+    "verification": "number",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "family": 22
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00087",
+    "title": "Обговоріть сімейну ціль про фінанси",
+    "description": "Виконай завдання «Обговоріть сімейну ціль про фінанси» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "hard",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 39,
+    "estimatedMinutes": 20,
+    "verification": "none",
+    "rewards": {
+      "coins": 63,
+      "xp": 103,
+      "skills": {
+        "family": 91
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "hard",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00088",
+    "title": "Створіть сімейну традицію навколо спогади",
+    "description": "Виконай завдання «Створіть сімейну традицію навколо спогади» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 27,
+    "estimatedMinutes": 10,
+    "verification": "none",
+    "rewards": {
+      "coins": 15,
+      "xp": 25,
+      "skills": {
+        "family": 22
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00089",
+    "title": "Створіть сімейну традицію навколо мрії",
+    "description": "Виконай завдання «Створіть сімейну традицію навколо мрії» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 15,
+    "estimatedMinutes": 30,
+    "verification": "none",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "family": 25
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00090",
+    "title": "Допоможіть одне одному з вечері",
+    "description": "Виконай завдання «Допоможіть одне одному з вечері» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "epic",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 29,
+    "estimatedMinutes": 10,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 26,
+      "xp": 42,
+      "skills": {
+        "family": 37
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "epic"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00091",
+    "title": "Допоможіть одне одному з фотоальбому",
+    "description": "Виконай завдання «Допоможіть одне одному з фотоальбому» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 15,
+    "estimatedMinutes": 10,
+    "verification": "none",
+    "rewards": {
+      "coins": 40,
+      "xp": 68,
+      "skills": {
+        "family": 61
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00092",
+    "title": "Зробіть разом вечері",
+    "description": "Виконай завдання «Зробіть разом вечері» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "expert",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 35,
+    "estimatedMinutes": 10,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 90,
+      "xp": 140,
+      "skills": {
+        "family": 126
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "expert",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00093",
+    "title": "Допоможіть одне одному з прогулянки",
+    "description": "Виконай завдання «Допоможіть одне одному з прогулянки» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "hard",
+    "rarity": "legendary",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 24,
+    "estimatedMinutes": 30,
+    "verification": "adminApproval",
+    "rewards": {
+      "coins": 121,
+      "xp": 198,
+      "skills": {
+        "family": 177
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "hard",
+      "legendary"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00094",
+    "title": "Зробіть разом планування вихідних",
+    "description": "Виконай завдання «Зробіть разом планування вихідних» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "hard",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 30,
+    "estimatedMinutes": 5,
+    "verification": "text",
+    "rewards": {
+      "coins": 55,
+      "xp": 90,
+      "skills": {
+        "family": 80
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "hard",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00095",
+    "title": "Створіть сімейну традицію навколо майбутнє",
+    "description": "Виконай завдання «Створіть сімейну традицію навколо майбутнє» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 10,
+    "estimatedMinutes": 15,
+    "verification": "number",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "family": 25
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00096",
+    "title": "Проведіть сімейний вечір із темою «вдячність»",
+    "description": "Виконай завдання «Проведіть сімейний вечір із темою «вдячність»» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 33,
+    "estimatedMinutes": 45,
+    "verification": "photo",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "family": 25
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00097",
+    "title": "Створіть сімейну традицію навколо фінанси",
+    "description": "Виконай завдання «Створіть сімейну традицію навколо фінанси» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "rare",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 13,
+    "estimatedMinutes": 90,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 40,
+      "xp": 68,
+      "skills": {
+        "family": 61
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "rare"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00098",
+    "title": "Проведіть сімейний вечір із темою «спогади»",
+    "description": "Виконай завдання «Проведіть сімейний вечір із темою «спогади»» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "easy",
+    "rarity": "uncommon",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 19,
+    "estimatedMinutes": 5,
+    "verification": "number",
+    "rewards": {
+      "coins": 17,
+      "xp": 29,
+      "skills": {
+        "family": 25
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "easy",
+      "uncommon"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00099",
+    "title": "Зробіть разом прибирання",
+    "description": "Виконай завдання «Зробіть разом прибирання» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "medium",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 28,
+    "estimatedMinutes": 20,
+    "verification": "memberApproval",
+    "rewards": {
+      "coins": 30,
+      "xp": 50,
+      "skills": {
+        "family": 44
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "medium",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  },
+  {
+    "id": "weekly_family_00100",
+    "title": "Проведіть сімейний вечір із темою «здоров’я»",
+    "description": "Виконай завдання «Проведіть сімейний вечір із темою «здоров’я»» та додай короткий звіт про результат.",
+    "category": "family",
+    "type": "coop",
+    "difficulty": "hard",
+    "rarity": "common",
+    "repeatType": "weekly",
+    "repeatable": true,
+    "cooldownDays": 7,
+    "unlockLevel": 19,
+    "estimatedMinutes": 15,
+    "verification": "photo",
+    "rewards": {
+      "coins": 55,
+      "xp": 90,
+      "skills": {
+        "family": 80
+      }
+    },
+    "tags": [
+      "family",
+      "together",
+      "care",
+      "hard",
+      "common"
+    ],
+    "active": true,
+    "version": 1,
+    "maxCompletionsPerPeriod": 1
+  }
+]

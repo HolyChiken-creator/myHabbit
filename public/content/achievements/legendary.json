@@ -1,0 +1,1322 @@
+[
+  {
+    "id": "achievement_legendary_0018",
+    "title": "👑 Legendary — етап 1",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0036",
+    "title": "👑 Legendary — етап 2",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0054",
+    "title": "👑 Legendary — етап 3",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0072",
+    "title": "👑 Legendary — етап 4",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0090",
+    "title": "👑 Legendary — етап 5",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0108",
+    "title": "👑 Legendary — етап 6",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0126",
+    "title": "👑 Legendary — етап 7",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0144",
+    "title": "👑 Legendary — етап 8",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0162",
+    "title": "👑 Legendary — етап 9",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0180",
+    "title": "👑 Legendary — етап 10",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0198",
+    "title": "👑 Legendary — етап 11",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0216",
+    "title": "👑 Legendary — етап 12",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0234",
+    "title": "👑 Legendary — етап 13",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0252",
+    "title": "👑 Legendary — етап 14",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0270",
+    "title": "👑 Legendary — етап 15",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0288",
+    "title": "👑 Legendary — етап 16",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0306",
+    "title": "👑 Legendary — етап 17",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0324",
+    "title": "👑 Legendary — етап 18",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0342",
+    "title": "👑 Legendary — етап 19",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0360",
+    "title": "👑 Legendary — етап 20",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0378",
+    "title": "👑 Legendary — етап 21",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0396",
+    "title": "👑 Legendary — етап 22",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0414",
+    "title": "👑 Legendary — етап 23",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0432",
+    "title": "👑 Legendary — етап 24",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0450",
+    "title": "👑 Legendary — етап 25",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0468",
+    "title": "👑 Legendary — етап 26",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0486",
+    "title": "👑 Legendary — етап 27",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0504",
+    "title": "👑 Legendary — етап 28",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0522",
+    "title": "👑 Legendary — етап 29",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0540",
+    "title": "👑 Legendary — етап 30",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0558",
+    "title": "👑 Legendary — етап 31",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0576",
+    "title": "👑 Legendary — етап 32",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0594",
+    "title": "👑 Legendary — етап 33",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0612",
+    "title": "👑 Legendary — етап 34",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0630",
+    "title": "👑 Legendary — етап 35",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0648",
+    "title": "👑 Legendary — етап 36",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0666",
+    "title": "👑 Legendary — етап 37",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0684",
+    "title": "👑 Legendary — етап 38",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0702",
+    "title": "👑 Legendary — етап 39",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0720",
+    "title": "👑 Legendary — етап 40",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0738",
+    "title": "👑 Legendary — етап 41",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0756",
+    "title": "👑 Legendary — етап 42",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0774",
+    "title": "👑 Legendary — етап 43",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0792",
+    "title": "👑 Legendary — етап 44",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0810",
+    "title": "👑 Legendary — етап 45",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0828",
+    "title": "👑 Legendary — етап 46",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0846",
+    "title": "👑 Legendary — етап 47",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0864",
+    "title": "👑 Legendary — етап 48",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0882",
+    "title": "👑 Legendary — етап 49",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0900",
+    "title": "👑 Legendary — етап 50",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0918",
+    "title": "👑 Legendary — етап 51",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0936",
+    "title": "👑 Legendary — етап 52",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0954",
+    "title": "👑 Legendary — етап 53",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0972",
+    "title": "👑 Legendary — етап 54",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_0990",
+    "title": "👑 Legendary — етап 55",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_1008",
+    "title": "👑 Legendary — етап 56",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_1026",
+    "title": "👑 Legendary — етап 57",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_1044",
+    "title": "👑 Legendary — етап 58",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_1062",
+    "title": "👑 Legendary — етап 59",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_1080",
+    "title": "👑 Legendary — етап 60",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_1098",
+    "title": "👑 Legendary — етап 61",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_1116",
+    "title": "👑 Legendary — етап 62",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_1134",
+    "title": "👑 Legendary — етап 63",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_1152",
+    "title": "👑 Legendary — етап 64",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_1170",
+    "title": "👑 Legendary — етап 65",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_legendary_1188",
+    "title": "👑 Legendary — етап 66",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "legendary",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "legendaryQuestsCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  }
+]
