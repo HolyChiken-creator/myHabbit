@@ -1,5 +1,5 @@
-const APP_VERSION = '10.1.5-server-diagnostics';
-const DEPLOY_MARKER = 'myhabbit-diagnostic-2026-07-31-a';
+const APP_VERSION = '10.1.6-root-route-fix';
+const DEPLOY_MARKER = 'myhabbit-root-fix-2026-07-31-b';
 const DEFAULT_OWNER_PANEL_SECRET = 'TedyK-Owner-9472!';
 const JSON_HEADERS = {
   'content-type': 'application/json; charset=utf-8',
@@ -2471,6 +2471,58 @@ export default {
     }
 
     // myHabbit intentionally has no external food database or barcode API.
+
+    // Root route is handled explicitly. This prevents Cloudflare Assets from
+    // returning a bare 404 when index.html was restored or routing changed.
+    if (url.pathname === '/' || url.pathname === '/index.html') {
+      const indexUrl = new URL('/index.html', request.url);
+      const indexRequest = new Request(indexUrl.toString(), {
+        method: 'GET',
+        headers: request.headers
+      });
+      const assetResponse = await env.ASSETS.fetch(indexRequest);
+      console.log('[myHabbit root asset]', JSON.stringify({
+        requestId,
+        requestedPath: url.pathname,
+        assetPath: '/index.html',
+        status: assetResponse.status,
+        contentType: assetResponse.headers.get('content-type'),
+        version: APP_VERSION,
+        marker: DEPLOY_MARKER
+      }));
+      if (assetResponse.status !== 404) {
+        const headers = new Headers(assetResponse.headers);
+        headers.set('x-myhabbit-version', APP_VERSION);
+        headers.set('x-myhabbit-marker', DEPLOY_MARKER);
+        headers.set('x-myhabbit-request-id', requestId);
+        headers.set('cache-control', 'no-cache, no-store, must-revalidate');
+        return new Response(assetResponse.body, {
+          status: assetResponse.status,
+          statusText: assetResponse.statusText,
+          headers
+        });
+      }
+      console.error('[myHabbit root asset missing]', JSON.stringify({
+        requestId,
+        requestedPath: url.pathname,
+        assetPath: '/index.html',
+        version: APP_VERSION,
+        marker: DEPLOY_MARKER
+      }));
+      return json({
+        ok: false,
+        error: 'public/index.html was not found in the uploaded Assets bundle',
+        requestedPath: url.pathname,
+        workerReached: true,
+        requestId,
+        version: APP_VERSION,
+        marker: DEPLOY_MARKER
+      }, 500, {
+        'x-myhabbit-version': APP_VERSION,
+        'x-myhabbit-marker': DEPLOY_MARKER,
+        'x-myhabbit-request-id': requestId
+      });
+    }
 
     return env.ASSETS.fetch(request);
   },
