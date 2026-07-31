@@ -1,1 +1,1 @@
-10.0.1-compact-admin-panels
+10.0.2-floating-global-menu
