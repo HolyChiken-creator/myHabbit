@@ -1,0 +1,1322 @@
+[
+  {
+    "id": "achievement_streak_0015",
+    "title": "⚡ Streak — етап 1",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0033",
+    "title": "⚡ Streak — етап 2",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0051",
+    "title": "⚡ Streak — етап 3",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0069",
+    "title": "⚡ Streak — етап 4",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0087",
+    "title": "⚡ Streak — етап 5",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0105",
+    "title": "⚡ Streak — етап 6",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0123",
+    "title": "⚡ Streak — етап 7",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0141",
+    "title": "⚡ Streak — етап 8",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0159",
+    "title": "⚡ Streak — етап 9",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0177",
+    "title": "⚡ Streak — етап 10",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0195",
+    "title": "⚡ Streak — етап 11",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "legendary",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0213",
+    "title": "⚡ Streak — етап 12",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0231",
+    "title": "⚡ Streak — етап 13",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0249",
+    "title": "⚡ Streak — етап 14",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "legendary",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0267",
+    "title": "⚡ Streak — етап 15",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0285",
+    "title": "⚡ Streak — етап 16",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0303",
+    "title": "⚡ Streak — етап 17",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0321",
+    "title": "⚡ Streak — етап 18",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0339",
+    "title": "⚡ Streak — етап 19",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "legendary",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0357",
+    "title": "⚡ Streak — етап 20",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0375",
+    "title": "⚡ Streak — етап 21",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0393",
+    "title": "⚡ Streak — етап 22",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0411",
+    "title": "⚡ Streak — етап 23",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0429",
+    "title": "⚡ Streak — етап 24",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0447",
+    "title": "⚡ Streak — етап 25",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0465",
+    "title": "⚡ Streak — етап 26",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "legendary",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0483",
+    "title": "⚡ Streak — етап 27",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0501",
+    "title": "⚡ Streak — етап 28",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0519",
+    "title": "⚡ Streak — етап 29",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0537",
+    "title": "⚡ Streak — етап 30",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0555",
+    "title": "⚡ Streak — етап 31",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0573",
+    "title": "⚡ Streak — етап 32",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0591",
+    "title": "⚡ Streak — етап 33",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0609",
+    "title": "⚡ Streak — етап 34",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0627",
+    "title": "⚡ Streak — етап 35",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0645",
+    "title": "⚡ Streak — етап 36",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0663",
+    "title": "⚡ Streak — етап 37",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0681",
+    "title": "⚡ Streak — етап 38",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0699",
+    "title": "⚡ Streak — етап 39",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0717",
+    "title": "⚡ Streak — етап 40",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0735",
+    "title": "⚡ Streak — етап 41",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0753",
+    "title": "⚡ Streak — етап 42",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0771",
+    "title": "⚡ Streak — етап 43",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0789",
+    "title": "⚡ Streak — етап 44",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0807",
+    "title": "⚡ Streak — етап 45",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0825",
+    "title": "⚡ Streak — етап 46",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0843",
+    "title": "⚡ Streak — етап 47",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "legendary",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0861",
+    "title": "⚡ Streak — етап 48",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0879",
+    "title": "⚡ Streak — етап 49",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0897",
+    "title": "⚡ Streak — етап 50",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0915",
+    "title": "⚡ Streak — етап 51",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0933",
+    "title": "⚡ Streak — етап 52",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0951",
+    "title": "⚡ Streak — етап 53",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0969",
+    "title": "⚡ Streak — етап 54",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_0987",
+    "title": "⚡ Streak — етап 55",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_1005",
+    "title": "⚡ Streak — етап 56",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_1023",
+    "title": "⚡ Streak — етап 57",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_1041",
+    "title": "⚡ Streak — етап 58",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_1059",
+    "title": "⚡ Streak — етап 59",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_1077",
+    "title": "⚡ Streak — етап 60",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_1095",
+    "title": "⚡ Streak — етап 61",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_1113",
+    "title": "⚡ Streak — етап 62",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_1131",
+    "title": "⚡ Streak — етап 63",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_1149",
+    "title": "⚡ Streak — етап 64",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_1167",
+    "title": "⚡ Streak — етап 65",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_streak_1185",
+    "title": "⚡ Streak — етап 66",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "streak",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "streakDays",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  }
+]
