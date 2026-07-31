@@ -1,1 +1,1 @@
-10.0.0-cozy-owner-console
+10.0.1-compact-admin-panels

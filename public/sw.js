@@ -1,7 +1,7 @@
-const CACHE = 'myhabbit-10.0.0-cozy-owner-console';
-const META_CACHE = 'myhabbit-10.0.0-cozy-owner-console-meta';
+const CACHE = 'myhabbit-10.0.1-compact-admin-panels';
+const META_CACHE = 'myhabbit-10.0.1-compact-admin-panels-meta';
 const CORE = [
-  '/', '/index.html', '/styles.css?v=10.0.0-cozy-owner-console', '/app.js?v=10.0.0-cozy-owner-console',
+  '/', '/index.html', '/styles.css?v=10.0.1-compact-admin-panels', '/app.js?v=10.0.1-compact-admin-panels',
   '/manifest.webmanifest?v=9.4.2', '/assets/myhabbit-brand.webp', '/assets/welcome-family-clean.webp',
   '/icons/icon-192.png', '/icons/icon-512.png'
 ];

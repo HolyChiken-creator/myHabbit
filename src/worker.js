@@ -1,4 +1,4 @@
-const APP_VERSION = '10.0.0-cozy-owner-console';
+const APP_VERSION = '10.0.1-compact-admin-panels';
 const DEFAULT_OWNER_PANEL_SECRET = 'TedyK-Owner-9472!';
 const JSON_HEADERS = {
   'content-type': 'application/json; charset=utf-8',
