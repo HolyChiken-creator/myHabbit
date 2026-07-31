@@ -1,1 +1,1 @@
-9.7.1-sakura-sweetlife-tedyk-achievements
+10.0.0-cozy-owner-console

@@ -1,1 +1,1 @@
-9.5.5-stability-repair
+10.0.0-cozy-owner-console
