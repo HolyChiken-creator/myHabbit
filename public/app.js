@@ -12,11 +12,70 @@
   const OFFLINE_STORE = 'library';
   const CONTENT_CACHE = 'myHabbitContentLibraryV1';
   const CONTENT_VERSION = '1.0.0';
-  const APP_VERSION = '9.4.3-owner-password';
+  const APP_VERSION = '10.1.2-localization-layout-fix';
   const ACCOUNTS = 'myHabbitAccountsV1';
   const ACTIVE_ACCOUNT = 'myHabbitActiveAccountV1';
   const LOGOUT_TOMBSTONE = 'myHabbitLogoutTombstoneV1';
   const PWA_ONBOARDING_SEEN = 'myHabbitPwaInstallGuideV1';
+  const LANGUAGE_KEY = 'myHabbitLanguageV1';
+  const ADMIN_PANEL_SECTION_KEY = 'myHabbitAdminOpenSectionV1';
+  let appLanguage = localStorage.getItem(LANGUAGE_KEY) || ((navigator.language||'').toLowerCase().startsWith('en') ? 'en' : 'uk');
+  const EN_TEXT = {
+    'Головна':'Home','Квести':'Quests','Три в ряд':'Match 3','Магазин':'Shop','Колекції':'Collections','Музей':'Museum','Ачивки':'Achievements','Сімʼя':'Family','Профіль':'Profile','Адмін':'Admin',
+    'Вийти':'Log out','Мої профілі':'My profiles','Відкрити меню':'Open menu','Поточне оновлення':'Current update','Демо-режим':'Demo mode','Вийти з демо':'Exit demo',
+    'Моя сходинка':'My level','Наша спільна сходинка':'Family level','Баланс':'Balance','Мій ритм':'My streak','Квести на сьогодні':'Today’s quests','Усі квести':'All quests','Остання ачивка':'Latest achievement','Останні події':'Latest activity','Сімейний фокус':'Family focus','Головна ціль тижня':'Main weekly goal','Командна активність':'Team activity',
+    'Поки немає ачивок':'No achievements yet','Подія':'Activity','Щойно':'Just now','Сьогодні':'Today','Учора':'Yesterday','Рівень':'Level','Монети':'Coins','Учасники':'Members','Наші люди':'Our people','Сімейна активність':'Family activity','Запросити':'Invite','Вийти із сімʼї':'Leave family',
+    'Налаштування нашого простору':'Our space settings','Центр керування':'Control center','Перевірити Telegram':'Check Telegram','Зберегти':'Save','Скасувати':'Cancel','Додати':'Add','Видалити':'Delete','Закрити':'Close','Відкрити':'Open','Отримано':'Unlocked','Недостатньо монет':'Not enough coins',
+    'Ласкаво просимо додому':'Welcome home','Раді бачити вас знову':'Welcome back','Створити сімʼю':'Create family','Приєднатися':'Join','Відкрити файл профілю':'Open profile file','Керувати профілями':'Manage profiles','Подивитися демо':'View demo','Увійти в акаунт':'Sign in','Назад':'Back',
+    'Щоденний сюрприз':'Daily surprise','Один оберт на день':'One spin per day','Крути колесо удачі':'Spin the wheel','Крутити рулетку':'Spin','Забрати подарунок':'Claim gift','Спробувати ще раз':'Try again',
+    'Важливі дати':'Important dates','День':'Day','Місяць':'Month','Назва':'Title','Додати дату':'Add date','Список поки порожній.':'The list is empty.','Налаштування збережено':'Settings saved','Гаразд':'OK','Чудово':'Great','Далі':'Next',
+    'Українська':'Ukrainian','Англійська':'English','Мова інтерфейсу':'Interface language',
+    'Моя команда':'My team','загальний рівень':'overall level','у myHabbit з':'using myHabbit since','Запросити в сімʼю':'Invite to family','Налаштувати':'Customize','Подарунки рівня':'Level rewards','Залишити слід':'Leave a sticker',
+    'Спільний прогрес без публічних рейтингів і сторонніх людей.':'Shared progress without public rankings or strangers.','У видимому списку поки немає учасників':'No visible members yet','Поки немає нових подій учасників':'No new member activity yet',
+    'Особистий':'Personal','Особиста':'Personal','Для всієї сімʼї':'For the whole family','Спільний фонд':'Shared fund','Хлопець':'Male','Дівчина':'Female','Інший':'Other','Профіль':'Profile','Ваше імʼя':'Your name','Сімейний PIN':'Family PIN','Назва сімʼї':'Family name','Увійти до сімʼї':'Join family',
+    'Легка':'Easy','Середня':'Medium','Складна':'Hard','Звичайна':'Common','Рідкісна':'Rare','Епічна':'Epic','Легендарна':'Legendary','Секретна':'Secret','Взяти':'Claim','Виконати':'Complete','Активні':'Active','Завершені':'Completed','Особливі дати ще не додані.':'No special dates yet.','Керувати датами':'Manage dates',
+    'Адміністративна панель':'Admin panel','Розділи адміністратора':'Admin sections','Відкривайте лише потрібне вікно — інші автоматично згорнуться.':'Open only the section you need — the others will collapse automatically.','Активні квести':'Active quests','Асортимент':'Catalog','закінчуються':'low in stock','Сімейний фонд':'Family fund','Квести та логічні ланцюжки':'Quests and progress chains','Редагування, приховування й власні завдання':'Edit, hide, and create custom tasks','Поточні квести':'Current quests','Стандартна бібліотека':'Default library','Квестів немає':'No quests yet','Магазин і готові пропозиції':'Shop and ready-made offers','Асортимент, залишки та швидке додавання':'Catalog, stock, and quick additions','Ваш асортимент':'Your catalog','Власний товар':'Custom item','Магазин порожній':'The shop is empty','Готова сітка товарів':'Ready-made catalog','Перенесення асортименту':'Catalog transfer','Копія між сімейними акаунтами':'Copy between family accounts','Зберегти JSON':'Save JSON','Копіювати JSON':'Copy JSON','Імпортувати файл':'Import file','Вставити з буфера':'Paste from clipboard','Власник':'Owner','Адміністратор':'Administrator','Учасник':'Member','Показати в сімʼї':'Show in family','Сховати із сімʼї':'Hide from family','Виключити':'Remove','Це ви':'This is you','Захищено':'Protected','Редагувати':'Edit','Пауза':'Pause','Активувати':'Activate','Прибрати':'Remove','Повернути':'Restore','Використовується у щоденній вибірці':'Included in the daily selection','Вимкнено':'Disabled','Стандартний':'Default','Власний':'Custom','активний':'active','призупинений':'paused','Небезпечні дії':'Dangerous actions','Скидання профілів':'Profile resets','Скинути профіль':'Reset profile','Куточок господаря':'Admin corner','Керування сімейним простором.':'Manage your family space.','Усі модулі згортаються, тому до потрібного розділу не треба довго гортати.':'All modules collapse, so you can reach the section you need without endless scrolling.','Тедик':'Teddy','Тедик поруч':'Teddy is here','Видати монетки':'Grant coins','Додати в магазин':'Add to shop','Кількість':'Quantity','Залишок':'Stock','Згорнути':'Collapse','Розгорнути':'Expand','Зберегти':'Save','Скасувати':'Cancel','Створити':'Create','Оновити':'Update','Так':'Yes','Ні':'No','Підтвердити':'Confirm','Назад':'Back','Готово':'Done','Помилка':'Error','Сімʼя та учасники':'Family and members','Ліміт від 2 до 25 і керування профілями':'Limit from 2 to 25 and profile management','Максимальна кількість членів сімʼї':'Maximum family members','Не можна встановити менше, ніж уже приєднано.':'Cannot be lower than the number already joined.','Учасники':'Members','Видати монетки':'Grant coins','Магазин адміністратора':'Admin shop','Готовий каталог':'Ready catalog','Додати в магазин':'Add to shop','Згорнути все':'Collapse all',
+    'Мій профіль':'My profile','Профіль учасника':'Member profile','Загальний рівень, запрошення та маленькі перемоги.':'Overall level, invitations, and small wins.','Профіль близької людини.':'A family member’s profile.',
+    'Мої барви':'My skills','Мої знахідки':'My achievements','Квести':'Quests','Ранкові подарунки':'Morning gifts','Джекпоти':'Jackpots','Стікери друзям':'Stickers sent',
+    'Наші разом':'Together','Близькість':'Connection','Наш куточок':'Home','Руханка':'Movement','Сили й баланс':'Health & balance','Цікавинки':'Mind','Книжкові мандри':'Reading','Кіновечори':'Movie nights','Натхнення':'Creativity','Скарбничка':'Finance','Мій ритм':'Discipline','Тепло':'Care','Нові відкриття':'Growth',
+    'Новачок':'Beginner','Дослідник':'Explorer','Авантюрист':'Adventurer','Шукач':'Seeker','Учень':'Learner','Боєць':'Fighter','Майстер':'Master','Експерт':'Expert','Чемпіон':'Champion','Герой':'Hero','Ветеран':'Veteran','Легенда':'Legend','Безсмертний':'Immortal','Міф':'Myth','Абсолютний Майстер':'Ultimate Master',
+    'Оформлення профілю':'Profile appearance','Попередній вигляд':'Preview','Значок біля імені':'Badge next to name','Звичайна рамка':'Static frame','Анімована рамка':'Animated frame','Світне імʼя':'Glowing name','Ефект профілю':'Profile effect','Тема застосунку':'App theme','Звуки':'Sounds','Вібрація':'Haptics','Увімкнена':'Enabled','Усі ефекти':'All effects','Мінімальні':'Essential only','Без прикраси':'None',
+    'Запросити в сімʼю':'Invite to family','Налаштувати':'Customize','Подарунки рівня':'Level rewards','Залишити слід':'Leave a sticker','Оформлення збережено':'Appearance saved'
+  };
+  function currentLocale(){return appLanguage==='en'?'en-US':'uk-UA';}
+  function translateTextValue(value){
+    if(appLanguage!=='en'||!value)return value;
+    const trimmed=value.trim();
+    if(EN_TEXT[trimmed])return value.replace(trimmed,EN_TEXT[trimmed]);
+    return value
+      .replace(/(\d+) рівень/g,'Level $1')
+      .replace(/(\d+) учасник(?:и|ів)?/g,'$1 members')
+      .replace(/Код сімʼї:/g,'Family code:')
+      .replace(/Днів у приємному ритмі/g,'Days in a steady rhythm')
+      .replace(/Спільний прогрес команди/g,'Shared team progress')
+      .replace(/На реальні можливості/g,'For real rewards')
+      .replace(/Поки немає нових подій учасників/g,'No new member activity yet')
+      .replace(/(\d+) активних квест(?:ів|и)?/g,'$1 active quests')
+      .replace(/(\d+) спільних справ/g,'$1 shared tasks')
+      .replace(/(\d+) монет/g,'$1 coins')
+      .replace(/Отримав\(ла\)/g,'received')
+      .replace(/отримав\(ла\)/g,'received')
+      .replace(/у ранковій рулетці/g,'from the morning wheel')
+      .replace(/Головна ціль тижня/g,'Main weekly goal')
+      .replace(/Закрити (\d+) спільних справ і зробити внесок у сімейну ціль\./g,'Complete $1 shared tasks and contribute to the family goal.')
+      .replace(/(\d+) загальний рівень/g,'Overall level $1')
+      .replace(/у myHabbit з/g,'on myHabbit since')
+      .replace(/залишилось (\d+)/g,'$1 left')
+      .replace(/(\d+) днів поспіль/g,'$1-day streak')
+      .replace(/Профіль\s*·?\s*/g,'Profile · ');
+  }
+  function applyLanguage(root=document){
+    document.documentElement.lang=appLanguage;
+    if(appLanguage!=='en')return;
+    const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement&& !['SCRIPT','STYLE','TEXTAREA'].includes(n.parentElement.tagName)&&n.nodeValue.trim()?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT});
+    const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);nodes.forEach(n=>{n.nodeValue=translateTextValue(n.nodeValue);});
+    root.querySelectorAll?.('[placeholder],[aria-label],[title]').forEach(el=>['placeholder','aria-label','title'].forEach(a=>{if(el.hasAttribute(a))el.setAttribute(a,translateTextValue(el.getAttribute(a)));}));
+  }
   let deferredInstallPrompt = null;
   let pwaGuideStep = 0;
   const QUEST_CATEGORIES = ['family','relationship','home','sport','health','mind','reading','cinema','creativity','finance','discipline'];
@@ -149,6 +208,7 @@
     state.shop=Array.isArray(state.shop)?state.shop:clone(seed.shop);
     state.achievements=Array.isArray(state.achievements)?state.achievements:clone(seed.achievements);
     state.history=Array.isArray(state.history)?state.history:clone(seed.history);
+    maintainDailyActionRetention();
     state.quests.forEach(q=>{q.claimedBy=Array.isArray(q.claimedBy)?q.claimedBy:[];q.difficulty=q.difficulty||'normal';q.source=q.source||(q.catalog?'catalog':'admin');});
     ensureDailyQuests();
     state.meta.version=APP_VERSION;
@@ -271,13 +331,13 @@
   function cuteIcon(name){return `<img class="cute-icon" src="/icons/cozy/${name}.svg" alt="">`;}
   function cosmetic(id){return state.cosmeticsCatalog?.find(x=>x.id===id);}
   function stickerName(id){for(const c of (state.stickerCollections||[])){const x=c.stickers.find(s=>s.id===id);if(x)return x.name;}return id;}
-  function buildStickerSet(prefix,count,names,mediaFolder=''){
+  function buildStickerSet(prefix,count,names,mediaFolder='',mediaExt='webm'){
     const rarities=['common','common','common','uncommon','uncommon','rare','rare','epic','legendary','mythic'];
     return Array.from({length:count},(_,i)=>({
       id:`${prefix}_${String(i+1).padStart(2,'0')}`,
       name:names[i]||`${names[i%names.length]} ${i+1}`,
       rarity:rarities[Math.min(rarities.length-1,Math.floor(i/count*rarities.length))],
-      media:mediaFolder?`/assets/stickers/${mediaFolder}/${mediaFolder}-${String(i+1).padStart(2,'0')}.webm`:''
+      media:mediaFolder?`/assets/stickers/${mediaFolder}/${mediaFolder}-${String(i+1).padStart(2,'0')}.${mediaExt}`:''
     }));
   }
   function defaultStickerCollections(){
@@ -290,7 +350,7 @@
       ['halloween','Halloween Cute','halloween','Ефект «Магічні іскри»',50,['Котик-чарівник','Милий гарбуз','Добрий привид','Цукерки або обійми','Капелюх відьми','Кажанчик','Чарівне зілля','Чорний кіт','Гелловінський місяць','Король ночі']],
       ['easter','Easter Bunny','easter','Рамка «Весняне диво»',50,['Писанка','Великодній кролик','Святковий кошик','Весняна квітка','Курчатко','Паска','Сонячний зайчик','Квітучий вінок','Весняне сонце','Великоднє диво']]
     ];
-    return sets.map(([id,title,season,reward,count,names])=>({id,title,season,reward,stickers:buildStickerSet(id.replace(/-/g,'_'),count,names,['cozy-cats','bunny-love'].includes(id)?id:'')}));
+    return sets.map(([id,title,season,reward,count,names])=>({id,title,season,reward,stickers:buildStickerSet(id.replace(/-/g,'_'),count,names,['cozy-cats','bunny-love','sakura','sweet-life'].includes(id)?id:'',['sakura','sweet-life'].includes(id)?'webp':'webm')}));
   }
   function defaultStickerBoxes(){return [
     {id:'box_cats',title:'Cozy Cats Box',collectionId:'cozy-cats',price:300},
@@ -302,9 +362,9 @@
     {id:'box_easter',title:'Easter Box',collectionId:'easter',price:450}
   ];}
   function easterDate(year){const a=year%19,b=Math.floor(year/100),c=year%100,d=Math.floor(b/4),e=b%4,f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3),h=(19*a+b-d-g+15)%30,i=Math.floor(c/4),k=c%4,l=(32+2*e+2*i-h-k)%7,m=Math.floor((a+11*h+22*l)/451),month=Math.floor((h+l-7*m+114)/31),day=((h+l-7*m+114)%31)+1;return new Date(year,month-1,day);}
-  function seasonInfo(season,date=new Date()){const y=date.getFullYear(),md=(date.getMonth()+1)*100+date.getDate();if(season==='always')return {active:true,label:'Доступна завжди'};if(season==='christmas')return {active:md>=1201||md<=107,label:'1 грудня — 7 січня'};if(season==='halloween')return {active:md>=1015&&md<=1102,label:'15 жовтня — 2 листопада'};if(season==='easter'){const e=easterDate(y),from=new Date(e),to=new Date(e);from.setDate(e.getDate()-14);to.setDate(e.getDate()+7);return {active:date>=from&&date<=to,label:`${from.toLocaleDateString('uk-UA')} — ${to.toLocaleDateString('uk-UA')}`};}return {active:false,label:'Сезон закритий'};}
+  function seasonInfo(season,date=new Date()){const y=date.getFullYear(),md=(date.getMonth()+1)*100+date.getDate();if(season==='always')return {active:true,label:'Доступна завжди'};if(season==='christmas')return {active:md>=1201||md<=107,label:'1 грудня — 7 січня'};if(season==='halloween')return {active:md>=1015&&md<=1102,label:'15 жовтня — 2 листопада'};if(season==='easter'){const e=easterDate(y),from=new Date(e),to=new Date(e);from.setDate(e.getDate()-14);to.setDate(e.getDate()+7);return {active:date>=from&&date<=to,label:`${from.toLocaleDateString(currentLocale())} — ${to.toLocaleDateString(currentLocale())}`};}return {active:false,label:'Сезон закритий'};}
   function roman(n){const map=[[1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],[50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']];let out='';for(const [v,s] of map)while(n>=v){out+=s;n-=v;}return out||'—';}
-  function numericJoinDate(value){const d=new Date(value);if(Number.isNaN(d.getTime()))return '—';return new Intl.DateTimeFormat('uk-UA',{day:'2-digit',month:'2-digit',year:'numeric'}).format(d);}
+  function numericJoinDate(value){const d=new Date(value);if(Number.isNaN(d.getTime()))return '—';return new Intl.DateTimeFormat(currentLocale(),{day:'2-digit',month:'2-digit',year:'numeric'}).format(d);}
   function escapeHtml(value){return String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));}
   function normalDate(day,month){return `${String(Number(day)||1).padStart(2,'0')}.${String(Number(month)||1).padStart(2,'0')}`;}
   function importantDateOrder(item){const now=new Date(),y=now.getFullYear();let d=new Date(y,Number(item.month)-1,Number(item.day));d.setHours(23,59,59,999);if(d<now)d=new Date(y+1,Number(item.month)-1,Number(item.day));return d.getTime();}
@@ -365,6 +425,51 @@
   function visibleFamilyUsers(){return (state.users||[]).filter(u=>!u.hiddenFromFamily);}
   function showToast(text){toast.textContent=text;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2200);}
 
+  // v10.1 — Cozy Audio System. All effects are synthesized locally: no downloads, no tracking.
+  let cozyAudioContext=null;
+  function audioPrefs(){
+    const u=currentUser();
+    if(!u)return {mode:'minimal',haptics:true};
+    u.audioPrefs=u.audioPrefs||{mode:'minimal',haptics:true};
+    if(!['off','minimal','full'].includes(u.audioPrefs.mode))u.audioPrefs.mode='minimal';
+    if(typeof u.audioPrefs.haptics!=='boolean')u.audioPrefs.haptics=true;
+    return u.audioPrefs;
+  }
+  function audioAllowed(priority='full'){const mode=audioPrefs().mode;return mode!=='off'&&(mode==='full'||priority==='important');}
+  function audioContext(){
+    if(!cozyAudioContext){const Ctx=window.AudioContext||window.webkitAudioContext;if(!Ctx)return null;cozyAudioContext=new Ctx();}
+    if(cozyAudioContext.state==='suspended')cozyAudioContext.resume().catch(()=>{});
+    return cozyAudioContext;
+  }
+  function cozyTone(freq=520,duration=.08,volume=.025,type='sine',delay=0){
+    const ctx=audioContext();if(!ctx)return;const now=ctx.currentTime+delay,osc=ctx.createOscillator(),gain=ctx.createGain();
+    osc.type=type;osc.frequency.setValueAtTime(freq,now);gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(Math.max(.001,volume),now+.012);gain.gain.exponentialRampToValueAtTime(.0001,now+duration);osc.connect(gain).connect(ctx.destination);osc.start(now);osc.stop(now+duration+.02);
+  }
+  function playCozySound(name,priority='full',rarity='common'){
+    if(!audioAllowed(priority))return;
+    try{
+      if(name==='tap')cozyTone(620,.045,.012,'sine');
+      else if(name==='menu'){cozyTone(440,.07,.018,'sine');cozyTone(590,.08,.014,'sine',.045);}
+      else if(name==='modal')cozyTone(520,.08,.016,'triangle');
+      else if(name==='coin'){cozyTone(880,.07,.025,'sine');cozyTone(1175,.10,.018,'sine',.055);}
+      else if(name==='purchase'){cozyTone(520,.08,.025,'triangle');cozyTone(780,.11,.022,'sine',.07);}
+      else if(name==='equip'){cozyTone(700,.07,.018,'sine');cozyTone(920,.09,.016,'sine',.05);}
+      else if(name==='quest'){cozyTone(392,.10,.026,'triangle');cozyTone(523,.11,.025,'triangle',.07);cozyTone(659,.14,.022,'sine',.14);}
+      else if(name==='levelup'){[523,659,784,1047].forEach((f,i)=>cozyTone(f,.22,.032,'sine',i*.085));}
+      else if(name==='achievement'){const notes=rarity==='legendary'||rarity==='mythic'?[523,659,784,1047]:rarity==='epic'?[523,659,784]:[659,784];notes.forEach((f,i)=>cozyTone(f,.23,.03,'sine',i*.085));}
+      else if(name==='box-open'){cozyTone(180,.20,.026,'triangle');cozyTone(260,.18,.022,'triangle',.10);cozyTone(390,.16,.019,'sine',.20);}
+      else if(name==='reveal'){const base=rarity==='legendary'||rarity==='mythic'?[523,784,1047,1319]:rarity==='epic'?[440,659,880]:rarity==='rare'?[392,587,784]:[440,554];base.forEach((f,i)=>cozyTone(f,.25,.032,'sine',i*.09));}
+      else if(name==='roulette'){[330,392,440,494].forEach((f,i)=>cozyTone(f,.07,.015,'triangle',i*.055));}
+      else if(name==='gift'){[523,659,784].forEach((f,i)=>cozyTone(f,.18,.025,'sine',i*.08));}
+      else if(name==='error'){cozyTone(220,.09,.018,'triangle');cozyTone(185,.13,.014,'triangle',.07);}
+    }catch{}
+  }
+  function cozyHaptic(pattern='light'){
+    if(!audioPrefs().haptics)return;
+    try{window.Telegram?.WebApp?.HapticFeedback?.impactOccurred(pattern==='strong'?'heavy':pattern==='medium'?'medium':'light');}catch{}
+    try{navigator.vibrate?.(pattern==='strong'?[30,35,55]:pattern==='medium'?25:10);}catch{}
+  }
+
   // Stage 10.6 — unified reward feedback engine.
   let rewardSnapshot=null;
   const announcedAchievements=new Set();
@@ -378,9 +483,7 @@
     rewardSnapshot=currentRewardSnapshot();
     for(const id of rewardSnapshot?.achievements||[])announcedAchievements.add(id);
   }
-  function haptic(kind='light'){
-    try{window.Telegram?.WebApp?.HapticFeedback?.impactOccurred(kind);}catch{}
-  }
+  function haptic(kind='light'){cozyHaptic(kind==='heavy'?'strong':kind);}
   function ensureRewardLayer(){
     let layer=document.getElementById('rewardFeedbackLayer');
     if(!layer){layer=document.createElement('div');layer.id='rewardFeedbackLayer';layer.className='reward-feedback-layer';layer.setAttribute('aria-live','polite');document.body.appendChild(layer);}
@@ -535,7 +638,15 @@
     try { normalizeState(); } catch (seedError) { console.error('Seed recovery:', seedError); }
     try { localStorage.setItem(STORAGE, JSON.stringify(state)); } catch {}
   }
-  let route = new URLSearchParams(location.search).get('screen') || (auth ? 'dashboard' : ((telegramInitData || inviteToken) ? 'auth' : 'landing'));
+  const requestedScreen = new URLSearchParams(location.search).get('screen') || '';
+  // A saved account always wins over an old landing/auth URL left in browser history.
+  // This prevents registered users from intermittently seeing the public demo/test page.
+  let route = auth
+    ? ((!requestedScreen || ['landing','auth'].includes(requestedScreen)) ? 'dashboard' : requestedScreen)
+    : (requestedScreen || ((telegramInitData || inviteToken) ? 'auth' : 'landing'));
+  if(auth && route==='dashboard' && requestedScreen!==route){
+    try{history.replaceState({},'', '/?screen=dashboard');}catch{}
+  }
   let authMode = (telegramInitData || inviteToken) ? 'join' : 'create';
   let inviteInfo = null;
   let publicUpdateName='myHabbit beta';
@@ -553,20 +664,11 @@
     if(v.includes('незвич')||v.includes('uncommon'))return 'uncommon';
     return 'common';
   }
-  function achievementChime(rarity='common'){
-    if(window.matchMedia?.('(prefers-reduced-motion: reduce)').matches)return;
-    try{
-      const AudioCtx=window.AudioContext||window.webkitAudioContext;if(!AudioCtx)return;
-      const ctx=new AudioCtx(),now=ctx.currentTime;
-      const notes=rarity==='mythic'?[523.25,659.25,783.99,1046.5]:rarity==='legendary'?[523.25,659.25,783.99]:[659.25,783.99];
-      notes.forEach((freq,i)=>{const osc=ctx.createOscillator(),gain=ctx.createGain();osc.type='sine';osc.frequency.value=freq;gain.gain.setValueAtTime(0.0001,now+i*.09);gain.gain.exponentialRampToValueAtTime(.075,now+i*.09+.02);gain.gain.exponentialRampToValueAtTime(.0001,now+i*.09+.28);osc.connect(gain).connect(ctx.destination);osc.start(now+i*.09);osc.stop(now+i*.09+.3);});
-      setTimeout(()=>ctx.close().catch(()=>{}),900);
-    }catch{}
-  }
+  function achievementChime(rarity='common'){playCozySound('achievement','important',rarity);cozyHaptic(rarity==='legendary'||rarity==='mythic'?'strong':'medium');}
   function queueAchievementToast(achievement){
     if(!achievement)return;
-    achievementToastQueue.push({...achievement,title:achievement.title||'Нове досягнення',rarity:achievement.rarity||'Звичайна',rewardXp:Number(achievement.rewardXp||0)}); CozyEvents.emit('achievement',achievement);
-    processAchievementToastQueue();
+    const item={...achievement,title:achievement.title||'Нове досягнення',rarity:achievement.rarity||'Звичайна',rewardXp:Number(achievement.rewardXp||0)};
+    CozyEvents.emit('achievement',item);
   }
   function dismissAchievementToast(card,done){
     if(!card||card.dataset.closing==='1')return;card.dataset.closing='1';card.classList.add('achievement-toast-out');
@@ -607,7 +709,7 @@
       u.xp-=xpRequiredForLevel(u.level);u.level+=1;levels+=1;
       u.coins=Number(u.coins||0)+50;
       u.activity=Array.isArray(u.activity)?u.activity:[];
-      u.activity.unshift(`Новий рівень ${u.level} · ${source}`); CozyEvents.emit('levelup',{userId:u.id,level:u.level,source});
+      u.activity.unshift(`Новий рівень ${u.level} · ${source}`); playCozySound('levelup','important');cozyHaptic('strong');CozyEvents.emit('levelup',{userId:u.id,level:u.level,source});
       state.history.unshift({icon:'⭐',text:`${u.name} досяг(ла) ${u.level} рівня`,time:'Щойно'});
     }
     queueXpReward(u,gained,xpBefore);
@@ -633,7 +735,7 @@
     }
     return unlocked;
   }
-  function skillLabel(k){return {family:'Наші разом',relationship:'Близькість',home:'Наш куточок',sport:'Руханка',health:'Сили й баланс',mind:'Цікавинки',reading:'Книжкові мандри',cinema:'Кіновечори',creativity:'Натхнення',finance:'Скарбничка',discipline:'Мій ритм',care:'Тепло',growth:'Нові відкриття'}[k]||k;}
+  function skillLabel(k){const uk={family:'Наші разом',relationship:'Близькість',home:'Наш куточок',sport:'Руханка',health:'Сили й баланс',mind:'Цікавинки',reading:'Книжкові мандри',cinema:'Кіновечори',creativity:'Натхнення',finance:'Скарбничка',discipline:'Мій ритм',care:'Тепло',growth:'Нові відкриття'};const en={family:'Together',relationship:'Connection',home:'Home',sport:'Movement',health:'Health & balance',mind:'Mind',reading:'Reading',cinema:'Movie nights',creativity:'Creativity',finance:'Finance',discipline:'Discipline',care:'Care',growth:'Growth'};return (appLanguage==='en'?en:uk)[k]||k;}
   function skillIcon(k){return {family:'👨‍👩‍👧‍👦',relationship:'💞',home:'🏠',sport:'💪',health:'❤️',mind:'🧠',reading:'📖',cinema:'🎬',creativity:'🎨',finance:'💰',discipline:'🔥',care:'💞',growth:'🧠'}[k]||'⭐';}
   function rarityLabel(r){return {common:'Звичайна',uncommon:'Незвичайна',rare:'Рідкісна',epic:'Епічна',legendary:'Легендарна',secret:'Секретна'}[r]||r;}
   function questFromCatalog(q){const skills=q.rewards?.skills||{};const primary=Object.keys(skills)[0]||q.category||'discipline';return {id:q.id,title:q.title,icon:skillIcon(q.category),description:q.description||'Завдання з бібліотеки myHabbit',type:q.type||'personal',participants:['pair','coop'].includes(q.type)?2:1,claimedBy:[],rewardCoins:Number(q.rewards?.coins||0),rewardXp:Number(q.rewards?.xp||0),skill:primary,skillXp:Number(skills[primary]||0),skillRewards:skills,status:q.active===false?'paused':'active',limited:q.type==='limited',stock:q.type==='limited'?1:null,difficulty:q.difficulty,rarity:q.rarity,repeatType:q.repeatType||'none',unlockLevel:Number(q.unlockLevel||1),catalog:true,source:'catalog',resourceUrl:cleanResourceUrl(q.resourceUrl||q.referenceUrl||'')};}
@@ -776,6 +878,15 @@
     localStorage.setItem(LAST_DAILY_SYNC,localDay());
     return true;
   }
+  function mergeUniqueActivity(primary=[],secondary=[]){return [...new Set([...(primary||[]),...(secondary||[])])].slice(0,100);}
+  function maintainDailyActionRetention(){
+    state.meta=state.meta||{};const day=localDay();
+    if(state.meta.actionRetentionDay&&state.meta.actionRetentionDay!==day){
+      (state.users||[]).forEach(u=>{u.activity=(u.activity||[]).slice(0,30);});
+      state.history=(state.history||[]).slice(0,60);
+    }
+    state.meta.actionRetentionDay=day;
+  }
   function compactDailyData(){
     const u=currentUser();
     return {
@@ -828,7 +939,10 @@
       const data=await api('/api/family/state');
       if(!data.state)return false;
       const changed=stateSignature(data.state)!==stateSignature(state);
-      state=data.state;serverRevision=Number(data.revision||serverRevision||0);normalizeState();observeRewardChanges();
+      const localDayBefore=localDay(),localHistory=(state.history||[]).slice(),localActivity=new Map((state.users||[]).map(u=>[u.id,(u.activity||[]).slice()]));
+      state=data.state;serverRevision=Number(data.revision||serverRevision||0);normalizeState();
+      if((state.meta?.actionRetentionDay||localDayBefore)===localDayBefore){state.history=mergeUniqueActivity(localHistory,state.history);(state.users||[]).forEach(u=>{u.activity=mergeUniqueActivity(localActivity.get(u.id)||[],u.activity||[]);});}
+      observeRewardChanges();
       lastFamilyPullAt=Date.now();
       safeJsonWrite(STORAGE,state);persistAccount();localStorage.setItem(LAST_SERVER_PULL,new Date().toISOString());
       if(changed)broadcastLocalState();
@@ -912,7 +1026,7 @@
       const button=document.querySelector('[data-action="admin-process-now"]');
       if(count)count.textContent=String(data.pendingPackets||0);
       if(users)users.textContent=String(data.affectedUsers||0);
-      if(last)last.textContent=data.lastProcessedAt?new Date(data.lastProcessedAt).toLocaleString('uk-UA'):'Ще не виконувалось';
+      if(last)last.textContent=data.lastProcessedAt?new Date(data.lastProcessedAt).toLocaleString(currentLocale()):'Ще не виконувалось';
       if(button)button.disabled=!(data.pendingPackets>0||localStorage.getItem(DAILY_QUEUE));
     }catch{}
   }
@@ -1020,7 +1134,7 @@
     const nav=navItems().map(([id,icon,label])=>`<button data-route="${id}" class="${route===id?'active':''}"><span class="nav-icon">${icon}</span>${label}</button>`).join('');
     const sessionAction=auth?.demo?'<button class="btn danger" data-action="exit-demo">Вийти з демо</button>':'<button class="btn danger" data-action="logout">Вийти</button>';
     const demoBanner=auth?.demo?'<div class="demo-banner"><div><strong>Демо-режим</strong><span>Зміни зберігаються лише на цьому пристрої.</span></div><button class="btn small" data-action="exit-demo">Вийти з демо</button></div>':'';
-    return `<div class="app-layout"><main class="main">${demoBanner}<header class="topbar"><button class="menu-trigger" data-action="toggle-menu" aria-label="Відкрити меню"><svg class="menu-trigger-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7.5h14M5 12h14M5 16.5h14"/></svg></button><div class="top-title"><h1>${title}</h1><p>${subtitle}</p></div><div class="top-actions"><span class="coin-pill">🪙 ${format(u.coins)}</span></div></header>${content}<div class="release-label" title="Поточне оновлення">${escapeHtml(publicUpdateName)}</div></main><div class="menu-backdrop" data-action="close-menu"></div><aside class="dropdown-menu"><div class="menu-profile"><div class="member-initial">${(u.name||'?').slice(0,1).toUpperCase()}</div><div><strong>${u.telegramUsername?'@'+u.telegramUsername:u.name}</strong><small>${u.level} рівень · ${format(u.coins)} 🪙</small></div><button class="close" data-action="close-menu">×</button></div><nav class="nav">${nav}</nav><div class="menu-footer"><button class="btn soft" data-action="accounts">Мої профілі</button>${sessionAction}</div></aside></div>`;
+    return `<div class="app-layout"><main class="main">${demoBanner}<header class="topbar"><div class="top-title"><h1>${title}</h1><p>${subtitle}</p></div><div class="top-actions"><label class="language-switch" title="Мова інтерфейсу"><span>🌐</span><select data-language-select><option value="uk" ${appLanguage==='uk'?'selected':''}>UA</option><option value="en" ${appLanguage==='en'?'selected':''}>EN</option></select></label><span class="coin-pill">🪙 ${format(u.coins)}</span></div></header>${content}<div class="release-label" title="Поточне оновлення">${escapeHtml(publicUpdateName)}</div></main><button class="menu-trigger global-menu-trigger" data-action="toggle-menu" aria-label="Відкрити меню" aria-expanded="false"><svg class="menu-trigger-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7.5h14M5 12h14M5 16.5h14"/></svg></button><div class="menu-backdrop" data-action="close-menu"></div><aside class="dropdown-menu"><div class="menu-profile"><div class="member-initial">${(u.name||'?').slice(0,1).toUpperCase()}</div><div><strong>${u.telegramUsername?'@'+u.telegramUsername:u.name}</strong><small>${u.level} рівень · ${format(u.coins)} 🪙</small></div><button class="close" data-action="close-menu">×</button></div><nav class="nav">${nav}</nav><div class="menu-footer"><button class="btn soft" data-action="accounts">Мої профілі</button>${sessionAction}</div></aside></div>`;
   }
 
   function accountHub(){
@@ -1035,7 +1149,7 @@
           <span class="welcome-steam steam-one"></span><span class="welcome-steam steam-two"></span>
         </div>
         <div class="welcome-content">
-          <div class="welcome-brand"><span class="welcome-brand-mark">♥</span><strong>myHabbit</strong></div>
+          <div class="welcome-brand"><span class="welcome-brand-mark">♥</span><strong>myHabbit</strong><label class="language-switch welcome-language" title="Мова інтерфейсу"><span>🌐</span><select data-language-select><option value="uk" ${appLanguage==='uk'?'selected':''}>UA</option><option value="en" ${appLanguage==='en'?'selected':''}>EN</option></select></label></div>
           <span class="welcome-kicker">Ваш затишний простір любові й турботи</span>
           <h1>${list.length?'Раді бачити вас знову':'Ласкаво просимо додому'}</h1>
           <p>${list.length?'Оберіть збережений профіль або додайте новий спосіб входу.':'Створюйте маленькі корисні звички, підтримуйте одне одного та проходьте цей шлях разом.'}</p>
@@ -1237,7 +1351,7 @@
     'easter':{icon:'🥚',tone:'spring',subtitle:'Весняні знахідки та сонячні сюрпризи'}
   }[id]||{icon:'✦',tone:'lavender',subtitle:'Особлива колекція myHabbit'};}
   function stickerVisual(sticker,size='normal'){
-    if(sticker?.media)return `<video class="sticker-media sticker-media-${size}" src="${escapeHtml(sticker.media)}" autoplay loop muted playsinline preload="metadata" aria-label="${escapeHtml(sticker.name||'Стікер')}"></video>`;
+    if(sticker?.media){const media=escapeHtml(sticker.media);if(/\.(webp|png|jpe?g|gif|avif)(?:\?|$)/i.test(media))return `<img class="sticker-media sticker-media-${size}" src="${media}" loading="lazy" decoding="async" alt="${escapeHtml(sticker.name||'Стікер')}">`;return `<video class="sticker-media sticker-media-${size}" src="${media}" autoplay loop muted playsinline preload="metadata" aria-label="${escapeHtml(sticker.name||'Стікер')}"></video>`;}
     return `<span class="sticker-fallback">${stickerGlyph(sticker?.id||'')}</span>`;
   }
   function stickerGlyph(id){if(id.includes('cat'))return '🐱';if(id.includes('bunny'))return '🐰';if(id.includes('tree'))return '🎄';if(id.includes('cocoa')||id.includes('coffee')||id.includes('tea'))return '☕';if(id.includes('book'))return '📖';if(id.includes('sleep')||id.includes('moon'))return '🌙';if(id.includes('star')||id.includes('sun'))return '⭐';if(id.includes('crown'))return '👑';if(id.includes('flower'))return '🌸';if(id.includes('pumpkin'))return '🎃';if(id.includes('ghost'))return '👻';if(id.includes('egg'))return '🥚';if(id.includes('basket'))return '🧺';return '✨';}
@@ -1248,7 +1362,7 @@
   function openAlbum(collectionId,highlightId=''){document.querySelector('[data-album-root]')?.remove();document.body.insertAdjacentHTML('beforeend',albumMarkup(collectionId,highlightId));requestAnimationFrame(()=>document.querySelector('[data-album-root]')?.classList.add('open'));bindAlbum();}
   function bindAlbum(){document.querySelectorAll('[data-close-album]').forEach(x=>x.addEventListener('click',()=>x.closest('[data-album-root]')?.remove()));document.querySelector('[data-album-root]')?.addEventListener('click',e=>{if(e.target.matches('[data-album-root]'))e.currentTarget.remove();});}
   function revealMarkup(sticker,c,isNew,dust=0){return `<div class="sticker-reveal-backdrop rarity-${sticker.rarity}" data-reveal-root><div class="reveal-stage"><div class="reveal-box">📦</div><div class="reveal-card"><div class="reveal-card-inner"><div class="reveal-card-back">✦</div><div class="reveal-card-front"><span class="reveal-rarity">${rarityLabel(sticker.rarity)}</span><div class="reveal-art">${stickerVisual(sticker,'reveal')}</div><h2>${sticker.name}</h2><p>${c.title}</p>${isNew?'<strong class="new-ribbon">NEW!</strong>':`<strong class="duplicate-ribbon">Дублікат · +${dust} пилу</strong>`}</div></div></div><button class="btn primary reveal-continue" data-reveal-continue data-collection="${c.id}" data-sticker="${sticker.id}">${isNew?'Показати в альбомі':'Продовжити'}</button></div></div>`;}
-  function showStickerReveal(sticker,c,isNew,dust=0){document.body.insertAdjacentHTML('beforeend',revealMarkup(sticker,c,isNew,dust));const root=document.querySelector('[data-reveal-root]');requestAnimationFrame(()=>root?.classList.add('play'));root?.querySelector('[data-reveal-continue]')?.addEventListener('click',e=>{root.remove();if(isNew)openAlbum(e.currentTarget.dataset.collection,e.currentTarget.dataset.sticker);});}
+  function showStickerReveal(sticker,c,isNew,dust=0){setTimeout(()=>{playCozySound('reveal','important',sticker?.rarity||'common');cozyHaptic(['legendary','mythic'].includes(sticker?.rarity)?'strong':'medium');},260);document.body.insertAdjacentHTML('beforeend',revealMarkup(sticker,c,isNew,dust));const root=document.querySelector('[data-reveal-root]');requestAnimationFrame(()=>root?.classList.add('play'));root?.querySelector('[data-reveal-continue]')?.addEventListener('click',e=>{root.remove();if(isNew)openAlbum(e.currentTarget.dataset.collection,e.currentTarget.dataset.sticker);});}
 
   function displayName(u){const effect=cosmetic(u.equipped?.nicknameEffect);return `<span class="animated-name nick-${effect?.asset||'none'}">${(u.name||'').replace(/[<>&]/g,'')}</span>`;}
   function memberCard(u){const af=cosmetic(u.equipped?.animatedFrame);return `<button type="button" class="member member-button cozy-member animated-frame-${af?.asset||'none'}" data-member="${u.id}"><div class="member-head"><div class="member-initial" aria-hidden="true">${(u.name||'?').trim().slice(0,1).toUpperCase()}</div><div><h3 style="margin:0">${displayName(u)} ${u.role==='admin'?'<span class="admin-badge">Берегиня простору</span>':''}</h3><small>${u.level} сходинка · ${u.streak} днів у ритмі</small></div><span class="telegram-dot ${u.telegramLinked?'linked':''}" title="${u.telegramLinked?'Telegram поруч':'Telegram ще не підключено'}">✈</span></div><span class="view-profile">Зазирнути в профіль →</span></button>`}
@@ -1261,7 +1375,7 @@
     const ownedCosmetics=(Array.isArray(u.inventory)?u.inventory:[]).map(cosmetic).filter(Boolean);
     const completed=collections.filter(c=>c.stickers.length&&c.stickers.every(st=>stickerCount(u,st.id)>0)).length;
     const achievements=(Array.isArray(u.achievements)?u.achievements:[]).map(id=>state.achievements.find(a=>a.id===id)).filter(Boolean);
-    const history=(Array.isArray(state.giftHistory)?state.giftHistory:[]).slice().reverse().map(g=>`<article class="museum-history-row"><span>${g.icon||'🎁'}</span><div><strong>${escapeHtml(g.title||'Подарунок')}</strong><small>${escapeHtml(g.fromName||'')} → ${escapeHtml(g.toName||'')} · ${g.createdAt?new Date(g.createdAt).toLocaleDateString('uk-UA'):'без дати'}</small>${g.note?`<p>${escapeHtml(g.note)}</p>`:''}</div></article>`).join('')||'<div class="empty-soft">Подарунків ще не було.</div>';
+    const history=(Array.isArray(state.giftHistory)?state.giftHistory:[]).slice().reverse().map(g=>`<article class="museum-history-row"><span>${g.icon||'🎁'}</span><div><strong>${escapeHtml(g.title||'Подарунок')}</strong><small>${escapeHtml(g.fromName||'')} → ${escapeHtml(g.toName||'')} · ${g.createdAt?new Date(g.createdAt).toLocaleDateString(currentLocale()):'без дати'}</small>${g.note?`<p>${escapeHtml(g.note)}</p>`:''}</div></article>`).join('')||'<div class="empty-soft">Подарунків ще не було.</div>';
     const achievementCards=achievements.length?achievements.map(a=>achievementCard(a,u)).join(''):'<div class="empty-soft">Перша ачивка з’явиться після виконаного завдання.</div>';
     return shell(`<section class="museum-hero"><div><span class="eyebrow">Особиста скарбниця</span><h2>Музей ${escapeHtml(u.name||'учасника')}</h2><p>Колекції, косметика, ачивки та історія подарунків.</p></div><div class="museum-seal">🏛️</div></section>
     <div class="grid metrics museum-metrics"><div class="card"><div class="metric-label">Стікери</div><div class="metric-value">${ownedStickers.length}/${allStickers.length}</div></div><div class="card"><div class="metric-label">Повні колекції</div><div class="metric-value">${completed}</div></div><div class="card"><div class="metric-label">Косметика</div><div class="metric-value">${ownedCosmetics.length}</div></div><div class="card"><div class="metric-label">Ачивки</div><div class="metric-value">${achievements.length}</div></div></div>
@@ -1277,6 +1391,24 @@
     for(const id of Array.isArray(from.inventory)?from.inventory:[]){const item=cosmetic(id);if(item)options.push(`<option value="cosmetic:${escapeHtml(item.id)}">✨ ${escapeHtml(item.title||'Косметика')}</option>`);}
     return options;
   }
+  function profileCoinTransferStation(target){
+    const from=currentUser();
+    if(!from||!target||from.id===target.id)return '';
+    return `<section class="card profile-coin-transfer"><div class="section-head"><div><h2>Передати монетки</h2><small>Ваш баланс: ${format(Number(from.coins||0))} 🪙</small></div></div><div class="gift-form coin-transfer-form"><input type="hidden" id="coinTransferRecipient" value="${escapeHtml(target.id)}"><input id="coinTransferAmount" type="number" min="1" max="${Math.max(1,Number(from.coins||0))}" inputmode="numeric" placeholder="Кількість монет"><button class="btn primary" data-action="transfer-family-coins">Передати 🪙</button></div><p class="auth-help">Монетки одразу списуються з вашого профілю та зараховуються ${escapeHtml(target.name||'учаснику')}.</p></section>`;
+  }
+  async function transferFamilyCoins(){
+    const from=currentUser(),toId=document.getElementById('coinTransferRecipient')?.value,amount=Math.trunc(Number(document.getElementById('coinTransferAmount')?.value||0)),to=state.users.find(x=>x.id===toId);
+    if(!from||!to)return showToast('Учасника не знайдено');
+    if(!Number.isFinite(amount)||amount<1)return showToast('Вкажіть кількість монет');
+    if(amount>Number(from.coins||0))return showToast('Недостатньо монет');
+    try{
+      if(auth?.demo){from.coins-=amount;to.coins=Number(to.coins||0)+amount;state.history.unshift({icon:'🪙',text:`${from.name} передав(ла) ${to.name} ${amount} монеток`,time:'Щойно'});save();app.innerHTML=profileScreen(to.id);bind();showToast(`${amount} монеток передано`);return;}
+      const result=await api('/api/family/transfer-coins',{method:'POST',body:JSON.stringify({userId:to.id,amount})});
+      if(result?.state){state=normalize(result.state);save();}
+      app.innerHTML=profileScreen(to.id);bind();showToast(`${amount} монеток передано для ${to.name}`);
+    }catch(e){showToast(e.message||'Не вдалося передати монетки');}
+  }
+
   function profileGiftStation(target){
     const from=currentUser(),options=from?profileGiftOptions(from):[];
     if(!from||!target||from.id===target.id)return '';
@@ -1302,9 +1434,9 @@
 
   function profileScreen(userId=state.currentUserId){
     const u=state.users.find(x=>x.id===userId)||currentUser(),own=u.id===state.currentUserId;evaluateReferralAchievements(u);const skills=Object.entries(u.skills||{}),achievements=state.achievements.filter(a=>u.achievements.includes(a.id)),badge=cosmetic(u.equipped?.badge),frame=u.equipped?.frame||'',animatedFrame=cosmetic(u.equipped?.animatedFrame),nickEffect=cosmetic(u.equipped?.nicknameEffect),profileEffect=cosmetic(u.equipped?.profileEffect),stickers=state.profileStickers.filter(x=>x.to===u.id).slice(-10).reverse(),nextRewards=state.levelRewards.filter(r=>!u.claimedLevelRewards.includes(r.level)).slice(0,4);
-    return shell(`<section class="card cozy-profile-head profile-frame-${frame} animated-frame-${animatedFrame?.asset||'none'} profile-effect-${profileEffect?.asset||'none'}"><div class="profile-minimal"><div class="member-initial large">${cuteIcon('cat')}</div><div><div class="profile-level"><span class="animated-name nick-${nickEffect?.asset||'none'}">${escapeHtml(u.name)}</span> ${badge?cuteIcon(badge.asset.includes('bunny')?'bunny':'cat'):''}</div><div class="meta">${u.level} загальний рівень · ${format(u.xp)} / ${format(xpRequiredForLevel(u.level))} XP · ${format(u.coins)} 🪙</div><div class="profile-joined">${u.telegramUsername?'@'+escapeHtml(u.telegramUsername)+' · ':''}у myHabbit з <span class="profile-join-date">${numericJoinDate(u.createdAt)}</span></div><div class="progress soft-progress"><i style="width:${xpPct(u)}%"></i></div></div>${own?'<div class="profile-actions"><button class="btn primary" data-action="invite">Запросити в сімʼю</button><button class="btn" data-action="edit-profile">Налаштувати</button><button class="btn soft" data-action="claim-level-rewards">Подарунки рівня</button><button class="btn soft recovery-subtle" data-action="create-account-recovery">Резервний код профілю</button></div>':'<button class="btn soft" data-action="leave-sticker" data-user-id="'+u.id+'">Залишити слід</button>'}</div></section>
+    return shell(`<section class="card cozy-profile-head profile-frame-${frame} animated-frame-${animatedFrame?.asset||'none'} profile-effect-${profileEffect?.asset||'none'}"><div class="profile-minimal"><div class="member-initial large">${cuteIcon('cat')}</div><div><div class="profile-level"><span class="animated-name nick-${nickEffect?.asset||'none'}">${escapeHtml(u.name)}</span> ${badge?cuteIcon(badge.asset.includes('bunny')?'bunny':'cat'):''}</div><div class="meta">${u.level} загальний рівень · ${format(u.xp)} / ${format(xpRequiredForLevel(u.level))} XP · ${format(u.coins)} 🪙</div><div class="profile-joined">${u.telegramUsername?'@'+escapeHtml(u.telegramUsername)+' · ':''}у myHabbit з <span class="profile-join-date">${numericJoinDate(u.createdAt)}</span></div><div class="progress soft-progress"><i style="width:${xpPct(u)}%"></i></div></div>${own?'<div class="profile-actions"><button class="btn primary" data-action="invite">Запросити в сімʼю</button><button class="btn" data-action="edit-profile">Налаштувати</button><button class="btn soft" data-action="claim-level-rewards">Подарунки рівня</button></div>':'<button class="btn soft" data-action="leave-sticker" data-user-id="'+u.id+'">Залишити слід</button>'}</div></section>
     <section class="grid metrics minimal-stats"><div class="card"><div class="metric-label">Квести</div><div class="metric-value">${u.stats.questsCompleted||0}</div></div><div class="card"><div class="metric-label">Ранкові подарунки</div><div class="metric-value">${u.stats.giftsOpened||0}</div></div><div class="card"><div class="metric-label">Джекпоти</div><div class="metric-value">${u.stats.jackpots||0}</div></div><div class="card"><div class="metric-label">Стікери друзям</div><div class="metric-value">${u.stats.stickersGiven||0}</div></div></section>
-    <div class="cozy-folds">${own?referralStatsBlock(u):''}${importantDatesBlock(u,own)}<details class="cozy-fold"><summary>${cuteIcon('leaf')}<strong>Мої барви</strong><small>${skills.length}</small></summary><div class="fold-body skill-list">${skills.map(([k,v])=>`<div class="skill-row cozy-skill"><span class="skill-icon">${cuteIcon('sparkle')}</span><div><div class="skill-name"><strong>${skillLabel(k)}</strong><span>${v}</span></div><div class="progress"><i style="width:${Math.min(100,(v%10)*10)}%"></i></div></div></div>`).join('')}</div></details><details class="cozy-fold"><summary>${cuteIcon('trophy')}<strong>Мої знахідки</strong><small>${achievements.length}</small></summary><div class="fold-body achievement-grid compact-achievements">${achievements.map(a=>achievementCard(a,u)).join('')}</div></details></div>${own?'':profileGiftStation(u)}`,own?'Мій затишний куточок':`${escapeHtml(u.name)} · профіль`,own?'Загальний рівень, запрошення та маленькі перемоги.':'Профіль близької людини.');
+    <div class="cozy-folds">${own?referralStatsBlock(u):''}${importantDatesBlock(u,own)}<details class="cozy-fold"><summary>${cuteIcon('leaf')}<strong>Мої барви</strong><small>${skills.length}</small></summary><div class="fold-body skill-list">${skills.map(([k,v])=>`<div class="skill-row cozy-skill"><span class="skill-icon">${cuteIcon('sparkle')}</span><div><div class="skill-name"><strong>${skillLabel(k)}</strong><span>${v}</span></div><div class="progress"><i style="width:${Math.min(100,(v%10)*10)}%"></i></div></div></div>`).join('')}</div></details><details class="cozy-fold"><summary>${cuteIcon('trophy')}<strong>Мої знахідки</strong><small>${achievements.length}</small></summary><div class="fold-body achievement-grid compact-achievements">${achievements.map(a=>achievementCard(a,u)).join('')}</div></details></div>${own?'':profileCoinTransferStation(u)+profileGiftStation(u)}`,own?'Мій профіль':'Профіль учасника',own?`${escapeHtml(u.name)} · загальний рівень ${u.level}`:`${escapeHtml(u.name)} · профіль близької людини`);
   }
 
   function familyActivityItems(){
@@ -1316,7 +1448,7 @@
     });
   }
 
-  function familyScreen(){const visibleUsers=visibleFamilyUsers(),familyActivity=familyActivityItems();return shell(`<section class="card"><div class="profile-hero"><span class="avatar">✨</span><div><div class="profile-level">${state.family.name}</div><div class="meta">Код сімʼї: <strong>${state.family.code}</strong> · ${visibleUsers.length}/${familyMax()} учасників</div><div class="progress" style="margin-top:10px"><i style="width:${state.family.xp%1000/10}%"></i></div></div><div class="profile-actions"><button class="btn primary" data-action="invite">Запросити</button>${isAdmin()?'<button class="btn soft recovery-subtle" data-action="create-family-recovery">Резервний код сімʼї</button>':''}<button class="btn danger" data-action="leave-family">Вийти із сімʼї</button></div></div></section><div class="section-head"><h2>Наші люди</h2></div><div class="member-grid">${visibleUsers.map(memberCard).join('')||'<div class="card empty">У видимому списку поки немає учасників</div>'}</div><div class="section-head"><h2>Сімейна активність</h2></div><div class="card">${familyActivity.length?familyActivity.map(h=>`<div class="activity"><span class="activity-icon">${activityIconHtml(h.icon)}</span><div><p>${escapeHtml(h.text||'Подія')}</p><small>${escapeHtml(h.time||'')}</small></div></div>`).join(''):'<div class="empty">Поки немає нових подій учасників</div>'}</div>`,`Сімʼя`,`Спільний прогрес без публічних рейтингів і сторонніх людей.`)}
+  function familyScreen(){const visibleUsers=visibleFamilyUsers(),familyActivity=familyActivityItems();return shell(`<section class="card"><div class="profile-hero"><span class="avatar">✨</span><div><div class="profile-level">${state.family.name}</div><div class="meta">Код сімʼї: <strong>${state.family.code}</strong> · ${visibleUsers.length}/${familyMax()} учасників</div><div class="progress" style="margin-top:10px"><i style="width:${state.family.xp%1000/10}%"></i></div></div><div class="profile-actions"><button class="btn primary" data-action="invite">Запросити</button><button class="btn danger" data-action="leave-family">Вийти із сімʼї</button></div></div></section><div class="section-head"><h2>Наші люди</h2></div><div class="member-grid">${visibleUsers.map(memberCard).join('')||'<div class="card empty">У видимому списку поки немає учасників</div>'}</div><div class="section-head"><h2>Сімейна активність</h2></div><div class="card">${familyActivity.length?familyActivity.map(h=>`<div class="activity"><span class="activity-icon">${activityIconHtml(h.icon)}</span><div><p>${escapeHtml(h.text||'Подія')}</p><small>${escapeHtml(h.time||'')}</small></div></div>`).join(''):'<div class="empty">Поки немає нових подій учасників</div>'}</div>`,`Сімʼя`,`Спільний прогрес без публічних рейтингів і сторонніх людей.`)}
 
   function adminMemberRow(u){
     const roleLabel=u.role==='owner'?'Власник':u.role==='admin'?'Адміністратор':'Учасник';
@@ -1327,6 +1459,8 @@
     return `<article class="admin-row"><span class="avatar">${u.avatar}</span><div><strong>${u.name}</strong><small>${format(u.coins)} 🪙 · ${roleLabel}${u.hiddenFromFamily?' · приховано':''}</small></div><div class="admin-actions">${privacy}${action}</div></article>`;
   }
 
+  function adminSectionOpen(name){return localStorage.getItem(ADMIN_PANEL_SECTION_KEY)===name?' open':'';}
+
   function adminScreen(){
     if(!isAdmin()) return shell('<div class="card empty">Цей розділ доступний лише адміністратору сімʼї.</div>','Куточок господаря','Керування сімейним простором.');
     const active=state.quests.filter(q=>q.status==='active').length,lowStock=state.shop.filter(x=>x.stock<=1).length;
@@ -1334,14 +1468,15 @@
     const templateRows=DAILY_QUEST_TEMPLATES.map(t=>{const key=questTemplateKey(t),o=questTemplateState(key),enabled=o.enabled!==false;return `<article class="admin-row"><span class="quest-icon">${o.icon||t[1]}</span><div><strong>${escapeHtml(o.title||t[0])}</strong><small>${enabled?'Використовується у щоденній вибірці':'Вимкнено'} · ${o.rewardCoins??t[5]} 🪙 · ${o.rewardXp??t[6]} XP</small></div><div class="admin-actions"><button class="btn small" data-edit-template="${key}">Редагувати</button><button class="btn small ${enabled?'soft':'primary'}" data-toggle-template="${key}">${enabled?'Прибрати':'Повернути'}</button></div></article>`}).join('');
     const shopRows=state.shop.map(i=>`<article class="admin-row"><span class="shop-icon">${i.icon||'✨'}</span><div><strong>${escapeHtml(i.title)}</strong><small>${format(i.price)} 🪙 · залишок ${i.stock}</small></div><div class="admin-actions"><button class="btn small" data-edit-shop="${i.id}">Редагувати</button><div class="stock-stepper"><button data-stock="${i.id}" data-delta="-1">−</button><strong>${i.stock}</strong><button data-stock="${i.id}" data-delta="1">+</button></div><button class="icon-btn danger-text" data-admin-delete-shop="${i.id}">×</button></div></article>`).join('');
     const catalog=READY_SHOP_CATALOG.map(x=>`<article class="ready-product"><span>${x[1]}</span><div><strong>${escapeHtml(x[2])}</strong><small>${escapeHtml(x[6])} · ${x[4]} 🪙</small></div><input type="number" min="1" max="99" value="1" aria-label="Кількість"><button class="btn primary small" data-add-ready-shop="${x[0]}">Додати</button></article>`).join('');
-    return shell(`<section class="admin-hero"><div><span class="eyebrow">Центр керування</span><h2>Налаштування нашого простору</h2><p>Усі модулі згортаються, тому до потрібного розділу не треба довго гортати.</p></div><button class="btn primary" data-action="telegram-refresh">Перевірити Telegram</button></section>
+    return shell(`<section class="admin-hero"><div><span class="eyebrow">Центр керування</span><h2>Налаштування нашого простору</h2><p>Усі модулі згортаються, тому до потрібного розділу не треба довго гортати.</p></div></section>
     <section class="grid metrics"><div class="card"><div class="metric-label">Активні квести</div><div class="metric-value">${active}</div></div><div class="card"><div class="metric-label">Асортимент</div><div class="metric-value">${state.shop.length}</div><div class="metric-foot">${lowStock} закінчуються</div></div><div class="card"><div class="metric-label">Наші люди</div><div class="metric-value">${visibleFamilyUsers().length}/${familyMax()}</div></div><div class="card"><div class="metric-label">Сімейний фонд</div><div class="metric-value">${format(state.family.coins)} 🪙</div></div></section>
+    <div class="admin-panel-toolbar"><div><strong>Розділи адміністратора</strong><small>Відкривайте лише потрібне вікно — інші автоматично згорнуться.</small></div><button class="btn soft small" data-action="collapse-admin-modules">Згорнути все</button></div>
     <div class="admin-accordion">
-      <details class="admin-module" open><summary><span>✓</span><div><strong>Квести та логічні ланцюжки</strong><small>Редагування, приховування й власні завдання</small></div></summary><div class="admin-module-body"><div class="section-head"><h2>Поточні квести</h2><button class="btn primary small" data-action="new-quest">+ Додати</button></div><div class="admin-list">${questRows||'<div class="empty-soft">Квестів немає</div>'}</div><div class="section-head"><h2>Стандартна бібліотека</h2><small>Вимкнені шаблони не потрапляють у нову щоденну вибірку</small></div><div class="admin-list">${templateRows}</div></div></details>
-      <details class="admin-module"><summary><span>🎁</span><div><strong>Магазин і готові пропозиції</strong><small>Асортимент, залишки та швидке додавання</small></div></summary><div class="admin-module-body"><div class="section-head"><h2>Ваш асортимент</h2><button class="btn primary small" data-action="new-shop">+ Власний товар</button></div><div class="admin-list">${shopRows||'<div class="empty-soft">Магазин порожній</div>'}</div><div class="section-head"><h2>Готова сітка товарів</h2></div><div class="ready-product-grid">${catalog}</div></div></details>
-      <details class="admin-module"><summary><span>↔</span><div><strong>Перенесення асортименту</strong><small>Копія між сімейними акаунтами</small></div></summary><div class="admin-module-body"><p>Експорт містить лише товари, ціни, іконки, кількість і посилання — без користувачів, балансів та історії.</p><input id="shopImportFile" type="file" accept="application/json,.json" hidden><div class="admin-transfer-actions"><button class="btn primary" data-action="export-shop">Зберегти JSON</button><button class="btn" data-action="copy-shop-json">Копіювати JSON</button><button class="btn" data-action="import-shop">Імпортувати файл</button><button class="btn soft" data-action="paste-shop-json">Вставити з буфера</button></div></div></details>
-      <details class="admin-module"><summary><span>👥</span><div><strong>Сімʼя та учасники</strong><small>Ліміт від 2 до 25 і керування профілями</small></div></summary><div class="admin-module-body"><div class="family-limit-setting"><div><strong>Максимальна кількість членів сімʼї</strong><small>Не можна встановити менше, ніж уже приєднано.</small></div><select id="familyMaxMembers">${[2,3,5,10,15,20,25].map(n=>`<option value="${n}" ${familyMax()===n?'selected':''}>${n}</option>`).join('')}</select><button class="btn primary small" data-action="save-family-limit">Зберегти</button></div><div class="section-head"><h2>Учасники</h2><button class="btn primary small" data-action="grant-coins">Видати монетки</button></div><div class="admin-list">${state.users.map(adminMemberRow).join('')}</div></div></details>
-      <details class="admin-module danger-module"><summary><span>⚠</span><div><strong>Небезпечні дії</strong><small>Скидання профілів</small></div></summary><div class="admin-module-body danger-zone"><div class="admin-list">${state.users.map(u=>`<article class="admin-row"><span class="avatar">${u.avatar}</span><div><strong>${u.name}</strong><small>${u.level} рівень</small></div><button class="btn danger small" data-reset-user="${u.id}">Скинути</button></article>`).join('')}</div></div></details>
+      <details class="admin-module" data-admin-module="quests"${adminSectionOpen('quests')}><summary><span>✓</span><div><strong>Квести та логічні ланцюжки</strong><small>Редагування, приховування й власні завдання</small></div></summary><div class="admin-module-body"><div class="section-head"><h2>Поточні квести</h2><button class="btn primary small" data-action="new-quest">+ Додати</button></div><div class="admin-list">${questRows||'<div class="empty-soft">Квестів немає</div>'}</div><div class="section-head"><h2>Стандартна бібліотека</h2><small>Вимкнені шаблони не потрапляють у нову щоденну вибірку</small></div><div class="admin-list">${templateRows}</div></div></details>
+      <details class="admin-module" data-admin-module="shop"${adminSectionOpen('shop')}><summary><span>🎁</span><div><strong>Магазин і готові пропозиції</strong><small>Асортимент, залишки та швидке додавання</small></div></summary><div class="admin-module-body"><div class="section-head"><h2>Ваш асортимент</h2><button class="btn primary small" data-action="new-shop">+ Власний товар</button></div><div class="admin-list">${shopRows||'<div class="empty-soft">Магазин порожній</div>'}</div><div class="section-head"><h2>Готова сітка товарів</h2></div><div class="ready-product-grid">${catalog}</div></div></details>
+      <details class="admin-module" data-admin-module="transfer"${adminSectionOpen('transfer')}><summary><span>↔</span><div><strong>Перенесення асортименту</strong><small>Копія між сімейними акаунтами</small></div></summary><div class="admin-module-body"><p>Експорт містить лише товари, ціни, іконки, кількість і посилання — без користувачів, балансів та історії.</p><input id="shopImportFile" type="file" accept="application/json,.json" hidden><div class="admin-transfer-actions"><button class="btn primary" data-action="export-shop">Зберегти JSON</button><button class="btn" data-action="copy-shop-json">Копіювати JSON</button><button class="btn" data-action="import-shop">Імпортувати файл</button><button class="btn soft" data-action="paste-shop-json">Вставити з буфера</button></div></div></details>
+      <details class="admin-module" data-admin-module="family"${adminSectionOpen('family')}><summary><span>👥</span><div><strong>Сімʼя та учасники</strong><small>Ліміт від 2 до 25 і керування профілями</small></div></summary><div class="admin-module-body"><div class="family-limit-setting"><div><strong>Максимальна кількість членів сімʼї</strong><small>Не можна встановити менше, ніж уже приєднано.</small></div><select id="familyMaxMembers">${[2,3,5,10,15,20,25].map(n=>`<option value="${n}" ${familyMax()===n?'selected':''}>${n}</option>`).join('')}</select><button class="btn primary small" data-action="save-family-limit">Зберегти</button></div><div class="section-head"><h2>Учасники</h2><button class="btn primary small" data-action="grant-coins">Видати монетки</button></div><div class="admin-list">${state.users.map(adminMemberRow).join('')}</div></div></details>
+      <details class="admin-module danger-module" data-admin-module="danger"${adminSectionOpen('danger')}><summary><span>⚠</span><div><strong>Небезпечні дії</strong><small>Скидання профілів</small></div></summary><div class="admin-module-body danger-zone"><div class="admin-list">${state.users.map(u=>`<article class="admin-row"><span class="avatar">${u.avatar}</span><div><strong>${u.name}</strong><small>${u.level} рівень</small></div><button class="btn danger small" data-reset-user="${u.id}">Скинути</button></article>`).join('')}</div></div></details>
     </div>`,`Куточок господаря`,`Контролюйте квести, магазин і розмір сімʼї.`);
   }
 
@@ -1357,8 +1492,8 @@
     if(type==='new-quest') return `<div class="modal-backdrop"><div class="modal"><div class="modal-head"><h2>Новий квест</h2><button class="close" data-close>×</button></div><div class="form-grid"><div class="field full"><label>Назва</label><input id="qTitle" placeholder="Наприклад, Прибрати кухню"></div><div class="field"><label>Тип</label><select id="qType"><option value="personal">Особистий</option><option value="coop">Спільний</option><option value="pair">Тільки вдвох</option><option value="limited">Лімітований</option></select></div><div class="field"><label>Складність</label><select id="qDifficulty"><option value="easy">Легка</option><option value="normal" selected>Середня</option><option value="hard">Складна</option></select></div><div class="field"><label>Навичка</label><select id="qSkill"><option value="home">Дім</option><option value="care">Турбота</option><option value="health">Здоровʼя</option><option value="growth">Розвиток</option><option value="finance">Фінанси</option></select></div><div class="field"><label>Монети</label><input id="qCoins" type="number" value="100"></div><div class="field"><label>XP</label><input id="qXp" type="number" value="80"></div><div class="field full"><label>Опис</label><textarea id="qDesc"></textarea></div></div><div class="modal-actions"><button class="btn" data-close>Скасувати</button><button class="btn primary" data-action="save-quest">Створити</button></div></div></div>`;
     if(type==='new-shop') return `<div class="modal-backdrop"><div class="modal"><div class="modal-head"><h2>Нова можливість</h2><button class="close" data-close>×</button></div><div class="form-grid"><div class="field full"><label>Назва</label><input id="sTitle" placeholder="Наприклад, Новий велосипед"></div><div class="field"><label>Іконка</label><input id="sIcon" maxlength="8" value="✨" placeholder="🎁"></div><div class="field"><label>Тип</label><select id="sType"><option value="personal">Особиста</option><option value="family">Для всієї сімʼї</option><option value="collective">Спільний фонд</option></select></div><div class="field"><label>Ціна</label><input id="sPrice" type="number" value="2000"></div><div class="field"><label>Кількість</label><input id="sStock" type="number" value="1"></div><div class="field full"><label>Опис</label><textarea id="sDesc"></textarea></div><div class="field full"><label>Приховане посилання на приклад <small>(необов’язково)</small></label><input id="sResourceUrl" type="url" inputmode="url" placeholder="https://…"><small>У магазині URL не показується — людина бачить лише кнопку «Подивитися, що мається на увазі».</small></div></div><div class="modal-actions"><button class="btn" data-close>Скасувати</button><button class="btn primary" data-action="save-shop">Додати</button></div></div></div>`;
 
-    if(type==='accounts') { const list=loadAccounts(); return `<div class="modal-backdrop accounts-window"><div class="modal accounts-modal"><div class="modal-head"><h2>Мої профілі</h2><button class="close" data-close>×</button></div><p>Перемикайте профілі або додавайте вхід з іншого пристрою.</p><div class="account-vault">${list.length?list.map(a=>`<button class="account-vault-item ${a.id===accountId()?'active':''}" data-account-id="${a.id}"><span class="member-initial">${(a.label||'?').slice(0,1).toUpperCase()}</span><span><strong>${a.label}</strong><small>${a.familyName||'Мій простір'} · ${new Date(a.updatedAt).toLocaleDateString('uk-UA')}</small></span><b>${a.id===accountId()?'Відкрито':'Перейти'}</b></button>`).join(''):'<div class="card empty">Збережених профілів поки немає</div>'}</div><div class="quick-login-note"><strong>Швидкий JSON входу</strong><p>Відкриває профіль без пароля. Зберігайте файл як ключ доступу.</p></div><input id="accountImportFile" type="file" accept="application/json,.json" hidden><div class="modal-actions wrap"><button class="btn" data-action="add-account">+ Додати профіль</button><button class="btn" data-action="import-account">Відкрити JSON</button><button class="btn primary" data-action="export-login-account">Зберегти JSON входу</button></div></div></div>`; }
-    if(type==='edit-profile') { const u=currentUser(); const owned=(state.cosmeticsCatalog||[]).filter(i=>u.inventory.includes(i.id)); const opts=(kind,current)=>`<option value="">Без прикраси</option>${owned.filter(i=>i.kind===kind).map(i=>`<option value="${i.id}" ${current===i.id?'selected':''}>${i.title}</option>`).join('')}`; return `<div class="modal-backdrop"><div class="modal"><div class="modal-head"><h2>Оформлення профілю</h2><button class="close" data-close>×</button></div><div class="cosmetic-preview animated-frame-${cosmetic(u.equipped.animatedFrame)?.asset||'none'}"><span class="animated-name nick-${cosmetic(u.equipped.nicknameEffect)?.asset||'none'}">${u.name}</span><small>Попередній вигляд</small></div><div class="form-grid"><div class="field"><label>Значок біля імені</label><select id="profileBadge">${opts('badge',u.equipped.badge)}</select></div><div class="field"><label>Звичайна рамка</label><select id="profileFrame">${opts('frame',u.equipped.frame)}</select></div><div class="field"><label>Анімована рамка</label><select id="profileAnimatedFrame">${opts('animatedFrame',u.equipped.animatedFrame)}</select></div><div class="field"><label>Світне імʼя</label><select id="profileNicknameEffect">${opts('nicknameEffect',u.equipped.nicknameEffect)}</select></div><div class="field"><label>Ефект профілю</label><select id="profileEffect">${opts('profileEffect',u.equipped.profileEffect)}</select></div><div class="field full"><label>Тема застосунку</label><select id="profileTheme"><option value="light" ${u.equipped.theme==='light'?'selected':''}>Світла</option>${owned.filter(i=>i.kind==='theme').map(i=>`<option value="${i.asset}" ${u.equipped.theme===i.asset?'selected':''}>${i.title}</option>`).join('')}</select></div></div><p class="auth-help">Одночасно активна одна анімована рамка та один ефект нікнейму. Системне зменшення руху підтримується автоматично.</p><div class="modal-actions"><button class="btn" data-close>Скасувати</button><button class="btn primary" data-action="save-profile-settings">Зберегти</button></div></div></div>`; }
+    if(type==='accounts') { const list=loadAccounts(); return `<div class="modal-backdrop accounts-window"><div class="modal accounts-modal"><div class="modal-head"><h2>Мої профілі</h2><button class="close" data-close>×</button></div><p>Перемикайте профілі або додавайте вхід з іншого пристрою.</p><div class="account-vault">${list.length?list.map(a=>`<button class="account-vault-item ${a.id===accountId()?'active':''}" data-account-id="${a.id}"><span class="member-initial">${(a.label||'?').slice(0,1).toUpperCase()}</span><span><strong>${a.label}</strong><small>${a.familyName||'Мій простір'} · ${new Date(a.updatedAt).toLocaleDateString(currentLocale())}</small></span><b>${a.id===accountId()?'Відкрито':'Перейти'}</b></button>`).join(''):'<div class="card empty">Збережених профілів поки немає</div>'}</div><div class="quick-login-note"><strong>Швидкий JSON входу</strong><p>Відкриває профіль без пароля. Зберігайте файл як ключ доступу.</p></div><input id="accountImportFile" type="file" accept="application/json,.json" hidden><div class="modal-actions wrap"><button class="btn" data-action="add-account">+ Додати профіль</button><button class="btn" data-action="import-account">Відкрити JSON</button><button class="btn primary" data-action="export-login-account">Зберегти JSON входу</button></div></div></div>`; }
+    if(type==='edit-profile') { const u=currentUser(); const owned=(state.cosmeticsCatalog||[]).filter(i=>u.inventory.includes(i.id)); const opts=(kind,current)=>`<option value="">Без прикраси</option>${owned.filter(i=>i.kind===kind).map(i=>`<option value="${i.id}" ${current===i.id?'selected':''}>${i.title}</option>`).join('')}`; return `<div class="modal-backdrop"><div class="modal"><div class="modal-head"><h2>Оформлення профілю</h2><button class="close" data-close>×</button></div><div class="cosmetic-preview animated-frame-${cosmetic(u.equipped.animatedFrame)?.asset||'none'}"><span class="animated-name nick-${cosmetic(u.equipped.nicknameEffect)?.asset||'none'}">${u.name}</span><small>Попередній вигляд</small></div><div class="form-grid"><div class="field"><label>Значок біля імені</label><select id="profileBadge">${opts('badge',u.equipped.badge)}</select></div><div class="field"><label>Звичайна рамка</label><select id="profileFrame">${opts('frame',u.equipped.frame)}</select></div><div class="field"><label>Анімована рамка</label><select id="profileAnimatedFrame">${opts('animatedFrame',u.equipped.animatedFrame)}</select></div><div class="field"><label>Світне імʼя</label><select id="profileNicknameEffect">${opts('nicknameEffect',u.equipped.nicknameEffect)}</select></div><div class="field"><label>Ефект профілю</label><select id="profileEffect">${opts('profileEffect',u.equipped.profileEffect)}</select></div><div class="field full"><label>Тема застосунку</label><select id="profileTheme"><option value="light" ${u.equipped.theme==='light'?'selected':''}>Світла</option>${owned.filter(i=>i.kind==='theme').map(i=>`<option value="${i.asset}" ${u.equipped.theme===i.asset?'selected':''}>${i.title}</option>`).join('')}</select></div><div class="field"><label>Звуки</label><select id="profileSoundMode"><option value="off" ${audioPrefs().mode==='off'?'selected':''}>Вимкнено</option><option value="minimal" ${audioPrefs().mode==='minimal'?'selected':''}>Мінімальні</option><option value="full" ${audioPrefs().mode==='full'?'selected':''}>Усі ефекти</option></select></div><div class="field"><label>Вібрація</label><select id="profileHaptics"><option value="on" ${audioPrefs().haptics?'selected':''}>Увімкнена</option><option value="off" ${!audioPrefs().haptics?'selected':''}>Вимкнена</option></select></div></div><p class="auth-help">Тедик не має власних звуків. Одночасно активна одна анімована рамка та один ефект нікнейму. Системне зменшення руху підтримується автоматично.</p><div class="modal-actions"><button class="btn" data-close>Скасувати</button><button class="btn primary" data-action="save-profile-settings">Зберегти</button></div></div></div>`; }
 
     if(type==='daily-roulette') return `<div class="modal-backdrop daily-gift-backdrop"><div class="modal daily-gift-modal"><div class="daily-gift-head"><span>Щоденний сюрприз</span><small>Один оберт на день</small></div><div class="roulette-wrap"><div class="roulette-pointer">▼</div><div id="dailyRouletteWheel" class="roulette-wheel"><div class="roulette-label r1">+5</div><div class="roulette-label r2">+10</div><div class="roulette-label r3">+50</div><div class="roulette-label r4">+100</div><div class="roulette-label r5">+500</div></div><div class="roulette-hub">✦</div></div><h2 id="rouletteTitle">Крути колесо удачі</h2><p id="rouletteText">На тебе вже чекає маленький подарунок 🌿</p><div class="modal-actions"><button id="rouletteSpinButton" class="btn primary roulette-spin" data-action="spin-daily-roulette">Крутити рулетку</button></div><div class="roulette-odds"><span>+5 · 62%</span><span>+10 · 25%</span><span>+50 · 10%</span><span>+100 · 2,5%</span><span>+500 · 0,5%</span></div></div></div>`;
 
@@ -1387,7 +1522,9 @@
     const KEY='myHabbitCozyCompanionV1';
     const stateOf=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch{return {}}};
     const write=value=>localStorage.setItem(KEY,JSON.stringify({...stateOf(),...value}));
-    let tour=null,stepIndex=0,tipTimer=0;
+    let tour=null,stepIndex=0,tipTimer=0,achievementTimer=0;
+    const companionAchievementQueue=[];
+    let companionAchievementBusy=false;
     const memberSteps=[
       {route:'dashboard',selector:'[data-route="dashboard"]',title:'Твій затишний простір',text:'Тут зібрано прогрес, серію та найважливіше на сьогодні.'},
       {route:'quests',selector:'[data-route="quests"]',title:'Щоденні квести',text:'Виконуй звички й отримуй XP та монетки. Починай з маленьких кроків.'},
@@ -1448,6 +1585,7 @@
       if(name==='prev'){stepIndex=Math.max(0,stepIndex-2);nextStep();}
       if(name==='skip'){finishTour(false);}
       if(name==='close')closeBubble();
+      if(name==='achievement-next')finishAchievementAnnouncement();
     }
     function clearHighlight(){document.querySelectorAll('.cozy-tour-target').forEach(x=>x.classList.remove('cozy-tour-target'));document.querySelector('.cozy-tour-overlay')?.remove();}
     function highlight(selector){
@@ -1480,6 +1618,22 @@
       write({lastTipDay:day});showBubble('Порада дня 🌱',tip,'<button data-cozy-action="close">Дякую</button>');
       if(!manual){clearTimeout(tipTimer);tipTimer=setTimeout(closeBubble,9000);}
     }
+    function finishAchievementAnnouncement(){
+      clearTimeout(achievementTimer);closeBubble();companionAchievementBusy=false;
+      setTimeout(processAchievementAnnouncements,220);
+    }
+    function processAchievementAnnouncements(){
+      if(companionAchievementBusy||!companionAchievementQueue.length||stateOf().muted)return;
+      companionAchievementBusy=true;
+      const a=companionAchievementQueue.shift();
+      const reward=Number(a?.rewardXp||0)>0?` · +${format(a.rewardXp)} XP`:'';
+      const description=a?.description?` ${a.description}`:'';
+      showBubble(`Нове досягнення! ${a?.icon&&!String(a.icon).startsWith('/')?a.icon:'🏆'}`,`${a?.title||'Ти зробив важливий крок.'}${reward}.${description}`,'<button class="primary" data-cozy-action="achievement-next">Чудово</button>');
+      clearTimeout(achievementTimer);achievementTimer=setTimeout(finishAchievementAnnouncement,8500);
+    }
+    function announceAchievement(a){
+      companionAchievementQueue.push(a||{});processAchievementAnnouncements();
+    }
     function contextualMessage(){
       if(stateOf().muted)return;
       const u=currentUser();if(!u)return;
@@ -1494,27 +1648,34 @@
       if(!data.tourCompleted&&!data.tourStarted&&!data.muted)setTimeout(()=>startTour(false),650);
       else if(!data.muted)setTimeout(contextualMessage,1100);
     }
-    CozyEvents.on('achievement',a=>{if(!stateOf().muted)showBubble('Нове досягнення! 🏆',a?.title||'Ти зробив важливий крок.','<button data-cozy-action="close">Чудово</button>');});
+    CozyEvents.on('achievement',a=>{if(!stateOf().muted)announceAchievement(a);});
     CozyEvents.on('levelup',d=>{if(!stateOf().muted)showBubble('Новий рівень! ⭐',`Тепер у тебе ${d.level} рівень. Я пишаюся тобою!`,'<button data-cozy-action="close">Далі</button>');});
     return {afterRender,startTour,showDailyTip,emit:CozyEvents.emit};
   })();
 
   function render(){
+    if(auth && ['landing','auth'].includes(route) && !inviteToken){
+      route='dashboard';
+      try{history.replaceState({},'', '/?screen=dashboard');}catch{}
+    }
     if(!auth && !['landing','auth'].includes(route)) route='landing';
     normalizeState();
     const screens={landing,auth:authScreen,dashboard,quests:questsScreen,match3:match3Screen,shop:shopScreen,'custom-shop':customShopScreen,collections:collectionsScreen,museum:museumScreen,achievements:achievementsScreen,family:familyScreen,profile:()=>profileScreen(),admin:adminScreen};
     try{
-      app.innerHTML=(screens[route]||landing)(); applyTheme(); bind(); CozyCompanion.afterRender();
+      app.innerHTML=(screens[route]||landing)(); applyTheme(); bind(); applyLanguage(app); CozyCompanion.afterRender();
     }catch(error){
       console.error('Render error:',error);
       app.innerHTML=`<main class="fatal-card"><h1>Не вдалося відкрити розділ</h1><p>${String(error?.message||error)}</p><button class="btn primary" data-route="dashboard">На головну</button></main>`;
-      bind();
+      bind(); applyLanguage(app);
     }
   }
 
   function bind(){
+    document.querySelectorAll('button,[data-route],[role=button]').forEach(el=>{if(el.dataset.cozySoundBound)return;el.dataset.cozySoundBound='1';el.addEventListener('pointerdown',()=>playCozySound(el.matches('[data-route],.menu-button,.hamburger')?'menu':'tap','full'),{passive:true});});
     document.querySelectorAll('[data-route]').forEach(el=>el.addEventListener('click',()=>{document.body.classList.remove('menu-open');go(el.dataset.route);}));
+    document.querySelectorAll('[data-language-select]').forEach(el=>el.addEventListener('change',()=>{appLanguage=el.value==='en'?'en':'uk';localStorage.setItem(LANGUAGE_KEY,appLanguage);render();}));
     document.querySelectorAll('[data-action]').forEach(el=>el.addEventListener('click',()=>action(el.dataset.action,el)));
+    document.querySelectorAll('details[data-admin-module]').forEach(panel=>panel.addEventListener('toggle',()=>{if(!panel.open)return;document.querySelectorAll('details[data-admin-module]').forEach(other=>{if(other!==panel)other.open=false;});localStorage.setItem(ADMIN_PANEL_SECTION_KEY,panel.dataset.adminModule||'');}));
     document.querySelectorAll('[data-quest]').forEach(el=>el.addEventListener('click',()=>handleQuest(el.dataset.quest)));
     document.querySelectorAll('[data-shop]').forEach(el=>el.addEventListener('click',()=>handleShop(el.dataset.shop)));
     document.querySelectorAll('[data-account-id]').forEach(x=>x.addEventListener('click',()=>switchAccount(x.dataset.accountId)));
@@ -1547,6 +1708,7 @@
   }
 
   function action(name, el){
+    if(name==='collapse-admin-modules'){document.querySelectorAll('details[data-admin-module]').forEach(panel=>panel.open=false);localStorage.removeItem(ADMIN_PANEL_SECTION_KEY);return;}
     if(name==='pwa-guide-prev'){pwaGuideStep=Math.max(0,pwaGuideStep-1);renderPwaGuide();}
     if(name==='pwa-guide-next'){const last=pwaGuideSlides().length-1;if(pwaGuideStep>=last){localStorage.setItem(PWA_ONBOARDING_SEEN,'completed');document.querySelector('.pwa-install-guide')?.remove();}else{pwaGuideStep++;renderPwaGuide();}}
     if(name==='pwa-guide-skip'){localStorage.setItem(PWA_ONBOARDING_SEEN,'skipped');document.querySelector('.pwa-install-guide')?.remove();}
@@ -1560,8 +1722,8 @@
     if(name==='exit-demo'){localStorage.removeItem(AUTH);localStorage.removeItem(STORAGE);auth=null;state=clone(seed);go('landing');showToast('Демо завершено');}
     if(name==='logout'){logoutCurrentAccount();}
     if(['switch-user','new-quest','new-shop','accounts'].includes(name)){if(name==='accounts')document.body.classList.remove('menu-open');document.body.insertAdjacentHTML('beforeend',modal(name));bindModal();}
-    if(name==='toggle-menu'){document.body.classList.toggle('menu-open');}
-    if(name==='close-menu'){document.body.classList.remove('menu-open');}
+    if(name==='toggle-menu'){const opened=document.body.classList.toggle('menu-open');const trigger=document.querySelector('.global-menu-trigger');if(trigger)trigger.setAttribute('aria-expanded',opened?'true':'false');}
+    if(name==='close-menu'){document.body.classList.remove('menu-open');const trigger=document.querySelector('.global-menu-trigger');if(trigger)trigger.setAttribute('aria-expanded','false');}
     if(name==='telegram-connect') connectTelegram();
     if(name==='telegram-login') openTelegramLogin();
     if(name==='telegram-refresh') checkTelegram();
@@ -1575,6 +1737,7 @@
     if(name==='claim-level-rewards') claimLevelRewards();
     if(name==='start-match3') startMatch3();
     if(name==='send-profile-gift') sendProfileGift();
+    if(name==='transfer-family-coins') transferFamilyCoins();
     if(name==='edit-profile'){document.body.insertAdjacentHTML('beforeend',modal('edit-profile'));bindModal();}
     if(name==='manage-important-dates'){document.body.insertAdjacentHTML('beforeend',modal('important-dates'));bindModal();}
     if(name==='add-important-date') addImportantDate();
@@ -1607,9 +1770,6 @@
     if(name==='confirm-share-account') performPendingAccountShare();
     if(name==='download-pending-account') downloadPendingAccountFile();
     if(name==='import-account') document.getElementById('accountImportFile')?.click();
-    if(name==='create-account-recovery') createRecoveryBackup('account');
-    if(name==='create-family-recovery') createRecoveryBackup('family');
-    if(name==='download-recovery-code') downloadRecoveryCode();
   }
   function openNamedModal(name){const html=modal(name);if(!html)return;document.body.insertAdjacentHTML('beforeend',html);bindModal();}
   function bindModal(){
@@ -1623,21 +1783,6 @@
   }
 
 
-  function recoveryCode(){const a=crypto.getRandomValues(new Uint8Array(18));return Array.from(a,b=>b.toString(16).padStart(2,'0')).join('').toUpperCase().match(/.{1,6}/g).join('-');}
-  async function recoveryHash(code){const d=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('myHabbit-recovery:'+code.replace(/\s/g,'')));return Array.from(new Uint8Array(d),b=>b.toString(16).padStart(2,'0')).join('');}
-  async function createRecoveryBackup(scope){
-    if(scope==='family'&&!isAdmin())return showToast('Лише адміністратор сімʼї може створити цей код');
-    persistAccount();const account=loadAccounts().find(x=>x.id===accountId());if(!account)return showToast('Не вдалося підготувати резервну копію');
-    const code=recoveryCode(),salt=crypto.getRandomValues(new Uint8Array(16)),iv=crypto.getRandomValues(new Uint8Array(12));
-    const key=await deriveTransferKey(code,salt);const payload={format:'myHabbit-recovery-session',version:1,scope,createdAt:new Date().toISOString(),familyId:state.family?.id||null,userId:currentUser()?.id||null,account};
-    const encrypted=await crypto.subtle.encrypt({name:'AES-GCM',iv},key,new TextEncoder().encode(JSON.stringify(payload)));
-    const box={format:'myHabbit-recovery-box',version:1,scope,salt:b64(salt),iv:b64(iv),data:b64(encrypted)};
-    try{await api('/api/recovery/store',{method:'POST',body:JSON.stringify({lookup:await recoveryHash(code),box,token:auth?.token||''})});
-      document.body.insertAdjacentHTML('beforeend',`<div class="modal-backdrop"><div class="modal"><div class="modal-head"><h2>Резервний код ${scope==='family'?'сімʼї':'профілю'}</h2><button class="close" data-close>×</button></div><p>Збережіть код окремо. Сервер бачить лише зашифровану копію і не може відкрити її без цього коду.</p><div class="recovery-code">${code}</div><p class="auth-help">Після вайпу Owner вводить цей код у своїй панелі та отримує JSON-сесію. Втрата коду означає втрату доступу до копії.</p><div class="modal-actions"><button class="btn primary" data-action="download-recovery-code">Зберегти код файлом</button></div></div></div>`);
-      window.__lastRecovery={code,scope};bindModal();
-    }catch(e){showToast(e.message||'Не вдалося зберегти резервну копію');}
-  }
-  function downloadRecoveryCode(){const r=window.__lastRecovery;if(!r)return;downloadBlobFile(new Blob([r.code+'\n'],{type:'text/plain'}),`myHabbit-${r.scope}-recovery-code.txt`);showToast('Код збережено');}
   async function deriveTransferKey(password,salt){const base=await crypto.subtle.importKey('raw',new TextEncoder().encode(password),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:180000,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['encrypt','decrypt']);}
   const b64=b=>btoa(String.fromCharCode(...new Uint8Array(b))); const unb64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
   async function createEncryptedAccountFile(){
@@ -1855,7 +2000,7 @@
     const q=state.quests.find(x=>x.id===id),u=currentUser(); if(!q)return;
     if(!q.claimedBy.includes(u.id)){if(q.claimedBy.length>=q.participants)return; q.claimedBy.push(u.id);showToast('Квест додано до ваших справ');}
     else{
-      q.claimedBy=q.claimedBy.filter(x=>x!==u.id);u.coins+=q.rewardCoins;const levelResult=addXp(u,q.rewardXp,`квест «${q.title}»`);u.skills[q.skill]+=1;u.activity.unshift(`Виконано: ${q.title}`);u.stats=u.stats||{};u.stats.questsCompleted=(u.stats.questsCompleted||0)+1;const achievementCategory=String(q.category||q.skill||'discipline');u.stats[`${achievementCategory}QuestsCompleted`]=(u.stats[`${achievementCategory}QuestsCompleted`]||0)+1;if(String(q.rarity||'').toLowerCase().includes('legend'))u.stats.legendaryQuestsCompleted=(u.stats.legendaryQuestsCompleted||0)+1;u.stats.coinsEarned=(u.stats.coinsEarned||0)+Number(q.rewardCoins||0);evaluateAchievements(u);state.family.xp+=q.rewardXp;state.family.coins+=Math.round(q.rewardCoins*.2);state.history.unshift({icon:q.icon,text:`${u.name} виконав(ла) «${q.title}»`,time:'Щойно'});if(q.type==='personal'||q.type==='limited')q.status='done';showToast(`+${q.rewardCoins} монет · +${q.rewardXp} XP${levelResult.levels?` · LEVEL UP ×${levelResult.levels}`:''}`);
+      q.claimedBy=q.claimedBy.filter(x=>x!==u.id);u.coins+=q.rewardCoins;const levelResult=addXp(u,q.rewardXp,`квест «${q.title}»`);u.skills[q.skill]+=1;u.activity.unshift(`Виконано: ${q.title}`);u.stats=u.stats||{};u.stats.questsCompleted=(u.stats.questsCompleted||0)+1;const achievementCategory=String(q.category||q.skill||'discipline');u.stats[`${achievementCategory}QuestsCompleted`]=(u.stats[`${achievementCategory}QuestsCompleted`]||0)+1;if(String(q.rarity||'').toLowerCase().includes('legend'))u.stats.legendaryQuestsCompleted=(u.stats.legendaryQuestsCompleted||0)+1;u.stats.coinsEarned=(u.stats.coinsEarned||0)+Number(q.rewardCoins||0);evaluateAchievements(u);state.family.xp+=q.rewardXp;state.family.coins+=Math.round(q.rewardCoins*.2);state.history.unshift({icon:q.icon,text:`${u.name} виконав(ла) «${q.title}»`,time:'Щойно'});if(q.type==='personal'||q.type==='limited')q.status='done';showToast(`+${q.rewardCoins} монет · +${q.rewardXp} XP${levelResult.levels?` · LEVEL UP ×${levelResult.levels}`:''}`);playCozySound('quest','important');cozyHaptic('medium');
     }save();render();
   }
 
@@ -1863,7 +2008,7 @@
     const item=state.shop.find(x=>x.id===id),u=currentUser();if(!item||item.stock<=0)return;
     if(item.type==='collective'){
       const contribution=Math.min(u.coins,Math.max(100,Math.ceil((item.price-item.fund)/4)));if(!contribution)return showToast('Недостатньо монет');u.coins-=contribution;item.fund+=contribution;if(item.fund>=item.price){item.stock-=1;item.fund=item.price;state.history.unshift({icon:item.icon,text:`Сімʼя зібрала на «${item.title}»`,time:'Щойно'});showToast('Спільну ціль досягнуто!');}else showToast(`Внесено ${contribution} монет`);
-    }else{if(u.coins<item.price)return showToast('Недостатньо монет');u.coins-=item.price;item.stock-=1;state.history.unshift({icon:item.icon,text:`${u.name} придбав(ла) «${item.title}»`,time:'Щойно'});showToast('Можливість придбано');}
+    }else{if(u.coins<item.price)return showToast('Недостатньо монет');u.coins-=item.price;item.stock-=1;state.history.unshift({icon:item.icon,text:`${u.name} придбав(ла) «${item.title}»`,time:'Щойно'});showToast('Можливість придбано');playCozySound('purchase','important');cozyHaptic('medium');}
     u.stats=u.stats||{};u.stats.purchasesCompleted=(u.stats.purchasesCompleted||0)+1;evaluateAchievements(u);save();render();
   }
 
@@ -1884,14 +2029,14 @@
   function addImportantDate(){const u=currentUser(),day=Number(document.getElementById('importantDateDay')?.value),month=Number(document.getElementById('importantDateMonth')?.value),title=(document.getElementById('importantDateTitle')?.value||'').trim().slice(0,48);if(!u||!title||day<1||day>31||month<1||month>12)return showToast('Вкажіть правильну дату та назву');const check=new Date(2024,month-1,day);if(check.getMonth()!==month-1||check.getDate()!==day)return showToast('Такої дати не існує');u.importantDates=u.importantDates||[];if(u.importantDates.length>=20)return showToast('Можна додати до 20 важливих дат');u.importantDates.push({id:crypto.randomUUID(),day,month,title,visible:true});save();document.querySelector('.modal-backdrop')?.remove();document.body.insertAdjacentHTML('beforeend',modal('important-dates'));bindModal();showToast('Дату додано');}
   function deleteImportantDate(id){const u=currentUser();if(!u)return;u.importantDates=(u.importantDates||[]).filter(x=>x.id!==id);save();document.querySelector('.modal-backdrop')?.remove();document.body.insertAdjacentHTML('beforeend',modal('important-dates'));bindModal();showToast('Дату видалено');}
 
-  function saveProfileSettings(){const u=currentUser();if(!u)return;u.equipped.badge=document.getElementById('profileBadge')?.value||null;u.equipped.frame=document.getElementById('profileFrame')?.value||null;u.equipped.animatedFrame=document.getElementById('profileAnimatedFrame')?.value||null;u.equipped.nicknameEffect=document.getElementById('profileNicknameEffect')?.value||null;u.equipped.profileEffect=document.getElementById('profileEffect')?.value||null;u.equipped.theme=document.getElementById('profileTheme')?.value||'light';save();document.querySelector('.modal-backdrop')?.remove();render();showToast('Оформлення збережено');}
+  function saveProfileSettings(){const u=currentUser();if(!u)return;u.equipped.badge=document.getElementById('profileBadge')?.value||null;u.equipped.frame=document.getElementById('profileFrame')?.value||null;u.equipped.animatedFrame=document.getElementById('profileAnimatedFrame')?.value||null;u.equipped.nicknameEffect=document.getElementById('profileNicknameEffect')?.value||null;u.equipped.profileEffect=document.getElementById('profileEffect')?.value||null;u.equipped.theme=document.getElementById('profileTheme')?.value||'light';u.audioPrefs={mode:document.getElementById('profileSoundMode')?.value||'minimal',haptics:(document.getElementById('profileHaptics')?.value||'on')==='on'};playCozySound('equip','important');save();document.querySelector('.modal-backdrop')?.remove();render();showToast('Оформлення збережено');}
 
-  function handleCosmetic(id){const u=currentUser(),i=cosmetic(id);if(!i)return;let purchased=false;if(!u.inventory.includes(id)){if(u.coins<i.price)return showToast('Потрібно ще монеток');u.coins-=i.price;u.inventory.push(id);purchased=true;u.stats=u.stats||{};u.stats.purchasesCompleted=(u.stats.purchasesCompleted||0)+1;showToast('Додано до колекції');}if(i.kind==='badge')u.equipped.badge=id;if(i.kind==='frame')u.equipped.frame=id;if(i.kind==='animatedFrame')u.equipped.animatedFrame=id;if(i.kind==='nicknameEffect')u.equipped.nicknameEffect=id;if(i.kind==='profileEffect')u.equipped.profileEffect=id;if(i.kind==='theme')u.equipped.theme=i.asset;if(i.kind==='stickerPack'){const map={'cozy-cats':'cozy-cats','bunny-notes':'bunny-love'};const c=state.stickerCollections.find(x=>x.id===map[i.asset]);if(c)c.stickers.slice(0,5).forEach(st=>u.stickerInventory[st.id]=(u.stickerInventory[st.id]||0)+1);showToast('Стікерпак відкрито та додано в інвентар');}if(purchased)evaluateAchievements(u);save();render();}
+  function handleCosmetic(id){const u=currentUser(),i=cosmetic(id);if(!i)return;let purchased=false;if(!u.inventory.includes(id)){if(u.coins<i.price)return showToast('Потрібно ще монеток');u.coins-=i.price;u.inventory.push(id);purchased=true;u.stats=u.stats||{};u.stats.purchasesCompleted=(u.stats.purchasesCompleted||0)+1;showToast('Додано до колекції');}if(i.kind==='badge')u.equipped.badge=id;if(i.kind==='frame')u.equipped.frame=id;if(i.kind==='animatedFrame')u.equipped.animatedFrame=id;if(i.kind==='nicknameEffect')u.equipped.nicknameEffect=id;if(i.kind==='profileEffect')u.equipped.profileEffect=id;if(i.kind==='theme')u.equipped.theme=i.asset;if(i.kind==='stickerPack'){const map={'cozy-cats':'cozy-cats','bunny-notes':'bunny-love'};const c=state.stickerCollections.find(x=>x.id===map[i.asset]);if(c)c.stickers.slice(0,5).forEach(st=>u.stickerInventory[st.id]=(u.stickerInventory[st.id]||0)+1);showToast('Стікерпак відкрито та додано в інвентар');}if(purchased){playCozySound('purchase','important');cozyHaptic('medium');}else playCozySound('equip','full');evaluateAchievements(u);save();render();}
   function claimLevelRewards(){const u=currentUser();const ready=state.levelRewards.filter(r=>u.level>=r.level&&!u.claimedLevelRewards.includes(r.level));if(!ready.length)return showToast('Нових подарунків поки немає');let coins=0;for(const r of ready){coins+=r.coins;u.claimedLevelRewards.push(r.level);if(r.item&&!u.inventory.includes(r.item))u.inventory.push(r.item);}u.coins+=coins;save();render();showToast(`Подарунки відкрито · +${coins} монеток`);}
   function openStickerModal(userId){document.body.insertAdjacentHTML('beforeend',modal(`sticker:${userId}`));bindModal();}
   function sendSticker(to,icon){const u=currentUser();if(u.coins<50)return showToast('Для теплого сліду потрібно 50 монет');if(stickerCount(u,icon)<1)return showToast('Цього стікера немає у вашій колекції');state.profileStickers=state.profileStickers.filter(x=>x.to!==to||Date.now()-x.createdAt<7*86400000);if(state.profileStickers.filter(x=>x.to===to).length>=10)return showToast('На профілі вже 10 стікерів');u.coins-=50;const note=(document.getElementById('stickerNote')?.value||'').trim().slice(0,120);state.profileStickers.push({id:crypto.randomUUID(),from:u.id,to,icon,note,createdAt:Date.now()});u.stats.stickersGiven=(u.stats.stickersGiven||0)+1;save();document.querySelector('.modal-backdrop')?.remove();render();showToast('Теплий слід залишено · −50 монет');}
   function weightedSticker(stickers){const pool=[];for(const s of stickers){const w=s.rarity==='epic'?8:s.rarity==='rare'?25:67;for(let i=0;i<w;i++)pool.push(s);}return pool[Math.floor(Math.random()*pool.length)];}
-  function openStickerBox(id){const u=currentUser(),box=state.stickerBoxes.find(x=>x.id===id);if(!box)return;const c=state.stickerCollections.find(x=>x.id===box.collectionId),season=seasonInfo(c.season);if(!season.active)return showToast(`Цей бокс доступний лише: ${season.label}`);if(u.coins<box.price)return showToast('Недостатньо монет');u.coins-=box.price;const sticker=weightedSticker(c.stickers),before=stickerCount(u,sticker.id),isNew=before===0;u.stickerInventory[sticker.id]=before+1;u.stats.boxesOpened=(u.stats.boxesOpened||0)+1;let dust=0;if(!isNew){dust=10;u.stickerDust+=dust;}else{const stickerXp={common:3,uncommon:5,rare:10,epic:20,legendary:50,mythic:100}[sticker.rarity]||3;addXp(u,stickerXp,`новий стікер «${sticker.name}»`);checkCollectionMilestones(u,c);}save();render();showStickerReveal(sticker,c,isNew,dust);}
+  function openStickerBox(id){playCozySound('box-open','important');cozyHaptic('medium');const u=currentUser(),box=state.stickerBoxes.find(x=>x.id===id);if(!box)return;const c=state.stickerCollections.find(x=>x.id===box.collectionId),season=seasonInfo(c.season);if(!season.active)return showToast(`Цей бокс доступний лише: ${season.label}`);if(u.coins<box.price)return showToast('Недостатньо монет');u.coins-=box.price;const sticker=weightedSticker(c.stickers),before=stickerCount(u,sticker.id),isNew=before===0;u.stickerInventory[sticker.id]=before+1;u.stats.boxesOpened=(u.stats.boxesOpened||0)+1;let dust=0;if(!isNew){dust=10;u.stickerDust+=dust;}else{const stickerXp={common:3,uncommon:5,rare:10,epic:20,legendary:50,mythic:100}[sticker.rarity]||3;addXp(u,stickerXp,`новий стікер «${sticker.name}»`);checkCollectionMilestones(u,c);}save();render();showStickerReveal(sticker,c,isNew,dust);}
   function removeSticker(id){if(!isAdmin())return;state.profileStickers=state.profileStickers.filter(x=>x.id!==id);save();render();showToast('Стікер прибрано');}
 
   async function checkDailyRoulette(){
@@ -1911,7 +2056,7 @@
     const button=document.getElementById('rouletteSpinButton');
     const wheel=document.getElementById('dailyRouletteWheel');
     if(!button||!wheel||button.disabled)return;
-    button.disabled=true;button.textContent='Колесо крутиться…';
+    button.disabled=true;button.textContent='Колесо крутиться…';playCozySound('roulette','important');cozyHaptic('light');
     try{
       const result=await api('/api/family/daily-gift-claim',{method:'POST',body:'{}'});
       const reward=Number(result.reward||5);
@@ -1924,7 +2069,7 @@
       const text=document.getElementById('rouletteText');
       if(title)title.textContent=reward>=100?'Джекпот! ✨':reward===50?'Сьогодні особливо щастить!':'Твій ранковий подарунок';
       if(text)text.innerHTML=`<strong>+${reward} монеток 🪙</strong><br>Нехай день почнеться приємно.`;
-      button.textContent='Забрати подарунок';button.disabled=false;
+      playCozySound('gift','important');cozyHaptic(reward>=100?'strong':'medium');button.textContent='Забрати подарунок';button.disabled=false;
       button.onclick=()=>{document.querySelector('.daily-gift-backdrop')?.remove();render();};
     }catch(e){button.disabled=false;button.textContent='Спробувати ще раз';showToast(e.message);}
   }
@@ -2034,7 +2179,7 @@
         try{await loadInviteInfo();render();}catch(e){console.warn('Invite:',e);}
       }
       try{await loadContentLibrary();render();}catch(e){console.warn('Content library:',e);}
-      try{const m=await fetch('/api/app-meta',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject());if(m?.updateName){publicUpdateName=m.updateName;document.querySelectorAll('.release-label').forEach(x=>x.textContent=publicUpdateName);}}catch(e){console.warn('App meta:',e);}
+      try{const m=await fetch('/api/app-meta',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject());if(m?.updateName){publicUpdateName=m.updateName;document.querySelectorAll('.release-label').forEach(x=>x.textContent=publicUpdateName);}const revision=Number(m?.cacheRevision||1),seen=Number(localStorage.getItem('myHabbitCacheRevisionV1')||0);if(!seen){localStorage.setItem('myHabbitCacheRevisionV1',String(revision));}else if(revision>seen){localStorage.setItem('myHabbitCacheRevisionV1',String(revision));try{const regs=await navigator.serviceWorker?.getRegistrations?.();await Promise.all((regs||[]).map(async r=>{try{await r.update()}catch{};r.waiting?.postMessage({type:'SKIP_WAITING'});}));}catch{}try{const keys=await caches.keys();await Promise.all(keys.filter(k=>k.startsWith('myhabbit-')).map(k=>caches.delete(k)));}catch{}location.reload();return;}}catch(e){console.warn('App meta:',e);}
       if(auth?.token){
         startLiveFamilyRefresh();
         startOwnerPresenceHeartbeat();
