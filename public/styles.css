@@ -521,3 +521,22 @@
 .welcome-language{margin-left:auto}
 @media(max-width:640px){.language-switch{padding:4px 5px}.language-switch span{display:none}.top-actions{gap:6px}}
 \n\n/* 10.0.1 — compact dropdown admin panels */\n.admin-panel-toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:18px 0 10px;padding:13px 15px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.68)}\n.admin-panel-toolbar>div{display:grid;gap:2px;min-width:0}.admin-panel-toolbar small{color:var(--muted);font-size:12px}\n.admin-accordion{display:grid;gap:10px}.admin-module{overflow:hidden;border:1px solid var(--line);border-radius:17px;background:var(--card);box-shadow:0 6px 18px rgba(76,61,47,.06)}\n.admin-module>summary{display:grid;grid-template-columns:38px minmax(0,1fr) 28px;align-items:center;gap:11px;min-height:64px;padding:12px 15px;cursor:pointer;list-style:none;user-select:none}\n.admin-module>summary::-webkit-details-marker{display:none}.admin-module>summary:after{content:'⌄';display:grid;place-items:center;width:28px;height:28px;border-radius:9px;background:rgba(126,145,122,.12);font-size:18px;transition:transform .18s ease}\n.admin-module[open]>summary:after{transform:rotate(180deg)}.admin-module>summary>span:first-child{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:rgba(126,145,122,.12);font-size:18px}\n.admin-module>summary>div{display:grid;gap:2px;min-width:0}.admin-module>summary strong{font-size:15px}.admin-module>summary small{color:var(--muted);font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}\n.admin-module[open]>summary{border-bottom:1px solid var(--line);background:rgba(248,244,236,.72)}.admin-module-body{padding:15px;max-height:min(64vh,760px);overflow:auto;overscroll-behavior:contain}\n.admin-module:not([open]) .admin-module-body{display:none}.danger-module>summary>span:first-child{background:rgba(190,91,91,.1)}\n@media(max-width:640px){.admin-panel-toolbar{align-items:stretch;flex-direction:column}.admin-panel-toolbar .btn{width:100%}.admin-module>summary{grid-template-columns:34px minmax(0,1fr) 26px;padding:10px 12px;min-height:58px}.admin-module>summary>span:first-child{width:34px;height:34px}.admin-module-body{padding:12px;max-height:68vh}}\n
+
+/* 10.0.2 — global floating navigation button */
+.menu-trigger{
+  position:fixed!important;
+  top:max(12px,env(safe-area-inset-top))!important;
+  left:max(12px,env(safe-area-inset-left))!important;
+  z-index:1280!important;
+  margin:0!important;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+.menu-backdrop{z-index:1290!important}
+.dropdown-menu{z-index:1300!important;padding-top:max(20px,calc(env(safe-area-inset-top) + 14px))!important}
+.menu-open .menu-trigger{z-index:1310!important}
+.topbar{padding-left:58px}
+@media(max-width:600px){
+  .menu-trigger{top:max(10px,env(safe-area-inset-top))!important;left:max(10px,env(safe-area-inset-left))!important}
+  .topbar{padding-left:54px}
+}

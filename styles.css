@@ -487,3 +487,22 @@
 
 /* 9.5.5 activity rendering stability */
 .activity-icon{flex:0 0 35px;overflow:hidden}.activity-icon-image{display:block;width:24px;height:24px;object-fit:contain}.activity-icon-fallback{display:grid;place-items:center;width:100%;height:100%;font-size:18px}.activity>div{min-width:0;flex:1}.activity p{overflow-wrap:anywhere}.activity small{display:block}
+
+/* 10.0.2 — global floating navigation button */
+.menu-trigger{
+  position:fixed!important;
+  top:max(12px,env(safe-area-inset-top))!important;
+  left:max(12px,env(safe-area-inset-left))!important;
+  z-index:1280!important;
+  margin:0!important;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+.menu-backdrop{z-index:1290!important}
+.dropdown-menu{z-index:1300!important;padding-top:max(20px,calc(env(safe-area-inset-top) + 14px))!important}
+.menu-open .menu-trigger{z-index:1310!important}
+.topbar{padding-left:58px}
+@media(max-width:600px){
+  .menu-trigger{top:max(10px,env(safe-area-inset-top))!important;left:max(10px,env(safe-area-inset-left))!important}
+  .topbar{padding-left:54px}
+}
