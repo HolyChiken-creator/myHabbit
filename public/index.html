@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#fff3e9">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="myHabbit">
+  <meta name="description" content="myHabbit — сімейна система спільних квестів, навичок, досягнень і реальних нагород.">
+  <link rel="manifest" href="/manifest.webmanifest?v=9.4.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
+  <link rel="shortcut icon" href="/icons/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180.png">
+  <link rel="apple-touch-startup-image" href="/assets/splash-1170x2532.png" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3)">
+  <link rel="apple-touch-startup-image" href="/assets/splash-1290x2796.png" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3)">
+  <link rel="apple-touch-startup-image" href="/assets/splash-1242x2688.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)">
+  <link rel="apple-touch-startup-image" href="/assets/splash-828x1792.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)">
+  <link rel="stylesheet" href="/styles.css?v=9.4.9-recovery-tedyk-release">
+  <title>myHabbit</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <div id="appSplash" class="app-splash" role="status" aria-label="Завантаження myHabbit">
+    <img src="/assets/myhabbit-brand.webp?v=10.1.7" alt="myHabbit — щаслива пара серед хмар">
+    <strong>myHabbit</strong>
+    <span id="splashStatus">Запускаємо безпечний режим…</span>
+    <div class="splash-progress" aria-hidden="true"><i id="splashProgressBar"></i></div>
+    <small id="splashProgressText">5%</small>
+  </div>
+  <div id="app"></div>
+  <div id="toast" class="toast" aria-live="polite"></div>
+  <script>
+  (() => {
+    'use strict';
+    const splash = document.getElementById('appSplash');
+    const bar = document.getElementById('splashProgressBar');
+    const text = document.getElementById('splashProgressText');
+    const status = document.getElementById('splashStatus');
+    const app = document.getElementById('app');
+    let finished = false;
+    let lastError = '';
+    const setProgress = (value, label) => {
+      if (finished) return;
+      if (bar) bar.style.width = `${value}%`;
+      if (text) text.textContent = `${value}%`;
+      if (status && label) status.textContent = label;
+    };
+    const hide = () => {
+      if (finished) return;
+      finished = true;
+      splash?.classList.add('hidden');
+      setTimeout(() => { if (splash) splash.style.display = 'none'; }, 450);
+    };
+    const recovery = () => {
+      if (window.__MYHABBIT_APP_READY__) return hide();
+      finished = true;
+      splash?.classList.add('hidden');
+      if (splash) setTimeout(() => splash.style.display = 'none', 300);
+      if (app && !app.innerHTML.trim()) app.innerHTML = `
+        <main style="min-height:100vh;padding:24px;display:grid;place-items:center;font-family:system-ui;background:#fffaf6;color:#29252b">
+          <section style="max-width:520px;width:100%;padding:24px;border:1px solid #eadfd7;border-radius:24px;background:white;box-shadow:0 16px 44px rgba(80,55,45,.08)">
+            <h1 style="margin:0 0 10px">Безпечне відновлення</h1>
+            <p style="line-height:1.55;color:#6e6670">Застарілий кеш або локальні дані завадили запуску. Особисті дані не видалятимуться без окремого підтвердження.</p>
+            <button id="safeReload" style="width:100%;padding:14px;border:0;border-radius:16px;background:#7654d6;color:white;font-weight:800;font-size:16px">Оновити кеш і перезапустити</button>
+            <details style="margin-top:14px"><summary>Технічна інформація</summary><pre style="white-space:pre-wrap;font-size:12px">${String(lastError || 'Скрипт не підтвердив запуск').replace(/[<>&]/g, s => ({'<':'&lt;','>':'&gt;','&':'&amp;'}[s]))}</pre></details>
+          </section>
+        </main>`;
+      document.getElementById('safeReload')?.addEventListener('click', async () => {
+        try {
+          const regs = await navigator.serviceWorker?.getRegistrations?.() || [];
+          await Promise.all(regs.map(r => r.unregister()));
+          const keys = await caches.keys();
+          await Promise.all(keys.filter(k => k.startsWith('myhabbit-')).map(k => caches.delete(k)));
+        } catch {}
+        location.replace(`/?recovery=${Date.now()}`);
+      });
+    };
+    window.addEventListener('error', e => { lastError = e.error?.stack || e.message || 'JavaScript error'; });
+    window.addEventListener('unhandledrejection', e => { lastError = e.reason?.stack || e.reason?.message || String(e.reason); });
+    window.addEventListener('myhabbit:ready', hide, { once:true });
+    setTimeout(() => setProgress(22, 'Перевіряємо локальні дані…'), 120);
+    setTimeout(() => setProgress(48, 'Відновлюємо профіль…'), 380);
+    setTimeout(() => setProgress(72, 'Підключаємо модулі…'), 700);
+    setTimeout(() => setProgress(92, 'Майже готово…'), 1100);
+    const script = document.createElement('script');
+    script.src = `/app.js?v=9.4.9-recovery-tedyk-release-${Date.now()}`;
+    script.async = false;
+    script.onerror = () => { lastError = 'Не вдалося завантажити /app.js'; recovery(); };
+    document.body.appendChild(script);
+    setTimeout(() => {
+      if (window.__MYHABBIT_APP_READY__ || app?.innerHTML.trim()) hide();
+      else recovery();
+    }, 6500);
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+Replace the included files while preserving folders.
+Delete the old root-level index.html if it exists.
+Do not delete public/index.html.
+Then deploy with: npx wrangler deploy
