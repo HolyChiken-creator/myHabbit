@@ -1,7 +1,7 @@
-const CACHE = 'myhabbit-10.0.2-floating-global-menu';
-const META_CACHE = 'myhabbit-10.0.2-floating-global-menu-meta';
+const CACHE = 'myhabbit-10.0.3-menu-trigger-fix';
+const META_CACHE = 'myhabbit-10.0.3-menu-trigger-fix';
 const CORE = [
-  '/', '/index.html', '/styles.css?v=10.0.2-floating-global-menu', '/app.js?v=10.0.2-floating-global-menu',
+  '/', '/index.html', '/styles.css?v=10.0.3-floating-global-menu', '/app.js?v=10.0.3-floating-global-menu',
   '/manifest.webmanifest?v=9.4.2', '/assets/myhabbit-brand.webp', '/assets/welcome-family-clean.webp',
   '/icons/icon-192.png', '/icons/icon-512.png'
 ];

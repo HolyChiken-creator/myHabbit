@@ -540,3 +540,33 @@
   .menu-trigger{top:max(10px,env(safe-area-inset-top))!important;left:max(10px,env(safe-area-inset-left))!important}
   .topbar{padding-left:54px}
 }
+
+
+/* 10.0.3 — stable always-available menu trigger */
+.global-menu-trigger{
+  position:fixed!important;
+  top:calc(env(safe-area-inset-top,0px) + 12px)!important;
+  left:calc(env(safe-area-inset-left,0px) + 12px)!important;
+  right:auto!important;
+  bottom:auto!important;
+  transform:none!important;
+  z-index:1280!important;
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transition:opacity .16s ease,visibility .16s ease,transform .16s ease!important;
+}
+.menu-open .global-menu-trigger{
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+  transform:scale(.9)!important;
+}
+.topbar{padding-left:58px!important}
+@media(max-width:600px){
+  .global-menu-trigger{
+    top:calc(env(safe-area-inset-top,0px) + 10px)!important;
+    left:calc(env(safe-area-inset-left,0px) + 10px)!important;
+  }
+  .topbar{padding-left:54px!important}
+}
