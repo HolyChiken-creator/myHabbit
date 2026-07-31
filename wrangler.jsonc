@@ -21,12 +21,12 @@
       }
     ]
   },
-  "migrations": [
-    {
-      "tag": "v2-telegram-state",
-      "new_sqlite_classes": ["TelegramStateV2"]
+  "exports": {
+    "TelegramStateV2": {
+      "type": "durable-object",
+      "storage": "sqlite"
     }
-  ],
+  },
   "triggers": {
     "crons": ["*/5 * * * *"]
   },
