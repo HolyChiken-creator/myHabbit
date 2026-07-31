@@ -1,8 +1,8 @@
-const CACHE = 'myhabbit-9.6.0-profile-gifts-achievements-recovery';
-const META_CACHE = 'myhabbit-9.6.0-profile-gifts-achievements-recovery-meta';
+const CACHE = 'myhabbit-10.1.3-deploy-family-activity-audio';
+const META_CACHE = 'myhabbit-10.1.3-deploy-family-activity-audio';
 const CORE = [
-  '/', '/index.html', '/styles.css?v=9.6.0-profile-gifts-achievements-recovery', '/app.js?v=9.6.0-profile-gifts-achievements-recovery',
-  '/manifest.webmanifest?v=9.4.2', '/assets/myhabbit-brand.webp', '/assets/welcome-family-clean.webp',
+  '/', '/index.html', '/styles.css?v=10.1.3-deploy-family-activity-audio', '/app.js?v=10.1.3-deploy-family-activity-audio',
+  '/manifest.webmanifest?v=9.4.2', '/assets/myhabbit-10.1.3-deploy-family-activity-audio', '/assets/welcome-family-clean.webp',
   '/icons/icon-192.png', '/icons/icon-512.png'
 ];
 async function broadcast(message){const clients=await self.clients.matchAll({includeUncontrolled:true,type:'window'});clients.forEach(c=>c.postMessage(message));}
