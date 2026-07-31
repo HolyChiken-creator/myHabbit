@@ -12,7 +12,7 @@
   const OFFLINE_STORE = 'library';
   const CONTENT_CACHE = 'myHabbitContentLibraryV1';
   const CONTENT_VERSION = '1.0.0';
-  const APP_VERSION = '10.0.1-compact-admin-panels';
+  const APP_VERSION = '10.0.4-localization-owner-cache-refresh';
   const ACCOUNTS = 'myHabbitAccountsV1';
   const ACTIVE_ACCOUNT = 'myHabbitActiveAccountV1';
   const LOGOUT_TOMBSTONE = 'myHabbitLogoutTombstoneV1';
@@ -29,7 +29,12 @@
     'Ласкаво просимо додому':'Welcome home','Раді бачити вас знову':'Welcome back','Створити сімʼю':'Create family','Приєднатися':'Join','Відкрити файл профілю':'Open profile file','Керувати профілями':'Manage profiles','Подивитися демо':'View demo','Увійти в акаунт':'Sign in','Назад':'Back',
     'Щоденний сюрприз':'Daily surprise','Один оберт на день':'One spin per day','Крути колесо удачі':'Spin the wheel','Крутити рулетку':'Spin','Забрати подарунок':'Claim gift','Спробувати ще раз':'Try again',
     'Важливі дати':'Important dates','День':'Day','Місяць':'Month','Назва':'Title','Додати дату':'Add date','Список поки порожній.':'The list is empty.','Налаштування збережено':'Settings saved','Гаразд':'OK','Чудово':'Great','Далі':'Next',
-    'Українська':'Ukrainian','Англійська':'English','Мова інтерфейсу':'Interface language'
+    'Українська':'Ukrainian','Англійська':'English','Мова інтерфейсу':'Interface language',
+    'Моя команда':'My team','загальний рівень':'overall level','у myHabbit з':'using myHabbit since','Запросити в сімʼю':'Invite to family','Налаштувати':'Customize','Подарунки рівня':'Level rewards','Залишити слід':'Leave a sticker',
+    'Спільний прогрес без публічних рейтингів і сторонніх людей.':'Shared progress without public rankings or strangers.','У видимому списку поки немає учасників':'No visible members yet','Поки немає нових подій учасників':'No new member activity yet',
+    'Особистий':'Personal','Особиста':'Personal','Для всієї сімʼї':'For the whole family','Спільний фонд':'Shared fund','Хлопець':'Male','Дівчина':'Female','Інший':'Other','Профіль':'Profile','Ваше імʼя':'Your name','Сімейний PIN':'Family PIN','Назва сімʼї':'Family name','Увійти до сімʼї':'Join family',
+    'Легка':'Easy','Середня':'Medium','Складна':'Hard','Звичайна':'Common','Рідкісна':'Rare','Епічна':'Epic','Легендарна':'Legendary','Секретна':'Secret','Взяти':'Claim','Виконати':'Complete','Активні':'Active','Завершені':'Completed','Особливі дати ще не додані.':'No special dates yet.','Керувати датами':'Manage dates',
+    'Адміністративна панель':'Admin panel','Сімʼя та учасники':'Family and members','Ліміт від 2 до 25 і керування профілями':'Limit from 2 to 25 and profile management','Максимальна кількість членів сімʼї':'Maximum family members','Не можна встановити менше, ніж уже приєднано.':'Cannot be lower than the number already joined.','Учасники':'Members','Видати монетки':'Grant coins','Магазин адміністратора':'Admin shop','Готовий каталог':'Ready catalog','Додати в магазин':'Add to shop','Згорнути все':'Collapse all'
   };
   function currentLocale(){return appLanguage==='en'?'en-US':'uk-UA';}
   function translateTextValue(value){
@@ -43,7 +48,15 @@
       .replace(/Днів у приємному ритмі/g,'Days in a steady rhythm')
       .replace(/Спільний прогрес команди/g,'Shared team progress')
       .replace(/На реальні можливості/g,'For real rewards')
-      .replace(/Поки немає нових подій учасників/g,'No new member activity yet');
+      .replace(/Поки немає нових подій учасників/g,'No new member activity yet')
+      .replace(/(\d+) активних квест(?:ів|и)?/g,'$1 active quests')
+      .replace(/(\d+) спільних справ/g,'$1 shared tasks')
+      .replace(/(\d+) монет/g,'$1 coins')
+      .replace(/Отримав\(ла\)/g,'received')
+      .replace(/отримав\(ла\)/g,'received')
+      .replace(/у ранковій рулетці/g,'from the morning wheel')
+      .replace(/Головна ціль тижня/g,'Main weekly goal')
+      .replace(/Закрити (\d+) спільних справ і зробити внесок у сімейну ціль\./g,'Complete $1 shared tasks and contribute to the family goal.');
   }
   function applyLanguage(root=document){
     document.documentElement.lang=appLanguage;
@@ -2109,7 +2122,7 @@
         try{await loadInviteInfo();render();}catch(e){console.warn('Invite:',e);}
       }
       try{await loadContentLibrary();render();}catch(e){console.warn('Content library:',e);}
-      try{const m=await fetch('/api/app-meta',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject());if(m?.updateName){publicUpdateName=m.updateName;document.querySelectorAll('.release-label').forEach(x=>x.textContent=publicUpdateName);}}catch(e){console.warn('App meta:',e);}
+      try{const m=await fetch('/api/app-meta',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject());if(m?.updateName){publicUpdateName=m.updateName;document.querySelectorAll('.release-label').forEach(x=>x.textContent=publicUpdateName);}const revision=Number(m?.cacheRevision||1),seen=Number(localStorage.getItem('myHabbitCacheRevisionV1')||0);if(!seen){localStorage.setItem('myHabbitCacheRevisionV1',String(revision));}else if(revision>seen){localStorage.setItem('myHabbitCacheRevisionV1',String(revision));try{const regs=await navigator.serviceWorker?.getRegistrations?.();await Promise.all((regs||[]).map(async r=>{try{await r.update()}catch{};r.waiting?.postMessage({type:'SKIP_WAITING'});}));}catch{}try{const keys=await caches.keys();await Promise.all(keys.filter(k=>k.startsWith('myhabbit-')).map(k=>caches.delete(k)));}catch{}location.reload();return;}}catch(e){console.warn('App meta:',e);}
       if(auth?.token){
         startLiveFamilyRefresh();
         startOwnerPresenceHeartbeat();
