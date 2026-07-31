@@ -12,7 +12,7 @@
   const OFFLINE_STORE = 'library';
   const CONTENT_CACHE = 'myHabbitContentLibraryV1';
   const CONTENT_VERSION = '1.0.0';
-  const APP_VERSION = '9.7.1-sakura-sweetlife-tedyk-achievements';
+  const APP_VERSION = '10.0.0-cozy-owner-console';
   const ACCOUNTS = 'myHabbitAccountsV1';
   const ACTIVE_ACCOUNT = 'myHabbitActiveAccountV1';
   const LOGOUT_TOMBSTONE = 'myHabbitLogoutTombstoneV1';

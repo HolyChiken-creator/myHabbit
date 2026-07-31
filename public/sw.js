@@ -1,7 +1,7 @@
-const CACHE = 'myhabbit-9.7.1-sakura-sweetlife-tedyk-achievements';
-const META_CACHE = 'myhabbit-9.7.1-sakura-sweetlife-tedyk-achievements-meta';
+const CACHE = 'myhabbit-10.0.0-cozy-owner-console';
+const META_CACHE = 'myhabbit-10.0.0-cozy-owner-console-meta';
 const CORE = [
-  '/', '/index.html', '/styles.css?v=9.7.1-sakura-sweetlife-tedyk-achievements', '/app.js?v=9.7.1-sakura-sweetlife-tedyk-achievements',
+  '/', '/index.html', '/styles.css?v=10.0.0-cozy-owner-console', '/app.js?v=10.0.0-cozy-owner-console',
   '/manifest.webmanifest?v=9.4.2', '/assets/myhabbit-brand.webp', '/assets/welcome-family-clean.webp',
   '/icons/icon-192.png', '/icons/icon-512.png'
 ];
