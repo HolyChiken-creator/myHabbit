@@ -1,8 +1,8 @@
-myHabbit 11.1.1 update over 11.1.0
+myHabbit 11.1.2 UPDATE ONLY
+Base version: 11.1.1
 
 Changed files:
 - public/app.js
-- public/styles.css
 - public/sw.js
 - public/VERSION.txt
 - VERSION
@@ -10,8 +10,6 @@ Changed files:
 - README.md
 - CHANGELOG.md
 
-Fixes:
-- coin transfer normalize error
-- sticker reveal labels use #001 numbering
-- Family Activity strict familyId isolation and legacy demo filtering
-- lighter Match-3 animation timings on mobile
+Fix:
+- Teddy's coin reminder is shown once per profile per eligibility cycle.
+- It resets only after the balance falls below 1000 coins.

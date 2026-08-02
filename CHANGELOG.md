@@ -1,5 +1,12 @@
 # Changelog
 
+## 11.1.2
+
+- Fixed repeated Teddy message “Монетки чекають”.
+- The coin reminder is now shown once per profile and eligibility cycle.
+- The reminder resets only after the balance drops below 1000 coins and later reaches the threshold again.
+- Updated PWA cache version.
+
 ## 11.1.0
 
 - Підготовлена стабільна база для майбутніх Full та Update-only архівів.

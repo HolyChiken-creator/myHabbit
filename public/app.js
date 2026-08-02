@@ -1671,10 +1671,22 @@
       companionAchievementQueue.push(a||{});processAchievementAnnouncements();
     }
     function contextualMessage(){
-      if(stateOf().muted)return;
+      const data=stateOf();
+      if(data.muted)return;
       const u=currentUser();if(!u)return;
+      const profileKey=accountId()||`${state.family?.id||state.family?.code||'family'}:${u.id||'user'}`;
+      const coinReminderState={...(data.coinReminderState||{})};
+      const hasShopCoins=Number(u.coins||0)>=1000;
+      if(!hasShopCoins&&coinReminderState[profileKey]){
+        delete coinReminderState[profileKey];
+        write({coinReminderState});
+      }
       if(Number(u.streak||0)>=7&&Number(u.streak||0)%7===0)return showBubble('Твоя серія росте 🔥',`Уже ${u.streak} днів. Це чудова послідовність!`,'<button data-cozy-action="close">Продовжуємо</button>');
-      if(Number(u.coins||0)>=1000)return showBubble('Монетки чекають 🪙','У тебе вже достатньо монеток, щоб зазирнути до магазину.','<button data-cozy-action="close">Добре</button>');
+      if(hasShopCoins&&!coinReminderState[profileKey]){
+        coinReminderState[profileKey]={shownAt:Date.now(),threshold:1000};
+        write({coinReminderState});
+        return showBubble('Монетки чекають 🪙','У тебе вже достатньо монеток, щоб зазирнути до магазину.','<button data-cozy-action="close">Добре</button>');
+      }
       showDailyTip(false);
     }
     function afterRender(){
