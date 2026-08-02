@@ -620,3 +620,41 @@
   .match3-combo{animation:none!important}
 }
 @keyframes m3-mobile-pop{to{transform:scale(.72);opacity:0}}
+
+
+/* 11.1.3 — portrait PWA and iOS keyboard-safe modals */
+:root{--app-viewport-height:100dvh;--app-viewport-width:100vw}
+html,body{min-height:100%;width:100%;max-width:100%;overflow-x:hidden}
+.app-layout,.landing{min-height:var(--app-viewport-height)}
+.modal-backdrop{
+  height:var(--app-viewport-height);
+  min-height:0;
+  overflow:hidden;
+  padding-top:max(12px,env(safe-area-inset-top));
+  padding-bottom:max(12px,env(safe-area-inset-bottom));
+}
+.modal{
+  max-height:calc(var(--app-viewport-height) - max(24px,env(safe-area-inset-top)) - max(24px,env(safe-area-inset-bottom)));
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+  scroll-padding-top:72px;
+  scroll-padding-bottom:140px;
+}
+.keyboard-open .modal-backdrop{align-items:start;padding-bottom:8px}
+.keyboard-open .modal{
+  max-height:calc(var(--app-viewport-height) - max(12px,env(safe-area-inset-top)) - 8px);
+  border-radius:18px;
+}
+.keyboard-open .modal-actions{
+  position:sticky;
+  bottom:0;
+  z-index:3;
+  margin-left:-2px;
+  margin-right:-2px;
+  padding:10px 2px max(6px,env(safe-area-inset-bottom));
+  background:linear-gradient(180deg,rgba(255,255,255,0),var(--card) 24%);
+}
+@media (orientation:landscape) and (max-height:520px){
+  .modal-backdrop{align-items:start}
+  .modal{max-height:calc(var(--app-viewport-height) - 16px);border-radius:16px}
+}

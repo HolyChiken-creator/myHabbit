@@ -1,15 +1,14 @@
-myHabbit 11.1.2 UPDATE ONLY
-Base version: 11.1.1
+myHabbit 11.1.3 update over 11.1.2
 
 Changed files:
-- public/app.js
-- public/sw.js
-- public/VERSION.txt
 - VERSION
 - package.json
-- README.md
 - CHANGELOG.md
+- public/VERSION.txt
+- public/manifest.webmanifest
+- public/index.html
+- public/styles.css
+- public/app.js
+- public/sw.js
 
-Fix:
-- Teddy's coin reminder is shown once per profile per eligibility cycle.
-- It resets only after the balance falls below 1000 coins.
+No files need deletion.

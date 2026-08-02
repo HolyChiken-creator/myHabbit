@@ -12,7 +12,7 @@
   const OFFLINE_STORE = 'library';
   const CONTENT_CACHE = 'myHabbitContentLibraryV1';
   const CONTENT_VERSION = '1.0.0';
-  const APP_VERSION = '10.1.2-localization-layout-fix';
+  const APP_VERSION = '11.1.3-portrait-keyboard-fix';
   const ACCOUNTS = 'myHabbitAccountsV1';
   const ACTIVE_ACCOUNT = 'myHabbitActiveAccountV1';
   const LOGOUT_TOMBSTONE = 'myHabbitLogoutTombstoneV1';
@@ -2185,6 +2185,42 @@
   window.addEventListener('popstate',()=>{route=new URLSearchParams(location.search).get('screen')||(auth?'dashboard':'landing');render();});
   window.addEventListener('pagehide',()=>queueDailySnapshot());
 
+  function initializeViewportAndOrientation(){
+    const rootStyle=document.documentElement.style;
+    const viewport=window.visualViewport;
+    let keyboardOpen=false;
+
+    const updateViewport=()=>{
+      const height=Math.max(320,Math.round(viewport?.height||window.innerHeight));
+      const width=Math.max(280,Math.round(viewport?.width||window.innerWidth));
+      rootStyle.setProperty('--app-viewport-height',`${height}px`);
+      rootStyle.setProperty('--app-viewport-width',`${width}px`);
+      const reducedBy=Math.max(0,window.innerHeight-height);
+      keyboardOpen=reducedBy>120;
+      document.documentElement.classList.toggle('keyboard-open',keyboardOpen);
+    };
+
+    const keepFocusedFieldVisible=event=>{
+      const target=event.target;
+      if(!target?.matches?.('input, textarea, select, [contenteditable="true"]'))return;
+      window.setTimeout(()=>target.scrollIntoView({block:'center',inline:'nearest',behavior:'smooth'}),180);
+    };
+
+    updateViewport();
+    viewport?.addEventListener('resize',updateViewport,{passive:true});
+    viewport?.addEventListener('scroll',updateViewport,{passive:true});
+    window.addEventListener('resize',updateViewport,{passive:true});
+    document.addEventListener('focusin',keepFocusedFieldVisible);
+
+    const standalone=window.matchMedia?.('(display-mode: standalone)')?.matches||window.navigator.standalone===true;
+    const lockPortrait=()=>{
+      if(!standalone||!screen.orientation?.lock)return;
+      screen.orientation.lock('portrait-primary').catch(()=>{});
+    };
+    lockPortrait();
+    document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')lockPortrait();});
+  }
+
   function startOwnerPresenceHeartbeat(){
     if(!auth?.token)return;
     let presenceId=localStorage.getItem('myhabbit_presence_device');
@@ -2200,6 +2236,7 @@
   (async()=>{
     try{
       updateSplash(10,'Запускаємо myHabbit…');
+      initializeViewportAndOrientation();
 
       // First paint uses local state only and happens before network, Telegram,
       // IndexedDB, content downloads, or Service Worker preparation.
