@@ -1,18 +1,21 @@
-myHabbit 11.2.1 update over 11.2.0
+myHabbit 11.2.2 UPDATE ONLY
+Base: myHabbit 11.2.1
 
 Changed:
 - public/app.js
 - public/index.html
-- public/styles.css
 - public/sw.js
 - public/VERSION.txt
+- src/worker.js
 - VERSION
 - package.json
+- README.md
 - CHANGELOG.md
 
 Added:
-- public/assets/stickers/christmas/christmas-01.json ... christmas-40.json
+- public/assets/stickers/easter/easter-01.json ... easter-62.json
 
 Fixes:
-- Owner seasonal sticker testing now refreshes the shop immediately.
-- Christmas Cozy now contains 40 animated stickers.
+- Christmas and Halloween definitions are now refreshed even when an existing saved collection has the same sticker count.
+- Egg Party now contains 62 animated stickers converted from the supplied TGS pack.
+- Existing sticker ownership remains preserved because sticker IDs stay stable.

@@ -286,8 +286,14 @@
     for(const fresh of stickerDefaults){
       const old=state.stickerCollections.find(x=>x.id===fresh.id);
       if(!old)state.stickerCollections.push(fresh);
-      else if(['cozy-cats','bunny-love'].includes(fresh.id)||!Array.isArray(old.stickers)||old.stickers.length<fresh.stickers.length){
-        old.title=fresh.title;old.season=fresh.season;old.reward=fresh.reward;old.stickers=fresh.stickers;
+      else {
+        // Always reconcile built-in collection definitions. Older saved sessions can
+        // have the correct sticker count but stale entries without media paths,
+        // which made Christmas and Halloween appear empty after an update.
+        old.title=fresh.title;
+        old.season=fresh.season;
+        old.reward=fresh.reward;
+        old.stickers=fresh.stickers.map(sticker=>({...sticker}));
       }
     }
     const boxDefaults=defaultStickerBoxes();
@@ -349,11 +355,11 @@
       ['sweet-life','Sweet Life','always','Нікнейм «Солодке життя»',35,['Полуничний торт','Капкейк із серцем','Тепле какао','Рожевий пончик','Морозиво-мрія','Цукерка дружби','Медове печиво','Вишневий десерт','Солодка хмаринка','Королівський торт']],
       ['christmas','Christmas Cozy','christmas','Фон «Різдвяна ніч»',40,['Котик у шапці','Тепла ялинка','Святкове какао','Різдвяний носок','Снігова куля','Подарунок із бантом','Пряниковий будиночок','Олень-друг','Різдвяна зірка','Диво опівночі']],
       ['halloween','Halloween Cute','halloween','Ефект «Магічні іскри»',50,['Котик-чарівник','Милий гарбуз','Добрий привид','Цукерки або обійми','Капелюх відьми','Кажанчик','Чарівне зілля','Чорний кіт','Гелловінський місяць','Король ночі']],
-      ['easter','Egg Party','easter','Рамка «Весняне диво»',50,['Писанка','Великодній кролик','Святковий кошик','Весняна квітка','Курчатко','Паска','Сонячний зайчик','Квітучий вінок','Весняне сонце','Великоднє диво']]
+      ['easter','Egg Party','easter','Рамка «Весняне диво»',62,['Писанка','Великодній кролик','Святковий кошик','Весняна квітка','Курчатко','Паска','Сонячний зайчик','Квітучий вінок','Весняне сонце','Великоднє диво']]
     ];
     return sets.map(([id,title,season,reward,count,names])=>{
-      const mediaFolder=['cozy-cats','bunny-love','sakura','sweet-life','halloween','christmas'].includes(id)?id:'';
-      const mediaExt=id==='christmas'?'json':(['sakura','sweet-life'].includes(id)?'webp':'webm');
+      const mediaFolder=['cozy-cats','bunny-love','sakura','sweet-life','halloween','christmas','easter'].includes(id)?id:'';
+      const mediaExt=['christmas','easter'].includes(id)?'json':(['sakura','sweet-life'].includes(id)?'webp':'webm');
       const stickers=buildStickerSet(id.replace(/-/g,'_'),count,names,mediaFolder,mediaExt);
       if(id==='bunny-love'){
         stickers.forEach((st,index)=>{
@@ -1373,7 +1379,7 @@
   function stickerVisual(sticker,size='normal'){
     if(sticker?.media){
       const media=escapeHtml(sticker.media);
-      if(/\.json(?:\?|$)/i.test(media))return `<div class="sticker-media sticker-media-${size} lottie-sticker" data-lottie-src="${media}" role="img" aria-label="${escapeHtml(sticker.name||'Стікер')}"><span class="lottie-fallback">🎄</span></div>`;
+      if(/\.json(?:\?|$)/i.test(media))return `<div class="sticker-media sticker-media-${size} lottie-sticker" data-lottie-src="${media}" role="img" aria-label="${escapeHtml(sticker.name||'Стікер')}"><span class="lottie-fallback">✨</span></div>`;
       if(/\.(webp|png|jpe?g|gif|avif)(?:\?|$)/i.test(media))return `<img class="sticker-media sticker-media-${size}" src="${media}" loading="lazy" decoding="async" alt="${escapeHtml(sticker.name||'Стікер')}">`;
       const animatedPoster=/\/assets\/stickers\/(bunny-love|halloween)\/\1-(\d{2})\.webm$/i.exec(media);
       const poster=animatedPoster?` poster="/assets/stickers/${animatedPoster[1]}/posters/${animatedPoster[1]}-${animatedPoster[2]}.webp"`:'';
@@ -1396,8 +1402,8 @@
         el.dataset.lottieReady='1';
       }catch(error){
         el.dataset.lottieReady='error';
-        el.innerHTML='<span class="lottie-fallback">🎄</span>';
-        console.warn('Christmas sticker render:',error);
+        el.innerHTML='<span class="lottie-fallback">✨</span>';
+        console.warn('Animated sticker render:',error);
       }
     });
   }

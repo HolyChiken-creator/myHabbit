@@ -1,4 +1,4 @@
-# 11.2.1
+# 11.2.2
 
 - Fixed Owner seasonal sticker testing toggle so the shop refreshes immediately.
 - Added 40 animated Christmas Cozy stickers from the supplied pack.
@@ -64,3 +64,9 @@
 - Sticker reveals now use collection numbers.
 - Family Activity strictly isolated by familyId and ignores legacy demo events.
 - Reduced Match-3 mobile animation load.
+
+## 11.2.2 — Egg Party & seasonal packs repair
+- Added 62 animated Egg Party stickers converted from Telegram TGS to Lottie JSON.
+- Fixed Christmas and Halloween collections not updating when an older saved session had the same item count but stale media paths.
+- Built-in sticker collection definitions now reconcile on every app upgrade while user ownership remains preserved by sticker ID.
+- Improved animated-sticker fallback and diagnostics.
