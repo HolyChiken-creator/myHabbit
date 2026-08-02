@@ -1,3 +1,11 @@
+## 11.3.2 — session persistence and maintenance hotfix
+
+- Removed the duplicate “Replay introduction” Teddy action; one manual tour remains.
+- Preserved earned achievements, featured achievements, level rewards, XP, levels, streaks, skills, and counters when a browser session pulls an older server snapshot.
+- Fixed Owner maintenance mode: it now saves visibly, creates an owner log entry, bumps the client cache revision, and shows a full maintenance screen to users.
+- Added automatic maintenance status re-check every 30 seconds and a manual “Check again” button.
+- Updated PWA cache to 11.3.2.
+
 ## 11.3.1 — complete English UI pass and mobile layout repair
 
 - Completed a broad English localization pass across dashboard, quests, Match-3, shop, collections, museum, achievements, admin panels, dialogs, buttons, badges, and dynamic progress text.

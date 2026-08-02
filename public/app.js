@@ -12,7 +12,7 @@
   const OFFLINE_STORE = 'library';
   const CONTENT_CACHE = 'myHabbitContentLibraryV1';
   const CONTENT_VERSION = '1.0.0';
-  const APP_VERSION = '11.3.1-complete-english-mobile-fix';
+  const APP_VERSION = '11.3.2-persistence-maintenance-fix';
   const PROJECT_ORIGIN_ID = 'mh-oh-2026-7f3c91';
   const PROJECT_CREATOR_REF = 'OH-WWG-2026';
   const ACCOUNTS = 'myHabbitAccountsV1';
@@ -49,7 +49,7 @@
     'Звіт за 30 днів':'30-day report','Звіт доступний лише адміністратору сімʼї':'Only the family administrator can export this report','Виконано справ':'Completed tasks','Середній XP':'Average XP','Розподіл активності за напрямами':'Activity by category','Візуальний тренд':'Visual trend','Виконана справа':'Completed task','Напрям':'Category','Підтверджено':'Confirmed','За останні 30 днів виконаних справ немає':'No completed tasks in the last 30 days',
     'Доступна завжди':'Always available','Відкрито Owner для тестування':'Unlocked by Owner for testing','Сезон закритий':'Season unavailable','Відкрити наступний':'Open next pack','Переглянути всю колекцію':'View full collection','Останні відкриті стікери':'Recently unlocked stickers','Колекція порожня':'Your collection is empty',
     'Не вдалося запустити myHabbit':'myHabbit could not start','Запускаємо myHabbit…':'Starting myHabbit…','Готуємо ваш простір…':'Preparing your space…','Завантажуємо локальні дані…':'Loading local data…','Майже готово…':'Almost ready…','Готово ✨':'Ready ✨',
-    'Привіт! Я поруч 💚':'Hi! I’m here 💚','Я нічого не пояснюватиму без запиту. Обери, що тобі потрібно.':'I won’t interrupt or explain anything unless you ask. Choose what you need.','Почати тур':'Start the tour','Порада дня':'Daily tip','Повторити вступ':'Replay introduction','Автоматичні підказки вимкнені':'Automatic tips are off','Тедик працює лише за запитом':'Teddy only speaks when asked','Екскурсію можна запустити вручну в будь-який момент.':'You can start the tour manually at any time.','Порада дня 🌱':'Daily tip 🌱','Дякую':'Thanks','Екскурсію зупинено':'Tour stopped','Тур завжди можна запустити знову через ведмедика.':'You can restart the tour anytime from Teddy.','Усе готово ✨':'All set ✨','Тепер можна спокійно досліджувати myHabbit. Я залишуся поруч, але не заважатиму.':'You can explore myHabbit at your own pace. I’ll stay nearby without interrupting.','Почати':'Start','Пропустити':'Skip','Повторити знайомство':'Replay introduction','Закрити Тедика':'Close Teddy','Відкрити Тедика':'Open Teddy',
+    'Привіт! Я поруч 💚':'Hi! I’m here 💚','Я нічого не пояснюватиму без запиту. Обери, що тобі потрібно.':'I won’t interrupt or explain anything unless you ask. Choose what you need.','Почати тур':'Start the tour','Порада дня':'Daily tip','Автоматичні підказки вимкнені':'Automatic tips are off','Тедик працює лише за запитом':'Teddy only speaks when asked','Екскурсію можна запустити вручну в будь-який момент.':'You can start the tour manually at any time.','Порада дня 🌱':'Daily tip 🌱','Дякую':'Thanks','Екскурсію зупинено':'Tour stopped','Тур завжди можна запустити знову через ведмедика.':'You can restart the tour anytime from Teddy.','Усе готово ✨':'All set ✨','Тепер можна спокійно досліджувати myHabbit. Я залишуся поруч, але не заважатиму.':'You can explore myHabbit at your own pace. I’ll stay nearby without interrupting.','Почати':'Start','Пропустити':'Skip','Повторити знайомство':'Replay introduction','Закрити Тедика':'Close Teddy','Відкрити Тедика':'Open Teddy',
     'Admin sections':'Admin sections','Admin corner':'Family Management','Shop':'Shop','Collections':'Sticker Collection','Museum':'Personal Museum','Achievements':'Achievements',
     'Контролюйте квести, магазин і розмір сімʼї.':'Manage quests, the shop, and family settings.','У вас 4 active quests і нові можливості в магазині.':'You have 4 active quests and new rewards waiting in the shop.',
     'Застелити ліжко':'Make the bed','Почати день з маленького порядку':'Start the day with a small act of tidiness','Прогулянка 20 хвилин':'Take a 20-minute walk','Вийти на свіже повітря та пройтися':'Get some fresh air and take a walk','Прочитати 10 сторінок':'Read 10 pages','Продовжити поточну книгу':'Continue your current book','Спільний':'Shared','Тільки вдвох':'For two','Лімітований':'Limited','Завершити':'Complete','Забрати':'Claim Reward',
@@ -741,6 +741,25 @@
   let authMode = (telegramInitData || inviteToken) ? 'join' : 'create';
   let inviteInfo = null;
   let publicUpdateName='myHabbit beta';
+  let maintenanceActive=false;
+  function showMaintenanceScreen(message){
+    maintenanceActive=true;
+    document.body.classList.remove('menu-open');
+    document.getElementById('myHabbitMaintenance')?.remove();
+    const safe=escapeHtml(message||'Ми обережно оновлюємо myHabbit. Поверніться трохи пізніше.');
+    document.body.insertAdjacentHTML('beforeend',`<div id="myHabbitMaintenance" style="position:fixed;inset:0;z-index:99999;background:linear-gradient(160deg,#fff8ef,#f2edff);display:grid;place-items:center;padding:24px"><section style="width:min(520px,100%);background:rgba(255,255,255,.94);border:1px solid #eadfda;border-radius:28px;padding:30px;text-align:center;box-shadow:0 24px 70px rgba(64,49,82,.16)"><div style="font-size:58px">🐻</div><h1 style="margin:12px 0 8px">${appLanguage==='en'?'A short cozy pause':'Коротка затишна пауза'}</h1><p style="font-size:17px;color:#737887;line-height:1.55">${safe}</p><button id="maintenanceRetry" class="btn primary" style="margin-top:12px">${appLanguage==='en'?'Check again':'Перевірити ще раз'}</button><small style="display:block;margin-top:16px;color:#9a90a1">myHabbit · maintenance mode</small></section></div>`);
+    document.getElementById('maintenanceRetry')?.addEventListener('click',()=>checkPublicMeta(true));
+  }
+  function hideMaintenanceScreen(){maintenanceActive=false;document.getElementById('myHabbitMaintenance')?.remove();}
+  async function checkPublicMeta(forceRender=false){
+    try{
+      const m=await fetch('/api/app-meta',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(new Error('meta')));
+      if(m?.maintenance){showMaintenanceScreen(m.maintenanceMessage);return m;}
+      const wasActive=maintenanceActive;hideMaintenanceScreen();
+      if(wasActive&&forceRender)render();
+      return m;
+    }catch{return null;}
+  }
 
   // Stage 7: game-style achievement notifications. Items are shown one at a time,
   // remain visible for five seconds, then leave to the right.
@@ -970,6 +989,25 @@
     return true;
   }
   function mergeUniqueActivity(primary=[],secondary=[]){return [...new Set([...(primary||[]),...(secondary||[])])].slice(0,100);}
+  function mergeLocalUserProgress(localUsers=[],remoteUsers=[]){
+    const localById=new Map((localUsers||[]).map(u=>[u.id,u]));
+    return (remoteUsers||[]).map(remote=>{
+      const local=localById.get(remote.id);
+      if(!local)return remote;
+      const merged={...remote};
+      merged.achievements=[...new Set([...(remote.achievements||[]),...(local.achievements||[])])];
+      merged.claimedLevelRewards=[...new Set([...(remote.claimedLevelRewards||[]),...(local.claimedLevelRewards||[])])];
+      merged.featuredAchievements=[...new Set([...(local.featuredAchievements||[]),...(remote.featuredAchievements||[])])].filter(id=>merged.achievements.includes(id)).slice(0,3);
+      merged.level=Math.max(Number(remote.level||1),Number(local.level||1));
+      merged.xp=Math.max(Number(remote.xp||0),Number(local.xp||0));
+      merged.streak=Math.max(Number(remote.streak||0),Number(local.streak||0));
+      merged.stats={...(remote.stats||{})};
+      for(const [key,value] of Object.entries(local.stats||{}))merged.stats[key]=Math.max(Number(merged.stats[key]||0),Number(value||0));
+      merged.skills={...(remote.skills||{})};
+      for(const [key,value] of Object.entries(local.skills||{}))merged.skills[key]=Math.max(Number(merged.skills[key]||0),Number(value||0));
+      return merged;
+    });
+  }
   function maintainDailyActionRetention(){
     state.meta=state.meta||{};const day=localDay();
     if(state.meta.actionRetentionDay&&state.meta.actionRetentionDay!==day){
@@ -1030,8 +1068,11 @@
       const data=await api('/api/family/state');
       if(!data.state)return false;
       const changed=stateSignature(data.state)!==stateSignature(state);
+      const localUsers=clone(state.users||[]);
       const localDayBefore=localDay(),localHistory=(state.history||[]).slice(),localActivity=new Map((state.users||[]).map(u=>[u.id,(u.activity||[]).slice()]));
-      state=data.state;serverRevision=Number(data.revision||serverRevision||0);normalizeState();
+      state=data.state;
+      state.users=mergeLocalUserProgress(localUsers,state.users||[]);
+      serverRevision=Number(data.revision||serverRevision||0);normalizeState();
       if((state.meta?.actionRetentionDay||localDayBefore)===localDayBefore){state.history=mergeUniqueActivity(localHistory,state.history);(state.users||[]).forEach(u=>{u.activity=mergeUniqueActivity(localActivity.get(u.id)||[],u.activity||[]);});}
       observeRewardChanges();
       lastFamilyPullAt=Date.now();
@@ -1785,12 +1826,11 @@
       clearHighlight();
     }
     function openMenu(){
-      showBubble('Привіт! Я поруч 💚','Я нічого не пояснюватиму без запиту. Обери, що тобі потрібно.',`<button data-cozy-action="tour">🎓 Почати тур</button><button data-cozy-action="tip">🌱 Порада дня</button><button data-cozy-action="intro">↻ Повторити вступ</button>`);
+      showBubble('Привіт! Я поруч 💚','Я нічого не пояснюватиму без запиту. Обери, що тобі потрібно.',`<button data-cozy-action="tour">🎓 Почати тур</button><button data-cozy-action="tip">🌱 Порада дня</button>`);
     }
     function handle(name){
       if(name==='tour')startTour(true);
       if(name==='tip')showDailyTip(true);
-      if(name==='intro'){startTour(true);}
       if(name==='next')nextStep();
       if(name==='prev'){stepIndex=Math.max(0,stepIndex-2);nextStep();}
       if(name==='skip'){finishTour(false);}
@@ -2456,7 +2496,7 @@
         try{await loadInviteInfo();render();}catch(e){console.warn('Invite:',e);}
       }
       try{await loadContentLibrary();render();}catch(e){console.warn('Content library:',e);}
-      try{const m=await fetch('/api/app-meta',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject());if(m?.updateName){publicUpdateName=m.updateName;document.querySelectorAll('.release-label').forEach(x=>x.textContent=publicUpdateName);}const previousSeasonalTesting=ownerSeasonalStickerTesting;ownerSeasonalStickerTesting=Boolean(m?.seasonalStickerTesting);if(previousSeasonalTesting!==ownerSeasonalStickerTesting)render();const revision=Number(m?.cacheRevision||1),seen=Number(localStorage.getItem('myHabbitCacheRevisionV1')||0);if(!seen){localStorage.setItem('myHabbitCacheRevisionV1',String(revision));}else if(revision>seen){localStorage.setItem('myHabbitCacheRevisionV1',String(revision));try{const regs=await navigator.serviceWorker?.getRegistrations?.();await Promise.all((regs||[]).map(async r=>{try{await r.update()}catch{};r.waiting?.postMessage({type:'SKIP_WAITING'});}));}catch{}try{const keys=await caches.keys();await Promise.all(keys.filter(k=>k.startsWith('myhabbit-')).map(k=>caches.delete(k)));}catch{}location.reload();return;}}catch(e){console.warn('App meta:',e);}
+      try{const m=await checkPublicMeta();if(m?.updateName){publicUpdateName=m.updateName;document.querySelectorAll('.release-label').forEach(x=>x.textContent=publicUpdateName);}const previousSeasonalTesting=ownerSeasonalStickerTesting;ownerSeasonalStickerTesting=Boolean(m?.seasonalStickerTesting);if(previousSeasonalTesting!==ownerSeasonalStickerTesting&&!m?.maintenance)render();const revision=Number(m?.cacheRevision||1),seen=Number(localStorage.getItem('myHabbitCacheRevisionV1')||0);if(!seen){localStorage.setItem('myHabbitCacheRevisionV1',String(revision));}else if(revision>seen){localStorage.setItem('myHabbitCacheRevisionV1',String(revision));try{const regs=await navigator.serviceWorker?.getRegistrations?.();await Promise.all((regs||[]).map(async r=>{try{await r.update()}catch{};r.waiting?.postMessage({type:'SKIP_WAITING'});}));}catch{}try{const keys=await caches.keys();await Promise.all(keys.filter(k=>k.startsWith('myhabbit-')).map(k=>caches.delete(k)));}catch{}location.reload();return;}setInterval(()=>checkPublicMeta(false),30000);}catch(e){console.warn('App meta:',e);}
       if(auth?.token){
         startLiveFamilyRefresh();
         startOwnerPresenceHeartbeat();

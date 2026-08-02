@@ -1,5 +1,5 @@
-const APP_VERSION = '10.1.8-clean-rebuild';
-const DEPLOY_MARKER = 'myhabbit-clean-rebuild-2026-07-31';
+const APP_VERSION = '11.3.2-persistence-maintenance-fix';
+const DEPLOY_MARKER = 'myhabbit-11-3-2-2026-08-02';
 const DEFAULT_OWNER_PANEL_SECRET = 'TedyK-Owner-9472!';
 const JSON_HEADERS = {
   'content-type': 'application/json; charset=utf-8',
@@ -1996,7 +1996,15 @@ export class TelegramStateV2 {
   async ownerMetaUpdate(body) {
     const updateName = String(body?.updateName || '').trim().slice(0, 80);
     if (updateName) await this.state.storage.put('owner-update-name', updateName);
-    if (typeof body?.maintenance === 'boolean') await this.state.storage.put('owner-maintenance-enabled', body.maintenance);
+    if (typeof body?.maintenance === 'boolean') {
+      const previousMaintenance = Boolean(await this.state.storage.get('owner-maintenance-enabled') || false);
+      await this.state.storage.put('owner-maintenance-enabled', body.maintenance);
+      if (previousMaintenance !== body.maintenance) {
+        const previousRevision = Number(await this.state.storage.get('owner-cache-revision') || 1);
+        await this.state.storage.put('owner-cache-revision', previousRevision + 1);
+        await this.recordOwnerAction('maintenance-mode', true, body.maintenance ? 'Режим обслуговування увімкнено' : 'Режим обслуговування вимкнено', { enabled: body.maintenance });
+      }
+    }
     if (typeof body?.maintenanceMessage === 'string') await this.state.storage.put('owner-maintenance-message', String(body.maintenanceMessage).trim().slice(0, 240));
     if (typeof body?.seasonalStickerTesting === 'boolean') {
       await this.state.storage.put('owner-seasonal-sticker-testing', body.seasonalStickerTesting);
@@ -2250,7 +2258,7 @@ $('forceClientUpdate').onclick=async()=>{if(!confirm('Примусово очи�
 $('openStickerTesting').onclick=()=>{const section=$('sticker-testing-section');section?.scrollIntoView({behavior:'smooth',block:'center'});section?.animate([{transform:'scale(1)'},{transform:'scale(1.015)'},{transform:'scale(1)'}],{duration:500});};
 $('saveSeasonalStickerTesting').onclick=async()=>{const b=$('saveSeasonalStickerTesting');busy(b,true,'Застосувати тестовий доступ');try{const enabled=$('seasonalStickerTesting').checked;const d=await api('/api/owner/meta',{method:'PUT',body:JSON.stringify({seasonalStickerTesting:enabled,forceCacheRefresh:true})});$('seasonalStickerTestingResult').textContent=d.seasonalStickerTesting?'Сезонні набори відкрито для тестування':'Тестовий доступ вимкнено';await loadActionLog()}catch(e){$('seasonalStickerTestingResult').textContent=e.message}finally{busy(b,false,'Застосувати тестовий доступ')}};
 $('saveUpdateName').onclick=async()=>{const b=$('saveUpdateName');const updateName=$('updateName').value.trim();if(!updateName){$('updateNameResult').textContent='Вкажіть назву оновлення';return}busy(b,true,'Зберегти назву');try{const d=await api('/api/owner/meta',{method:'PUT',body:JSON.stringify({updateName})});$('updateNameResult').textContent='Збережено: '+d.updateName}catch(e){$('updateNameResult').textContent=e.message}finally{busy(b,false,'Зберегти назву')}};
-$('saveMaintenance').onclick=async()=>{const b=$('saveMaintenance');busy(b,true,'Застосувати режим');try{const d=await api('/api/owner/meta',{method:'PUT',body:JSON.stringify({maintenance:$('maintenanceEnabled').checked,maintenanceMessage:$('maintenanceMessage').value.trim()})});$('maintenanceResult').textContent=d.maintenance?'Режим обслуговування увімкнено':'Режим обслуговування вимкнено'}catch(e){$('maintenanceResult').textContent=e.message}finally{busy(b,false,'Застосувати режим')}};
+$('saveMaintenance').onclick=async()=>{const b=$('saveMaintenance');busy(b,true,'Застосувати режим');try{const d=await api('/api/owner/meta',{method:'PUT',body:JSON.stringify({maintenance:$('maintenanceEnabled').checked,maintenanceMessage:$('maintenanceMessage').value.trim()})});$('maintenanceEnabled').checked=!!d.maintenance;$('maintenanceMessage').value=d.maintenanceMessage||'';$('maintenanceResult').textContent=d.maintenance?'Режим обслуговування увімкнено. Користувачі побачать екран паузи.':'Режим обслуговування вимкнено. Застосунок знову доступний.';await loadActionLog()}catch(e){$('maintenanceResult').textContent=e.message}finally{busy(b,false,'Застосувати режим')}};
 $('wipe').onclick=async()=>{const phrase=$('wipeConfirm').value.trim();if(phrase!=='WIPE MYHABBIT'){ $('wipeResult').textContent='Введіть точну фразу WIPE MYHABBIT';return}if(!confirm('ОСТАННЄ ПОПЕРЕДЖЕННЯ: видалити всі серверні сімʼї та профілі без можливості відновлення?'))return;const b=$('wipe');busy(b,true,'Скинути весь сервер до нуля');try{const d=await api('/api/owner/wipe-v2',{method:'POST',body:JSON.stringify({confirm:phrase})});$('wipeConfirm').value='';$('wipeResult').textContent='Сервер очищено. Видалено '+d.deletedKeys+' записів.';await load()}catch(e){$('wipeResult').textContent=e.message}finally{busy(b,false,'Скинути весь сервер до нуля');await loadActionLog()}};
 $('logout').onclick=async()=>{await api('/api/owner/logout',{method:'POST'});location.reload()};load();setInterval(load,30000);
 </script></body></html>`, { headers: { 'content-type':'text/html; charset=utf-8','cache-control':'no-store','x-robots-tag':'noindex, nofollow','content-security-policy':"default-src 'self'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; frame-ancestors 'none'" } });

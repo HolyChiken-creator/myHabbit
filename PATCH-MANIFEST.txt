@@ -1,10 +1,15 @@
-myHabbit 11.3.1 update over 11.2.5
+myHabbit 11.3.2 update over 11.3.1
 
-Changed/new files:
-package.json
-VERSION
-CHANGELOG.md
-public/styles.css
-public/VERSION.txt
-public/sw.js
-public/app.js
+Changed files:
+- public/app.js
+- public/sw.js
+- public/VERSION.txt
+- src/worker.js
+- VERSION
+- package.json
+- CHANGELOG.md
+
+Fixes:
+- Removed duplicate Teddy intro action.
+- Preserved achievements and progress across browser refresh/server pull.
+- Fixed Owner maintenance mode and added user maintenance screen.

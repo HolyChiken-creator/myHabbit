@@ -1,5 +1,5 @@
-const CACHE = 'myhabbit-11.3.1';
-const META_CACHE = 'myhabbit-11.3.0-teddy-manual';
+const CACHE = 'myhabbit-11.3.2';
+const META_CACHE = 'myhabbit-11.3.2-persistence-maintenance';
 const CORE = [
   '/', '/index.html', '/styles.css?v=11.2.3-family-style', '/app.js?v=11.2.3-family-style',
   '/manifest.webmanifest?v=11.2.3', '/assets/myhabbit-brand.webp?v=10.1.8', '/assets/welcome-family-clean.webp',
