@@ -1,14 +1,5 @@
-myHabbit 11.1.4 UPDATE-ONLY
-Base: 11.1.3
-
-Changed files:
-- public/app.js
-- public/index.html
-- public/sw.js
-- public/VERSION.txt
-- package.json
-- VERSION
-- CHANGELOG.md
-
-Added files:
-- public/assets/stickers/bunny-love/bunny-love-41.webp ... bunny-love-60.webp
+myHabbit 11.1.5 update over 11.1.4
+- Owner-only seasonal sticker testing switch
+- Egg Party rename
+- day + month date format
+- Bunny Love poster previews for 40 animated stickers

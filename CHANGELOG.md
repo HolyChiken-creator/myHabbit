@@ -1,11 +1,18 @@
-# myHabbit 11.1.4
+# 11.1.5
+
+- Owner-only seasonal sticker testing switch.
+- Easter Bunny renamed to Egg Party.
+- Dates use day + month without year.
+- Bunny Love animated stickers now include poster previews to prevent empty album cells.
+
+# myHabbit 11.1.5
 
 - Bunny Love розширено з 40 до 60 стікерів.
 - Додано 20 нових статичних WebP-стікерів без зміни існуючих 40 анімованих.
 - Нові стікери отримали нумерацію #041–#060 для колекції та подарунків.
 - Оновлено кеш PWA.
 
-# myHabbit 11.1.3
+# myHabbit 11.1.5
 
 - Зафіксовано портретну орієнтацію для встановленої PWA.
 - Виправлено висоту модальних вікон при відкритті клавіатури на iPhone/iPad.
@@ -15,7 +22,7 @@
 
 # Changelog
 
-## 11.1.2
+## 11.1.5
 
 - Fixed repeated Teddy message “Монетки чекають”.
 - The coin reminder is now shown once per profile and eligibility cycle.
