@@ -1,3 +1,10 @@
+# 11.2.1
+
+- Fixed Owner seasonal sticker testing toggle so the shop refreshes immediately.
+- Added 40 animated Christmas Cozy stickers from the supplied pack.
+- Added Lottie rendering with safe visual fallback.
+- Updated PWA cache revision.
+
 # 11.2.0
 
 - У музеї показуються лише 5 останніх стікерів на телефоні та 10 на великих екранах.

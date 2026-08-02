@@ -352,8 +352,9 @@
       ['easter','Egg Party','easter','Рамка «Весняне диво»',50,['Писанка','Великодній кролик','Святковий кошик','Весняна квітка','Курчатко','Паска','Сонячний зайчик','Квітучий вінок','Весняне сонце','Великоднє диво']]
     ];
     return sets.map(([id,title,season,reward,count,names])=>{
-      const mediaFolder=['cozy-cats','bunny-love','sakura','sweet-life','halloween'].includes(id)?id:'';
-      const stickers=buildStickerSet(id.replace(/-/g,'_'),count,names,mediaFolder,['sakura','sweet-life'].includes(id)?'webp':'webm');
+      const mediaFolder=['cozy-cats','bunny-love','sakura','sweet-life','halloween','christmas'].includes(id)?id:'';
+      const mediaExt=id==='christmas'?'json':(['sakura','sweet-life'].includes(id)?'webp':'webm');
+      const stickers=buildStickerSet(id.replace(/-/g,'_'),count,names,mediaFolder,mediaExt);
       if(id==='bunny-love'){
         stickers.forEach((st,index)=>{
           if(index>=40)st.media=`/assets/stickers/bunny-love/bunny-love-${String(index+1).padStart(2,'0')}.webp`;
@@ -1370,18 +1371,45 @@
     'easter':{icon:'🥚',tone:'spring',subtitle:'Весняні знахідки та сонячні сюрпризи'}
   }[id]||{icon:'✦',tone:'lavender',subtitle:'Особлива колекція myHabbit'};}
   function stickerVisual(sticker,size='normal'){
-    if(sticker?.media){const media=escapeHtml(sticker.media);if(/\.(webp|png|jpe?g|gif|avif)(?:\?|$)/i.test(media))return `<img class="sticker-media sticker-media-${size}" src="${media}" loading="lazy" decoding="async" alt="${escapeHtml(sticker.name||'Стікер')}">`;const animatedPoster=/\/assets\/stickers\/(bunny-love|halloween)\/\1-(\d{2})\.webm$/i.exec(media);const poster=animatedPoster?` poster="/assets/stickers/${animatedPoster[1]}/posters/${animatedPoster[1]}-${animatedPoster[2]}.webp"`:'';return `<video class="sticker-media sticker-media-${size}" src="${media}"${poster} autoplay loop muted playsinline preload="metadata" aria-label="${escapeHtml(sticker.name||'Стікер')}"></video>`;}
+    if(sticker?.media){
+      const media=escapeHtml(sticker.media);
+      if(/\.json(?:\?|$)/i.test(media))return `<div class="sticker-media sticker-media-${size} lottie-sticker" data-lottie-src="${media}" role="img" aria-label="${escapeHtml(sticker.name||'Стікер')}"><span class="lottie-fallback">🎄</span></div>`;
+      if(/\.(webp|png|jpe?g|gif|avif)(?:\?|$)/i.test(media))return `<img class="sticker-media sticker-media-${size}" src="${media}" loading="lazy" decoding="async" alt="${escapeHtml(sticker.name||'Стікер')}">`;
+      const animatedPoster=/\/assets\/stickers\/(bunny-love|halloween)\/\1-(\d{2})\.webm$/i.exec(media);
+      const poster=animatedPoster?` poster="/assets/stickers/${animatedPoster[1]}/posters/${animatedPoster[1]}-${animatedPoster[2]}.webp"`:'';
+      return `<video class="sticker-media sticker-media-${size}" src="${media}"${poster} autoplay loop muted playsinline preload="metadata" aria-label="${escapeHtml(sticker.name||'Стікер')}"></video>`;
+    }
     return `<span class="sticker-fallback">${stickerGlyph(sticker?.id||'')}</span>`;
+  }
+  function hydrateLottieStickers(root=document){
+    const nodes=[...root.querySelectorAll('.lottie-sticker[data-lottie-src]:not([data-lottie-ready])')];
+    if(!nodes.length)return;
+    if(!window.lottie){nodes.forEach(el=>el.classList.add('lottie-unavailable'));return;}
+    nodes.forEach(async el=>{
+      el.dataset.lottieReady='loading';
+      try{
+        const response=await fetch(el.dataset.lottieSrc,{cache:'force-cache'});
+        if(!response.ok)throw new Error(`Sticker ${response.status}`);
+        const animationData=await response.json();
+        el.textContent='';
+        el._myHabbitLottie=window.lottie.loadAnimation({container:el,renderer:'svg',loop:true,autoplay:true,animationData,rendererSettings:{progressiveLoad:true,preserveAspectRatio:'xMidYMid meet'}});
+        el.dataset.lottieReady='1';
+      }catch(error){
+        el.dataset.lottieReady='error';
+        el.innerHTML='<span class="lottie-fallback">🎄</span>';
+        console.warn('Christmas sticker render:',error);
+      }
+    });
   }
   function stickerGlyph(id){if(id.includes('cat'))return '🐱';if(id.includes('bunny'))return '🐰';if(id.includes('tree'))return '🎄';if(id.includes('cocoa')||id.includes('coffee')||id.includes('tea'))return '☕';if(id.includes('book'))return '📖';if(id.includes('sleep')||id.includes('moon'))return '🌙';if(id.includes('star')||id.includes('sun'))return '⭐';if(id.includes('crown'))return '👑';if(id.includes('flower'))return '🌸';if(id.includes('pumpkin'))return '🎃';if(id.includes('ghost'))return '👻';if(id.includes('egg'))return '🥚';if(id.includes('basket'))return '🧺';return '✨';}
   function collectionsScreen(){const u=currentUser();const html=state.stickerCollections.map(c=>{const season=seasonInfo(c.season),owned=c.stickers.filter(x=>stickerCount(u,x.id)>0).length,pct=Math.round(owned/c.stickers.length*100),theme=collectionTheme(c.id);return `<button class="collection-book-card tone-${theme.tone}" data-open-album="${c.id}"><span class="book-spine"></span><div class="book-emblem">${theme.icon}</div><span class="eyebrow">${season.active?'Доступна зараз':season.label}</span><h2>${c.title}</h2><p>${theme.subtitle}</p><div class="book-progress-row"><strong>${owned} / ${c.stickers.length}</strong><span>${pct}%</span></div><div class="progress"><i style="width:${pct}%"></i></div><small>Натисніть, щоб відкрити альбом</small></button>`}).join('');return shell(`<div class="collection-library">${html}</div>`,'Колекції','Невідомі стікери залишаються повністю прихованими до першого отримання.');}
 
   function albumMarkup(collectionId,highlightId=''){const u=currentUser(),c=state.stickerCollections.find(x=>x.id===collectionId);if(!c)return '';const theme=collectionTheme(c.id),owned=c.stickers.filter(x=>stickerCount(u,x.id)>0).length,pct=Math.round(owned/c.stickers.length*100);return `<div class="album-backdrop" data-album-root><div class="album-shell tone-${theme.tone}"><button class="album-close" data-close-album aria-label="Закрити">×</button><div class="album-cover-panel"><span class="album-cover-icon">${theme.icon}</span><span class="eyebrow">Колекційний альбом</span><h2>${c.title}</h2><p>${owned} / ${c.stickers.length} відкрито · ${pct}%</p><div class="progress"><i style="width:${pct}%"></i></div></div><div class="album-pages"><section class="album-page left-page"><div class="page-title"><strong>${c.title}</strong><small>Сторінка 1</small></div><div class="album-grid">${c.stickers.slice(0,Math.ceil(c.stickers.length/2)).map((x,i)=>albumCell(x,i,highlightId)).join('')}</div></section><section class="album-page right-page"><div class="page-title"><strong>Продовження</strong><small>Сторінка 2</small></div><div class="album-grid">${c.stickers.slice(Math.ceil(c.stickers.length/2)).map((x,i)=>albumCell(x,i+Math.ceil(c.stickers.length/2),highlightId)).join('')}</div></section></div></div></div>`;}
   function albumCell(sticker,index,highlightId){const count=stickerCount(currentUser(),sticker.id),owned=count>0,number=`#${String(index+1).padStart(3,'0')}`;return `<article class="album-slot ${owned?'owned':'locked'} ${highlightId===sticker.id?'new-highlight':''}"><span class="slot-number">${number}</span><div class="slot-art">${owned?stickerVisual(sticker,'album'):'<span class="slot-lock">?</span>'}</div>${owned?`<strong>${number}</strong><small>${rarityLabel(sticker.rarity)}${count>1?` · ×${count}`:''}</small>`:`<strong>${number}</strong><small>Відкриється після отримання</small>`}</article>`;}
-  function openAlbum(collectionId,highlightId=''){document.querySelector('[data-album-root]')?.remove();document.body.insertAdjacentHTML('beforeend',albumMarkup(collectionId,highlightId));requestAnimationFrame(()=>document.querySelector('[data-album-root]')?.classList.add('open'));bindAlbum();}
+  function openAlbum(collectionId,highlightId=''){document.querySelector('[data-album-root]')?.remove();document.body.insertAdjacentHTML('beforeend',albumMarkup(collectionId,highlightId));const root=document.querySelector('[data-album-root]');hydrateLottieStickers(root||document);requestAnimationFrame(()=>root?.classList.add('open'));bindAlbum();}
   function bindAlbum(){document.querySelectorAll('[data-close-album]').forEach(x=>x.addEventListener('click',()=>x.closest('[data-album-root]')?.remove()));document.querySelector('[data-album-root]')?.addEventListener('click',e=>{if(e.target.matches('[data-album-root]'))e.currentTarget.remove();});}
   function revealMarkup(sticker,c,isNew,dust=0,box=null){const index=Math.max(0,(c?.stickers||[]).findIndex(x=>x.id===sticker.id)),number=`#${String(index+1).padStart(3,'0')}`,u=currentUser(),canOpenNext=Boolean(box&&seasonInfo(c?.season).active&&Number(u?.coins||0)>=Number(box.price||0));return `<div class="sticker-reveal-backdrop rarity-${sticker.rarity}" data-reveal-root><div class="reveal-stage"><div class="reveal-box">📦</div><div class="reveal-card"><div class="reveal-card-inner"><div class="reveal-card-back">✦</div><div class="reveal-card-front"><span class="reveal-rarity">${rarityLabel(sticker.rarity)}</span><div class="reveal-art">${stickerVisual(sticker,'reveal')}</div><h2>${number}</h2><p>${escapeHtml(c?.title||'Стікерпак')}</p>${isNew?'<strong class="new-ribbon">NEW!</strong>':`<strong class="duplicate-ribbon">Дублікат · +${dust} пилу</strong>`}</div></div></div><div class="reveal-actions">${canOpenNext?`<button class="btn primary reveal-next-box" data-reveal-next-box="${box.id}">Відкрити ще один · ${format(box.price)} 🪙</button>`:''}<button class="btn soft reveal-continue" data-reveal-continue data-collection="${c.id}" data-sticker="${sticker.id}">${isNew?'Показати в альбомі':'Закрити'}</button></div></div></div>`;}
-  function showStickerReveal(sticker,c,isNew,dust=0,box=null){setTimeout(()=>{playCozySound('reveal','important',sticker?.rarity||'common');cozyHaptic(['legendary','mythic'].includes(sticker?.rarity)?'strong':'medium');},260);document.body.insertAdjacentHTML('beforeend',revealMarkup(sticker,c,isNew,dust,box));const root=document.querySelector('[data-reveal-root]');requestAnimationFrame(()=>root?.classList.add('play'));root?.querySelector('[data-reveal-continue]')?.addEventListener('click',e=>{root.remove();if(isNew)openAlbum(e.currentTarget.dataset.collection,e.currentTarget.dataset.sticker);});root?.querySelector('[data-reveal-next-box]')?.addEventListener('click',e=>{const nextBox=e.currentTarget.dataset.revealNextBox;root.remove();setTimeout(()=>openStickerBox(nextBox),80);});}
+  function showStickerReveal(sticker,c,isNew,dust=0,box=null){setTimeout(()=>{playCozySound('reveal','important',sticker?.rarity||'common');cozyHaptic(['legendary','mythic'].includes(sticker?.rarity)?'strong':'medium');},260);document.body.insertAdjacentHTML('beforeend',revealMarkup(sticker,c,isNew,dust,box));const root=document.querySelector('[data-reveal-root]');hydrateLottieStickers(root||document);requestAnimationFrame(()=>root?.classList.add('play'));root?.querySelector('[data-reveal-continue]')?.addEventListener('click',e=>{root.remove();if(isNew)openAlbum(e.currentTarget.dataset.collection,e.currentTarget.dataset.sticker);});root?.querySelector('[data-reveal-next-box]')?.addEventListener('click',e=>{const nextBox=e.currentTarget.dataset.revealNextBox;root.remove();setTimeout(()=>openStickerBox(nextBox),80);});}
 
   function displayName(u){const effect=cosmetic(u.equipped?.nicknameEffect);return `<span class="animated-name nick-${effect?.asset||'none'}">${(u.name||'').replace(/[<>&]/g,'')}</span>`;}
   function memberCard(u){const af=cosmetic(u.equipped?.animatedFrame);return `<button type="button" class="member member-button cozy-member animated-frame-${af?.asset||'none'}" data-member="${u.id}"><div class="member-head"><div class="member-initial" aria-hidden="true">${(u.name||'?').trim().slice(0,1).toUpperCase()}</div><div><h3 style="margin:0">${displayName(u)} ${u.role==='admin'?'<span class="admin-badge">Берегиня простору</span>':''}</h3><small>${u.level} сходинка · ${u.streak} днів у ритмі</small></div><span class="telegram-dot ${u.telegramLinked?'linked':''}" title="${u.telegramLinked?'Telegram поруч':'Telegram ще не підключено'}">✈</span></div><span class="view-profile">Зазирнути в профіль →</span></button>`}
@@ -1746,7 +1774,7 @@
     normalizeState();
     const screens={landing,auth:authScreen,dashboard,quests:questsScreen,match3:match3Screen,shop:shopScreen,'custom-shop':customShopScreen,collections:collectionsScreen,museum:museumScreen,achievements:achievementsScreen,family:familyScreen,profile:()=>profileScreen(),admin:adminScreen};
     try{
-      app.innerHTML=(screens[route]||landing)(); applyTheme(); bind(); applyLanguage(app); CozyCompanion.afterRender();
+      app.innerHTML=(screens[route]||landing)(); applyTheme(); bind(); applyLanguage(app); hydrateLottieStickers(app); CozyCompanion.afterRender();
     }catch(error){
       console.error('Render error:',error);
       app.innerHTML=`<main class="fatal-card"><h1>Не вдалося відкрити розділ</h1><p>${String(error?.message||error)}</p><button class="btn primary" data-route="dashboard">На головну</button></main>`;
@@ -2302,7 +2330,7 @@
         try{await loadInviteInfo();render();}catch(e){console.warn('Invite:',e);}
       }
       try{await loadContentLibrary();render();}catch(e){console.warn('Content library:',e);}
-      try{const m=await fetch('/api/app-meta',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject());if(m?.updateName){publicUpdateName=m.updateName;document.querySelectorAll('.release-label').forEach(x=>x.textContent=publicUpdateName);}ownerSeasonalStickerTesting=Boolean(m?.seasonalStickerTesting);const revision=Number(m?.cacheRevision||1),seen=Number(localStorage.getItem('myHabbitCacheRevisionV1')||0);if(!seen){localStorage.setItem('myHabbitCacheRevisionV1',String(revision));}else if(revision>seen){localStorage.setItem('myHabbitCacheRevisionV1',String(revision));try{const regs=await navigator.serviceWorker?.getRegistrations?.();await Promise.all((regs||[]).map(async r=>{try{await r.update()}catch{};r.waiting?.postMessage({type:'SKIP_WAITING'});}));}catch{}try{const keys=await caches.keys();await Promise.all(keys.filter(k=>k.startsWith('myhabbit-')).map(k=>caches.delete(k)));}catch{}location.reload();return;}}catch(e){console.warn('App meta:',e);}
+      try{const m=await fetch('/api/app-meta',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject());if(m?.updateName){publicUpdateName=m.updateName;document.querySelectorAll('.release-label').forEach(x=>x.textContent=publicUpdateName);}const previousSeasonalTesting=ownerSeasonalStickerTesting;ownerSeasonalStickerTesting=Boolean(m?.seasonalStickerTesting);if(previousSeasonalTesting!==ownerSeasonalStickerTesting)render();const revision=Number(m?.cacheRevision||1),seen=Number(localStorage.getItem('myHabbitCacheRevisionV1')||0);if(!seen){localStorage.setItem('myHabbitCacheRevisionV1',String(revision));}else if(revision>seen){localStorage.setItem('myHabbitCacheRevisionV1',String(revision));try{const regs=await navigator.serviceWorker?.getRegistrations?.();await Promise.all((regs||[]).map(async r=>{try{await r.update()}catch{};r.waiting?.postMessage({type:'SKIP_WAITING'});}));}catch{}try{const keys=await caches.keys();await Promise.all(keys.filter(k=>k.startsWith('myhabbit-')).map(k=>caches.delete(k)));}catch{}location.reload();return;}}catch(e){console.warn('App meta:',e);}
       if(auth?.token){
         startLiveFamilyRefresh();
         startOwnerPresenceHeartbeat();

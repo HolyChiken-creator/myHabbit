@@ -1,15 +1,18 @@
-myHabbit 11.2.0 UPDATE-ONLY
-Base version: 11.1.6
+myHabbit 11.2.1 update over 11.2.0
 
-Changed files:
+Changed:
 - public/app.js
+- public/index.html
 - public/styles.css
 - public/sw.js
 - public/VERSION.txt
-- src/worker.js
 - VERSION
 - package.json
-- README.md
 - CHANGELOG.md
 
-Copy the archive contents over the existing project and replace files.
+Added:
+- public/assets/stickers/christmas/christmas-01.json ... christmas-40.json
+
+Fixes:
+- Owner seasonal sticker testing now refreshes the shop immediately.
+- Christmas Cozy now contains 40 animated stickers.
