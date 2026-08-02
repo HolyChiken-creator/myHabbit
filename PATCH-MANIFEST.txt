@@ -1,12 +1,17 @@
-myHabbit 11.1.0 UPDATE ONLY
-
-Copy these files over myHabbit 11.0.0 with replacement.
+myHabbit 11.1.1 update over 11.1.0
 
 Changed files:
-README.md
-CHANGELOG.md
-VERSION
-package.json
-public/styles.css
-public/VERSION.txt
-public/app.js
+- public/app.js
+- public/styles.css
+- public/sw.js
+- public/VERSION.txt
+- VERSION
+- package.json
+- README.md
+- CHANGELOG.md
+
+Fixes:
+- coin transfer normalize error
+- sticker reveal labels use #001 numbering
+- Family Activity strict familyId isolation and legacy demo filtering
+- lighter Match-3 animation timings on mobile

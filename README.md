@@ -1,4 +1,4 @@
-# myHabbit 11.1.0 — stable patch base
+# myHabbit 11.1.1 — stable patch base
 
 Це єдина базова структура проєкту для GitHub, Cloudflare Workers і наступних update-only патчів.
 

@@ -1279,7 +1279,7 @@
   }
   async function resolveMatch3(){
     const rt=match3Runtime;if(!rt)return;const {size,colors,goal}=rt.cfg;rt.busy=true;
-    rt.combo=0;while(true){const matches=m3Matches(rt.board,size);if(!matches.length)break;rt.combo++;rt.burst=matches;rt.score+=matches.length;render();playCozySound(matches.length>=5?'reward':'coin','full');await new Promise(r=>setTimeout(r,190));matches.forEach(i=>rt.board[i]=null);for(let c=0;c<size;c++){const vals=[];for(let r=size-1;r>=0;r--){const v=rt.board[m3Index(r,c,size)];if(v!=null)vals.push(v)}for(let r=size-1,k=0;r>=0;r--,k++)rt.board[m3Index(r,c,size)]=k<vals.length?vals[k]:Math.floor(Math.random()*colors)}rt.burst=[];render();await new Promise(r=>setTimeout(r,230));}
+    rt.combo=0;while(true){const matches=m3Matches(rt.board,size);if(!matches.length)break;rt.combo++;rt.burst=matches;rt.score+=matches.length;render();playCozySound(matches.length>=5?'reward':'coin','full');await new Promise(r=>setTimeout(r,120));matches.forEach(i=>rt.board[i]=null);for(let c=0;c<size;c++){const vals=[];for(let r=size-1;r>=0;r--){const v=rt.board[m3Index(r,c,size)];if(v!=null)vals.push(v)}for(let r=size-1,k=0;r>=0;r--,k++)rt.board[m3Index(r,c,size)]=k<vals.length?vals[k]:Math.floor(Math.random()*colors)}rt.burst=[];render();await new Promise(r=>setTimeout(r,140));}
     if(!m3CanMove(rt.board,size))rt.board=m3Generate(rt.cfg);rt.busy=false;
     if(rt.score>=goal){rt.won=true;finishMatch3();return;}if(rt.moves<=0){showToast('Ходи закінчилися — спробуйте ще раз');match3Runtime=null;render();return;}render();
   }
@@ -1369,7 +1369,7 @@
   function albumCell(sticker,index,highlightId){const count=stickerCount(currentUser(),sticker.id),owned=count>0,number=`#${String(index+1).padStart(3,'0')}`;return `<article class="album-slot ${owned?'owned':'locked'} ${highlightId===sticker.id?'new-highlight':''}"><span class="slot-number">${number}</span><div class="slot-art">${owned?stickerVisual(sticker,'album'):'<span class="slot-lock">?</span>'}</div>${owned?`<strong>${number}</strong><small>${rarityLabel(sticker.rarity)}${count>1?` · ×${count}`:''}</small>`:`<strong>${number}</strong><small>Відкриється після отримання</small>`}</article>`;}
   function openAlbum(collectionId,highlightId=''){document.querySelector('[data-album-root]')?.remove();document.body.insertAdjacentHTML('beforeend',albumMarkup(collectionId,highlightId));requestAnimationFrame(()=>document.querySelector('[data-album-root]')?.classList.add('open'));bindAlbum();}
   function bindAlbum(){document.querySelectorAll('[data-close-album]').forEach(x=>x.addEventListener('click',()=>x.closest('[data-album-root]')?.remove()));document.querySelector('[data-album-root]')?.addEventListener('click',e=>{if(e.target.matches('[data-album-root]'))e.currentTarget.remove();});}
-  function revealMarkup(sticker,c,isNew,dust=0){return `<div class="sticker-reveal-backdrop rarity-${sticker.rarity}" data-reveal-root><div class="reveal-stage"><div class="reveal-box">📦</div><div class="reveal-card"><div class="reveal-card-inner"><div class="reveal-card-back">✦</div><div class="reveal-card-front"><span class="reveal-rarity">${rarityLabel(sticker.rarity)}</span><div class="reveal-art">${stickerVisual(sticker,'reveal')}</div><h2>${sticker.name}</h2><p>${c.title}</p>${isNew?'<strong class="new-ribbon">NEW!</strong>':`<strong class="duplicate-ribbon">Дублікат · +${dust} пилу</strong>`}</div></div></div><button class="btn primary reveal-continue" data-reveal-continue data-collection="${c.id}" data-sticker="${sticker.id}">${isNew?'Показати в альбомі':'Продовжити'}</button></div></div>`;}
+  function revealMarkup(sticker,c,isNew,dust=0){const index=Math.max(0,(c?.stickers||[]).findIndex(x=>x.id===sticker.id)),number=`#${String(index+1).padStart(3,'0')}`;return `<div class="sticker-reveal-backdrop rarity-${sticker.rarity}" data-reveal-root><div class="reveal-stage"><div class="reveal-box">📦</div><div class="reveal-card"><div class="reveal-card-inner"><div class="reveal-card-back">✦</div><div class="reveal-card-front"><span class="reveal-rarity">${rarityLabel(sticker.rarity)}</span><div class="reveal-art">${stickerVisual(sticker,'reveal')}</div><h2>${number}</h2><p>${escapeHtml(c?.title||'Стікерпак')}</p>${isNew?'<strong class="new-ribbon">NEW!</strong>':`<strong class="duplicate-ribbon">Дублікат · +${dust} пилу</strong>`}</div></div></div><button class="btn primary reveal-continue" data-reveal-continue data-collection="${c.id}" data-sticker="${sticker.id}">${isNew?'Показати в альбомі':'Продовжити'}</button></div></div>`;}
   function showStickerReveal(sticker,c,isNew,dust=0){setTimeout(()=>{playCozySound('reveal','important',sticker?.rarity||'common');cozyHaptic(['legendary','mythic'].includes(sticker?.rarity)?'strong':'medium');},260);document.body.insertAdjacentHTML('beforeend',revealMarkup(sticker,c,isNew,dust));const root=document.querySelector('[data-reveal-root]');requestAnimationFrame(()=>root?.classList.add('play'));root?.querySelector('[data-reveal-continue]')?.addEventListener('click',e=>{root.remove();if(isNew)openAlbum(e.currentTarget.dataset.collection,e.currentTarget.dataset.sticker);});}
 
   function displayName(u){const effect=cosmetic(u.equipped?.nicknameEffect);return `<span class="animated-name nick-${effect?.asset||'none'}">${(u.name||'').replace(/[<>&]/g,'')}</span>`;}
@@ -1411,9 +1411,9 @@
     if(!Number.isFinite(amount)||amount<1)return showToast('Вкажіть кількість монет');
     if(amount>Number(from.coins||0))return showToast('Недостатньо монет');
     try{
-      if(auth?.demo){from.coins-=amount;to.coins=Number(to.coins||0)+amount;state.history.unshift({icon:'🪙',text:`${from.name} передав(ла) ${to.name} ${amount} монеток`,time:'Щойно'});save();app.innerHTML=profileScreen(to.id);bind();showToast(`${amount} монеток передано`);return;}
+      if(auth?.demo){from.coins-=amount;to.coins=Number(to.coins||0)+amount;state.history.unshift({eventId:crypto.randomUUID(),familyId:String(state.family?.id||state.family?.code||''),userId:from.id,icon:'🪙',text:`${from.name} передав(ла) ${to.name} ${amount} монеток`,time:'Щойно'});save();app.innerHTML=profileScreen(to.id);bind();showToast(`${amount} монеток передано`);return;}
       const result=await api('/api/family/transfer-coins',{method:'POST',body:JSON.stringify({userId:to.id,amount})});
-      if(result?.state){state=normalize(result.state);save();}
+      if(result?.state){state=result.state;normalizeState();save();}
       app.innerHTML=profileScreen(to.id);bind();showToast(`${amount} монеток передано для ${to.name}`);
     }catch(e){showToast(e.message||'Не вдалося передати монетки');}
   }
@@ -1456,7 +1456,7 @@
     }else return;
     const gift={id:`gift_${Date.now()}_${Math.random().toString(36).slice(2,7)}`,fromId:from.id,toId:to.id,fromName:from.name,toName:to.name,kind,itemId:id,title,note,icon,createdAt:new Date().toISOString()};
     state.giftHistory=Array.isArray(state.giftHistory)?state.giftHistory:[];to.receivedGifts=Array.isArray(to.receivedGifts)?to.receivedGifts:[];state.history=Array.isArray(state.history)?state.history:[];
-    state.giftHistory.push(gift);to.receivedGifts.push(gift);to.activity.unshift(`Отримано подарунок «${title}» від ${from.name}`);from.activity.unshift(`Подаровано «${title}» для ${to.name}`);state.history.unshift({icon,text:`${from.name} подарував(ла) ${to.name} «${title}»`,time:'Щойно'});addXp(from,10,'подарунок');addXp(to,5,'отриманий подарунок');save();app.innerHTML=profileScreen(to.id);bind();showToast(`Подарунок для ${to.name} надіслано`);
+    state.giftHistory.push(gift);to.receivedGifts.push(gift);to.activity.unshift(`Отримано подарунок «${title}» від ${from.name}`);from.activity.unshift(`Подаровано «${title}» для ${to.name}`);state.history.unshift({eventId:crypto.randomUUID(),familyId:String(state.family?.id||state.family?.code||''),userId:from.id,icon,text:`${from.name} подарував(ла) ${to.name} «${title}»`,time:'Щойно'});addXp(from,10,'подарунок');addXp(to,5,'отриманий подарунок');save();app.innerHTML=profileScreen(to.id);bind();showToast(`Подарунок для ${to.name} надіслано`);
   }
 
   function profileScreen(userId=state.currentUserId){
@@ -1468,18 +1468,18 @@
 
   function familyActivityItems(){
     const familyId=String(state.family?.id||state.family?.code||'');
-    const members=(state.users||[]).map(u=>String(u.name||'').trim()).filter(Boolean);
-    const adminNames=(state.users||[]).filter(u=>u.role==='admin'||u.role==='owner').map(u=>String(u.name||'').trim()).filter(Boolean);
+    const memberIds=new Set((state.users||[]).map(u=>String(u.id)));
     const seen=new Set();
     return (state.history||[]).filter(item=>{
-      const text=String(item?.text||'').trim();if(!text)return false;
-      if(item?.familyId&&String(item.familyId)!==familyId)return false;
-      if(item?.userId&&!state.users.some(u=>u.id===item.userId))return false;
-      if(item?.userId&&state.users.some(u=>u.id===item.userId&&(u.role==='admin'||u.role==='owner')))return false;
-      if(adminNames.some(name=>text===name||text.startsWith(`${name} `)||text.includes(` ${name} `)))return false;
-      const looksPersonal=/виконав|виконала|придбав|придбала|подарував|подарувала|отримав|отримала/i.test(text);
-      if(looksPersonal&&!members.some(name=>text.includes(name)))return false;
-      const key=item.eventId||`${text}|${item.time||''}`;if(seen.has(key))return false;seen.add(key);return true;
+      const text=String(item?.text||'').trim();
+      if(!text||!familyId)return false;
+      // Legacy/demo entries without familyId are never allowed into a real family feed.
+      if(String(item?.familyId||'')!==familyId)return false;
+      if(item?.userId&&!memberIds.has(String(item.userId)))return false;
+      const key=String(item.eventId||`${item.familyId}|${item.userId||''}|${text}|${item.time||''}`);
+      if(seen.has(key))return false;
+      seen.add(key);
+      return true;
     }).slice(0,100);
   }
 

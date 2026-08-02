@@ -611,3 +611,12 @@
 @keyframes m3-pulse{to{transform:scale(1.12);filter:brightness(1.12) drop-shadow(0 5px 12px rgba(109,91,208,.34))}}@keyframes m3-burst{0%{transform:scale(1);opacity:1}55%{transform:scale(1.35) rotate(8deg);opacity:1}100%{transform:scale(.2) rotate(-12deg);opacity:0}}@keyframes m3-float{0%,100%{transform:none}50%{transform:translateY(-3px)}}@keyframes m3-board-pop{50%{transform:scale(1.012)}}@keyframes m3-combo{0%{opacity:0;transform:translate(-50%,-35%) scale(.6)}55%{opacity:1;transform:translate(-50%,-55%) scale(1.12)}100%{opacity:0;transform:translate(-50%,-75%) scale(.94)}}
 @media(max-width:640px){.active-feature-card{grid-template-columns:42px minmax(0,1fr)}.feature-owner-mark{grid-column:2;justify-self:start}.family-activity-window{max-height:44vh}}
 @media(prefers-reduced-motion:reduce){.match3-tile,.match3-board,.match3-combo{animation:none!important;transition:none!important}}
+
+/* 11.1.1 mobile Match-3 performance */
+@media (max-width: 700px), (prefers-reduced-motion: reduce){
+  .match3-board.has-combo::before,.match3-board.has-combo::after{display:none!important}
+  .match3-tile{transition:transform .12s ease,opacity .12s ease!important;filter:none!important;box-shadow:none!important}
+  .match3-tile.is-burst{animation:m3-mobile-pop .16s ease both!important}
+  .match3-combo{animation:none!important}
+}
+@keyframes m3-mobile-pop{to{transform:scale(.72);opacity:0}}
