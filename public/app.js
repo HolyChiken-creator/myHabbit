@@ -12,7 +12,7 @@
   const OFFLINE_STORE = 'library';
   const CONTENT_CACHE = 'myHabbitContentLibraryV1';
   const CONTENT_VERSION = '1.0.0';
-  const APP_VERSION = '11.1.3-portrait-keyboard-fix';
+  const APP_VERSION = '11.1.4-bunny-love-expansion';
   const ACCOUNTS = 'myHabbitAccountsV1';
   const ACTIVE_ACCOUNT = 'myHabbitActiveAccountV1';
   const LOGOUT_TOMBSTONE = 'myHabbitLogoutTombstoneV1';
@@ -343,14 +343,23 @@
   function defaultStickerCollections(){
     const sets=[
       ['cozy-cats','Cozy Cats','always','Рамка «Котячий затишок»',40,['Котик із сердечком','Котик із кавою','Котик читає','Сонний котик','Котик у пледі','Котик із квіткою','Котик-мрійник','Котик готує','Зоряний котик','Королівський котик']],
-      ['bunny-love','Bunny Love','always','Бейдж «Теплі вушка»',40,['Кролик вітається','Кролик із чаєм','Кролик із квіткою','Обійми кролика','Кролик у хмаринці','Закоханий кролик','Місячний кролик','Кролик-мрійник','Кролик із подарунком','Королівський кролик']],
+      ['bunny-love','Bunny Love','always','Бейдж «Теплі вушка»',60,['Кролик вітається','Кролик із чаєм','Кролик із квіткою','Обійми кролика','Кролик у хмаринці','Закоханий кролик','Місячний кролик','Кролик-мрійник','Кролик із подарунком','Королівський кролик']],
       ['sakura','Sakura','always','Анімована рамка «Сакура»',30,['Пелюстка сакури','Чай під сакурою','Весняний вітер','Рожевий ліхтарик','Кіт під сакурою','Кролик у кімоно','Сакурове серце','Міст у квітах','Місячна сакура','Дух весни']],
       ['sweet-life','Sweet Life','always','Нікнейм «Солодке життя»',35,['Полуничний торт','Капкейк із серцем','Тепле какао','Рожевий пончик','Морозиво-мрія','Цукерка дружби','Медове печиво','Вишневий десерт','Солодка хмаринка','Королівський торт']],
       ['christmas','Christmas Cozy','christmas','Фон «Різдвяна ніч»',40,['Котик у шапці','Тепла ялинка','Святкове какао','Різдвяний носок','Снігова куля','Подарунок із бантом','Пряниковий будиночок','Олень-друг','Різдвяна зірка','Диво опівночі']],
       ['halloween','Halloween Cute','halloween','Ефект «Магічні іскри»',50,['Котик-чарівник','Милий гарбуз','Добрий привид','Цукерки або обійми','Капелюх відьми','Кажанчик','Чарівне зілля','Чорний кіт','Гелловінський місяць','Король ночі']],
       ['easter','Easter Bunny','easter','Рамка «Весняне диво»',50,['Писанка','Великодній кролик','Святковий кошик','Весняна квітка','Курчатко','Паска','Сонячний зайчик','Квітучий вінок','Весняне сонце','Великоднє диво']]
     ];
-    return sets.map(([id,title,season,reward,count,names])=>({id,title,season,reward,stickers:buildStickerSet(id.replace(/-/g,'_'),count,names,['cozy-cats','bunny-love','sakura','sweet-life'].includes(id)?id:'',['sakura','sweet-life'].includes(id)?'webp':'webm')}));
+    return sets.map(([id,title,season,reward,count,names])=>{
+      const mediaFolder=['cozy-cats','bunny-love','sakura','sweet-life'].includes(id)?id:'';
+      const stickers=buildStickerSet(id.replace(/-/g,'_'),count,names,mediaFolder,['sakura','sweet-life'].includes(id)?'webp':'webm');
+      if(id==='bunny-love'){
+        stickers.forEach((st,index)=>{
+          if(index>=40)st.media=`/assets/stickers/bunny-love/bunny-love-${String(index+1).padStart(2,'0')}.webp`;
+        });
+      }
+      return {id,title,season,reward,stickers};
+    });
   }
   function defaultStickerBoxes(){return [
     {id:'box_cats',title:'Cozy Cats Box',collectionId:'cozy-cats',price:300},
