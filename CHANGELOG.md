@@ -1,3 +1,11 @@
+# Changelog
+
+## 11.2.4
+- Added safe one-step transfer of family administrator rights; the previous administrator loses access immediately.
+- Expanded and hardened English localization, including dynamically inserted dialogs and subdialogs.
+- Added transparent authorship metadata and origin proof markers without hidden access or backdoors.
+- Updated PWA cache and project version.
+
 # 11.2.2
 
 - Fixed Owner seasonal sticker testing toggle so the shop refreshes immediately.

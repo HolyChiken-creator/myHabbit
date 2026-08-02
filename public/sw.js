@@ -1,4 +1,4 @@
-const CACHE = 'myhabbit-11.2.3-family-style';
+const CACHE = 'myhabbit-11.2.4';
 const META_CACHE = 'myhabbit-11.2.3-family-style';
 const CORE = [
   '/', '/index.html', '/styles.css?v=11.2.3-family-style', '/app.js?v=11.2.3-family-style',

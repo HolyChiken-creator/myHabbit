@@ -1,9 +1,16 @@
-myHabbit 11.2.3 UPDATE ONLY
-Base: 11.2.2
+myHabbit 11.2.4 update over 11.2.3
 
-VERSION
-CHANGELOG.md
-public/styles.css
-public/VERSION.txt
-public/sw.js
-public/app.js
+Changed:
+- public/app.js
+- public/sw.js
+- public/manifest.webmanifest
+- public/VERSION.txt
+- VERSION
+- package.json
+- CHANGELOG.md
+
+Added:
+- AUTHORSHIP.md
+- public/assets/meta/runtime-map.json
+
+No files need to be deleted.

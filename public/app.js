@@ -12,7 +12,9 @@
   const OFFLINE_STORE = 'library';
   const CONTENT_CACHE = 'myHabbitContentLibraryV1';
   const CONTENT_VERSION = '1.0.0';
-  const APP_VERSION = '11.2.3-family-style-progress';
+  const APP_VERSION = '11.2.4-authorship-localization-admin-transfer';
+  const PROJECT_ORIGIN_ID = 'mh-oh-2026-7f3c91';
+  const PROJECT_CREATOR_REF = 'OH-WWG-2026';
   const ACCOUNTS = 'myHabbitAccountsV1';
   const ACTIVE_ACCOUNT = 'myHabbitActiveAccountV1';
   const LOGOUT_TOMBSTONE = 'myHabbitLogoutTombstoneV1';
@@ -40,7 +42,13 @@
     'Наші разом':'Together','Близькість':'Connection','Наш куточок':'Home','Руханка':'Movement','Сили й баланс':'Health & balance','Цікавинки':'Mind','Книжкові мандри':'Reading','Кіновечори':'Movie nights','Натхнення':'Creativity','Скарбничка':'Finance','Мій ритм':'Discipline','Тепло':'Care','Нові відкриття':'Growth',
     'Новачок':'Beginner','Дослідник':'Explorer','Авантюрист':'Adventurer','Шукач':'Seeker','Учень':'Learner','Боєць':'Fighter','Майстер':'Master','Експерт':'Expert','Чемпіон':'Champion','Герой':'Hero','Ветеран':'Veteran','Легенда':'Legend','Безсмертний':'Immortal','Міф':'Myth','Абсолютний Майстер':'Ultimate Master',
     'Оформлення профілю':'Profile appearance','Попередній вигляд':'Preview','Значок біля імені':'Badge next to name','Звичайна рамка':'Static frame','Анімована рамка':'Animated frame','Світне імʼя':'Glowing name','Ефект профілю':'Profile effect','Тема застосунку':'App theme','Звуки':'Sounds','Вібрація':'Haptics','Увімкнена':'Enabled','Усі ефекти':'All effects','Мінімальні':'Essential only','Без прикраси':'None',
-    'Запросити в сімʼю':'Invite to family','Налаштувати':'Customize','Подарунки рівня':'Level rewards','Залишити слід':'Leave a sticker','Оформлення збережено':'Appearance saved'
+    'Запросити в сімʼю':'Invite to family','Налаштувати':'Customize','Подарунки рівня':'Claim level rewards','Залишити слід':'Leave a sticker','Оформлення збережено':'Appearance saved',
+    'Передати права адміністратора':'Transfer administrator rights','Передати права':'Transfer rights','Новий адміністратор':'New administrator','Ви втратите адміністративні права одразу після підтвердження.':'Your administrator access will be removed immediately after confirmation.','Права адміністратора передано':'Administrator rights transferred','Передача прав скасована':'Transfer cancelled','Не вдалося передати права':'Could not transfer administrator rights','Оберіть іншого учасника':'Choose another member','Адміністратор сімʼї':'Family administrator','Поточний адміністратор':'Current administrator',
+    'Приватний простір лише для учасників цієї сімʼї.':'A private space visible only to this family.','Сімейний стиль':'Family style','Оформлення сімʼї':'Family appearance','максимальний рівень':'maximum level','Відкрито максимальний рівень оформлення':'The highest appearance level is unlocked','мінімум':'minimum','До':'Until',
+    'Створити нову спільну історію':'Start a new shared story','Увійти за кодом запрошення':'Join with an invitation code','Ваші профілі':'Your profiles','Оберіть, щоб одразу продовжити':'Choose one to continue','Мій простір':'My space','Сімейна гра для реального життя':'A family game for real life','Корисні справи стають спільною пригодою.':'Everyday tasks become a shared adventure.','Відкрити демо':'Open demo','Один Cloudflare Worker':'One Cloudflare Worker',
+    'Звіт за 30 днів':'30-day report','Звіт доступний лише адміністратору сімʼї':'Only the family administrator can export this report','Виконано справ':'Completed tasks','Середній XP':'Average XP','Розподіл активності за напрямами':'Activity by category','Візуальний тренд':'Visual trend','Виконана справа':'Completed task','Напрям':'Category','Підтверджено':'Confirmed','За останні 30 днів виконаних справ немає':'No completed tasks in the last 30 days',
+    'Доступна завжди':'Always available','Відкрито Owner для тестування':'Unlocked by Owner for testing','Сезон закритий':'Season unavailable','Відкрити наступний':'Open next pack','Переглянути всю колекцію':'View full collection','Останні відкриті стікери':'Recently unlocked stickers','Колекція порожня':'Your collection is empty',
+    'Не вдалося запустити myHabbit':'myHabbit could not start','Запускаємо myHabbit…':'Starting myHabbit…','Готуємо ваш простір…':'Preparing your space…','Завантажуємо локальні дані…':'Loading local data…','Майже готово…':'Almost ready…','Готово ✨':'Ready ✨'
   };
   function currentLocale(){return appLanguage==='en'?'en-US':'uk-UA';}
   function translateTextValue(value){
@@ -67,7 +75,15 @@
       .replace(/у myHabbit з/g,'on myHabbit since')
       .replace(/залишилось (\d+)/g,'$1 left')
       .replace(/(\d+) днів поспіль/g,'$1-day streak')
-      .replace(/Профіль\s*·?\s*/g,'Profile · ');
+      .replace(/Профіль\s*·?\s*/g,'Profile · ')
+      .replace(/Сьогодні,?/g,'Today,')
+      .replace(/Учора,?/g,'Yesterday,')
+      .replace(/(\d+) сходинка/g,'Level $1')
+      .replace(/(\d+) днів у ритмі/g,'$1-day streak')
+      .replace(/Код сімʼї/g,'Family code')
+      .replace(/До «([^»]+)»:/g,'Until “$1”:')
+      .replace(/внесок кожного від/g,'each member contributes at least')
+      .replace(/Відкрито максимальний рівень оформлення/g,'The highest appearance level is unlocked');
   }
   function applyLanguage(root=document){
     document.documentElement.lang=appLanguage;
@@ -76,6 +92,9 @@
     const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);nodes.forEach(n=>{n.nodeValue=translateTextValue(n.nodeValue);});
     root.querySelectorAll?.('[placeholder],[aria-label],[title]').forEach(el=>['placeholder','aria-label','title'].forEach(a=>{if(el.hasAttribute(a))el.setAttribute(a,translateTextValue(el.getAttribute(a)));}));
   }
+  const languageObserver=new MutationObserver(records=>{if(appLanguage!=='en')return;for(const record of records)for(const node of record.addedNodes){if(node.nodeType===Node.ELEMENT_NODE)applyLanguage(node);else if(node.nodeType===Node.TEXT_NODE&&node.parentElement)node.nodeValue=translateTextValue(node.nodeValue);}});
+  languageObserver.observe(document.documentElement,{childList:true,subtree:true});
+
   let ownerSeasonalStickerTesting = false;
   let deferredInstallPrompt = null;
   let pwaGuideStep = 0;
@@ -85,7 +104,7 @@
     ['dashboard','⌂','Головна'],['quests','✓','Квести'],['match3','◆','Три в ряд'],['shop','◈','Магазин'],
     ['collections','▦','Колекції'],['museum','🏛️','Музей'],['achievements','🏆','Ачивки'],['family','👥','Сімʼя'],['profile','●','Профіль']
   ];
-  const isAdmin = () => currentUser()?.role === 'admin' || state.users[0]?.id === state.currentUserId;
+  const isAdmin = () => ['admin','owner'].includes(String(currentUser()?.role||''));
   const navItems = () => isAdmin() ? [...baseNavItems, ['admin','⚙','Адмін']] : baseNavItems;
 
   const seed = {
@@ -327,8 +346,10 @@
     cleanAchievementCatalog();
     state.profileStickers=state.profileStickers||[];
     state.giftHistory=Array.isArray(state.giftHistory)?state.giftHistory:[];
+    const familyAdmins=(state.users||[]).filter(u=>['admin','owner'].includes(String(u.role||'')));
+    if(!familyAdmins.length&&state.users?.length)state.users[0].role='admin';
     for(const [index,u] of (state.users||[]).entries()){
-      if(!u.role)u.role=index===0?'owner':'member';
+      if(!u.role)u.role=index===0?'admin':'member';
       u.inventory=Array.isArray(u.inventory)?u.inventory:[];u.equipped={badge:null,frame:null,animatedFrame:null,nicknameEffect:null,profileEffect:null,favoriteSticker:null,theme:'light',...(u.equipped||{})};
       u.claimedLevelRewards=u.claimedLevelRewards||[];u.featuredAchievements=u.featuredAchievements||u.achievements?.slice(0,3)||[];
       u.achievements=Array.isArray(u.achievements)?u.achievements:[];u.activity=Array.isArray(u.activity)?u.activity:[];u.skills=u.skills||{};
@@ -1588,10 +1609,11 @@
   function adminMemberRow(u){
     const roleLabel=u.role==='owner'?'Власник':u.role==='admin'?'Адміністратор':'Учасник';
     const privacy=u.role==='admin'||u.role==='owner'?`<button class="btn small ${u.hiddenFromFamily?'visibility-active':'soft'}" data-toggle-admin-hidden="${u.id}">${u.hiddenFromFamily?'✓ Приховано із сімʼї':'Сховати із сімʼї'}</button>`:'';
+    const transfer=u.id!==state.currentUserId&&u.role==='member'&&isAdmin()?`<button class="btn warm small" data-transfer-admin="${u.id}">Передати права</button>`:'';
     const action=u.id!==state.currentUserId&&u.role!=='owner'
       ? `<button class="btn danger small" data-kick-user="${u.id}">Виключити</button>`
       : `<span class="tag">${u.id===state.currentUserId?'Це ви':'Захищено'}</span>`;
-    return `<article class="admin-row"><span class="avatar">${u.avatar}</span><div><strong>${u.name}</strong><small>${format(u.coins)} 🪙 · ${roleLabel}${u.hiddenFromFamily?' · приховано':''}</small></div><div class="admin-actions">${privacy}${action}</div></article>`;
+    return `<article class="admin-row"><span class="avatar">${u.avatar}</span><div><strong>${u.name}</strong><small>${format(u.coins)} 🪙 · ${roleLabel}${u.hiddenFromFamily?' · приховано':''}</small></div><div class="admin-actions">${privacy}${transfer}${action}</div></article>`;
   }
 
   function adminSectionOpen(name){return localStorage.getItem(ADMIN_PANEL_SECTION_KEY)===name?' open':'';}
@@ -1855,6 +1877,7 @@
     document.querySelectorAll('[data-reset-user]').forEach(el=>el.addEventListener('click',()=>openResetUserDialog(el.dataset.resetUser)));
     document.querySelectorAll('[data-kick-user]').forEach(el=>el.addEventListener('click',()=>{document.body.insertAdjacentHTML('beforeend',modal(`kick-user:${el.dataset.kickUser}`));bindModal();}));
     document.querySelectorAll('[data-toggle-admin-hidden]').forEach(el=>el.addEventListener('click',()=>toggleAdminFamilyVisibility(el.dataset.toggleAdminHidden)));
+    document.querySelectorAll('[data-transfer-admin]').forEach(el=>el.addEventListener('click',()=>transferFamilyAdminRights(el.dataset.transferAdmin)));
     document.querySelectorAll('[data-stock]').forEach(el=>el.addEventListener('click',()=>{const i=state.shop.find(x=>x.id===el.dataset.stock);if(i){i.stock=Math.max(0,i.stock+Number(el.dataset.delta));save();render();}}));
     document.getElementById('shopImportFile')?.addEventListener('change',importShopFile);
     document.querySelectorAll('[data-filter],[data-difficulty-filter]').forEach(el=>el.addEventListener('click',()=>{const group=el.hasAttribute('data-filter')?'[data-filter]':'[data-difficulty-filter]';document.querySelectorAll(group).forEach(x=>x.classList.remove('active'));el.classList.add('active');const type=document.querySelector('[data-filter].active')?.dataset.filter||'all',difficulty=document.querySelector('[data-difficulty-filter].active')?.dataset.difficultyFilter||'all';document.getElementById('questList').innerHTML=state.quests.filter(q=>q.status==='active'&&(type==='all'||q.type===type)&&(difficulty==='all'||(q.difficulty||'normal')===difficulty)).map(questCard).join('');bind();}));
@@ -2169,6 +2192,19 @@
       const contribution=Math.min(u.coins,Math.max(100,Math.ceil((item.price-item.fund)/4)));if(!contribution)return showToast('Недостатньо монет');u.coins-=contribution;item.fund+=contribution;if(item.fund>=item.price){item.stock-=1;item.fund=item.price;state.history.unshift({icon:item.icon,text:`Сімʼя зібрала на «${item.title}»`,time:'Щойно'});showToast('Спільну ціль досягнуто!');}else showToast(`Внесено ${contribution} монет`);
     }else{if(u.coins<item.price)return showToast('Недостатньо монет');u.coins-=item.price;item.stock-=1;const days=Math.max(1,Math.min(30,Number(item.durationDays||7))),now=Date.now();u.activeFeatures=Array.isArray(u.activeFeatures)?u.activeFeatures:[];u.activeFeatures.push({id:`feature_${now}_${Math.random().toString(36).slice(2,7)}`,sourceItemId:item.id,title:item.title,description:item.description||'',icon:item.icon||'✨',ownerId:u.id,startedAt:now,expiresAt:now+days*86400000,durationDays:days});state.history.unshift({eventId:crypto.randomUUID(),familyId:String(state.family?.id||state.family?.code||''),userId:u.id,icon:item.icon,text:`${u.name} придбав(ла) «${item.title}»`,time:'Щойно'});showToast(`Можливість активна ${days} дн.`);playCozySound('purchase','important');cozyHaptic('medium');}
     u.stats=u.stats||{};u.stats.purchasesCompleted=(u.stats.purchasesCompleted||0)+1;evaluateAchievements(u);save();render();
+  }
+
+  function transferFamilyAdminRights(targetUserId){
+    const current=currentUser(),target=state.users.find(u=>u.id===targetUserId);
+    if(!current||!isAdmin())return showToast('Лише поточний адміністратор може передати права');
+    if(!target||target.id===current.id)return showToast('Оберіть іншого учасника');
+    const accepted=window.confirm(`Передати права адміністратора користувачу «${target.name}»?\n\nВи втратите адміністративні права одразу після підтвердження.`);
+    if(!accepted)return showToast('Передача прав скасована');
+    for(const user of state.users)if(['admin','owner'].includes(String(user.role||'')))user.role='member';
+    target.role='admin';
+    state.family.adminUserId=target.id;
+    state.history.unshift({id:`admin-transfer-${Date.now()}`,familyId:String(state.family?.id||state.family?.code||''),userId:target.id,kind:'admin_transfer',icon:'🔑',text:`${current.name} передав(ла) права адміністратора користувачу ${target.name}`,time:'Щойно',createdAt:Date.now()});
+    save();render();showToast(`Права адміністратора передано: ${target.name}`);
   }
 
   function toggleAdminFamilyVisibility(userId){
