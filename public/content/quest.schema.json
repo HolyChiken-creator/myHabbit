@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "myHabbit Quest",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "category",
+    "difficulty",
+    "rewards",
+    "active",
+    "version"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "type": {
+      "enum": [
+        "personal",
+        "pair",
+        "coop",
+        "limited"
+      ]
+    },
+    "difficulty": {
+      "enum": [
+        "easy",
+        "medium",
+        "hard",
+        "expert"
+      ]
+    },
+    "rarity": {
+      "enum": [
+        "common",
+        "uncommon",
+        "rare",
+        "epic",
+        "legendary",
+        "secret"
+      ]
+    },
+    "repeatType": {
+      "enum": [
+        "none",
+        "daily",
+        "weekdays",
+        "weekly",
+        "custom"
+      ]
+    },
+    "rewards": {
+      "type": "object"
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    }
+  }
+}

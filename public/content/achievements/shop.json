@@ -1,0 +1,1322 @@
+[
+  {
+    "id": "achievement_shop_0016",
+    "title": "🛍️ Shop — етап 1",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0034",
+    "title": "🛍️ Shop — етап 2",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0052",
+    "title": "🛍️ Shop — етап 3",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0070",
+    "title": "🛍️ Shop — етап 4",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0088",
+    "title": "🛍️ Shop — етап 5",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0106",
+    "title": "🛍️ Shop — етап 6",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 5
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0124",
+    "title": "🛍️ Shop — етап 7",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0142",
+    "title": "🛍️ Shop — етап 8",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0160",
+    "title": "🛍️ Shop — етап 9",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0178",
+    "title": "🛍️ Shop — етап 10",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0196",
+    "title": "🛍️ Shop — етап 11",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0214",
+    "title": "🛍️ Shop — етап 12",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0232",
+    "title": "🛍️ Shop — етап 13",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0250",
+    "title": "🛍️ Shop — етап 14",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0268",
+    "title": "🛍️ Shop — етап 15",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0286",
+    "title": "🛍️ Shop — етап 16",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0304",
+    "title": "🛍️ Shop — етап 17",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0322",
+    "title": "🛍️ Shop — етап 18",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0340",
+    "title": "🛍️ Shop — етап 19",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0358",
+    "title": "🛍️ Shop — етап 20",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0376",
+    "title": "🛍️ Shop — етап 21",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0394",
+    "title": "🛍️ Shop — етап 22",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0412",
+    "title": "🛍️ Shop — етап 23",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0430",
+    "title": "🛍️ Shop — етап 24",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0448",
+    "title": "🛍️ Shop — етап 25",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 1
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0466",
+    "title": "🛍️ Shop — етап 26",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0484",
+    "title": "🛍️ Shop — етап 27",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0502",
+    "title": "🛍️ Shop — етап 28",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0520",
+    "title": "🛍️ Shop — етап 29",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0538",
+    "title": "🛍️ Shop — етап 30",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0556",
+    "title": "🛍️ Shop — етап 31",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0574",
+    "title": "🛍️ Shop — етап 32",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0592",
+    "title": "🛍️ Shop — етап 33",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0610",
+    "title": "🛍️ Shop — етап 34",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0628",
+    "title": "🛍️ Shop — етап 35",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 1000
+    },
+    "reward": {
+      "coins": 1500,
+      "xp": 2500,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0646",
+    "title": "🛍️ Shop — етап 36",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0664",
+    "title": "🛍️ Shop — етап 37",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0682",
+    "title": "🛍️ Shop — етап 38",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0700",
+    "title": "🛍️ Shop — етап 39",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0718",
+    "title": "🛍️ Shop — етап 40",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0736",
+    "title": "🛍️ Shop — етап 41",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0754",
+    "title": "🛍️ Shop — етап 42",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0772",
+    "title": "🛍️ Shop — етап 43",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0790",
+    "title": "🛍️ Shop — етап 44",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0808",
+    "title": "🛍️ Shop — етап 45",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 25
+    },
+    "reward": {
+      "coins": 37,
+      "xp": 62,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0826",
+    "title": "🛍️ Shop — етап 46",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0844",
+    "title": "🛍️ Shop — етап 47",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 100
+    },
+    "reward": {
+      "coins": 150,
+      "xp": 250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0862",
+    "title": "🛍️ Shop — етап 48",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0880",
+    "title": "🛍️ Shop — етап 49",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0898",
+    "title": "🛍️ Shop — етап 50",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 500
+    },
+    "reward": {
+      "coins": 750,
+      "xp": 1250,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0916",
+    "title": "🛍️ Shop — етап 51",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 10
+    },
+    "reward": {
+      "coins": 15,
+      "xp": 25,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0934",
+    "title": "🛍️ Shop — етап 52",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0952",
+    "title": "🛍️ Shop — етап 53",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0970",
+    "title": "🛍️ Shop — етап 54",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_0988",
+    "title": "🛍️ Shop — етап 55",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 75
+    },
+    "reward": {
+      "coins": 112,
+      "xp": 187,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_1006",
+    "title": "🛍️ Shop — етап 56",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 50
+    },
+    "reward": {
+      "coins": 75,
+      "xp": 125,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_1024",
+    "title": "🛍️ Shop — етап 57",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_1042",
+    "title": "🛍️ Shop — етап 58",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 30
+    },
+    "reward": {
+      "coins": 45,
+      "xp": 75,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_1060",
+    "title": "🛍️ Shop — етап 59",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 15
+    },
+    "reward": {
+      "coins": 22,
+      "xp": 37,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_1078",
+    "title": "🛍️ Shop — етап 60",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_1096",
+    "title": "🛍️ Shop — етап 61",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_1114",
+    "title": "🛍️ Shop — етап 62",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "common",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 7
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_1132",
+    "title": "🛍️ Shop — етап 63",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 3
+    },
+    "reward": {
+      "coins": 10,
+      "xp": 20,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_1150",
+    "title": "🛍️ Shop — етап 64",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "uncommon",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 250
+    },
+    "reward": {
+      "coins": 375,
+      "xp": 625,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_1168",
+    "title": "🛍️ Shop — етап 65",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "epic",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  },
+  {
+    "id": "achievement_shop_1186",
+    "title": "🛍️ Shop — етап 66",
+    "description": "Виконай умову досягнення та отримай нагороду.",
+    "category": "shop",
+    "rarity": "rare",
+    "hidden": false,
+    "progressType": "counter",
+    "condition": {
+      "type": "purchasesCompleted",
+      "value": 150
+    },
+    "reward": {
+      "coins": 225,
+      "xp": 375,
+      "skillXp": {}
+    },
+    "active": true,
+    "version": 1
+  }
+]
