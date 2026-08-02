@@ -12,7 +12,7 @@
   const OFFLINE_STORE = 'library';
   const CONTENT_CACHE = 'myHabbitContentLibraryV1';
   const CONTENT_VERSION = '1.0.0';
-  const APP_VERSION = '11.3.0-family-hall-house-full-localization';
+  const APP_VERSION = '11.3.1-complete-english-mobile-fix';
   const PROJECT_ORIGIN_ID = 'mh-oh-2026-7f3c91';
   const PROJECT_CREATOR_REF = 'OH-WWG-2026';
   const ACCOUNTS = 'myHabbitAccountsV1';
@@ -50,6 +50,14 @@
     'Доступна завжди':'Always available','Відкрито Owner для тестування':'Unlocked by Owner for testing','Сезон закритий':'Season unavailable','Відкрити наступний':'Open next pack','Переглянути всю колекцію':'View full collection','Останні відкриті стікери':'Recently unlocked stickers','Колекція порожня':'Your collection is empty',
     'Не вдалося запустити myHabbit':'myHabbit could not start','Запускаємо myHabbit…':'Starting myHabbit…','Готуємо ваш простір…':'Preparing your space…','Завантажуємо локальні дані…':'Loading local data…','Майже готово…':'Almost ready…','Готово ✨':'Ready ✨',
     'Привіт! Я поруч 💚':'Hi! I’m here 💚','Я нічого не пояснюватиму без запиту. Обери, що тобі потрібно.':'I won’t interrupt or explain anything unless you ask. Choose what you need.','Почати тур':'Start the tour','Порада дня':'Daily tip','Повторити вступ':'Replay introduction','Автоматичні підказки вимкнені':'Automatic tips are off','Тедик працює лише за запитом':'Teddy only speaks when asked','Екскурсію можна запустити вручну в будь-який момент.':'You can start the tour manually at any time.','Порада дня 🌱':'Daily tip 🌱','Дякую':'Thanks','Екскурсію зупинено':'Tour stopped','Тур завжди можна запустити знову через ведмедика.':'You can restart the tour anytime from Teddy.','Усе готово ✨':'All set ✨','Тепер можна спокійно досліджувати myHabbit. Я залишуся поруч, але не заважатиму.':'You can explore myHabbit at your own pace. I’ll stay nearby without interrupting.','Почати':'Start','Пропустити':'Skip','Повторити знайомство':'Replay introduction','Закрити Тедика':'Close Teddy','Відкрити Тедика':'Open Teddy',
+    'Admin sections':'Admin sections','Admin corner':'Family Management','Shop':'Shop','Collections':'Sticker Collection','Museum':'Personal Museum','Achievements':'Achievements',
+    'Контролюйте квести, магазин і розмір сімʼї.':'Manage quests, the shop, and family settings.','У вас 4 active quests і нові можливості в магазині.':'You have 4 active quests and new rewards waiting in the shop.',
+    'Застелити ліжко':'Make the bed','Почати день з маленького порядку':'Start the day with a small act of tidiness','Прогулянка 20 хвилин':'Take a 20-minute walk','Вийти на свіже повітря та пройтися':'Get some fresh air and take a walk','Прочитати 10 сторінок':'Read 10 pages','Продовжити поточну книгу':'Continue your current book','Спільний':'Shared','Тільки вдвох':'For two','Лімітований':'Limited','Завершити':'Complete','Забрати':'Claim Reward',
+    'Випадкове завдання · зібрати 21 фішок за 26 ходів':'Random challenge · collect 21 tiles in 26 moves','Почати рівень':'Start level','Свайпніть фішку в потрібний бік або оберіть дві сусідні фішки. Нагорода видається один раз.':'Swipe a tile or select two neighboring tiles. The reward can be claimed once.',
+    'Спочатку реальні товари для життя, нижче — косметика та колекції.':'Real-life rewards come first, followed by cosmetics and collections.','Головний розділ':'Main section','Товари для життя':'Real-life Rewards','Реальні подарунки, дозволи, покупки та сімейні цілі. Товари адміністратора завжди показуються першими.':'Real gifts, permissions, purchases, and family goals. Administrator items always appear first.','+ Додати товар':'+ Add item','Від адміністратора':'From the administrator','Нова реальна можливість':'A new real-life reward','Придбати':'Purchase','Косметика профілю':'Profile Cosmetics','Рамки, теми, ефекти та стікерпакети':'Frames, themes, effects, and sticker packs','Стікер-бокси':'Sticker Boxes','Колекційні випадкові стікери':'Random collectible stickers','Відкрити':'Browse',
+    'Невідомі стікери залишаються повністю прихованими до першого отримання.':'Unknown stickers stay hidden until you unlock them for the first time.','Доступна зараз':'Available now','Теплі вечори й пухнасті історії':'Warm evenings and fluffy stories','Натисніть, щоб відкрити альбом':'Tap to open this album',
+    'Ваші відкриття, рідкісні предмети та теплі подарунки в одному місці.':'Your discoveries, rare items, and thoughtful gifts in one place.','Особиста скарбниця':'Personal treasury','Колекції, косметика, ачивки та історія подарунків.':'Collections, cosmetics, achievements, and gift history.','Стікери':'Stickers','Повні колекції':'Completed collections','Косметика':'Cosmetics',
+    'Особисті перемоги, реферальні відзнаки та міфічні вершини.':'Personal milestones, referral badges, and legendary achievements.','Колекція досягнень':'Achievement Collection','Відкрито 4 · оберіть до трьох головних у профілі':'4 unlocked · choose up to three to feature on your profile','половина паку':'Half Collection','повний пак':'Complete Collection','Зібрати 50% колекції':'Collect 50% of the collection','Зібрати 100% колекції':'Complete the entire collection',
     'Сімейна зала':'Family Hall','Наш спільний дім':'Our Family Home','Розвивається разом із сімейним рівнем.':'It grows together with your family level.','Команда сімʼї':'Family team','Учасники показані лише всередині цієї сімʼї.':'Members are visible only inside this family.','Рівень дому':'Home level','Наступне покращення':'Next upgrade','Усі покращення відкрито':'All upgrades unlocked','Тедик сімʼї':'Family Teddy','Новий вигляд Тедика відкривається разом із сімейним рівнем.':'Teddy’s new look unlocks with the family level.','Спільний внесок':'Shared contribution','Внесок кожного':'Contribution from every member','До наступного рівня':'Until the next level','Відкриті можливості':'Unlocked features','Теплий вогник':'Warm light','Затишний куточок':'Cozy corner','Сімейний сад':'Family garden','Зоряний дах':'Starlit roof','Золота оселя':'Golden home','Базовий вигляд':'Basic look','Шарфик':'Scarf','Книжка':'Book','Ліхтарик':'Lantern','Святковий светр':'Festive sweater','Корона сімʼї':'Family crown','Приватна сімейна зала':'Private Family Hall','Тут зібрані всі учасники та їхній внесок у спільний розвиток.':'All members and their contributions to shared progress are shown here.','Сімейний дім':'Family Home','Цей простір змінюється лише завдяки спільним внескам.':'This space changes only through shared contributions.','Старий користувач':'Returning user','Вступ показується лише за вашим запитом.':'The introduction is shown only when you ask for it.'
   };
   function currentLocale(){return appLanguage==='en'?'en-US':'uk-UA';}
@@ -85,7 +93,17 @@
       .replace(/Код сімʼї/g,'Family code')
       .replace(/До «([^»]+)»:/g,'Until “$1”:')
       .replace(/внесок кожного від/g,'each member contributes at least')
-      .replace(/Відкрито максимальний рівень оформлення/g,'The highest appearance level is unlocked');
+      .replace(/Відкрито максимальний рівень оформлення/g,'The highest appearance level is unlocked')
+      .replace(/^(Admin sections)(Open only)/g,'$1 · $2')
+      .replace(/^(Admin corner)$/g,'Family Management')
+      .replace(/У вас (\d+) active quests і нові можливості в магазині\./g,'You have $1 active quests and new rewards waiting in the shop.')
+      .replace(/^(.*): половина паку$/g,'$1: Half Collection')
+      .replace(/^(.*): повний пак$/g,'$1: Complete Collection')
+      .replace(/Зібрати 50% колекції «([^»]+)»/g,'Collect 50% of the “$1” collection')
+      .replace(/Зібрати 100% колекції «([^»]+)»/g,'Complete the “$1” collection')
+      .replace(/Відкрито (\d+) · оберіть до трьох головних у профілі/g,'$1 unlocked · choose up to three to feature on your profile')
+      .replace(/Рівень (\d+)/g,'Level $1')
+      .replace(/Випадкове завдання · зібрати (\d+) фішок за (\d+) ходів/g,'Random challenge · collect $1 tiles in $2 moves');
   }
   function applyLanguage(root=document){
     document.documentElement.lang=appLanguage;

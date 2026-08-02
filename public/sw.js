@@ -1,4 +1,4 @@
-const CACHE = 'myhabbit-11.3.0';
+const CACHE = 'myhabbit-11.3.1';
 const META_CACHE = 'myhabbit-11.3.0-teddy-manual';
 const CORE = [
   '/', '/index.html', '/styles.css?v=11.2.3-family-style', '/app.js?v=11.2.3-family-style',

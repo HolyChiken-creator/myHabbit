@@ -674,3 +674,20 @@ html,body{min-height:100%;width:100%;max-width:100%;overflow-x:hidden}
 @keyframes familyTeddyFloat{50%{transform:translateY(-6px) rotate(2deg)}}
 @media(max-width:700px){.family-house-card{grid-template-columns:1fr}.family-house-scene{min-height:200px}.family-house-building{font-size:78px}.family-house-teddy{font-size:34px}.family-hall-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(prefers-reduced-motion:reduce){.family-house-teddy{animation:none}.family-hall-member:hover{transform:none}}
+
+/* 11.3.1 — complete English pass and mobile text collision fixes */
+.admin-panel-toolbar>div{display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:4px!important;min-width:0!important}
+.admin-panel-toolbar strong,.admin-panel-toolbar small{display:block!important;width:100%!important;line-height:1.35!important}
+.admin-panel-toolbar strong{font-size:15px!important}
+.admin-panel-toolbar small{white-space:normal!important;overflow:visible!important;text-overflow:clip!important}
+.top-title{min-width:0}.top-title h1,.top-title p{overflow-wrap:anywhere;word-break:normal}
+.collection-book-card h2,.collection-book-card p,.museum-hero h2,.museum-hero p,.achievement-card strong,.achievement-card small{overflow-wrap:anywhere}
+@media(max-width:640px){
+  .topbar{align-items:flex-start!important;gap:12px!important}
+  .top-title h1{font-size:clamp(28px,9vw,42px)!important;line-height:1.05!important}
+  .top-title p{font-size:15px!important;line-height:1.45!important}
+  .admin-panel-toolbar{padding:14px!important}
+  .admin-panel-toolbar>div{gap:6px!important}
+  .admin-panel-toolbar strong{font-size:16px!important}
+  .admin-panel-toolbar small{font-size:13px!important}
+}

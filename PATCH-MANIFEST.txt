@@ -1,13 +1,10 @@
-myHabbit 11.3.0 UPDATE-ONLY
-Base: 11.2.5
+myHabbit 11.3.1 update over 11.2.5
 
-Changed files:
-- public/app.js
-- public/styles.css
-- public/sw.js
-- public/VERSION.txt
-- VERSION
-- package.json
-- CHANGELOG.md
-
-No files need to be deleted.
+Changed/new files:
+package.json
+VERSION
+CHANGELOG.md
+public/styles.css
+public/VERSION.txt
+public/sw.js
+public/app.js

@@ -1,3 +1,12 @@
+## 11.3.1 — complete English UI pass and mobile layout repair
+
+- Completed a broad English localization pass across dashboard, quests, Match-3, shop, collections, museum, achievements, admin panels, dialogs, buttons, badges, and dynamic progress text.
+- Replaced mixed Ukrainian/English phrases with natural context-aware English.
+- Fixed the Admin sections title and subtitle collision on mobile.
+- Fixed long translated headings, descriptions, achievement cards, and collection cards wrapping on iPhone.
+- Kept Teddy onboarding and daily tips manual-only for returning users.
+- Updated PWA cache to 11.3.1.
+
 ## 11.3.0 — Private Family Hall, evolving Family Home and localization pass
 
 - Added a private Family Hall with every visible member and their shared contribution.
