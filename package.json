@@ -1,6 +1,6 @@
 {
   "name": "myhabbit",
-  "version": "11.0.0",
+  "version": "11.1.0",
   "private": true,
   "description": "myHabbit family habit PWA on Cloudflare Workers",
   "scripts": {

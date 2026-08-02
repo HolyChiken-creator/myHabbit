@@ -1,6 +1,6 @@
 # Changelog
 
-## 11.0.0
+## 11.1.0
 
 - Підготовлена стабільна база для майбутніх Full та Update-only архівів.
 - Зафіксовані постійні шляхи `public/assets/` і `public/assets/stickers/`.

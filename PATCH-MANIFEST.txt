@@ -1,0 +1,12 @@
+myHabbit 11.1.0 UPDATE ONLY
+
+Copy these files over myHabbit 11.0.0 with replacement.
+
+Changed files:
+README.md
+CHANGELOG.md
+VERSION
+package.json
+public/styles.css
+public/VERSION.txt
+public/app.js
