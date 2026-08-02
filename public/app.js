@@ -12,7 +12,7 @@
   const OFFLINE_STORE = 'library';
   const CONTENT_CACHE = 'myHabbitContentLibraryV1';
   const CONTENT_VERSION = '1.0.0';
-  const APP_VERSION = '11.1.5-bunny-love-expansion';
+  const APP_VERSION = '11.1.6-halloween-expansion';
   const ACCOUNTS = 'myHabbitAccountsV1';
   const ACTIVE_ACCOUNT = 'myHabbitActiveAccountV1';
   const LOGOUT_TOMBSTONE = 'myHabbitLogoutTombstoneV1';
@@ -352,7 +352,7 @@
       ['easter','Egg Party','easter','Рамка «Весняне диво»',50,['Писанка','Великодній кролик','Святковий кошик','Весняна квітка','Курчатко','Паска','Сонячний зайчик','Квітучий вінок','Весняне сонце','Великоднє диво']]
     ];
     return sets.map(([id,title,season,reward,count,names])=>{
-      const mediaFolder=['cozy-cats','bunny-love','sakura','sweet-life'].includes(id)?id:'';
+      const mediaFolder=['cozy-cats','bunny-love','sakura','sweet-life','halloween'].includes(id)?id:'';
       const stickers=buildStickerSet(id.replace(/-/g,'_'),count,names,mediaFolder,['sakura','sweet-life'].includes(id)?'webp':'webm');
       if(id==='bunny-love'){
         stickers.forEach((st,index)=>{
@@ -1370,7 +1370,7 @@
     'easter':{icon:'🥚',tone:'spring',subtitle:'Весняні знахідки та сонячні сюрпризи'}
   }[id]||{icon:'✦',tone:'lavender',subtitle:'Особлива колекція myHabbit'};}
   function stickerVisual(sticker,size='normal'){
-    if(sticker?.media){const media=escapeHtml(sticker.media);if(/\.(webp|png|jpe?g|gif|avif)(?:\?|$)/i.test(media))return `<img class="sticker-media sticker-media-${size}" src="${media}" loading="lazy" decoding="async" alt="${escapeHtml(sticker.name||'Стікер')}">`;const bunnyPoster=/\/bunny-love\/bunny-love-(\d{2})\.webm$/i.exec(media);const poster=bunnyPoster?` poster="/assets/stickers/bunny-love/posters/bunny-love-${bunnyPoster[1]}.webp"`:'';return `<video class="sticker-media sticker-media-${size}" src="${media}"${poster} autoplay loop muted playsinline preload="metadata" aria-label="${escapeHtml(sticker.name||'Стікер')}"></video>`;}
+    if(sticker?.media){const media=escapeHtml(sticker.media);if(/\.(webp|png|jpe?g|gif|avif)(?:\?|$)/i.test(media))return `<img class="sticker-media sticker-media-${size}" src="${media}" loading="lazy" decoding="async" alt="${escapeHtml(sticker.name||'Стікер')}">`;const animatedPoster=/\/assets\/stickers\/(bunny-love|halloween)\/\1-(\d{2})\.webm$/i.exec(media);const poster=animatedPoster?` poster="/assets/stickers/${animatedPoster[1]}/posters/${animatedPoster[1]}-${animatedPoster[2]}.webp"`:'';return `<video class="sticker-media sticker-media-${size}" src="${media}"${poster} autoplay loop muted playsinline preload="metadata" aria-label="${escapeHtml(sticker.name||'Стікер')}"></video>`;}
     return `<span class="sticker-fallback">${stickerGlyph(sticker?.id||'')}</span>`;
   }
   function stickerGlyph(id){if(id.includes('cat'))return '🐱';if(id.includes('bunny'))return '🐰';if(id.includes('tree'))return '🎄';if(id.includes('cocoa')||id.includes('coffee')||id.includes('tea'))return '☕';if(id.includes('book'))return '📖';if(id.includes('sleep')||id.includes('moon'))return '🌙';if(id.includes('star')||id.includes('sun'))return '⭐';if(id.includes('crown'))return '👑';if(id.includes('flower'))return '🌸';if(id.includes('pumpkin'))return '🎃';if(id.includes('ghost'))return '👻';if(id.includes('egg'))return '🥚';if(id.includes('basket'))return '🧺';return '✨';}

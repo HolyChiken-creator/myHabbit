@@ -1,5 +1,16 @@
-myHabbit 11.1.5 update over 11.1.4
-- Owner-only seasonal sticker testing switch
-- Egg Party rename
-- day + month date format
-- Bunny Love poster previews for 40 animated stickers
+myHabbit 11.1.6 Halloween expansion
+Base: 11.1.5
+
+Modified:
+- public/app.js
+- public/index.html
+- public/sw.js
+- VERSION
+- public/VERSION.txt
+- package.json
+- README.md
+- CHANGELOG.md
+
+Added:
+- public/assets/stickers/halloween/halloween-01.webm ... halloween-50.webm
+- public/assets/stickers/halloween/posters/halloween-01.webp ... halloween-50.webp

@@ -1,4 +1,4 @@
-# myHabbit 11.1.5 — stable patch base
+# myHabbit 11.1.6 — Halloween sticker expansion
 
 Це єдина базова структура проєкту для GitHub, Cloudflare Workers і наступних update-only патчів.
 

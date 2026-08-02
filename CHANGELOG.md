@@ -1,3 +1,10 @@
+# 11.1.6
+
+- Added 50 animated stickers to the Halloween Cute collection.
+- Added static WebP posters for faster album previews and mobile fallback.
+- Enabled media paths for the Halloween collection.
+- Updated PWA cache revision.
+
 # 11.1.5
 
 - Owner-only seasonal sticker testing switch.

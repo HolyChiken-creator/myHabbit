@@ -8,7 +8,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="myHabbit">
   <meta name="description" content="myHabbit — сімейна система спільних квестів, навичок, досягнень і реальних нагород.">
-  <link rel="manifest" href="/manifest.webmanifest?v=11.1.5">
+  <link rel="manifest" href="/manifest.webmanifest?v=11.1.6">
   <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
   <link rel="shortcut icon" href="/icons/favicon.ico">
@@ -17,7 +17,7 @@
   <link rel="apple-touch-startup-image" href="/assets/splash-1290x2796.png" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3)">
   <link rel="apple-touch-startup-image" href="/assets/splash-1242x2688.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)">
   <link rel="apple-touch-startup-image" href="/assets/splash-828x1792.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)">
-  <link rel="stylesheet" href="/styles.css?v=11.1.5-bunny-love">
+  <link rel="stylesheet" href="/styles.css?v=11.1.6-halloween">
   <title>myHabbit</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
@@ -85,7 +85,7 @@
     setTimeout(() => setProgress(72, 'Підключаємо модулі…'), 700);
     setTimeout(() => setProgress(92, 'Майже готово…'), 1100);
     const script = document.createElement('script');
-    script.src = `/app.js?v=11.1.5-bunny-love-${Date.now()}`;
+    script.src = `/app.js?v=11.1.6-halloween-${Date.now()}`;
     script.async = false;
     script.onerror = () => { lastError = 'Не вдалося завантажити /app.js'; recovery(); };
     document.body.appendChild(script);
