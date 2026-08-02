@@ -1,3 +1,12 @@
+## 11.3.0 — Private Family Hall, evolving Family Home and localization pass
+
+- Added a private Family Hall with every visible member and their shared contribution.
+- Added an evolving Family Home tied to the existing family level system.
+- Teddy now visually evolves with the family level.
+- Kept onboarding and daily tips manual-only for returning users.
+- Expanded English localization for all new family-level screens and messages.
+- Updated PWA cache to 11.3.0.
+
 # Changelog
 
 ## 11.2.4
