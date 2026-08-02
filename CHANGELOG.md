@@ -120,3 +120,9 @@
 - Added natural English translations for every Teddy dialog and action in this flow.
 - Updated PWA cache to 11.2.5.
 
+
+## 11.3.3
+- Новий екран технічних робіт на основі фірмового splash-екрана myHabbit.
+- Owner може вказати точну дату й час завершення робіт.
+- Текст автоматично локалізується українською або англійською.
+- Додано повідомлення «Перепрошуємо за незручності 💜✨» / «We apologize for the inconvenience 💜✨».

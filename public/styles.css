@@ -691,3 +691,13 @@ html,body{min-height:100%;width:100%;max-width:100%;overflow-x:hidden}
   .admin-panel-toolbar strong{font-size:16px!important}
   .admin-panel-toolbar small{font-size:13px!important}
 }
+
+/* 11.3.3 maintenance splash */
+.maintenance-screen{position:fixed;inset:0;z-index:99999;background:#fff7ef;overflow:auto;overscroll-behavior:none;color:#2f2521}
+.maintenance-shell{min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:max(12px,env(safe-area-inset-top)) 18px max(22px,env(safe-area-inset-bottom));box-sizing:border-box}
+.maintenance-art{display:block;width:min(100%,520px);max-height:72vh;object-fit:contain;border-radius:30px}
+.maintenance-copy{width:min(100%,520px);display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;margin-top:8px;padding:0 12px;box-sizing:border-box;font-size:16px;line-height:1.45;color:#7b625b}
+.maintenance-copy strong{font-size:19px;color:#3a2c27}
+.maintenance-copy span{display:block}
+.maintenance-retry{border:0;background:transparent;color:#7655d8;font-weight:700;padding:10px 14px;margin-top:2px}
+@media(max-height:700px){.maintenance-art{max-height:60vh}.maintenance-copy{font-size:14px}.maintenance-copy strong{font-size:17px}}

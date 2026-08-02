@@ -1,8 +1,8 @@
-const CACHE = 'myhabbit-11.3.2';
-const META_CACHE = 'myhabbit-11.3.2-persistence-maintenance';
+const CACHE = 'myhabbit-11.3.3';
+const META_CACHE = 'myhabbit-11.3.3-persistence-maintenance';
 const CORE = [
   '/', '/index.html', '/styles.css?v=11.2.3-family-style', '/app.js?v=11.2.3-family-style',
-  '/manifest.webmanifest?v=11.2.3', '/assets/myhabbit-brand.webp?v=10.1.8', '/assets/welcome-family-clean.webp',
+  '/manifest.webmanifest?v=11.2.3', '/assets/myhabbit-brand.webp?v=10.1.8', '/assets/welcome-family-clean.webp', '/assets/maintenance-splash.webp?v=11.3.3',
   '/icons/icon-192.png', '/icons/icon-512.png'
 ];
 async function broadcast(message){const clients=await self.clients.matchAll({includeUncontrolled:true,type:'window'});clients.forEach(c=>c.postMessage(message));}

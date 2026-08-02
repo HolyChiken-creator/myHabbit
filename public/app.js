@@ -12,7 +12,7 @@
   const OFFLINE_STORE = 'library';
   const CONTENT_CACHE = 'myHabbitContentLibraryV1';
   const CONTENT_VERSION = '1.0.0';
-  const APP_VERSION = '11.3.2-persistence-maintenance-fix';
+  const APP_VERSION = '11.3.3-maintenance-splash-schedule';
   const PROJECT_ORIGIN_ID = 'mh-oh-2026-7f3c91';
   const PROJECT_CREATOR_REF = 'OH-WWG-2026';
   const ACCOUNTS = 'myHabbitAccountsV1';
@@ -742,19 +742,31 @@
   let inviteInfo = null;
   let publicUpdateName='myHabbit beta';
   let maintenanceActive=false;
-  function showMaintenanceScreen(message){
+  function formatMaintenanceUntil(value){
+    if(!value)return '';
+    const date=new Date(value);
+    if(Number.isNaN(date.getTime()))return '';
+    const locale=appLanguage==='en'?'en-GB':'uk-UA';
+    const dateText=new Intl.DateTimeFormat(locale,{day:'numeric',month:'long'}).format(date);
+    const timeText=new Intl.DateTimeFormat(locale,{hour:'2-digit',minute:'2-digit',hour12:false}).format(date);
+    return appLanguage==='en'?`Maintenance until ${dateText}, ${timeText}`:`Технічні роботи до ${dateText}, ${timeText}`;
+  }
+  function showMaintenanceScreen(message,until){
     maintenanceActive=true;
     document.body.classList.remove('menu-open');
     document.getElementById('myHabbitMaintenance')?.remove();
-    const safe=escapeHtml(message||'Ми обережно оновлюємо myHabbit. Поверніться трохи пізніше.');
-    document.body.insertAdjacentHTML('beforeend',`<div id="myHabbitMaintenance" style="position:fixed;inset:0;z-index:99999;background:linear-gradient(160deg,#fff8ef,#f2edff);display:grid;place-items:center;padding:24px"><section style="width:min(520px,100%);background:rgba(255,255,255,.94);border:1px solid #eadfda;border-radius:28px;padding:30px;text-align:center;box-shadow:0 24px 70px rgba(64,49,82,.16)"><div style="font-size:58px">🐻</div><h1 style="margin:12px 0 8px">${appLanguage==='en'?'A short cozy pause':'Коротка затишна пауза'}</h1><p style="font-size:17px;color:#737887;line-height:1.55">${safe}</p><button id="maintenanceRetry" class="btn primary" style="margin-top:12px">${appLanguage==='en'?'Check again':'Перевірити ще раз'}</button><small style="display:block;margin-top:16px;color:#9a90a1">myHabbit · maintenance mode</small></section></div>`);
+    const safe=escapeHtml(message||'');
+    const untilText=escapeHtml(formatMaintenanceUntil(until));
+    const apology=appLanguage==='en'?'We apologize for the inconvenience 💜✨':'Перепрошуємо за незручності 💜✨';
+    const status=untilText|| (appLanguage==='en'?'Maintenance is currently in progress':'Наразі тривають технічні роботи');
+    document.body.insertAdjacentHTML('beforeend',`<div id="myHabbitMaintenance" class="maintenance-screen"><div class="maintenance-shell"><img class="maintenance-art" src="/assets/maintenance-splash.webp?v=11.3.3" alt="myHabbit"><div class="maintenance-copy"><strong>${status}</strong>${safe?`<span>${safe}</span>`:''}<span>${apology}</span><button id="maintenanceRetry" class="maintenance-retry">${appLanguage==='en'?'Check again':'Перевірити ще раз'}</button></div></div></div>`);
     document.getElementById('maintenanceRetry')?.addEventListener('click',()=>checkPublicMeta(true));
   }
   function hideMaintenanceScreen(){maintenanceActive=false;document.getElementById('myHabbitMaintenance')?.remove();}
   async function checkPublicMeta(forceRender=false){
     try{
       const m=await fetch('/api/app-meta',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(new Error('meta')));
-      if(m?.maintenance){showMaintenanceScreen(m.maintenanceMessage);return m;}
+      if(m?.maintenance){showMaintenanceScreen(m.maintenanceMessage,m.maintenanceUntil);return m;}
       const wasActive=maintenanceActive;hideMaintenanceScreen();
       if(wasActive&&forceRender)render();
       return m;
