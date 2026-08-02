@@ -12,7 +12,7 @@
   const OFFLINE_STORE = 'library';
   const CONTENT_CACHE = 'myHabbitContentLibraryV1';
   const CONTENT_VERSION = '1.0.0';
-  const APP_VERSION = '11.2.4-authorship-localization-admin-transfer';
+  const APP_VERSION = '11.2.5-teddy-manual-help-localization';
   const PROJECT_ORIGIN_ID = 'mh-oh-2026-7f3c91';
   const PROJECT_CREATOR_REF = 'OH-WWG-2026';
   const ACCOUNTS = 'myHabbitAccountsV1';
@@ -48,7 +48,8 @@
     'Створити нову спільну історію':'Start a new shared story','Увійти за кодом запрошення':'Join with an invitation code','Ваші профілі':'Your profiles','Оберіть, щоб одразу продовжити':'Choose one to continue','Мій простір':'My space','Сімейна гра для реального життя':'A family game for real life','Корисні справи стають спільною пригодою.':'Everyday tasks become a shared adventure.','Відкрити демо':'Open demo','Один Cloudflare Worker':'One Cloudflare Worker',
     'Звіт за 30 днів':'30-day report','Звіт доступний лише адміністратору сімʼї':'Only the family administrator can export this report','Виконано справ':'Completed tasks','Середній XP':'Average XP','Розподіл активності за напрямами':'Activity by category','Візуальний тренд':'Visual trend','Виконана справа':'Completed task','Напрям':'Category','Підтверджено':'Confirmed','За останні 30 днів виконаних справ немає':'No completed tasks in the last 30 days',
     'Доступна завжди':'Always available','Відкрито Owner для тестування':'Unlocked by Owner for testing','Сезон закритий':'Season unavailable','Відкрити наступний':'Open next pack','Переглянути всю колекцію':'View full collection','Останні відкриті стікери':'Recently unlocked stickers','Колекція порожня':'Your collection is empty',
-    'Не вдалося запустити myHabbit':'myHabbit could not start','Запускаємо myHabbit…':'Starting myHabbit…','Готуємо ваш простір…':'Preparing your space…','Завантажуємо локальні дані…':'Loading local data…','Майже готово…':'Almost ready…','Готово ✨':'Ready ✨'
+    'Не вдалося запустити myHabbit':'myHabbit could not start','Запускаємо myHabbit…':'Starting myHabbit…','Готуємо ваш простір…':'Preparing your space…','Завантажуємо локальні дані…':'Loading local data…','Майже готово…':'Almost ready…','Готово ✨':'Ready ✨',
+    'Привіт! Я поруч 💚':'Hi! I’m here 💚','Я нічого не пояснюватиму без запиту. Обери, що тобі потрібно.':'I won’t interrupt or explain anything unless you ask. Choose what you need.','Почати тур':'Start the tour','Порада дня':'Daily tip','Повторити вступ':'Replay introduction','Автоматичні підказки вимкнені':'Automatic tips are off','Тедик працює лише за запитом':'Teddy only speaks when asked','Екскурсію можна запустити вручну в будь-який момент.':'You can start the tour manually at any time.','Порада дня 🌱':'Daily tip 🌱','Дякую':'Thanks','Екскурсію зупинено':'Tour stopped','Тур завжди можна запустити знову через ведмедика.':'You can restart the tour anytime from Teddy.','Усе готово ✨':'All set ✨','Тепер можна спокійно досліджувати myHabbit. Я залишуся поруч, але не заважатиму.':'You can explore myHabbit at your own pace. I’ll stay nearby without interrupting.','Почати':'Start','Пропустити':'Skip','Повторити знайомство':'Replay introduction','Закрити Тедика':'Close Teddy','Відкрити Тедика':'Open Teddy'
   };
   function currentLocale(){return appLanguage==='en'?'en-US':'uk-UA';}
   function translateTextValue(value){
@@ -1683,9 +1684,15 @@
   })();
 
   const CozyCompanion = (()=>{
-    const KEY='myHabbitCozyCompanionV1';
-    const stateOf=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch{return {}}};
-    const write=value=>localStorage.setItem(KEY,JSON.stringify({...stateOf(),...value}));
+    const BASE_KEY='myHabbitCozyCompanionV2';
+    const storageKey=()=>{
+      const u=currentUser?.();
+      const familyId=String(state?.family?.id||state?.family?.code||'guest');
+      const userId=String(u?.id||accountId?.()||'anonymous');
+      return `${BASE_KEY}:${familyId}:${userId}`;
+    };
+    const stateOf=()=>{try{return JSON.parse(localStorage.getItem(storageKey())||'{}')}catch{return {}}};
+    const write=value=>localStorage.setItem(storageKey(),JSON.stringify({...stateOf(),...value}));
     let tour=null,stepIndex=0,tipTimer=0,achievementTimer=0;
     const companionAchievementQueue=[];
     let companionAchievementBusy=false;
@@ -1738,13 +1745,12 @@
       clearHighlight();
     }
     function openMenu(){
-      const muted=stateOf().muted===true;
-      showBubble('Привіт! Я поруч 💚','Можу провести екскурсію або залишити коротку підказку.',`<button data-cozy-action="tour">🎓 Почати тур</button><button data-cozy-action="tip">🌱 Порада дня</button><button data-cozy-action="mute">${muted?'🔔 Увімкнути':'🔕 Не турбувати'}</button>`);
+      showBubble('Привіт! Я поруч 💚','Я нічого не пояснюватиму без запиту. Обери, що тобі потрібно.',`<button data-cozy-action="tour">🎓 Почати тур</button><button data-cozy-action="tip">🌱 Порада дня</button><button data-cozy-action="intro">↻ Повторити вступ</button>`);
     }
     function handle(name){
       if(name==='tour')startTour(true);
       if(name==='tip')showDailyTip(true);
-      if(name==='mute'){const muted=!stateOf().muted;write({muted});showBubble('Налаштування збережено',muted?'Я не показуватиму автоматичні підказки.':'Теплі підказки знову увімкнені.','<button data-cozy-action="close">Гаразд</button>');}
+      if(name==='intro'){startTour(true);}
       if(name==='next')nextStep();
       if(name==='prev'){stepIndex=Math.max(0,stepIndex-2);nextStep();}
       if(name==='skip'){finishTour(false);}
@@ -1777,10 +1783,9 @@
     }
     function showDailyTip(manual=false){
       const data=stateOf(),day=new Date().toISOString().slice(0,10);
-      if(!manual&&(data.lastTipDay===day||data.muted))return;
+      if(!manual)return;
       const tip=dailyTips[Math.abs([...day].reduce((a,c)=>a+c.charCodeAt(0),0))%dailyTips.length];
-      write({lastTipDay:day});showBubble('Порада дня 🌱',tip,'<button data-cozy-action="close">Дякую</button>');
-      if(!manual){clearTimeout(tipTimer);tipTimer=setTimeout(closeBubble,9000);}
+      showBubble('Порада дня 🌱',tip,'<button data-cozy-action="close">Дякую</button>');
     }
     function finishAchievementAnnouncement(){
       clearTimeout(achievementTimer);closeBubble();companionAchievementBusy=false;
@@ -1798,34 +1803,15 @@
     function announceAchievement(a){
       companionAchievementQueue.push(a||{});processAchievementAnnouncements();
     }
-    function contextualMessage(){
-      const data=stateOf();
-      if(data.muted)return;
-      const u=currentUser();if(!u)return;
-      const profileKey=accountId()||`${state.family?.id||state.family?.code||'family'}:${u.id||'user'}`;
-      const coinReminderState={...(data.coinReminderState||{})};
-      const hasShopCoins=Number(u.coins||0)>=1000;
-      if(!hasShopCoins&&coinReminderState[profileKey]){
-        delete coinReminderState[profileKey];
-        write({coinReminderState});
-      }
-      if(Number(u.streak||0)>=7&&Number(u.streak||0)%7===0)return showBubble('Твоя серія росте 🔥',`Уже ${u.streak} днів. Це чудова послідовність!`,'<button data-cozy-action="close">Продовжуємо</button>');
-      if(hasShopCoins&&!coinReminderState[profileKey]){
-        coinReminderState[profileKey]={shownAt:Date.now(),threshold:1000};
-        write({coinReminderState});
-        return showBubble('Монетки чекають 🪙','У тебе вже достатньо монеток, щоб зазирнути до магазину.','<button data-cozy-action="close">Добре</button>');
-      }
-      showDailyTip(false);
-    }
+    function contextualMessage(){ return; }
     function afterRender(){
       if(!auth||['landing','auth'].includes(route)){document.getElementById('cozyCompanionRoot')?.remove();return;}
       ensureRoot();clearHighlight();
-      const data=stateOf();
-      if(!data.tourCompleted&&!data.tourStarted&&!data.muted)setTimeout(()=>startTour(false),650);
-      else if(!data.muted)setTimeout(contextualMessage,1100);
+      // Teddy is intentionally silent on render. Tours and daily tips are manual only.
+      // Achievement and level celebrations remain event-driven and never replay on navigation.
     }
-    CozyEvents.on('achievement',a=>{if(!stateOf().muted)announceAchievement(a);});
-    CozyEvents.on('levelup',d=>{if(!stateOf().muted)showBubble('Новий рівень! ⭐',`Тепер у тебе ${d.level} рівень. Я пишаюся тобою!`,'<button data-cozy-action="close">Далі</button>');});
+    CozyEvents.on('achievement',a=>announceAchievement(a));
+    CozyEvents.on('levelup',d=>showBubble('Новий рівень! ⭐',`Тепер у тебе ${d.level} рівень. Я пишаюся тобою!`,'<button data-cozy-action="close">Далі</button>'));
     return {afterRender,startTour,showDailyTip,emit:CozyEvents.emit};
   })();
 

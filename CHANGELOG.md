@@ -83,3 +83,14 @@
 - Collaborative family appearance progression with per-member contributions.
 - Five unlockable family card themes; admin selects an unlocked style.
 - Verified and strengthened Leave a Sticker and Level Rewards actions.
+## 11.2.5 — Teddy manual help and onboarding fix
+
+- Teddy no longer starts the onboarding tour automatically.
+- Daily advice no longer appears on navigation, login, rerender, or app resume.
+- Existing users are never treated as first-time users by Teddy.
+- Tour, daily tip, and introduction replay are available only after pressing Teddy.
+- Teddy state is isolated per family and per profile.
+- Achievement and level celebrations remain event-driven and do not replay after navigation.
+- Added natural English translations for every Teddy dialog and action in this flow.
+- Updated PWA cache to 11.2.5.
+
