@@ -1,0 +1,13 @@
+myHabbit 11.2.5 UPDATE-ONLY
+Base version: 11.2.4
+
+Changed files:
+- public/app.js
+- public/sw.js
+- public/VERSION.txt
+- VERSION
+- package.json
+- CHANGELOG.md
+
+Apply by copying the contents of this archive over the current project and replacing matching files.
+No files need to be deleted.
