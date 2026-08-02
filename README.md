@@ -1,4 +1,4 @@
-# myHabbit 11.1.6 — Halloween sticker expansion
+# myHabbit 11.2.0 — Sticker Flow & Compact Museum
 
 Це єдина базова структура проєкту для GitHub, Cloudflare Workers і наступних update-only патчів.
 

@@ -1,16 +1,15 @@
-myHabbit 11.1.6 Halloween expansion
-Base: 11.1.5
+myHabbit 11.2.0 UPDATE-ONLY
+Base version: 11.1.6
 
-Modified:
+Changed files:
 - public/app.js
-- public/index.html
+- public/styles.css
 - public/sw.js
-- VERSION
 - public/VERSION.txt
+- src/worker.js
+- VERSION
 - package.json
 - README.md
 - CHANGELOG.md
 
-Added:
-- public/assets/stickers/halloween/halloween-01.webm ... halloween-50.webm
-- public/assets/stickers/halloween/posters/halloween-01.webp ... halloween-50.webp
+Copy the archive contents over the existing project and replace files.
