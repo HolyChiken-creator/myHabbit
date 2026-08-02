@@ -1,21 +1,9 @@
-myHabbit 11.2.2 UPDATE ONLY
-Base: myHabbit 11.2.1
+myHabbit 11.2.3 UPDATE ONLY
+Base: 11.2.2
 
-Changed:
-- public/app.js
-- public/index.html
-- public/sw.js
-- public/VERSION.txt
-- src/worker.js
-- VERSION
-- package.json
-- README.md
-- CHANGELOG.md
-
-Added:
-- public/assets/stickers/easter/easter-01.json ... easter-62.json
-
-Fixes:
-- Christmas and Halloween definitions are now refreshed even when an existing saved collection has the same sticker count.
-- Egg Party now contains 62 animated stickers converted from the supplied TGS pack.
-- Existing sticker ownership remains preserved because sticker IDs stay stable.
+VERSION
+CHANGELOG.md
+public/styles.css
+public/VERSION.txt
+public/sw.js
+public/app.js

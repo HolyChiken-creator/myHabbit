@@ -70,3 +70,8 @@
 - Fixed Christmas and Halloween collections not updating when an older saved session had the same item count but stale media paths.
 - Built-in sticker collection definitions now reconcile on every app upgrade while user ownership remains preserved by sticker ID.
 - Improved animated-sticker fallback and diagnostics.
+
+## 11.2.3
+- Collaborative family appearance progression with per-member contributions.
+- Five unlockable family card themes; admin selects an unlocked style.
+- Verified and strengthened Leave a Sticker and Level Rewards actions.
